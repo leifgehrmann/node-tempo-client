@@ -1,6 +1,6 @@
 # JavaScript Tempo API for node.js [WORK IN PROGRESS]
 
-[![npm](https://img.shields.io/npm/v/tempo-client.svg)](https://www.npmjs.package/tempo-client)
+[![npm](https://img.shields.io/npm/v/tempo-client.svg)](https://www.npmjs.com/tempo-client)
 [![Downloads](https://img.shields.io/npm/dm/tempo-client.svg)](https://npmjs.com/tempo-client)
 [![Install Size](https://packagephobia.now.sh/badge?p=tempo-client)](https://packagephobia.now.sh/result?p=tempo-client)
 [![dependency Status](https://david-dm.org/leifgehrmann/node-tempo-client/status.svg)](https://david-dm.org/leifgehrmann/node-tempo-client)
