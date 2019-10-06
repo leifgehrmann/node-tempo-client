@@ -1,9 +1,5 @@
 import TempoApi from '../tempo';
 
-
-
-
-
 function getOptions(options?: any) {
   const actualOptions = options || {};
   return {
