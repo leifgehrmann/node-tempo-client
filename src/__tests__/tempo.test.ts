@@ -21,9 +21,11 @@ function getOptions(options?: any) {
 describe('Jira API Tests', () => {
   describe('Constructor Tests', () => {
     it('Constructor functions properly', () => {
-      const jira = new TempoApi(getOptions({
-        timeout: 3000
-      }));
+      const jira = new TempoApi(
+        getOptions({
+          timeout: 3000
+        })
+      );
 
       expect(jira.protocol).toEqual('http');
       expect(jira.host).toEqual('tempo.somehost.com');
@@ -50,8 +52,8 @@ describe('Jira API Tests', () => {
 
       const tempo = new TempoApi(
         getOptions({
-          request: dummyRequest,
-        }),
+          request: dummyRequest
+        })
       );
 
       // @ts-ignore
@@ -64,7 +66,7 @@ describe('Jira API Tests', () => {
       // uniformly testable
       if (resultObject.qs) {
         const queryString = Object.keys(resultObject.qs)
-          .map((x) => `${x}=${resultObject.qs[x]}`)
+          .map(x => `${x}=${resultObject.qs[x]}`)
           .join('&');
         return `${resultObject.uri}?${queryString}`;
       }
@@ -73,15 +75,14 @@ describe('Jira API Tests', () => {
     }
 
     it('getWorklogsForUser hits proper url', async () => {
-      const result = await dummyURLCall(
-        'getWorklogsForUser',
-        ['someAccountId']
-      );
+      const result = await dummyURLCall('getWorklogsForUser', [
+        'someAccountId'
+      ]);
       expect(result).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId'
-      )
+      );
     });
-  })
+  });
 
   describe('Requests Error Tests', () => {
     it('Mocked error messages throws errors', async () => {
@@ -90,13 +91,13 @@ describe('Jira API Tests', () => {
         return {
           requestOptions,
           errorMessages: ['Something is clearly wrong!']
-        }
+        };
       };
 
       const tempo = new TempoApi(
         getOptions({
-          request: mockRequest,
-        }),
+          request: mockRequest
+        })
       );
 
       try {
