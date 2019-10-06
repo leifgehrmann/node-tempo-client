@@ -1,15 +1,15 @@
 # JavaScript Tempo API for node.js [WORK IN PROGRESS]
 
 [![npm](https://img.shields.io/npm/v/tempo-client.svg)](https://www.npmjs.com/tempo-client)
-[![Downloads](https://img.shields.io/npm/dm/tempo-client.svg)](https://npmjs.com/tempo-client)
 [![Install Size](https://packagephobia.now.sh/badge?p=tempo-client)](https://packagephobia.now.sh/result?p=tempo-client)
 [![dependency Status](https://david-dm.org/leifgehrmann/node-tempo-client/status.svg)](https://david-dm.org/leifgehrmann/node-tempo-client)
 [![devDependency Status](https://david-dm.org/leifgehrmann/node-tempo-client/dev-status.svg)](https://david-dm.org/leifgehrmann/node-tempo-client?type=dev)
+[![Build Status](https://travis-ci.org/leifgehrmann/node-tempo-client.svg?branch=master)](https://travis-ci.org/leifgehrmann/node-tempo-client)
 [![Code Coverage](https://codecov.io/gh/leifgehrmann/node-tempo-client/branch/master/graph/badge.svg)](https://codecov.io/gh/leifgehrmann/node-tempo-client)
 
 An unofficial nodejs wrapper for the Tempo REST API
 
-The repo aims to be similar in usage to the [node-jira-client](https://github.com/jira-node/node-jira-client)
+The repo aims to be similar in usage to the [node-jira-client](https://github.com/jira-node/node-jira-client).
 
 ## Installation
 
