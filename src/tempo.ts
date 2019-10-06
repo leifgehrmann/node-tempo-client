@@ -37,7 +37,7 @@ interface IRequestHeaderOptions {
 
 interface IUriOptions {
   pathname: string;
-  query: { [key: string]: string };
+  query?: { [key: string]: string };
   intermediatePath?: string;
 }
 
@@ -47,7 +47,7 @@ export default class TempoApi {
   public readonly host: string;
   public readonly apiVersion: string;
   public readonly bearerToken?: string;
-  public readonly intermediatePath: string;
+  public readonly intermediatePath?: string;
   public readonly strictSSL: boolean | undefined;
   public readonly request: request.RequestPromiseAPI;
   public readonly baseOptions: {
@@ -57,13 +57,13 @@ export default class TempoApi {
 
   constructor(options: ITempoApiOptions) {
     this.protocol = options.protocol || 'https';
-    this.intermediatePath = options.intermediatePath || 'core';
+    this.intermediatePath = options.intermediatePath;
     this.strictSSL = options.hasOwnProperty('strictSSL')
       ? options.strictSSL
       : true;
     this.port = options.port;
     this.host = options.host;
-    this.apiVersion = options.apiVersion || '3';
+    this.apiVersion = options.apiVersion;
     this.bearerToken = options.bearerToken;
     this.request = options.request || request; // To mock requests
     this.baseOptions = {};
@@ -82,13 +82,13 @@ export default class TempoApi {
     }
   }
 
-  public getWorklogsForUser(
+  public async getWorklogsForUser(
     accountId: string,
-    options: IDateRangeQueryOptions &
+    options?: IDateRangeQueryOptions &
       IUpdatedFromQueryOptions &
       IPaginationFromQueryOptions
   ) {
-    return this.doRequest(
+    return await this.doRequest(
       this.makeRequestHeader(
         this.makeUri({
           pathname: `/worklogs/user/${accountId}`,
