@@ -2,7 +2,7 @@ import * as request from 'request-promise';
 import * as url from 'url';
 
 interface ITempoApiOptions {
-  port: string;
+  port?: string;
   request?: request.RequestPromiseAPI;
   timeout?: number;
   protocol: string;
@@ -37,7 +37,7 @@ interface IRequestHeaderOptions {
 
 interface IUriOptions {
   pathname: string;
-  query?: { [key: string]: string };
+  query?: Partial<{ [key: string]: string }>;
   intermediatePath?: string;
 }
 
@@ -84,9 +84,11 @@ export default class TempoApi {
 
   public async getWorklogsForUser(
     accountId: string,
-    options?: IDateRangeQueryOptions &
-      IUpdatedFromQueryOptions &
-      IPaginationFromQueryOptions
+    options?: Partial<
+      IDateRangeQueryOptions &
+        IUpdatedFromQueryOptions &
+        IPaginationFromQueryOptions
+    >
   ) {
     return await this.doRequest(
       this.makeRequestHeader(
