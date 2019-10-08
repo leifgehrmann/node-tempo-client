@@ -18,23 +18,23 @@ function getOptions(options?: any) {
   };
 }
 
-describe('Jira API Tests', () => {
+describe('TempoAi', () => {
   describe('Constructor Tests', () => {
     it('Constructor functions properly', () => {
-      const jira = new TempoApi(
+      const tempo = new TempoApi(
         getOptions({
           timeout: 3000
         })
       );
 
-      expect(jira.protocol).toEqual('http');
-      expect(jira.host).toEqual('tempo.somehost.com');
-      expect(jira.port).toEqual('8080');
-      expect(jira.baseOptions.auth.user).toEqual('');
-      expect(jira.baseOptions.auth.pass).toEqual('');
-      expect(jira.baseOptions.auth.bearer).toEqual('sometoken');
-      expect(jira.baseOptions.timeout).toEqual(3000);
-      expect(jira.apiVersion).toEqual('3');
+      expect(tempo.protocol).toEqual('http');
+      expect(tempo.host).toEqual('tempo.somehost.com');
+      expect(tempo.port).toEqual('8080');
+      expect(tempo.baseOptions.auth.user).toEqual('');
+      expect(tempo.baseOptions.auth.pass).toEqual('');
+      expect(tempo.baseOptions.auth.bearer).toEqual('sometoken');
+      expect(tempo.baseOptions.timeout).toEqual(3000);
+      expect(tempo.apiVersion).toEqual('3');
     });
   });
 
