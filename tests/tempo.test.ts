@@ -1,4 +1,4 @@
-import TempoApi from '../tempo';
+import TempoApi from '../src/tempo';
 
 function getOptions(options?: any) {
   const actualOptions = options || {};
