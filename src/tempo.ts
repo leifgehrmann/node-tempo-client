@@ -48,7 +48,7 @@ export default class TempoApi {
   public readonly apiVersion: string;
   public readonly bearerToken?: string;
   public readonly intermediatePath?: string;
-  public readonly strictSSL: boolean | undefined;
+  public readonly strictSSL: boolean;
   public readonly request: request.RequestPromiseAPI;
   public readonly baseOptions: {
     timeout?: number;
@@ -58,7 +58,10 @@ export default class TempoApi {
   constructor(options: ITempoApiOptions) {
     this.protocol = options.protocol || 'https';
     this.intermediatePath = options.intermediatePath;
-    this.strictSSL = options.hasOwnProperty('strictSSL')
+    this.strictSSL = (
+      options.hasOwnProperty('strictSSL') &&
+      typeof options.strictSSL === "boolean"
+      )
       ? options.strictSSL
       : true;
     this.port = options.port;
