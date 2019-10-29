@@ -19,8 +19,8 @@ jobs:
         skip_cleanup: true
         local_dir: doc/
         github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-        fqdn: tempo-node.leifgehrmann.com
-        project_name: tempo-node
+        fqdn: tempo-client.leifgehrmann.com
+        project_name: tempo-client
         on:
           branch: master
       before_deploy:
