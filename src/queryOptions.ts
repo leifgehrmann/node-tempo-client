@@ -2,7 +2,7 @@ export interface IStringMap {
   [s: string]: string;
 }
 
-export interface IPaginationFrom extends IStringMap {
+export interface IPagination extends IStringMap {
   offset: string;
   limit: string;
 }

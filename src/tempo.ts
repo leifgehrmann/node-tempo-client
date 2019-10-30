@@ -73,7 +73,7 @@ export default class TempoApi {
     options?: Partial<
       queryOptions.IDateRange &
       queryOptions.IUpdatedFrom &
-      queryOptions.IPaginationFrom
+      queryOptions.IPagination
     >
   ) {
     return await this.doRequest(
