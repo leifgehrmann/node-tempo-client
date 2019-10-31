@@ -1,5 +1,6 @@
 import * as request from 'request-promise';
 import * as url from 'url';
+import * as queryOptions from './queryOptions';
 
 interface ITempoApiOptions {
   port?: string;
@@ -11,24 +12,6 @@ interface ITempoApiOptions {
   intermediatePath?: string;
   bearerToken?: string;
   strictSSL?: boolean;
-}
-
-interface IStringMap {
-  [s: string]: string;
-}
-
-interface IPaginationFromQueryOptions extends IStringMap {
-  offset: string;
-  limit: string;
-}
-
-interface IUpdatedFromQueryOptions extends IStringMap {
-  updatedFrom: string;
-}
-
-interface IDateRangeQueryOptions extends IStringMap {
-  from: string;
-  to: string;
 }
 
 interface IRequestHeaderOptions {
@@ -88,9 +71,9 @@ export default class TempoApi {
   public async getWorklogsForUser(
     accountId: string,
     options?: Partial<
-      IDateRangeQueryOptions &
-        IUpdatedFromQueryOptions &
-        IPaginationFromQueryOptions
+      queryOptions.IDateRange &
+      queryOptions.IUpdatedFrom &
+      queryOptions.IPagination
     >
   ) {
     return await this.doRequest(
