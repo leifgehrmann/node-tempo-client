@@ -1,10 +1,12 @@
-# v0.2.0 - Breaking change
+# Changelog
 
-## Breaking Changes
+## v0.2.0
+
+### Breaking Changes
 
 * `getWorklogsForUser(...)` must now be changed to `worklogs.getForUser(...)`
 
-## Additions
+### Additions
 
 * Added the following new API endpoints:
     * `get(options?)`
@@ -17,16 +19,16 @@
     * `getWorklogWorkAttributeValues(worklogId)`
     * `getWorklogWorkAttributeValuesByKey(worklogId, key)`
 
-# v0.1.2
+## v0.1.2
 
 * Made `port` in Tempo options optional.
 * Made query options "partial" to stop TypeScript compilation issues.
 
-# v0.1.1
+## v0.1.1
 
 * Removed default Tempo options
 * Fixed `getWorklogsForUser` to be `async`
 
-# v0.1.0
+## v0.1.0
 
 * First release 🥳

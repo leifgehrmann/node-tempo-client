@@ -36,7 +36,7 @@ const tempo = new TempoApi({
 
 ```javascript
 // ES6
-tempo.getWorklogsForUser(
+tempo.worklogs.getForUser(
   user.accountId,
   {
     from: '2019-10-07',
@@ -53,7 +53,7 @@ tempo.getWorklogsForUser(
 // ES7
 async function getWorklogsForUser(user, from, to) {
   try {
-    const worklogs = await tempo.getWorklogsForUser(user.accountId, { from, to });
+    const worklogs = await tempo.worklogs.getForUser(user.accountId, { from, to });
     console.log(worklogs.results);
   } catch (err) {
     console.log(err);
@@ -63,10 +63,28 @@ async function getWorklogsForUser(user, from, to) {
 
 ## Documentation
 
-* [Tempo Client](https://tempo-client.leifgehrmann.com/)
+* [Node Tempo Client](https://tempo-client.leifgehrmann.com/)
 * [Tempo REST API](https://tempo-io.github.io/tempo-api-docs/)
 
 ## Completeness
 
-So far only `getWorklogsForUser` has been implemented. More endpoints will be
-added later.
+See the documentation for more information on what endpoints are implemented.
+
+|Collections|Endpoints implemented|
+|----|----|
+|Accounts|0/6|
+|Account - Category|0/5|
+|Account - Category - Types|0/1|
+|Account - Links|0/4|
+|Customers|0/6|
+|Plans|0/6|
+|Programs|0/6|
+|Roles|0/5|
+|Teams|0/11|
+|Team - Links|0/4|
+|Team - Memberships|0/4|
+|Periods|0/1|
+|Timesheet Approvals|0/8|
+|User Schedule|0/2|
+|Work Attributes|0/2|
+|Worklogs|10/14|
