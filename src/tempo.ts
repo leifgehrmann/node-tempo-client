@@ -41,12 +41,11 @@ export default class TempoApi {
   constructor(options: ITempoApiOptions) {
     this.protocol = options.protocol || 'https';
     this.intermediatePath = options.intermediatePath;
-    this.strictSSL = (
+    this.strictSSL =
       options.hasOwnProperty('strictSSL') &&
-      typeof options.strictSSL === "boolean"
-      )
-      ? options.strictSSL
-      : true;
+      typeof options.strictSSL === 'boolean'
+        ? options.strictSSL
+        : true;
     this.port = options.port;
     this.host = options.host;
     this.apiVersion = options.apiVersion;
@@ -72,8 +71,8 @@ export default class TempoApi {
     accountId: string,
     options?: Partial<
       queryOptions.IDateRange &
-      queryOptions.IUpdatedFrom &
-      queryOptions.IPagination
+        queryOptions.IUpdatedFrom &
+        queryOptions.IPagination
     >
   ) {
     return await this.doRequest(
