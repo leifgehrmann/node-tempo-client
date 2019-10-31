@@ -30,4 +30,5 @@ jobs:
       before_deploy:
         - npm run doc
         - touch doc/.nojekyll
+        - touch doc/.travis.yml
         - sed -i '/doc/d' .gitignore
