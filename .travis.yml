@@ -9,6 +9,7 @@ scripts:
 after_success:
   - codecov
 
+if: tag IS present
 jobs:
   include:
     - stage: deploy
