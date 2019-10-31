@@ -1,5 +1,9 @@
 sudo: false
 language: node_js
+branches:
+  except:
+    - gh-pages
+
 node_js:
   - "8"
   - "lts/*"
@@ -9,7 +13,6 @@ scripts:
 after_success:
   - codecov
 
-if: tag IS present
 jobs:
   include:
     - stage: deploy
