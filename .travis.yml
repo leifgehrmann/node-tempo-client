@@ -15,6 +15,10 @@ jobs:
     - stage: deploy
       node_js:
         - "node"
+      before_deploy:
+        - npm run doc
+        - touch doc/.nojekyll
+        - sed -i '/doc/d' .gitignore
       deploy:
         provider: pages
         skip_cleanup: true
@@ -24,7 +28,4 @@ jobs:
         project_name: tempo-client
         on:
           branch: master
-      before_deploy:
-        - npm run doc
-        - touch doc/.nojekyll
-        - sed -i '/doc/d' .gitignore
+          tags: true
