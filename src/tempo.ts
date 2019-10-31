@@ -1,8 +1,8 @@
 import * as request from 'request-promise';
-import * as queryOptions from './queryOptions';
+import Worklogs from './collections/worklogs';
 import RequestHandler from './request/handler';
 
-interface ITempoApiOptions {
+export interface ITempoApiOptions {
   requestHandler?: RequestHandler;
   port?: string;
   request?: request.RequestPromiseAPI;
@@ -16,27 +16,11 @@ interface ITempoApiOptions {
 }
 
 export default class TempoApi {
+  public readonly worklogs: Worklogs;
   private readonly requestHandler: RequestHandler;
 
   constructor(options: ITempoApiOptions) {
     this.requestHandler = options.requestHandler || new RequestHandler(options);
-  }
-
-  public async getWorklogsForUser(
-    accountId: string,
-    options?: Partial<
-      queryOptions.IDateRange &
-        queryOptions.IUpdatedFrom &
-        queryOptions.IPagination
-    >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/user/${accountId}`,
-          query: options
-        })
-      )
-    );
+    this.worklogs = new Worklogs(this.requestHandler);
   }
 }
