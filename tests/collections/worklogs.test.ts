@@ -24,8 +24,7 @@ describe('TempoAi', () => {
     async function dummyURLCall(
       tempoApiMethodName: string,
       functionArguments: any,
-      dummyRequestMethod?: any,
-      returnedValue = 'uri'
+      dummyRequestMethod?: any
     ) {
       let dummyRequest = dummyRequestMethod;
       if (!dummyRequest) {
@@ -55,26 +54,34 @@ describe('TempoAi', () => {
         return `${resultObject.uri}?${queryString}`;
       }
 
-      return resultObject[returnedValue];
+      return resultObject;
     }
 
     it('get hits proper url', async () => {
       const result = await dummyURLCall('get', []);
-      expect(result).toEqual('http://tempo.somehost.com:8080/core/3/worklogs');
+      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/worklogs');
     });
 
     it('getWorklog hits proper url', async () => {
       const result = await dummyURLCall('getWorklog', ['someWorklogId']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
+    });
+
+    it('deleteWorklog hits proper url and method', async () => {
+      const result = await dummyURLCall('deleteWorklog', ['someWorklogId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
+      );
+      expect(result.method).toEqual('DELETE');
     });
 
     it('getWorklogWorkAttributeValues hits proper url', async () => {
       const result = await dummyURLCall('getWorklogWorkAttributeValues', [
         'someWorklogId'
       ]);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values'
       );
     });
@@ -84,7 +91,7 @@ describe('TempoAi', () => {
         'someWorklogId',
         'someKey'
       ]);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values/someKey'
       );
     });
@@ -93,7 +100,7 @@ describe('TempoAi', () => {
       const result = await dummyURLCall('getForJiraWorklog', [
         'someJiraWorklogId'
       ]);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/jira/someJiraWorklogId'
       );
     });
@@ -102,42 +109,42 @@ describe('TempoAi', () => {
       const result = await dummyURLCall('getForJiraFilter', [
         'someJiraFilterId'
       ]);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId'
       );
     });
 
     it('getForAccount hits proper url', async () => {
       const result = await dummyURLCall('getForAccount', ['someAccountKey']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey'
       );
     });
 
     it('getForProject hits proper url', async () => {
       const result = await dummyURLCall('getForProject', ['someProjectKey']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey'
       );
     });
 
     it('getForTeam hits proper url', async () => {
       const result = await dummyURLCall('getForTeam', ['someTeamId']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId'
       );
     });
 
     it('getForUser hits proper url', async () => {
       const result = await dummyURLCall('getForUser', ['someAccountId']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId'
       );
     });
 
     it('getForIssue hits proper url', async () => {
       const result = await dummyURLCall('getForIssue', ['someKey']);
-      expect(result).toEqual(
+      expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey'
       );
     });
