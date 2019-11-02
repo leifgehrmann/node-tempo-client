@@ -13,19 +13,10 @@ interface IHandlerOptions {
   strictSSL?: boolean;
 }
 
-interface IRequestHeaderOptions {
-  method?: string;
-}
-
 interface IUriOptions {
   pathname: string;
   query?: Partial<{ [key: string]: string }>;
   intermediatePath?: string;
-}
-
-interface IRequestBaseOptions {
-  timeout?: number;
-  auth?: any;
 }
 
 export default class Handler {
@@ -37,10 +28,7 @@ export default class Handler {
   public readonly intermediatePath?: string;
   public readonly strictSSL: boolean;
   public readonly request: request.RequestPromiseAPI;
-  public readonly baseOptions: {
-    timeout?: number;
-    auth?: any;
-  };
+  public readonly baseOptions: request.RequestPromiseOptions;
 
   public constructor(options: IHandlerOptions) {
     this.protocol = options.protocol || 'https';
@@ -71,7 +59,7 @@ export default class Handler {
     }
   }
 
-  public async doRequest(requestOptions: any) {
+  public async doRequest(requestOptions: request.OptionsWithUri) {
     const options = {
       ...this.baseOptions,
       ...requestOptions
@@ -91,7 +79,10 @@ export default class Handler {
     return response;
   }
 
-  public makeRequestHeader(uri: string, options: IRequestHeaderOptions = {}) {
+  public makeRequestHeader(
+    uri: string,
+    options: request.RequestPromiseOptions = {}
+  ): request.OptionsWithUri {
     return {
       json: true,
       method: options.method || 'GET',
