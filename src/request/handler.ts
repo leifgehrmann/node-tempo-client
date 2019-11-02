@@ -68,11 +68,15 @@ export default class Handler {
     const response = await this.request(options);
 
     if (response) {
-      if (
-        Array.isArray(response.errorMessages) &&
-        response.errorMessages.length > 0
-      ) {
-        throw new Error(response.errorMessages.join(', '));
+      if (Array.isArray(response.errors)) {
+        if (response.errors.length > 0) {
+          const messages = response.errors.map(
+            (error: { message: string }) => error.message
+          );
+          throw new Error(messages.join(', '));
+        } else {
+          throw new Error('Unknown error');
+        }
       }
     }
 

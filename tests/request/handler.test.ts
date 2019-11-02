@@ -91,21 +91,23 @@ describe('TempoAi', () => {
       expect(mockResponse).toEqual(undefined);
     });
 
-    it('Throws no error if error messages length is 0', async () => {
+    it('Throws unknown error if error messages length is 0', async () => {
+      expect.assertions(1);
       const handler = new requestHandler(
         getOptions({
           request: async () => {
             return {
-              errorMessages: []
+              errors: []
             };
           }
         })
       );
 
-      const mockResponse = await handler.doRequest({
-        uri: 'https://example.com'
-      });
-      expect(mockResponse).toEqual({ errorMessages: [] });
+      try {
+        await handler.doRequest({ uri: 'https://example.com' });
+      } catch (e) {
+        expect(e.message).toMatch('Unknown error');
+      }
     });
 
     it('Throws error if error messages length is at least 1', async () => {
@@ -114,7 +116,7 @@ describe('TempoAi', () => {
         getOptions({
           request: async () => {
             return {
-              errorMessages: ['Something went wrong!']
+              errors: [{ message: 'Something went wrong!' }]
             };
           }
         })
