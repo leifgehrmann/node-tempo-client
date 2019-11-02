@@ -1,6 +1,6 @@
 import RequestHandler from '../../src/request/handler';
 import Worklogs from '../../src/collections/worklogs';
-import MockUrlCall from './mockURLCall';
+import MockUrlCall from './mockUrlCall';
 
 function getOptions(options?: any) {
   const actualOptions = options || {};
