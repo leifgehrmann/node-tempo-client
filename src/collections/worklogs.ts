@@ -162,4 +162,22 @@ export default class Worklogs {
       )
     );
   }
+
+  public async getForIssue(
+    key: string,
+    options?: Partial<
+      queryOptions.IDateRange &
+        queryOptions.IUpdatedFrom &
+        queryOptions.IPagination
+    >
+  ) {
+    return await this.requestHandler.doRequest(
+      this.requestHandler.makeRequestHeader(
+        this.requestHandler.makeUri({
+          pathname: `/worklogs/issue/${key}`,
+          query: options
+        })
+      )
+    );
+  }
 }

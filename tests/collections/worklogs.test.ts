@@ -134,6 +134,13 @@ describe('TempoAi', () => {
         'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId'
       );
     });
+
+    it('getForIssue hits proper url', async () => {
+      const result = await dummyURLCall('getForIssue', ['someKey']);
+      expect(result).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey'
+      );
+    });
   });
 
   describe('Requests Error Tests', () => {
