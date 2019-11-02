@@ -42,11 +42,38 @@ describe('TempoAi', () => {
       );
     });
 
+    it('post hits proper url and method', async () => {
+      const worklog = {
+        timeSpentSeconds: 1234
+      };
+      const result = await mockUrlCall.call('post', [worklog]);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs'
+      );
+      expect(result.method).toEqual('POST');
+      expect(result.body).toEqual(worklog);
+    });
+
     it('getWorklog hits proper url', async () => {
       const result = await mockUrlCall.call('getWorklog', ['someWorklogId']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
+    });
+
+    it('putWorklog hits proper url and method', async () => {
+      const worklog = {
+        timeSpentSeconds: 5678
+      };
+      const result = await mockUrlCall.call('putWorklog', [
+        'someWorklogId',
+        worklog
+      ]);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
+      );
+      expect(result.method).toEqual('PUT');
+      expect(result.body).toEqual(worklog);
     });
 
     it('deleteWorklog hits proper url and method', async () => {

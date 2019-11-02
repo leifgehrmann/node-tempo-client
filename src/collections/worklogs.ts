@@ -5,6 +5,23 @@ export interface IQueryOptionIssue {
   issue: string[];
 }
 
+export interface IWorklogAttributeObject {
+  key: string;
+  value: string;
+}
+
+export interface IWorklogObject {
+  issueKey: string;
+  timeSpentSeconds: number;
+  billableSeconds: number;
+  startDate: string;
+  startTime: string;
+  description?: string;
+  authorAccountId: string;
+  remainingEstimateSeconds: number;
+  attributes: IWorklogAttributeObject[];
+}
+
 export default class Worklogs {
   private requestHandler: RequestHandler;
 
@@ -30,12 +47,40 @@ export default class Worklogs {
     );
   }
 
+  public async post(worklog: IWorklogObject) {
+    return await this.requestHandler.doRequest(
+      this.requestHandler.makeRequestHeader(
+        this.requestHandler.makeUri({
+          pathname: `/worklogs`
+        }),
+        {
+          method: 'POST',
+          body: worklog
+        }
+      )
+    );
+  }
+
   public async getWorklog(worklogId: string) {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/worklogs/${worklogId}`
         })
+      )
+    );
+  }
+
+  public async putWorklog(worklogId: string, worklog: IWorklogObject) {
+    return await this.requestHandler.doRequest(
+      this.requestHandler.makeRequestHeader(
+        this.requestHandler.makeUri({
+          pathname: `/worklogs/${worklogId}`
+        }),
+        {
+          method: 'PUT',
+          body: worklog
+        }
       )
     );
   }
