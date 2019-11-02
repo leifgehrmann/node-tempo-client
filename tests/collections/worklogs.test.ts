@@ -59,7 +59,20 @@ describe('TempoAi', () => {
 
     it('get hits proper url', async () => {
       const result = await dummyURLCall('get', []);
-      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/worklogs');
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs'
+      );
+    });
+
+    it('get hits proper url with array of issues to lookup', async () => {
+      const result = await dummyURLCall('get', [
+        {
+          issue: ['someIssueA', 'someIssueB']
+        }
+      ]);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB'
+      );
     });
 
     it('getWorklog hits proper url', async () => {
@@ -155,8 +168,7 @@ describe('TempoAi', () => {
       expect.assertions(1);
       const mockRequest = async (requestOptions: any) => {
         return {
-          requestOptions,
-          errorMessages: ['Something is clearly wrong!']
+          errors: [{ message: 'Something is clearly wrong!' }]
         };
       };
 
