@@ -1,31 +1,15 @@
+# Travis CI is used exclusively for code coverage
+#
+# This pipeline allows incoming pull requests to have code coverage diffs
+# automatically added to the pull request comment thread.
+#
+# Ideally this will be replaced by GitHub Actions, but because GHA don't
+# support running workflows on forked branches, this cannot be done yet.
 sudo: false
 language: node_js
-
 node_js:
-  - "8"
-  - "lts/*"
   - "node"
 scripts:
   - npm install codecov -g
 after_success:
   - codecov
-
-jobs:
-  include:
-    - stage: deploy
-      node_js:
-        - "node"
-      before_deploy:
-        - npm run doc
-        - touch doc/.nojekyll
-        - sed -i '/doc/d' .gitignore
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        local_dir: doc/
-        github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-        fqdn: tempo-client.leifgehrmann.com
-        project_name: tempo-client
-        on:
-          branch: master
-          tags: true
