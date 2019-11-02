@@ -1,5 +1,6 @@
 import RequestHandler from '../../src/request/handler';
 import Worklogs from '../../src/collections/worklogs';
+import MockUrlCall from './mockUrlCall';
 
 function getOptions(options?: any) {
   const actualOptions = options || {};
@@ -19,53 +20,19 @@ function getOptions(options?: any) {
   };
 }
 
+const mockUrlCall = new MockUrlCall(Worklogs);
+
 describe('TempoAi', () => {
   describe('Request Functions Tests', () => {
-    async function dummyURLCall(
-      tempoApiMethodName: string,
-      functionArguments: any,
-      dummyRequestMethod?: any
-    ) {
-      let dummyRequest = dummyRequestMethod;
-      if (!dummyRequest) {
-        dummyRequest = async (requestOptions: any) => requestOptions;
-      }
-
-      const requestHandler = new RequestHandler(
-        getOptions({
-          request: dummyRequest
-        })
-      );
-
-      const collection = new Worklogs(requestHandler);
-
-      // @ts-ignore
-      const resultObject = await collection[tempoApiMethodName].apply(
-        collection,
-        functionArguments
-      );
-
-      // hack exposing the qs object as the query string in the URL so this is
-      // uniformly testable
-      if (resultObject.qs) {
-        const queryString = Object.keys(resultObject.qs)
-          .map(x => `${x}=${resultObject.qs[x]}`)
-          .join('&');
-        return `${resultObject.uri}?${queryString}`;
-      }
-
-      return resultObject;
-    }
-
     it('get hits proper url', async () => {
-      const result = await dummyURLCall('get', []);
+      const result = await mockUrlCall.call('get', []);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs'
       );
     });
 
     it('get hits proper url with array of issues to lookup', async () => {
-      const result = await dummyURLCall('get', [
+      const result = await mockUrlCall.call('get', [
         {
           issue: ['someIssueA', 'someIssueB']
         }
@@ -76,14 +43,14 @@ describe('TempoAi', () => {
     });
 
     it('getWorklog hits proper url', async () => {
-      const result = await dummyURLCall('getWorklog', ['someWorklogId']);
+      const result = await mockUrlCall.call('getWorklog', ['someWorklogId']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
     });
 
     it('deleteWorklog hits proper url and method', async () => {
-      const result = await dummyURLCall('deleteWorklog', ['someWorklogId']);
+      const result = await mockUrlCall.call('deleteWorklog', ['someWorklogId']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
@@ -91,7 +58,7 @@ describe('TempoAi', () => {
     });
 
     it('getWorklogWorkAttributeValues hits proper url', async () => {
-      const result = await dummyURLCall('getWorklogWorkAttributeValues', [
+      const result = await mockUrlCall.call('getWorklogWorkAttributeValues', [
         'someWorklogId'
       ]);
       expect(result.uri).toEqual(
@@ -100,17 +67,17 @@ describe('TempoAi', () => {
     });
 
     it('getWorklogWorkAttributeValuesByKey hits proper url', async () => {
-      const result = await dummyURLCall('getWorklogWorkAttributeValuesByKey', [
-        'someWorklogId',
-        'someKey'
-      ]);
+      const result = await mockUrlCall.call(
+        'getWorklogWorkAttributeValuesByKey',
+        ['someWorklogId', 'someKey']
+      );
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values/someKey'
       );
     });
 
     it('getForJiraWorklog hits proper url', async () => {
-      const result = await dummyURLCall('getForJiraWorklog', [
+      const result = await mockUrlCall.call('getForJiraWorklog', [
         'someJiraWorklogId'
       ]);
       expect(result.uri).toEqual(
@@ -119,7 +86,7 @@ describe('TempoAi', () => {
     });
 
     it('getForJiraFilter hits proper url', async () => {
-      const result = await dummyURLCall('getForJiraFilter', [
+      const result = await mockUrlCall.call('getForJiraFilter', [
         'someJiraFilterId'
       ]);
       expect(result.uri).toEqual(
@@ -128,35 +95,39 @@ describe('TempoAi', () => {
     });
 
     it('getForAccount hits proper url', async () => {
-      const result = await dummyURLCall('getForAccount', ['someAccountKey']);
+      const result = await mockUrlCall.call('getForAccount', [
+        'someAccountKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey'
       );
     });
 
     it('getForProject hits proper url', async () => {
-      const result = await dummyURLCall('getForProject', ['someProjectKey']);
+      const result = await mockUrlCall.call('getForProject', [
+        'someProjectKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey'
       );
     });
 
     it('getForTeam hits proper url', async () => {
-      const result = await dummyURLCall('getForTeam', ['someTeamId']);
+      const result = await mockUrlCall.call('getForTeam', ['someTeamId']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId'
       );
     });
 
     it('getForUser hits proper url', async () => {
-      const result = await dummyURLCall('getForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('getForUser', ['someAccountId']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId'
       );
     });
 
     it('getForIssue hits proper url', async () => {
-      const result = await dummyURLCall('getForIssue', ['someKey']);
+      const result = await mockUrlCall.call('getForIssue', ['someKey']);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey'
       );
