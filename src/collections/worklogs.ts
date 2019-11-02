@@ -40,6 +40,17 @@ export default class Worklogs {
     );
   }
 
+  public async deleteWorklog(worklogId: string) {
+    return await this.requestHandler.doRequest(
+      this.requestHandler.makeRequestHeader(
+        this.requestHandler.makeUri({
+          pathname: `/worklogs/${worklogId}`
+        }),
+        { method: 'DELETE' }
+      )
+    );
+  }
+
   public async getWorklogWorkAttributeValues(worklogId: string) {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
