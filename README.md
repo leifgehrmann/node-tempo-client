@@ -68,24 +68,31 @@ async function getWorklogsForUser(user, from, to) {
 ### Create, modify, delete an "Account"
 
 ```js
-// Create a new account
-let account = await tempo.accounts.post({
+// Create a new account using `.post(...)`
+let account = {
   key: 'CLOUDBAY_DEVELOPMENT',
   name: 'Cloudbay: Development',
   status: 'OPEN',
-  leadAccountId: "123456:01234567-89ab-cdef-0123-456789abcdef",
-})
+  leadAccountId: "123456:01234567-89ab-cdef-0123-456789abcdef"
+};
 
-// Modify the account
+let accountId = (await tempo.accounts.post(account)).id;
+console.log(`Account "${account.key}" has an id of: ${accountId}`);
+
+// Modify the account using `.putAccount(...)`
 account.status = 'CLOSED'
-account = await tempo.accounts.putAccount(account.key, account)
-console.log(account.status)
+const accountOnTempo = await tempo.accounts.putAccount(account.key, account);
+console.log(`Account "${account.key}" is now: ${accountOnTempo.status}`);
 
-// Re-fetch the account (again)
-account = await tempo.accounts.getAccount(account.key)
+// Delete the account using `.deleteAccount(...)`
+await tempo.accounts.deleteAccount(account.key);
 
-// Delete the account
-await tempo.accounts.deleteAccount(account.key)
+// `.getAccount(...)` will throw an error now that the account is deleted
+try {
+  await tempo.accounts.getAccount(account.key);
+} catch (err) {
+  console.log(`Account "${account.key}" no longer exists!`);
+}
 ```
 
 ## Documentation
