@@ -1,6 +1,6 @@
 import * as request from 'request-promise';
-import Worklogs from './collections/worklogs';
 import WorkAttributes from './collections/workAttributes';
+import Worklogs from './collections/worklogs';
 import RequestHandler from './request/handler';
 
 export interface ITempoApiOptions {
