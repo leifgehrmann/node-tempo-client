@@ -178,27 +178,6 @@ export interface IWorkAttributeResponse {
   values: any;
 }
 
-export interface IQueryOptionIssue {
-  issue: string[];
-}
-
-export interface IWorklogAttributeObject {
-  key: string;
-  value: string;
-}
-
-export interface IWorklogObject {
-  issueKey: string;
-  timeSpentSeconds: number;
-  billableSeconds: number;
-  startDate: string;
-  startTime: string;
-  description?: string;
-  authorAccountId: string;
-  remainingEstimateSeconds: number;
-  attributes: IWorklogAttributeObject[];
-}
-
 export interface IWorklogResponse {
   self: string;
   tempoWorklogId: number;
@@ -322,15 +301,6 @@ export interface ITeamMemberMembershipFullResponse {
   member: IUserResponse;
 }
 
-export interface ITeamMembershipResponse {
-  self: string;
-  id: number;
-  commitmentPercent: number;
-  from: string;
-  to: string;
-  role: IRoleResponse;
-}
-
 export interface ITeamPermissionResponse {
   self: string;
   key: string;
@@ -365,4 +335,25 @@ export interface IProgramResponse {
     self: string;
     values: ITeamRefResponse[];
   };
+};
+
+export interface IWorklogAttributeObject {
+  key: string;
+  value: string;
+}
+
+export interface IWorklogObject {
+  issueKey: string;
+  timeSpentSeconds: number;
+  billableSeconds: number;
+  startDate: string;
+  startTime: string;
+  description?: string;
+  authorAccountId: string;
+  remainingEstimateSeconds: number;
+  attributes: IWorklogAttributeObject[];
+}
+
+export interface IQueryOptionIssue {
+  issue: string[];
 }

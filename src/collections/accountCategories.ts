@@ -1,32 +1,43 @@
 import * as queryOptions from '../queryOptions';
 import Collection from './abstractCollection';
+import { IAccountCategoryResponse, IResultSetResponse } from '../types';
 
 export default class AccountCategories extends Collection {
-  public async get(options?: queryOptions.IDateRange) {
+  public async post(
+    options?: queryOptions.IDateRange
+  ): Promise<IAccountCategoryResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async post(options?: queryOptions.IDateRange) {
+  public async get(
+    options?: queryOptions.IDateRange
+  ): Promise<IResultSetResponse<IAccountCategoryResponse>> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async getAccountCategory(options?: queryOptions.IDateRange) {
+  public async getAccountCategory(
+    options?: queryOptions.IDateRange
+  ): Promise<IAccountCategoryResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async putAccountCategory(options?: queryOptions.IDateRange) {
+  public async putAccountCategory(
+    options?: queryOptions.IDateRange
+  ): Promise<IAccountCategoryResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async deleteAccountCategory(options?: queryOptions.IDateRange) {
+  public async deleteAccountCategory(
+    options?: queryOptions.IDateRange
+  ): Promise<void> {
     await this.createAndSendRequest(`/periods`, {
       query: options
     });
