@@ -6,17 +6,23 @@ const mockUrlCall = new MockUrlCall(Accounts);
 describe('Accounts', () => {
   describe('Request Functions Tests', () => {
     it('post hits proper url', async () => {
-      const result = await mockUrlCall.call('post', []);
+      const body = {};
+      const result = await mockUrlCall.call('post', [body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
     it('get hits proper url', async () => {
-      const result = await mockUrlCall.call('get', []);
+      const result = await mockUrlCall.call('get', [
+        {
+          status: 'OPEN'
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts'
+        'http://tempo.somehost.com:8080/core/3/accounts?status=OPEN'
       );
     });
 
@@ -28,10 +34,12 @@ describe('Accounts', () => {
     });
 
     it('putAccount hits proper url', async () => {
-      const result = await mockUrlCall.call('putAccount', ['someKey']);
+      const body = {};
+      const result = await mockUrlCall.call('putAccount', ['someKey', body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

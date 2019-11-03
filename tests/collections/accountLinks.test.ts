@@ -6,10 +6,12 @@ const mockUrlCall = new MockUrlCall(AccountLinks);
 describe('AccountLinks', () => {
   describe('Request Functions Tests', () => {
     it('post hits proper url', async () => {
-      const result = await mockUrlCall.call('post', []);
+      const body = {};
+      const result = await mockUrlCall.call('post', [body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-links'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 

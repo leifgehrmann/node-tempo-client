@@ -11,8 +11,10 @@ describe('Roles', () => {
     });
 
     it('post hits proper url', async () => {
-      const result = await mockUrlCall.call('post', []);
+      const body = {};
+      const result = await mockUrlCall.call('post', [body]);
       expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/roles');
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -24,10 +26,12 @@ describe('Roles', () => {
     });
 
     it('putRole hits proper url', async () => {
-      const result = await mockUrlCall.call('putRole', ['someId']);
+      const body = {};
+      const result = await mockUrlCall.call('putRole', ['someId', body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/roles/someId'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

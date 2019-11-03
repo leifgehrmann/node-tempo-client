@@ -6,8 +6,11 @@ const mockUrlCall = new MockUrlCall(Teams);
 describe('Teams', () => {
   describe('Request Functions Tests', () => {
     it('post hits proper url', async () => {
-      const result = await mockUrlCall.call('post', []);
+      const body = {};
+      const result = await mockUrlCall.call('post', [body]);
       expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/teams');
+      expect(result.body).toEqual(body);
+      expect(result.method).toEqual('POST');
     });
 
     it('get hits proper url', async () => {
@@ -23,10 +26,13 @@ describe('Teams', () => {
     });
 
     it('putTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('putTeam', ['someId']);
+      const body = {};
+      const result = await mockUrlCall.call('putTeam', ['someId', body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId'
       );
+      expect(result.body).toEqual(body);
+      expect(result.method).toEqual('PUT');
     });
 
     it('deleteTeam hits proper url', async () => {
@@ -34,6 +40,7 @@ describe('Teams', () => {
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId'
       );
+      expect(result.method).toEqual('DELETE');
     });
 
     it('getTeamLinksForTeam hits proper url', async () => {

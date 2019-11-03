@@ -42,8 +42,8 @@ export default class TimesheetApprovals extends Collection {
       `/timesheet-approvals/user/${accountId}/approve`,
       {
         body: timesheetApproval,
-        query: options,
-        method: 'POST'
+        method: 'POST',
+        query: options
       }
     );
   }
@@ -57,8 +57,8 @@ export default class TimesheetApprovals extends Collection {
       `/timesheet-approvals/user/${accountId}/reject`,
       {
         body: timesheetApproval,
-        query: options,
-        method: 'POST'
+        method: 'POST',
+        query: options
       }
     );
   }
@@ -72,8 +72,8 @@ export default class TimesheetApprovals extends Collection {
       `/timesheet-approvals/user/${accountId}/reopen`,
       {
         body: timesheetApproval,
-        query: options,
-        method: 'POST'
+        method: 'POST',
+        query: options
       }
     );
   }
@@ -87,8 +87,8 @@ export default class TimesheetApprovals extends Collection {
       `/timesheet-approvals/user/${accountId}/submit`,
       {
         body: timesheedApprovalRequest,
-        query: options,
-        method: 'POST'
+        method: 'POST',
+        query: options
       }
     );
   }

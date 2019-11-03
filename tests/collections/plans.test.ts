@@ -6,8 +6,20 @@ const mockUrlCall = new MockUrlCall(Plans);
 describe('Plans', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
-      const result = await mockUrlCall.call('get', []);
-      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/plans');
+      const result = await mockUrlCall.call('get', [
+        {
+          assigneeType: 'abc',
+          planItemType: 'efg',
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
+      ]);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/plans?assigneeType=abc&planItemType=efg&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+      );
     });
 
     it('post hits proper url', async () => {
@@ -17,9 +29,15 @@ describe('Plans', () => {
     });
 
     it('getPlan hits proper url', async () => {
-      const result = await mockUrlCall.call('getPlan', ['someId']);
+      const result = await mockUrlCall.call('getPlan', [
+        'someId',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31'
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/plans/someId'
+        'http://tempo.somehost.com:8080/core/3/plans/someId?from=2019-01-01&to=2019-01-31'
       );
     });
 
@@ -40,9 +58,16 @@ describe('Plans', () => {
     });
 
     it('getForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('getForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('getForUser', [
+        'someAccountId',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01'
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/plans/user/someAccountId'
+        'http://tempo.somehost.com:8080/core/3/plans/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01'
       );
     });
   });

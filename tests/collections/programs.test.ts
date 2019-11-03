@@ -13,10 +13,12 @@ describe('Programs', () => {
     });
 
     it('post hits proper url', async () => {
-      const result = await mockUrlCall.call('post', []);
+      const body = {};
+      const result = await mockUrlCall.call('post', [body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -28,10 +30,12 @@ describe('Programs', () => {
     });
 
     it('putProgram hits proper url', async () => {
-      const result = await mockUrlCall.call('putProgram', ['someId']);
+      const body = {};
+      const result = await mockUrlCall.call('putProgram', ['someId', body]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId'
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 
