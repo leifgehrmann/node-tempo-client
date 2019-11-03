@@ -1,3 +1,9 @@
+export interface ITeamLink {
+  teamId: number;
+  scopeType: string;
+  scopeId: string;
+}
+
 export interface ITeamMembership {
   roleId?: number;
   commitmentPercent?: number;
