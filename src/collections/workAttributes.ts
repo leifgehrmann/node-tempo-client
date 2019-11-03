@@ -1,5 +1,5 @@
+import { IResultSetResponse, IWorkAttributeResponse } from '../responseTypes';
 import Collection from './abstractCollection';
-import { IResultSetResponse, IWorkAttributeResponse } from '../types';
 
 export default class WorkAttributes extends Collection {
   public async get(): Promise<IResultSetResponse<IWorkAttributeResponse>> {

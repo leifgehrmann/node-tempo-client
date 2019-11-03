@@ -1,6 +1,6 @@
-import * as queryOptions from '../queryOptions';
+import * as queryOptions from '../queryOptionTypes';
+import { IResultSetResponse, IRoleWithDefaultResponse } from '../responseTypes';
 import Collection from './abstractCollection';
-import { IRoleWithDefaultResponse, IResultSetResponse } from '../types';
 
 export default class Roles extends Collection {
   public async get(

@@ -1,10 +1,10 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
-  ITeamLinkResponse,
   IResultSetResponse,
-  ITeamLinkByScopeResponse
-} from '../types';
+  ITeamLinkByScopeResponse,
+  ITeamLinkResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class TeamLinks extends Collection {
   public async post(

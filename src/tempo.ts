@@ -15,7 +15,10 @@ import TimesheetApprovals from './collections/timesheetApprovals';
 import UserSchedule from './collections/userSchedule';
 import WorkAttributes from './collections/workAttributes';
 import Worklogs from './collections/worklogs';
+import * as QueryOptionTypes from './queryOptionTypes';
 import RequestHandler from './request/handler';
+import * as RequestTypes from './requestTypes';
+import * as ResponseTypes from './responseTypes';
 
 export interface ITempoApiOptions {
   requestHandler?: RequestHandler;
@@ -29,6 +32,10 @@ export interface ITempoApiOptions {
   bearerToken?: string;
   strictSSL?: boolean;
 }
+
+export { RequestTypes };
+export { ResponseTypes };
+export { QueryOptionTypes };
 
 export default class TempoApi {
   public readonly accountCategories: AccountCategories;

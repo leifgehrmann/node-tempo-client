@@ -1,6 +1,6 @@
-import * as queryOptions from '../queryOptions';
+import * as queryOptions from '../queryOptionTypes';
+import { IPeriodsResponse } from '../responseTypes';
 import Collection from './abstractCollection';
-import { IPeriodsResponse } from '../types';
 
 export default class Periods extends Collection {
   public async get(

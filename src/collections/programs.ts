@@ -1,10 +1,10 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
-  IResultSetResponse,
   IProgramResponse,
+  IResultSetResponse,
   ITeamRefResponse
-} from '../types';
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class Programs extends Collection {
   public async get(

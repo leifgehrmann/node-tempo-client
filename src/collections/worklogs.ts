@@ -1,18 +1,16 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
+import { IWorklog, IWorklogAttribute } from '../requestTypes';
 import {
   IPaginatedResultSetResponse,
   IResultSetResponse,
-  IQueryOptionIssue,
-  IWorklogResponse,
-  IWorklogObject,
-  IWorklogAttributeObject
-} from '../types';
+  IWorklogResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class Worklogs extends Collection {
   public async get(
     options?: Partial<
-      IQueryOptionIssue &
+      queryOptions.IIssues &
         queryOptions.IDateRange &
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
@@ -23,7 +21,7 @@ export default class Worklogs extends Collection {
     });
   }
 
-  public async post(worklog: IWorklogObject): Promise<IWorklogResponse> {
+  public async post(worklog: IWorklog): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs`, {
       body: worklog,
       method: 'POST'
@@ -36,7 +34,7 @@ export default class Worklogs extends Collection {
 
   public async putWorklog(
     worklogId: string,
-    worklog: IWorklogObject
+    worklog: IWorklog
   ): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs/${worklogId}`, {
       body: worklog,
@@ -52,7 +50,7 @@ export default class Worklogs extends Collection {
 
   public async getWorklogWorkAttributeValues(
     worklogId: string
-  ): Promise<IResultSetResponse<IWorklogAttributeObject>> {
+  ): Promise<IResultSetResponse<IWorklogAttribute>> {
     return await this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values`
     );
@@ -61,7 +59,7 @@ export default class Worklogs extends Collection {
   public async getWorklogWorkAttributeValuesByKey(
     worklogId: string,
     key: string
-  ): Promise<IWorklogAttributeObject> {
+  ): Promise<IWorklogAttribute> {
     return await this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values/${key}`
     );

@@ -1,10 +1,10 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
+  IAccountLinkResponse,
   IAccountResponse,
-  IResultSetResponse,
-  IAccountLinkResponse
-} from '../types';
+  IResultSetResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class Accounts extends Collection {
   public async post(

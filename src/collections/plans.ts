@@ -1,10 +1,10 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
   IPaginatedResultSetResponse,
   IPlanResponse,
   IResultSetResponse
-} from '../types';
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class Plans extends Collection {
   public async get(

@@ -1,3 +1,5 @@
+import { IWorklogAttribute } from './requestTypes';
+
 export interface ISelfResponse {
   self: string;
 }
@@ -181,7 +183,7 @@ export interface IWorkAttributeResponse {
 export interface IWorklogResponse {
   self: string;
   tempoWorklogId: number;
-  jiraWorklogId: number;
+  jiraWorklogId?: number;
   issue: {
     self: string;
     key: string;
@@ -196,7 +198,7 @@ export interface IWorklogResponse {
   author: IUserResponse;
   attributes: {
     self: string;
-    values: IWorklogAttributeObject[];
+    values: IWorklogAttribute[];
   };
 }
 
@@ -335,25 +337,4 @@ export interface IProgramResponse {
     self: string;
     values: ITeamRefResponse[];
   };
-};
-
-export interface IWorklogAttributeObject {
-  key: string;
-  value: string;
-}
-
-export interface IWorklogObject {
-  issueKey: string;
-  timeSpentSeconds: number;
-  billableSeconds: number;
-  startDate: string;
-  startTime: string;
-  description?: string;
-  authorAccountId: string;
-  remainingEstimateSeconds: number;
-  attributes: IWorklogAttributeObject[];
-}
-
-export interface IQueryOptionIssue {
-  issue: string[];
 }

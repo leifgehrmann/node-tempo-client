@@ -1,6 +1,6 @@
-import * as queryOptions from '../queryOptions';
+import * as queryOptions from '../queryOptionTypes';
+import { ITeamMemberMembershipFullResponse } from '../responseTypes';
 import Collection from './abstractCollection';
-import { ITeamMemberMembershipFullResponse } from '../types';
 
 export default class TeamMemberships extends Collection {
   public async post(

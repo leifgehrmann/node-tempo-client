@@ -1,13 +1,13 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
-  ITeamResponse,
   IResultSetResponse,
   ITeamLinkRefResponse,
   ITeamMemberActiveMembershipResponse,
   ITeamMemberMembershipResponse,
-  ITeamPermissionResponse
-} from '../types';
+  ITeamPermissionResponse,
+  ITeamResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class Teams extends Collection {
   public async post(options?: queryOptions.IDateRange): Promise<ITeamResponse> {

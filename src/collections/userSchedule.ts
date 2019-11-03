@@ -1,6 +1,6 @@
-import * as queryOptions from '../queryOptions';
+import * as queryOptions from '../queryOptionTypes';
+import { IDayScheduleResponse, IResultSetResponse } from '../responseTypes';
 import Collection from './abstractCollection';
-import { IResultSetResponse, IDayScheduleResponse } from '../types';
 
 export default class UserSchedule extends Collection {
   public async get(

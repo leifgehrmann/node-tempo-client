@@ -1,6 +1,9 @@
-import * as queryOptions from '../queryOptions';
+import * as queryOptions from '../queryOptionTypes';
+import {
+  IAccountCategoryTypeResponse,
+  IResultSetResponse
+} from '../responseTypes';
 import Collection from './abstractCollection';
-import { IResultSetResponse, IAccountCategoryTypeResponse } from '../types';
 
 export default class AccountCategoryTypes extends Collection {
   public async get(

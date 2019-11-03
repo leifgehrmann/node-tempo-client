@@ -15,3 +15,7 @@ export interface IDateRange extends IStringMap {
   from: string;
   to: string;
 }
+
+export interface IIssues {
+  issue: string[];
+}

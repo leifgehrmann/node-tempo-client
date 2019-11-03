@@ -1,12 +1,12 @@
-import * as queryOptions from '../queryOptions';
-import Collection from './abstractCollection';
+import * as queryOptions from '../queryOptionTypes';
 import {
   IResultSetResponse,
-  ITimesheetApprovalResponse,
-  IUserResponse,
   ITimesheetApproval,
-  ITimesheetApprovalRequest
-} from '../types';
+  ITimesheetApprovalRequest,
+  ITimesheetApprovalResponse,
+  IUserResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
 export default class TimesheetApprovals extends Collection {
   public async getWaiting(): Promise<
