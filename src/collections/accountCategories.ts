@@ -1,5 +1,5 @@
 import * as queryOptions from '../queryOptions';
-import Collection from './collection';
+import Collection from './abstractCollection';
 
 export default class AccountCategories extends Collection {
   public async get(options?: queryOptions.IDateRange) {

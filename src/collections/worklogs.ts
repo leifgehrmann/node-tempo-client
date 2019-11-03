@@ -1,72 +1,13 @@
 import * as queryOptions from '../queryOptions';
-import Collection from './collection';
-
-export interface IQueryOptionIssue {
-  issue: string[];
-}
-
-export interface IWorklogAttributeObject {
-  key: string;
-  value: string;
-}
-
-export interface IWorklogObject {
-  issueKey: string;
-  timeSpentSeconds: number;
-  billableSeconds: number;
-  startDate: string;
-  startTime: string;
-  description?: string;
-  authorAccountId: string;
-  remainingEstimateSeconds: number;
-  attributes: IWorklogAttributeObject[];
-}
-
-export interface IWorklogResponseObject {
-  self: string;
-  tempoWorklogId: number;
-  jiraWorklogId: number;
-  issue: {
-    self: string;
-    key: string;
-  };
-  timeSpentSeconds: number;
-  billableSeconds: number;
-  startDate: string;
-  startTime: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  author: {
-    self: string;
-    accountId: string;
-    displayName: string;
-  };
-  attributes: {
-    self: string;
-    values: IWorklogAttributeObject[];
-  };
-}
-
-export interface IWorklogAttributeValuesResponseObject {
-  self: string;
-  metadata: {
-    count: number;
-  };
-  results: IWorklogAttributeObject[];
-}
-
-export interface IWorklogsResponseObject {
-  self: string;
-  metadata: {
-    count: number;
-    offset: number;
-    limit: number;
-    next: string;
-    previous?: string;
-  };
-  results: IWorklogResponseObject[];
-}
+import Collection from './abstractCollection';
+import {
+  IPaginatedResultSetResponse,
+  IResultSetResponse,
+  IQueryOptionIssue,
+  IWorklogResponse,
+  IWorklogObject,
+  IWorklogAttributeObject
+} from '../types';
 
 export default class Worklogs extends Collection {
   public async get(
@@ -76,27 +17,27 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs`, {
       query: options
     });
   }
 
-  public async post(worklog: IWorklogObject): Promise<IWorklogResponseObject> {
+  public async post(worklog: IWorklogObject): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs`, {
       body: worklog,
       method: 'POST'
     });
   }
 
-  public async getWorklog(worklogId: string): Promise<IWorklogResponseObject> {
+  public async getWorklog(worklogId: string): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs/${worklogId}`);
   }
 
   public async putWorklog(
     worklogId: string,
     worklog: IWorklogObject
-  ): Promise<IWorklogResponseObject> {
+  ): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs/${worklogId}`, {
       body: worklog,
       method: 'PUT'
@@ -111,7 +52,7 @@ export default class Worklogs extends Collection {
 
   public async getWorklogWorkAttributeValues(
     worklogId: string
-  ): Promise<IWorklogAttributeValuesResponseObject> {
+  ): Promise<IResultSetResponse<IWorklogAttributeObject>> {
     return await this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values`
     );
@@ -128,7 +69,7 @@ export default class Worklogs extends Collection {
 
   public async getForJiraWorklog(
     jiraWorklogId: string
-  ): Promise<IWorklogResponseObject> {
+  ): Promise<IWorklogResponse> {
     return await this.createAndSendRequest(`/worklogs/jira/${jiraWorklogId}`);
   }
 
@@ -139,7 +80,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(
       `/worklogs/jira/filter/${jiraFilterId}`,
       {
@@ -155,7 +96,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs/account/${accountKey}`, {
       query: options
     });
@@ -168,7 +109,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs/project/${projectKey}`, {
       query: options
     });
@@ -181,7 +122,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs/team/${teamId}`, {
       query: options
     });
@@ -194,7 +135,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs/user/${accountId}`, {
       query: options
     });
@@ -207,7 +148,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ): Promise<IWorklogsResponseObject> {
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
     return await this.createAndSendRequest(`/worklogs/issue/${key}`, {
       query: options
     });

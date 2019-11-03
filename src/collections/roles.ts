@@ -1,32 +1,41 @@
 import * as queryOptions from '../queryOptions';
-import Collection from './collection';
+import Collection from './abstractCollection';
+import { IRoleWithDefaultResponse, IResultSetResponse } from '../types';
 
 export default class Roles extends Collection {
-  public async get(options?: queryOptions.IDateRange) {
+  public async get(
+    options?: queryOptions.IDateRange
+  ): Promise<IResultSetResponse<IRoleWithDefaultResponse>> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async post(options?: queryOptions.IDateRange) {
+  public async post(
+    options?: queryOptions.IDateRange
+  ): Promise<IRoleWithDefaultResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async getRole(options?: queryOptions.IDateRange) {
+  public async getRole(
+    options?: queryOptions.IDateRange
+  ): Promise<IRoleWithDefaultResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async putRole(options?: queryOptions.IDateRange) {
+  public async putRole(
+    options?: queryOptions.IDateRange
+  ): Promise<IRoleWithDefaultResponse> {
     return await this.createAndSendRequest(`/periods`, {
       query: options
     });
   }
 
-  public async deleteRole(options?: queryOptions.IDateRange) {
+  public async deleteRole(options?: queryOptions.IDateRange): Promise<void> {
     await this.createAndSendRequest(`/periods`, {
       query: options
     });

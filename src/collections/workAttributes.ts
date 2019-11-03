@@ -1,30 +1,12 @@
-import Collection from './collection';
-
-interface IWorkAttributeResponseObject {
-  self: string;
-  key: string;
-  name: string;
-  type: string;
-  required: boolean;
-  values: any;
-}
-
-interface IWorkAttributesResponseObject {
-  self: string;
-  metadata: {
-    count: number;
-  };
-  results: IWorkAttributeResponseObject[];
-}
+import Collection from './abstractCollection';
+import { IResultSetResponse, IWorkAttributeResponse } from '../types';
 
 export default class WorkAttributes extends Collection {
-  public async get(): Promise<IWorkAttributesResponseObject> {
+  public async get(): Promise<IResultSetResponse<IWorkAttributeResponse>> {
     return await this.createAndSendRequest(`/work-attributes`);
   }
 
-  public async getWorkAttribute(
-    key: string
-  ): Promise<IWorkAttributeResponseObject> {
+  public async getWorkAttribute(key: string): Promise<IWorkAttributeResponse> {
     return await this.createAndSendRequest(`/work-attributes/${key}`);
   }
 }
