@@ -12,36 +12,24 @@ interface ITimesheetApprovalRequest {
 
 export default class TimesheetApprovals extends Collection {
   public async getWaiting() {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/waiting`
-        })
-      )
-    );
+    return await this.createAndSendRequest(`/timesheet-approvals/waiting`);
   }
 
   public async getForUser(
     accountId: string,
     options?: queryOptions.IDateRange
   ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}`,
-          query: options
-        })
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}`,
+      {
+        query: options
+      }
     );
   }
 
   public async getReviewersForUser(accountId: string) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}/reviewers`
-        })
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}/reviewers`
     );
   }
 
@@ -50,17 +38,13 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange
   ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}/approve`,
-          query: options
-        }),
-        {
-          body: timesheetApproval,
-          method: 'POST'
-        }
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}/approve`,
+      {
+        body: timesheetApproval,
+        query: options,
+        method: 'POST'
+      }
     );
   }
 
@@ -69,17 +53,13 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange
   ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}/reject`,
-          query: options
-        }),
-        {
-          body: timesheetApproval,
-          method: 'POST'
-        }
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}/reject`,
+      {
+        body: timesheetApproval,
+        query: options,
+        method: 'POST'
+      }
     );
   }
 
@@ -88,17 +68,13 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange
   ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}/reopen`,
-          query: options
-        }),
-        {
-          body: timesheetApproval,
-          method: 'POST'
-        }
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}/reopen`,
+      {
+        body: timesheetApproval,
+        query: options,
+        method: 'POST'
+      }
     );
   }
 
@@ -107,28 +83,22 @@ export default class TimesheetApprovals extends Collection {
     timesheedApprovalRequest: ITimesheetApprovalRequest,
     options?: queryOptions.IDateRange
   ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/user/${accountId}/submit`,
-          query: options
-        }),
-        {
-          body: timesheedApprovalRequest,
-          method: 'POST'
-        }
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/user/${accountId}/submit`,
+      {
+        body: timesheedApprovalRequest,
+        query: options,
+        method: 'POST'
+      }
     );
   }
 
   public async getForTeam(teamId: string, options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/timesheet-approvals/team/${teamId}`,
-          query: options
-        })
-      )
+    return await this.createAndSendRequest(
+      `/timesheet-approvals/team/${teamId}`,
+      {
+        query: options
+      }
     );
   }
 }
