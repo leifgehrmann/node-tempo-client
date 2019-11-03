@@ -1,8 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
-import {
-  ITimesheetApproval,
-  ITimesheetApprovalRequest
-} from '../requestTypes';
+import { ITimesheetApproval, ITimesheetApprovalRequest } from '../requestTypes';
 import {
   IResultSetResponse,
   ITimesheetApprovalResponse,

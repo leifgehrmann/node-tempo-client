@@ -24,7 +24,9 @@ export default class TeamLinks extends Collection {
     });
   }
 
-  public async getForProject(projectKey: string): Promise<IResultSetResponse<ITeamLinkByScopeResponse>> {
+  public async getForProject(
+    projectKey: string
+  ): Promise<IResultSetResponse<ITeamLinkByScopeResponse>> {
     return await this.createAndSendRequest(`/team-links/project/${projectKey}`);
   }
 }

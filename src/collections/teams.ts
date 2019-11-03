@@ -39,27 +39,44 @@ export default class Teams extends Collection {
     });
   }
 
-  public async getTeamLinksForTeam(id: string): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
+  public async getTeamLinksForTeam(
+    id: string
+  ): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/links`);
   }
 
-  public async getMembersForTeam(id: string): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
+  public async getMembersForTeam(
+    id: string
+  ): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/members`);
   }
 
-  public async getMemberForTeam(id: string, accountId: string): Promise<ITeamMemberActiveMembershipResponse> {
+  public async getMemberForTeam(
+    id: string,
+    accountId: string
+  ): Promise<ITeamMemberActiveMembershipResponse> {
     return await this.createAndSendRequest(`/teams/${id}/members/${accountId}`);
   }
 
-  public async getMemberMembershipsForTeam(id: string, accountId: string): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
-    return await this.createAndSendRequest(`/teams/${id}/members/${accountId}/memberships`);
+  public async getMemberMembershipsForTeam(
+    id: string,
+    accountId: string
+  ): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
+    return await this.createAndSendRequest(
+      `/teams/${id}/members/${accountId}/memberships`
+    );
   }
 
-  public async getPermissionsForTeam(id: string): Promise<IResultSetResponse<ITeamPermissionResponse>> {
+  public async getPermissionsForTeam(
+    id: string
+  ): Promise<IResultSetResponse<ITeamPermissionResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/permissions`);
   }
 
-  public async getPermissionForTeam(id: string, key: string): Promise<ITeamPermissionResponse> {
+  public async getPermissionForTeam(
+    id: string,
+    key: string
+  ): Promise<ITeamPermissionResponse> {
     return await this.createAndSendRequest(`/teams/${id}/permissions/${key}`);
   }
 }

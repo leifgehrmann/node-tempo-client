@@ -4,7 +4,7 @@ import Collection from './abstractCollection';
 
 export default class Roles extends Collection {
   public async get(): Promise<IResultSetResponse<IRoleWithDefaultResponse>> {
-    return await this.createAndSendRequest(`/roles`,);
+    return await this.createAndSendRequest(`/roles`);
   }
 
   public async post(role: IRole): Promise<IRoleWithDefaultResponse> {
@@ -18,7 +18,10 @@ export default class Roles extends Collection {
     return await this.createAndSendRequest(`/roles/${id}`);
   }
 
-  public async putRole(id: string, role: IRole): Promise<IRoleWithDefaultResponse> {
+  public async putRole(
+    id: string,
+    role: IRole
+  ): Promise<IRoleWithDefaultResponse> {
     return await this.createAndSendRequest(`/roles/${id}`, {
       body: role,
       method: 'PUT'
