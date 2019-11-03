@@ -6,4 +6,30 @@ export default abstract class Collection {
   constructor(requestHandler: RequestHandler) {
     this.requestHandler = requestHandler;
   }
+
+  async createAndSendRequest(
+    pathname: string,
+    {
+      query,
+      method,
+      body
+    }: {
+      query?: Partial<{ [key: string]: string }>;
+      method?: string;
+      body?: any;
+    } = {}
+  ): Promise<any> {
+    return await this.requestHandler.doRequest(
+      this.requestHandler.makeRequestHeader(
+        this.requestHandler.makeUri({
+          pathname,
+          query
+        }),
+        {
+          method,
+          body
+        }
+      )
+    );
+  }
 }
