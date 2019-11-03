@@ -35,7 +35,7 @@ export default class AccountLinks extends Collection {
     );
   }
 
-  public async getAccountLinkForProject(options?: queryOptions.IDateRange) {
+  public async getForProject(options?: queryOptions.IDateRange) {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({

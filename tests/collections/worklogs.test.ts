@@ -5,7 +5,7 @@ import { getMockRequestHandlerOptions } from './mockHelpers';
 
 const mockUrlCall = new MockUrlCall(Worklogs);
 
-describe('TempoAi', () => {
+describe('Worklogs', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);

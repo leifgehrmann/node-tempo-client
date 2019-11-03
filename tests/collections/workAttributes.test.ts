@@ -3,7 +3,7 @@ import MockUrlCall from './mockUrlCall';
 
 const mockUrlCall = new MockUrlCall(WorkAttributes);
 
-describe('TempoAi', () => {
+describe('WorkAttributes', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);

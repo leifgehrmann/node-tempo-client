@@ -1,21 +1,63 @@
-import WorkAttributes from '../../src/collections/workAttributes';
+import TimesheetApprovls from '../../src/collections/timesheetApprovals';
 import MockUrlCall from './mockUrlCall';
 
-const mockUrlCall = new MockUrlCall(WorkAttributes);
+const mockUrlCall = new MockUrlCall(TimesheetApprovls);
 
-describe('TempoAi', () => {
+describe('TimesheetApprovals', () => {
   describe('Request Functions Tests', () => {
-    it('get hits proper url', async () => {
-      const result = await mockUrlCall.call('get', []);
+    it('getWaiting hits proper url', async () => {
+      const result = await mockUrlCall.call('getWaiting', []);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/work-attributes'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/waiting'
       );
     });
 
-    it('getWorkAttribute hits proper url', async () => {
-      const result = await mockUrlCall.call('getWorkAttribute', ['someKey']);
+    it('getForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('getForUser', ['someAccountId']);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/work-attributes/someKey'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId'
+      );
+    });
+
+    it('getReviewersForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('getReviewersForUser', ['someAccountId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reviewers'
+      );
+    });
+
+    it('postApproveTimesheetForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('postApproveTimesheetForUser', ['someAccountId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve'
+      );
+    });
+
+    it('postRejectTimesheetForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('postRejectTimesheetForUser', ['someAccountId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject'
+      );
+    });
+
+    it('postReopenTimesheetForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('postReopenTimesheetForUser', ['someAccountId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen'
+      );
+    });
+
+    it('postSubmitTimesheetForUser hits proper url', async () => {
+      const result = await mockUrlCall.call('postSubmitTimesheetForUser', ['someAccountId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit'
+      );
+    });
+
+    it('getForTeam hits proper url', async () => {
+      const result = await mockUrlCall.call('getForTeam', ['someTeamId']);
+      expect(result.uri).toEqual(
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/team/someTeamId'
       );
     });
   });

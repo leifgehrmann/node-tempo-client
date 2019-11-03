@@ -35,7 +35,7 @@ export default class TeamLinks extends Collection {
     );
   }
 
-  public async getTeamLinkForProject(options?: queryOptions.IDateRange) {
+  public async getForProject(options?: queryOptions.IDateRange) {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({

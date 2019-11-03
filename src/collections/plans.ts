@@ -57,7 +57,7 @@ export default class Plans extends Collection {
     );
   }
 
-  public async getPlansForUser(options?: queryOptions.IDateRange) {
+  public async getForUser(options?: queryOptions.IDateRange) {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
