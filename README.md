@@ -86,5 +86,5 @@ See the documentation for more information on what endpoints are implemented.
 |Periods|0/1|
 |Timesheet Approvals|0/8|
 |User Schedule|0/2|
-|Work Attributes|0/2|
+|Work Attributes|2/2|
 |Worklogs|14/14|

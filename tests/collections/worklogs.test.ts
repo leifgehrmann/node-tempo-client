@@ -1,24 +1,7 @@
 import RequestHandler from '../../src/request/handler';
 import Worklogs from '../../src/collections/worklogs';
 import MockUrlCall from './mockUrlCall';
-
-function getOptions(options?: any) {
-  const actualOptions = options || {};
-  return {
-    apiVersion: actualOptions.apiVersion || '3',
-    bearerToken: actualOptions.bearer || 'sometoken',
-    ca: actualOptions.ca || null,
-    host: actualOptions.host || 'tempo.somehost.com',
-    intermediatePath: actualOptions.intermediatePath,
-    port: actualOptions.port || '8080',
-    protocol: actualOptions.protocol || 'http',
-    request: actualOptions.request,
-    strictSSL: actualOptions.hasOwnProperty('strictSSL')
-      ? actualOptions.strictSSL
-      : true,
-    timeout: actualOptions.timeout || null
-  };
-}
+import { getMockRequestHandlerOptions } from './mockHelpers';
 
 const mockUrlCall = new MockUrlCall(Worklogs);
 
@@ -171,7 +154,7 @@ describe('TempoAi', () => {
       };
 
       const requestHandler = new RequestHandler(
-        getOptions({
+        getMockRequestHandlerOptions({
           request: mockRequest
         })
       );
