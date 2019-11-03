@@ -1,4 +1,3 @@
-import * as queryOptions from '../queryOptionTypes';
 import {
   IAccountCategoryTypeResponse,
   IResultSetResponse
@@ -6,11 +5,7 @@ import {
 import Collection from './abstractCollection';
 
 export default class AccountCategoryTypes extends Collection {
-  public async get(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<IAccountCategoryTypeResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async get(): Promise<IResultSetResponse<IAccountCategoryTypeResponse>> {
+    return await this.createAndSendRequest(`/account-category-types`);
   }
 }
