@@ -1,3 +1,9 @@
+export interface IProgram {
+  name: string;
+  managerAccountId?: string;
+  teamIds?: number[];
+}
+
 export interface IRole {
   name: string;
 }
