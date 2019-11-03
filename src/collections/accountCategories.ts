@@ -47,7 +47,7 @@ export default class AccountCategories extends Collection {
   }
 
   public async deleteAccountCategory(options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/periods`,

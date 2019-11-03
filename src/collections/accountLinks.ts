@@ -25,7 +25,7 @@ export default class AccountLinks extends Collection {
   }
 
   public async deleteAccountLink(options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/periods`,

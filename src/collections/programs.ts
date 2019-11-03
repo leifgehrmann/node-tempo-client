@@ -47,7 +47,7 @@ export default class Programs extends Collection {
   }
 
   public async deleteProgram(options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/periods`,

@@ -47,7 +47,7 @@ export default class Plans extends Collection {
   }
 
   public async deletePlan(options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/periods`,

@@ -129,7 +129,7 @@ export default class Worklogs extends Collection {
   }
 
   public async deleteWorklog(worklogId: string): Promise<void> {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/worklogs/${worklogId}`

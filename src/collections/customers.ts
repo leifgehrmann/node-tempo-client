@@ -47,7 +47,7 @@ export default class Customers extends Collection {
   }
 
   public async deleteCustomer(options?: queryOptions.IDateRange) {
-    return await this.requestHandler.doRequest(
+    await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
           pathname: `/periods`,
