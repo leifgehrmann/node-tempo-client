@@ -21,6 +21,8 @@ $ npm install tempo-client
 
 ## Examples
 
+### Instantiating the client
+
 ```javascript
 import TempoApi from 'tempo-client';
 
@@ -32,17 +34,19 @@ const tempo = new TempoApi({
 })
 ```
 
-### Get worklogs for user
+### Getting worklogs for a JIRA user
 
 ```javascript
+const user = {
+  accountId: '1111aaaa2222bbbb3333cccc'
+};
+const dateRange = {
+  from: '2019-10-07',
+  to: '2019-10-11'
+};
+
 // ES6
-tempo.worklogs.getForUser(
-  user.accountId,
-  {
-    from: '2019-10-07',
-    to: '2019-10-11'
-  }
-)
+const worklogs = tempo.worklogs.getForUser(user.accountId, dateRange)
   .then(worklogs => {
     console.log(worklogs.results);
   })
@@ -61,18 +65,44 @@ async function getWorklogsForUser(user, from, to) {
 }
 ```
 
+### Create, modify, delete an "Account"
+
+```js
+// Create a new account
+let account = await tempo.accounts.post({
+  key: 'CLOUDBAY_DEVELOPMENT',
+  name: 'Cloudbay: Development',
+  status: 'OPEN',
+  leadAccountId: "123456:01234567-89ab-cdef-0123-456789abcdef",
+})
+
+// Modify the account
+account.status = 'CLOSED'
+account = await tempo.accounts.putAccount(account.key, account)
+console.log(account.status)
+
+// Re-fetch the account (again)
+account = await tempo.accounts.getAccount(account.key)
+
+// Delete the account
+await tempo.accounts.deleteAccount(account.key)
+```
+
 ## Documentation
 
-All endpoints listed in the Tempo REST API (https://tempo-io.github.io/tempo-api-docs/)
-for the Version 3 REST API are implemented. The REST API documentation will
-answer most questions about the expected structure of data.
+### REST API
 
-Auto-generated documentation for the Tempo Client itself can be found at:
+All endpoints listed in the Tempo REST API (https://tempo-io.github.io/tempo-api-docs/)
+for the Version 3 REST API are implemented as of November 2019. The REST API documentation will answer most questions about the expected structure of data.
+
+### The Tempo Client itself
+
+Auto-generated documentation for the Tempo Client can be found at:
 https://tempo-client.leifgehrmann.com/
 
 For example, if one wants to modify the `accounts` collection, one can find the
 API methods at
-[Globals/ "collections/accounts" / Accounts](https://tempo-client.leifgehrmann.com/classes/_collections_accounts_.accounts.html)
+[Globals/ "collections/accounts" / Accounts](https://tempo-client.leifgehrmann.com/classes/_collections_accounts_.accounts.html).
 
 It's strongly recommended to use TypeScript as code completion will help quite
 a bit with navigating the client.
