@@ -14,20 +14,21 @@ export default class AccountLinks extends Collection {
     });
   }
 
-  public async getAccountLink(
-    id: string): Promise<IAccountLinkResponse> {
+  public async getAccountLink(id: string): Promise<IAccountLinkResponse> {
     return await this.createAndSendRequest(`/account-links/${id}`);
   }
 
-  public async deleteAccountLink(
-    id: string): Promise<void> {
+  public async deleteAccountLink(id: string): Promise<void> {
     await this.createAndSendRequest(`/account-links/${id}`, {
       method: 'DELETE'
     });
   }
 
   public async getForProject(
-    projectKey: string): Promise<IResultSetResponse<IAccountLinkByScopeResponse>> {
-    return await this.createAndSendRequest(`/account-links/project/${projectKey}`);
+    projectKey: string
+  ): Promise<IResultSetResponse<IAccountLinkByScopeResponse>> {
+    return await this.createAndSendRequest(
+      `/account-links/project/${projectKey}`
+    );
   }
 }

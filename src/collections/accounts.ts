@@ -27,7 +27,10 @@ export default class Accounts extends Collection {
     return await this.createAndSendRequest(`/accounts/${key}`);
   }
 
-  public async putAccount(key: string, account: IAccount): Promise<IAccountResponse> {
+  public async putAccount(
+    key: string,
+    account: IAccount
+  ): Promise<IAccountResponse> {
     return await this.createAndSendRequest(`/accounts/${key}`, {
       body: account,
       method: 'PUT'

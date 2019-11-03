@@ -5,7 +5,9 @@ import {
 import Collection from './abstractCollection';
 
 export default class AccountCategoryTypes extends Collection {
-  public async get(): Promise<IResultSetResponse<IAccountCategoryTypeResponse>> {
+  public async get(): Promise<
+    IResultSetResponse<IAccountCategoryTypeResponse>
+  > {
     return await this.createAndSendRequest(`/account-category-types`);
   }
 }
