@@ -1,45 +1,38 @@
 import * as queryOptions from '../queryOptionTypes';
+import { IAccountCategory } from '../requestTypes';
 import { IAccountCategoryResponse, IResultSetResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class AccountCategories extends Collection {
-  public async post(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async post(accountCategory: IAccountCategory): Promise<IAccountCategoryResponse> {
+    return await this.createAndSendRequest(`/account-categories`, {
+      body: accountCategory,
+      method: 'POST'
     });
   }
 
   public async get(
-    options?: queryOptions.IDateRange
+    options?: queryOptions.IId
   ): Promise<IResultSetResponse<IAccountCategoryResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
+    return await this.createAndSendRequest(`/account-categories`, {
       query: options
     });
   }
 
-  public async getAccountCategory(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async getAccountCategory(key: string): Promise<IAccountCategoryResponse> {
+    return await this.createAndSendRequest(`/account-categories/${key}`);
+  }
+
+  public async putAccountCategory(key: string, accountCategory: IAccountCategory): Promise<IAccountCategoryResponse> {
+    return await this.createAndSendRequest(`/account-categories/${key}`, {
+      body: accountCategory,
+      method: 'PUT'
     });
   }
 
-  public async putAccountCategory(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
-  }
-
-  public async deleteAccountCategory(
-    options?: queryOptions.IDateRange
-  ): Promise<void> {
-    await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async deleteAccountCategory(key: string): Promise<void> {
+    await this.createAndSendRequest(`/account-categories/${key}`, {
+      method: 'DELETE'
     });
   }
 }

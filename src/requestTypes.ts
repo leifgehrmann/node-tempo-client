@@ -11,6 +11,12 @@ export interface IAccount {
   global?: boolean;
 }
 
+export interface IAccountCategory {
+  key: string;
+  name: string;
+  typeName?: string;
+}
+
 export interface IAccountLink {
   accountKey: string;
   scopeType: string;
