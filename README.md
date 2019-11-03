@@ -63,28 +63,16 @@ async function getWorklogsForUser(user, from, to) {
 
 ## Documentation
 
-* [Node Tempo Client](https://tempo-client.leifgehrmann.com/)
-* [Tempo REST API](https://tempo-io.github.io/tempo-api-docs/)
+All endpoints listed in the Tempo REST API (https://tempo-io.github.io/tempo-api-docs/)
+for the Version 3 REST API are implemented. The REST API documentation will
+answer most questions about the expected structure of data.
 
-## Completeness
+Auto-generated documentation for the Tempo Client itself can be found at:
+https://tempo-client.leifgehrmann.com/
 
-See the documentation for more information on what endpoints are implemented.
+For example, if one wants to modify the `accounts` collection, one can find the
+API methods at
+[Globals/ "collections/accounts" / Accounts](https://tempo-client.leifgehrmann.com/classes/_collections_accounts_.accounts.html)
 
-|Collections|Endpoints implemented|
-|----|----|
-|Accounts|0/6|
-|Account - Category|0/5|
-|Account - Category - Types|0/1|
-|Account - Links|0/4|
-|Customers|0/6|
-|Plans|0/6|
-|Programs|0/6|
-|Roles|0/5|
-|Teams|0/11|
-|Team - Links|0/4|
-|Team - Memberships|0/4|
-|Periods|0/1|
-|Timesheet Approvals|0/8|
-|User Schedule|0/2|
-|Work Attributes|2/2|
-|Worklogs|14/14|
+It's strongly recommended to use TypeScript as code completion will help quite
+a bit with navigating the client.
