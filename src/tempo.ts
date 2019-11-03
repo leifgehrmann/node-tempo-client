@@ -64,7 +64,7 @@ export default class TempoApi {
     this.teamLinks = new TeamLinks(this.requestHandler);
     this.teams = new Teams(this.requestHandler);
     this.timesheetApprovals = new TimesheetApprovals(this.requestHandler);
-    this.userSchedule = new UserSchedule(this.requestHandler)
+    this.userSchedule = new UserSchedule(this.requestHandler);
     this.workAttributes = new WorkAttributes(this.requestHandler);
     this.worklogs = new Worklogs(this.requestHandler);
   }

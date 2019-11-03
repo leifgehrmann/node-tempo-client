@@ -20,38 +20,52 @@ describe('TimesheetApprovals', () => {
     });
 
     it('getReviewersForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('getReviewersForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('getReviewersForUser', [
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reviewers'
       );
     });
 
     it('postApproveTimesheetForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('postApproveTimesheetForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('postApproveTimesheetForUser', [
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve'
       );
+      expect(result.method).toEqual('POST');
     });
 
     it('postRejectTimesheetForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('postRejectTimesheetForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('postRejectTimesheetForUser', [
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject'
       );
+      expect(result.method).toEqual('POST');
     });
 
     it('postReopenTimesheetForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('postReopenTimesheetForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('postReopenTimesheetForUser', [
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen'
       );
+      expect(result.method).toEqual('POST');
     });
 
     it('postSubmitTimesheetForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('postSubmitTimesheetForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('postSubmitTimesheetForUser', [
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit'
       );
+      expect(result.method).toEqual('POST');
     });
 
     it('getForTeam hits proper url', async () => {

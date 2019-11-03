@@ -29,7 +29,9 @@ describe('AccountLinks', () => {
     });
 
     it('getForProject hits proper url', async () => {
-      const result = await mockUrlCall.call('getForProject', ['someProjectKey']);
+      const result = await mockUrlCall.call('getForProject', [
+        'someProjectKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-links/project/someProjectKey'
       );

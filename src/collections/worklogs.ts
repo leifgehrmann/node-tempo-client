@@ -22,6 +22,52 @@ export interface IWorklogObject {
   attributes: IWorklogAttributeObject[];
 }
 
+export interface IWorklogResponseObject {
+  self: string;
+  tempoWorklogId: number;
+  jiraWorklogId: number;
+  issueKey: {
+    self: string;
+    key: string;
+  };
+  timeSpentSeconds: number;
+  billableSeconds: number;
+  startDate: string;
+  startTime: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  author: {
+    self: string;
+    accountId: string;
+    displayName: string;
+  };
+  attributes: {
+    self: string;
+    values: IWorklogAttributeObject[];
+  };
+}
+
+export interface IWorklogAttributeValuesResponseObject {
+  self: string;
+  metadata: {
+    count: number;
+  };
+  results: IWorklogAttributeObject[];
+}
+
+export interface IWorklogsResponseObject {
+  self: string;
+  metadata: {
+    count: number;
+    offset: number;
+    limit: number;
+    next: string;
+    previous?: string;
+  };
+  results: IWorklogResponseObject[];
+}
+
 export default class Worklogs extends Collection {
   public async get(
     options?: Partial<
@@ -30,7 +76,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -41,7 +87,7 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async post(worklog: IWorklogObject) {
+  public async post(worklog: IWorklogObject): Promise<IWorklogResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -55,7 +101,7 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async getWorklog(worklogId: string) {
+  public async getWorklog(worklogId: string): Promise<IWorklogResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -65,7 +111,10 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async putWorklog(worklogId: string, worklog: IWorklogObject) {
+  public async putWorklog(
+    worklogId: string,
+    worklog: IWorklogObject
+  ): Promise<IWorklogResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -79,7 +128,7 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async deleteWorklog(worklogId: string) {
+  public async deleteWorklog(worklogId: string): Promise<void> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -90,7 +139,9 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async getWorklogWorkAttributeValues(worklogId: string) {
+  public async getWorklogWorkAttributeValues(
+    worklogId: string
+  ): Promise<IWorklogAttributeValuesResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -103,7 +154,7 @@ export default class Worklogs extends Collection {
   public async getWorklogWorkAttributeValuesByKey(
     worklogId: string,
     key: string
-  ) {
+  ): Promise<IWorklogAttributeObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -113,7 +164,9 @@ export default class Worklogs extends Collection {
     );
   }
 
-  public async getForJiraWorklog(jiraWorklogId: string) {
+  public async getForJiraWorklog(
+    jiraWorklogId: string
+  ): Promise<IWorklogResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -130,7 +183,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -148,7 +201,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -166,7 +219,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -184,7 +237,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -202,7 +255,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({
@@ -220,7 +273,7 @@ export default class Worklogs extends Collection {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
+  ): Promise<IWorklogsResponseObject> {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(
         this.requestHandler.makeUri({

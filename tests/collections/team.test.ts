@@ -7,16 +7,12 @@ describe('Teams', () => {
   describe('Request Functions Tests', () => {
     it('post hits proper url', async () => {
       const result = await mockUrlCall.call('post', []);
-      expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams'
-      );
+      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/teams');
     });
 
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
-      expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams'
-      );
+      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/teams');
     });
 
     it('getTeam hits proper url', async () => {
@@ -55,28 +51,39 @@ describe('Teams', () => {
     });
 
     it('getMemberForTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('getMemberForTeam', ['someId', 'someAccountId']);
+      const result = await mockUrlCall.call('getMemberForTeam', [
+        'someId',
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId'
       );
     });
 
     it('getMemberMembershipsForTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('getMemberMembershipsForTeam', ['someId', 'someAccountId']);
+      const result = await mockUrlCall.call('getMemberMembershipsForTeam', [
+        'someId',
+        'someAccountId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId/memberships'
       );
     });
 
     it('getPermissionsForTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('getPermissionsForTeam', ['someId']);
+      const result = await mockUrlCall.call('getPermissionsForTeam', [
+        'someId'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId/permissions'
       );
     });
 
     it('getPermissionForTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('getPermissionForTeam', ['someId', 'someKey']);
+      const result = await mockUrlCall.call('getPermissionForTeam', [
+        'someId',
+        'someKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId/permissions/someKey'
       );

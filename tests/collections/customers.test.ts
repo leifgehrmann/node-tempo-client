@@ -44,7 +44,9 @@ describe('Customers', () => {
     });
 
     it('getAccountsForCustomer hits proper url', async () => {
-      const result = await mockUrlCall.call('getAccountsForCustomer', ['someKey']);
+      const result = await mockUrlCall.call('getAccountsForCustomer', [
+        'someKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers/someKey/accounts'
       );

@@ -17,11 +17,17 @@ describe('Worklogs', () => {
     it('get hits proper url with array of issues to lookup', async () => {
       const result = await mockUrlCall.call('get', [
         {
-          issue: ['someIssueA', 'someIssueB']
+          issue: ['someIssueA', 'someIssueB'],
+          project: ['someProjectA', 'someProjectB'],
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
         }
       ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB'
+        'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB&project=someProjectA&project=someProjectB&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
@@ -97,49 +103,97 @@ describe('Worklogs', () => {
 
     it('getForJiraFilter hits proper url', async () => {
       const result = await mockUrlCall.call('getForJiraFilter', [
-        'someJiraFilterId'
+        'someJiraFilterId',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
       ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('getForAccount hits proper url', async () => {
       const result = await mockUrlCall.call('getForAccount', [
-        'someAccountKey'
+        'someAccountKey',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
       ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey'
+        'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('getForProject hits proper url', async () => {
       const result = await mockUrlCall.call('getForProject', [
-        'someProjectKey'
+        'someProjectKey',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
       ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey'
+        'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('getForTeam hits proper url', async () => {
-      const result = await mockUrlCall.call('getForTeam', ['someTeamId']);
+      const result = await mockUrlCall.call('getForTeam', [
+        'someTeamId',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('getForUser hits proper url', async () => {
-      const result = await mockUrlCall.call('getForUser', ['someAccountId']);
+      const result = await mockUrlCall.call('getForUser', [
+        'someAccountId',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('getForIssue hits proper url', async () => {
-      const result = await mockUrlCall.call('getForIssue', ['someKey']);
+      const result = await mockUrlCall.call('getForIssue', [
+        'someKey',
+        {
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+          offset: 5,
+          limit: 5
+        }
+      ]);
       expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey'
+        'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
   });

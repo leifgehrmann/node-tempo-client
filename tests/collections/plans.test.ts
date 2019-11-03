@@ -7,16 +7,12 @@ describe('Plans', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
-      expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/plans'
-      );
+      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/plans');
     });
 
     it('post hits proper url', async () => {
       const result = await mockUrlCall.call('post', []);
-      expect(result.uri).toEqual(
-        'http://tempo.somehost.com:8080/core/3/plans'
-      );
+      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/plans');
       expect(result.method).toEqual('POST');
     });
 

@@ -36,7 +36,9 @@ describe('AccountCategories', () => {
     });
 
     it('deleteAccountCategory hits proper url', async () => {
-      const result = await mockUrlCall.call('deleteAccountCategory', ['someKey']);
+      const result = await mockUrlCall.call('deleteAccountCategory', [
+        'someKey'
+      ]);
       expect(result.uri).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
       );
