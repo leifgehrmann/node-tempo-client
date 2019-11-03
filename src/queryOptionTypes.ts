@@ -20,6 +20,10 @@ export interface IIssues {
   issue: string[];
 }
 
+export interface IStatus extends IStringMap {
+  status: string;
+}
+
 export interface IId extends IStringMap {
   id: number;
 }

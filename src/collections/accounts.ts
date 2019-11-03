@@ -1,4 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
+import { IAccount } from '../requestTypes';
 import {
   IAccountLinkResponse,
   IAccountResponse,
@@ -7,49 +8,41 @@ import {
 import Collection from './abstractCollection';
 
 export default class Accounts extends Collection {
-  public async post(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async post(account: IAccount): Promise<IAccountResponse> {
+    return await this.createAndSendRequest(`/accounts`, {
+      body: account,
+      method: 'POST'
     });
   }
 
   public async get(
-    options?: queryOptions.IDateRange
+    options?: queryOptions.IStatus
   ): Promise<IResultSetResponse<IAccountResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
+    return await this.createAndSendRequest(`/accounts`, {
       query: options
     });
   }
 
-  public async getAccount(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async getAccount(key: string): Promise<IAccountResponse> {
+    return await this.createAndSendRequest(`/accounts/${key}`);
+  }
+
+  public async putAccount(key: string, account: IAccount): Promise<IAccountResponse> {
+    return await this.createAndSendRequest(`/accounts/${key}`, {
+      body: account,
+      method: 'PUT'
     });
   }
 
-  public async putAccount(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
-  }
-
-  public async deleteAccount(options?: queryOptions.IDateRange): Promise<void> {
-    await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async deleteAccount(key: string): Promise<void> {
+    await this.createAndSendRequest(`/accounts/${key}`, {
+      method: 'DELETE'
     });
   }
 
   public async getAccountLinksForAccount(
-    options?: queryOptions.IDateRange
+    key: string
   ): Promise<IResultSetResponse<IAccountLinkResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+    return await this.createAndSendRequest(`/accounts/${key}/links`);
   }
 }

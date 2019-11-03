@@ -1,3 +1,16 @@
+export interface IAccount {
+  key: string;
+  name: string;
+  status: string;
+  leadAccountId: string;
+  contactAccountId?: string;
+  externalContactName?: string;
+  categoryKey?: string;
+  customerKey?: string;
+  monthlyBudget?: number;
+  global?: boolean;
+}
+
 export interface ICustomer {
   key: string;
   name: string;
