@@ -1,12 +1,6 @@
-import RequestHandler from '../request/handler';
+import Collection from './collection';
 
-export default class WorkAttributes {
-  private requestHandler: RequestHandler;
-
-  constructor(requestHandler: RequestHandler) {
-    this.requestHandler = requestHandler;
-  }
-
+export default class WorkAttributes extends Collection {
   public async get() {
     return await this.requestHandler.doRequest(
       this.requestHandler.makeRequestHeader(

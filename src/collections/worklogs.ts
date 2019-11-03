@@ -1,5 +1,5 @@
 import * as queryOptions from '../queryOptions';
-import RequestHandler from '../request/handler';
+import Collection from './collection';
 
 export interface IQueryOptionIssue {
   issue: string[];
@@ -22,13 +22,7 @@ export interface IWorklogObject {
   attributes: IWorklogAttributeObject[];
 }
 
-export default class Worklogs {
-  private requestHandler: RequestHandler;
-
-  constructor(requestHandler: RequestHandler) {
-    this.requestHandler = requestHandler;
-  }
-
+export default class Worklogs extends Collection {
   public async get(
     options?: Partial<
       IQueryOptionIssue &
