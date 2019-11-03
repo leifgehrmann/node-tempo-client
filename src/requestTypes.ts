@@ -1,3 +1,19 @@
+export interface ITeam {
+  name: string;
+  summary?: string;
+  leadAccountId?: string;
+  programId?: number;
+}
+
+export interface ITimesheetApproval {
+  comment: string;
+}
+
+export interface ITimesheetApprovalRequest {
+  comment: string;
+  reviewerAccountId: string;
+}
+
 export interface IWorklogAttribute {
   key: string;
   value: string;

@@ -118,15 +118,6 @@ export interface IPlanPeriodResponse extends IPeriodResponse {
   timePlannedSeconds: number;
 }
 
-export interface ITimesheetApproval {
-  comment: string;
-}
-
-export interface ITimesheetApprovalRequest {
-  comment: string;
-  reviewerAccountId: string;
-}
-
 export interface IUserResponse {
   self: string;
   accountId: string;
@@ -200,13 +191,6 @@ export interface IWorklogResponse {
     self: string;
     values: IWorklogAttribute[];
   };
-}
-
-export interface ITeam {
-  name: string;
-  summary?: string;
-  leadAccountId?: string;
-  programId?: number;
 }
 
 export interface ITeamResponse {

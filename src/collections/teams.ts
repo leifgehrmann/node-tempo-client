@@ -1,4 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
+import { ITeam } from '../requestTypes';
 import {
   IResultSetResponse,
   ITeamLinkRefResponse,
@@ -10,87 +11,55 @@ import {
 import Collection from './abstractCollection';
 
 export default class Teams extends Collection {
-  public async post(options?: queryOptions.IDateRange): Promise<ITeamResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async post(team: ITeam): Promise<ITeamResponse> {
+    return await this.createAndSendRequest(`/teams`, {
+      body: team,
+      method: 'POST'
     });
   }
 
-  public async get(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<ITeamResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async get(): Promise<IResultSetResponse<ITeamResponse>> {
+    return await this.createAndSendRequest(`/teams`);
+  }
+
+  public async getTeam(id: string): Promise<ITeamResponse> {
+    return await this.createAndSendRequest(`/teams/${id}`);
+  }
+
+  public async putTeam(id: string, team: ITeam): Promise<ITeamResponse> {
+    return await this.createAndSendRequest(`/teams/${id}`, {
+      body: team,
+      method: 'PUT'
     });
   }
 
-  public async getTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<ITeamResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async deleteTeam(id: string): Promise<void> {
+    await this.createAndSendRequest(`/teams/${id}`, {
+      method: 'DELETE'
     });
   }
 
-  public async putTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<ITeamResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getTeamLinksForTeam(id: string): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
+    return await this.createAndSendRequest(`/teams/${id}/links`);
   }
 
-  public async deleteTeam(options?: queryOptions.IDateRange): Promise<void> {
-    await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getMembersForTeam(id: string): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
+    return await this.createAndSendRequest(`/teams/${id}/members`);
   }
 
-  public async getTeamLinksForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getMemberForTeam(id: string, accountId: string): Promise<ITeamMemberActiveMembershipResponse> {
+    return await this.createAndSendRequest(`/teams/${id}/members/${accountId}`);
   }
 
-  public async getMembersForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getMemberMembershipsForTeam(id: string, accountId: string): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
+    return await this.createAndSendRequest(`/teams/${id}/members/${accountId}/memberships`);
   }
 
-  public async getMemberForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<ITeamMemberActiveMembershipResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getPermissionsForTeam(id: string): Promise<IResultSetResponse<ITeamPermissionResponse>> {
+    return await this.createAndSendRequest(`/teams/${id}/permissions`);
   }
 
-  public async getMemberMembershipsForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
-  }
-
-  public async getPermissionsForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<ITeamPermissionResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
-  }
-
-  public async getPermissionForTeam(
-    options?: queryOptions.IDateRange
-  ): Promise<ITeamPermissionResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+  public async getPermissionForTeam(id: string, key: string): Promise<ITeamPermissionResponse> {
+    return await this.createAndSendRequest(`/teams/${id}/permissions/${key}`);
   }
 }
