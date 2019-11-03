@@ -26,7 +26,7 @@ export interface IWorklogResponseObject {
   self: string;
   tempoWorklogId: number;
   jiraWorklogId: number;
-  issueKey: {
+  issue: {
     self: string;
     key: string;
   };
