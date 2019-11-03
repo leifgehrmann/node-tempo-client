@@ -9,12 +9,13 @@ import Collection from './abstractCollection';
 
 export default class Plans extends Collection {
   public async get(
-    options?:
-      | queryOptions.IAssigneeType
-      | queryOptions.IPlanItemType
-      | queryOptions.IDateRange
-      | queryOptions.IUpdatedFrom
-      | queryOptions.IPagination
+    options?: Partial<
+      queryOptions.IAssigneeType &
+        queryOptions.IPlanItemType &
+        queryOptions.IDateRange &
+        queryOptions.IUpdatedFrom &
+        queryOptions.IPagination
+    >
   ): Promise<IPaginatedResultSetResponse<IPlanResponse>> {
     return await this.createAndSendRequest(`/plans`, {
       query: options
@@ -52,7 +53,7 @@ export default class Plans extends Collection {
 
   public async getForUser(
     accountId: string,
-    options?: queryOptions.IDateRange | queryOptions.IUpdatedFrom
+    options?: Partial<queryOptions.IDateRange & queryOptions.IUpdatedFrom>
   ): Promise<IResultSetResponse<IPlanResponse>> {
     return await this.createAndSendRequest(`/plans/user/${accountId}`, {
       query: options
