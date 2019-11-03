@@ -11,6 +11,12 @@ export interface IAccount {
   global?: boolean;
 }
 
+export interface IAccountLink {
+  accountKey: string;
+  scopeType: string;
+  scopeId: number;
+}
+
 export interface ICustomer {
   key: string;
   name: string;

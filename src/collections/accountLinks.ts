@@ -1,4 +1,4 @@
-import * as queryOptions from '../queryOptionTypes';
+import { IAccountLink } from '../requestTypes';
 import {
   IAccountLinkByScopeResponse,
   IAccountLinkResponse,
@@ -7,35 +7,27 @@ import {
 import Collection from './abstractCollection';
 
 export default class AccountLinks extends Collection {
-  public async post(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountLinkResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+  public async post(accountLink: IAccountLink): Promise<IAccountLinkResponse> {
+    return await this.createAndSendRequest(`/account-links`, {
+      body: accountLink,
+      method: 'POST'
     });
   }
 
   public async getAccountLink(
-    options?: queryOptions.IDateRange
-  ): Promise<IAccountLinkResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+    id: string): Promise<IAccountLinkResponse> {
+    return await this.createAndSendRequest(`/account-links/${id}`);
   }
 
   public async deleteAccountLink(
-    options?: queryOptions.IDateRange
-  ): Promise<void> {
-    await this.createAndSendRequest(`/periods`, {
-      query: options
+    id: string): Promise<void> {
+    await this.createAndSendRequest(`/account-links/${id}`, {
+      method: 'DELETE'
     });
   }
 
   public async getForProject(
-    options?: queryOptions.IDateRange
-  ): Promise<IResultSetResponse<IAccountLinkByScopeResponse>> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
-    });
+    projectKey: string): Promise<IResultSetResponse<IAccountLinkByScopeResponse>> {
+    return await this.createAndSendRequest(`/account-links/project/${projectKey}`);
   }
 }
