@@ -91,6 +91,23 @@ describe('TempoAi', () => {
       expect(mockResponse).toEqual(undefined);
     });
 
+    it('Throws error if response throws error', async () => {
+      expect.assertions(1);
+      const handler = new requestHandler(
+        getOptions({
+          request: async () => {
+            throw new Error('Request error');
+          }
+        })
+      );
+
+      try {
+        await handler.doRequest({ uri: 'https://example.com' });
+      } catch (e) {
+        expect(e.message).toMatch('Request error');
+      }
+    });
+
     it('Throws unknown error if error messages length is 0', async () => {
       expect.assertions(1);
       const handler = new requestHandler(

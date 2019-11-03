@@ -1,132 +1,74 @@
-import * as queryOptions from '../queryOptions';
-import RequestHandler from '../request/handler';
+import * as queryOptions from '../queryOptionTypes';
+import { IWorklog, IWorklogAttribute } from '../requestTypes';
+import {
+  IPaginatedResultSetResponse,
+  IResultSetResponse,
+  IWorklogResponse
+} from '../responseTypes';
+import Collection from './abstractCollection';
 
-export interface IQueryOptionIssue {
-  issue: string[];
-}
-
-export interface IWorklogAttributeObject {
-  key: string;
-  value: string;
-}
-
-export interface IWorklogObject {
-  issueKey: string;
-  timeSpentSeconds: number;
-  billableSeconds: number;
-  startDate: string;
-  startTime: string;
-  description?: string;
-  authorAccountId: string;
-  remainingEstimateSeconds: number;
-  attributes: IWorklogAttributeObject[];
-}
-
-export default class Worklogs {
-  private requestHandler: RequestHandler;
-
-  constructor(requestHandler: RequestHandler) {
-    this.requestHandler = requestHandler;
-  }
-
+export default class Worklogs extends Collection {
   public async get(
     options?: Partial<
-      IQueryOptionIssue &
+      queryOptions.IIssues &
         queryOptions.IDateRange &
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs`, {
+      query: options
+    });
   }
 
-  public async post(worklog: IWorklogObject) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs`
-        }),
-        {
-          body: worklog,
-          method: 'POST'
-        }
-      )
-    );
+  public async post(worklog: IWorklog): Promise<IWorklogResponse> {
+    return await this.createAndSendRequest(`/worklogs`, {
+      body: worklog,
+      method: 'POST'
+    });
   }
 
-  public async getWorklog(worklogId: string) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/${worklogId}`
-        })
-      )
-    );
+  public async getWorklog(worklogId: string): Promise<IWorklogResponse> {
+    return await this.createAndSendRequest(`/worklogs/${worklogId}`);
   }
 
-  public async putWorklog(worklogId: string, worklog: IWorklogObject) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/${worklogId}`
-        }),
-        {
-          body: worklog,
-          method: 'PUT'
-        }
-      )
-    );
+  public async putWorklog(
+    worklogId: string,
+    worklog: IWorklog
+  ): Promise<IWorklogResponse> {
+    return await this.createAndSendRequest(`/worklogs/${worklogId}`, {
+      body: worklog,
+      method: 'PUT'
+    });
   }
 
-  public async deleteWorklog(worklogId: string) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/${worklogId}`
-        }),
-        { method: 'DELETE' }
-      )
-    );
+  public async deleteWorklog(worklogId: string): Promise<void> {
+    await this.createAndSendRequest(`/worklogs/${worklogId}`, {
+      method: 'DELETE'
+    });
   }
 
-  public async getWorklogWorkAttributeValues(worklogId: string) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/${worklogId}/work-attribute-values`
-        })
-      )
+  public async getWorklogWorkAttributeValues(
+    worklogId: string
+  ): Promise<IResultSetResponse<IWorklogAttribute>> {
+    return await this.createAndSendRequest(
+      `/worklogs/${worklogId}/work-attribute-values`
     );
   }
 
   public async getWorklogWorkAttributeValuesByKey(
     worklogId: string,
     key: string
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/${worklogId}/work-attribute-values/${key}`
-        })
-      )
+  ): Promise<IWorklogAttribute> {
+    return await this.createAndSendRequest(
+      `/worklogs/${worklogId}/work-attribute-values/${key}`
     );
   }
 
-  public async getForJiraWorklog(jiraWorklogId: string) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/jira/${jiraWorklogId}`
-        })
-      )
-    );
+  public async getForJiraWorklog(
+    jiraWorklogId: string
+  ): Promise<IWorklogResponse> {
+    return await this.createAndSendRequest(`/worklogs/jira/${jiraWorklogId}`);
   }
 
   public async getForJiraFilter(
@@ -136,14 +78,12 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/jira/filter/${jiraFilterId}`,
-          query: options
-        })
-      )
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(
+      `/worklogs/jira/filter/${jiraFilterId}`,
+      {
+        query: options
+      }
     );
   }
 
@@ -154,15 +94,10 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/account/${accountKey}`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs/account/${accountKey}`, {
+      query: options
+    });
   }
 
   public async getForProject(
@@ -172,15 +107,10 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/project/${projectKey}`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs/project/${projectKey}`, {
+      query: options
+    });
   }
 
   public async getForTeam(
@@ -190,15 +120,10 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/team/${teamId}`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs/team/${teamId}`, {
+      query: options
+    });
   }
 
   public async getForUser(
@@ -208,15 +133,10 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/user/${accountId}`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs/user/${accountId}`, {
+      query: options
+    });
   }
 
   public async getForIssue(
@@ -226,14 +146,9 @@ export default class Worklogs {
         queryOptions.IUpdatedFrom &
         queryOptions.IPagination
     >
-  ) {
-    return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
-          pathname: `/worklogs/issue/${key}`,
-          query: options
-        })
-      )
-    );
+  ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
+    return await this.createAndSendRequest(`/worklogs/issue/${key}`, {
+      query: options
+    });
   }
 }

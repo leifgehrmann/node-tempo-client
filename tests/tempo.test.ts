@@ -21,19 +21,49 @@ function getMockOptions(options?: any) {
 describe('TempoApi', () => {
   describe('Collections can be accessed', () => {
     it('Expect mocked data to be returned', async () => {
-      const dummtApiResponse = { someSample: '...data to expect!' };
+      const dummyApiResponse = { someSample: '...data to expect!' };
 
-      const dummyRequest = async () => dummtApiResponse;
+      const dummyRequest = async () => dummyApiResponse;
       const tempo = new TempoApi(
         getMockOptions({
           request: dummyRequest
         })
       );
 
-      let result = await tempo.worklogs.get();
-      expect(result).toBe(dummtApiResponse);
+      let result: any;
+
+      result = await tempo.accountCategories.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.accountCategoryTypes.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.accountLinks.getAccountLink('123');
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.accounts.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.customers.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.periods.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.plans.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.programs.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.roles.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.teamLinks.getForProject('ABC');
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.teamMemberships.getTeamMembership('123');
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.teams.get();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.timesheetApprovals.getWaiting();
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.userSchedule.get();
+      expect(result).toBe(dummyApiResponse);
       result = await tempo.workAttributes.get();
-      expect(result).toBe(dummtApiResponse);
+      expect(result).toBe(dummyApiResponse);
+      result = await tempo.worklogs.get();
+      expect(result).toBe(dummyApiResponse);
     });
   });
 });
