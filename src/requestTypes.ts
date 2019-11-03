@@ -1,3 +1,16 @@
+export interface IPlan {
+  startDate: string;
+  endDate: string;
+  description?: string;
+  plannedPerDaySeconds: number;
+  includeNonWorkingDays?: boolean;
+  rule?: string;
+  recurrenceEndDate?: string;
+  accountId: string;
+  issueKey?: string;
+  projectKey?: string;
+}
+
 export interface IProgram {
   name: string;
   managerAccountId?: string;

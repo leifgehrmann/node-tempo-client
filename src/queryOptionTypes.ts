@@ -19,3 +19,11 @@ export interface IDateRange extends IStringMap {
 export interface IIssues {
   issue: string[];
 }
+
+export interface IAssigneeType extends IStringMap {
+  assigneeType: string;
+}
+
+export interface IPlanItemType extends IStringMap {
+  planItemType: string;
+}
