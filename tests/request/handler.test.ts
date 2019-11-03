@@ -96,7 +96,7 @@ describe('TempoAi', () => {
       const handler = new requestHandler(
         getOptions({
           request: async () => {
-            throw new Error('Request error')
+            throw new Error('Request error');
           }
         })
       );

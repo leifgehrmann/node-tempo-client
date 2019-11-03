@@ -57,8 +57,8 @@ export default class TimesheetApprovals extends Collection {
           query: options
         }),
         {
-          method: 'POST',
-          body: timesheetApproval
+          body: timesheetApproval,
+          method: 'POST'
         }
       )
     );
@@ -76,8 +76,8 @@ export default class TimesheetApprovals extends Collection {
           query: options
         }),
         {
-          method: 'POST',
-          body: timesheetApproval
+          body: timesheetApproval,
+          method: 'POST'
         }
       )
     );
@@ -95,8 +95,8 @@ export default class TimesheetApprovals extends Collection {
           query: options
         }),
         {
-          method: 'POST',
-          body: timesheetApproval
+          body: timesheetApproval,
+          method: 'POST'
         }
       )
     );
@@ -114,8 +114,8 @@ export default class TimesheetApprovals extends Collection {
           query: options
         }),
         {
-          method: 'POST',
-          body: timesheedApprovalRequest
+          body: timesheedApprovalRequest,
+          method: 'POST'
         }
       )
     );

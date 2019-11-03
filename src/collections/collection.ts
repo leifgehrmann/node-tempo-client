@@ -7,7 +7,7 @@ export default abstract class Collection {
     this.requestHandler = requestHandler;
   }
 
-  async createAndSendRequest(
+  protected async createAndSendRequest(
     pathname: string,
     {
       query,
@@ -26,8 +26,8 @@ export default abstract class Collection {
           query
         }),
         {
-          method,
-          body
+          body,
+          method
         }
       )
     );
