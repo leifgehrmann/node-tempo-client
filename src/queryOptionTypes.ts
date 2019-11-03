@@ -1,5 +1,5 @@
 export interface IStringMap {
-  [s: string]: string;
+  [s: string]: any;
 }
 
 export interface IPagination extends IStringMap {
@@ -18,6 +18,10 @@ export interface IDateRange extends IStringMap {
 
 export interface IIssues {
   issue: string[];
+}
+
+export interface IId extends IStringMap {
+  id: number;
 }
 
 export interface IAssigneeType extends IStringMap {

@@ -1,3 +1,8 @@
+export interface ICustomer {
+  key: string;
+  name: string;
+}
+
 export interface IPlan {
   startDate: string;
   endDate: string;
