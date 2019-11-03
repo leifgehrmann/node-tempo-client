@@ -54,8 +54,8 @@ export default class Worklogs {
           pathname: `/worklogs`
         }),
         {
-          method: 'POST',
-          body: worklog
+          body: worklog,
+          method: 'POST'
         }
       )
     );
@@ -78,8 +78,8 @@ export default class Worklogs {
           pathname: `/worklogs/${worklogId}`
         }),
         {
-          method: 'PUT',
-          body: worklog
+          body: worklog,
+          method: 'PUT'
         }
       )
     );

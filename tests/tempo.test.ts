@@ -30,7 +30,9 @@ describe('TempoApi', () => {
         })
       );
 
-      const result = await tempo.worklogs.get();
+      let result = await tempo.worklogs.get();
+      expect(result).toBe(dummtApiResponse);
+      result = await tempo.workAttributes.get();
       expect(result).toBe(dummtApiResponse);
     });
   });
