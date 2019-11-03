@@ -1,3 +1,15 @@
+export interface ITeamMembership {
+  roleId?: number;
+  commitmentPercent?: number;
+  from: string;
+  to: string;
+}
+
+export interface ITeamMembershipNew extends ITeamMembership {
+  teamId: number;
+  accountId: string;
+}
+
 export interface ITeam {
   name: string;
   summary?: string;
