@@ -122,4 +122,4 @@ a bit with navigating the client.
 
 ## Contributing
 
-See [CONTRIBUTING.md] for more information.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
