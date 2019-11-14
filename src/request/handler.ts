@@ -1,16 +1,15 @@
-import * as request from 'request-promise';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import * as url from 'url';
 
 interface IHandlerOptions {
   port?: string;
-  request?: request.RequestPromiseAPI;
+  request?: AxiosInstance;
   timeout?: number;
   protocol: string;
   host: string;
   apiVersion: string;
   intermediatePath?: string;
   bearerToken?: string;
-  strictSSL?: boolean;
 }
 
 interface IUriOptions {
@@ -26,31 +25,22 @@ export default class Handler {
   public readonly apiVersion: string;
   public readonly bearerToken?: string;
   public readonly intermediatePath?: string;
-  public readonly strictSSL: boolean;
-  public readonly request: request.RequestPromiseAPI;
-  public readonly baseOptions: request.RequestPromiseOptions;
+  public readonly request: AxiosInstance;
+  public readonly baseOptions: AxiosRequestConfig;
 
   public constructor(options: IHandlerOptions) {
     this.protocol = options.protocol || 'https';
     this.intermediatePath = options.intermediatePath;
-    this.strictSSL =
-      options.hasOwnProperty('strictSSL') &&
-      typeof options.strictSSL === 'boolean'
-        ? options.strictSSL
-        : true;
     this.port = options.port;
     this.host = options.host;
     this.apiVersion = options.apiVersion;
     this.bearerToken = options.bearerToken;
-    this.request = options.request || request; // To mock requests
+    this.request = options.request || axios; // To mock requests
     this.baseOptions = {};
 
     if (this.bearerToken) {
-      this.baseOptions.auth = {
-        bearer: this.bearerToken,
-        pass: '',
-        sendImmediately: true,
-        user: ''
+      this.baseOptions.headers = {
+        Authorization: `Bearer ${this.bearerToken}`
       };
     }
 
@@ -59,7 +49,7 @@ export default class Handler {
     }
   }
 
-  public async doRequest(requestOptions: request.OptionsWithUri) {
+  public async doRequest(requestOptions: AxiosRequestConfig) {
     const options = {
       ...this.baseOptions,
       ...requestOptions
@@ -67,10 +57,10 @@ export default class Handler {
 
     const response = await this.request(options);
 
-    if (response) {
-      if (Array.isArray(response.errors)) {
-        if (response.errors.length > 0) {
-          const messages = response.errors.map(
+    if (response && response.data) {
+      if (Array.isArray(response.data.errors)) {
+        if (response.data.errors.length > 0) {
+          const messages = response.data.errors.map(
             (error: { message: string }) => error.message
           );
           throw new Error(messages.join(', '));
@@ -78,20 +68,18 @@ export default class Handler {
           throw new Error('Unknown error');
         }
       }
+      return response.data;
     }
-
-    return response;
+    return undefined;
   }
 
   public makeRequestHeader(
     uri: string,
-    options: request.RequestPromiseOptions = {}
-  ): request.OptionsWithUri {
+    options: AxiosRequestConfig = {}
+  ): AxiosRequestConfig {
     return {
-      json: true,
       method: options.method || 'GET',
-      rejectUnauthorized: this.strictSSL,
-      uri,
+      url: uri,
       ...options
     };
   }

@@ -19,7 +19,7 @@ function getOptions(options?: any) {
   };
 }
 
-describe('TempoAi', () => {
+describe('requestHandler', () => {
   describe('Constructor Tests', () => {
     it('Constructor functions properly', () => {
       const handler = new requestHandler(
@@ -30,22 +30,14 @@ describe('TempoAi', () => {
 
       expect(handler.host).toEqual('tempo.somehost.com');
       expect(handler.port).toEqual('8080');
-      expect(handler.baseOptions.auth!.user).toEqual('');
-      expect(handler.baseOptions.auth!.pass).toEqual('');
-      expect(handler.baseOptions.auth!.bearer).toEqual('someToken');
-      expect(handler.baseOptions.auth!.sendImmediately).toEqual(true);
+      expect(handler.baseOptions.headers).toEqual({
+        Authorization: `Bearer someToken`
+      });
       expect(handler.baseOptions.timeout).toEqual(3000);
       expect(handler.apiVersion).toEqual('3');
 
       // Defaults are set to expected values
       expect(handler.protocol).toEqual('https');
-      expect(handler.strictSSL).toEqual(true);
-
-      // strictSSL can be turned off
-      const handlerWithNoStrictSSL = new requestHandler(
-        getOptions({ strictSSL: false })
-      );
-      expect(handlerWithNoStrictSSL.strictSSL).toEqual(false);
 
       // Not having a bearerToken means no base auth headers are set
       const handlerWithNoBearerToken = new requestHandler(
@@ -63,18 +55,18 @@ describe('TempoAi', () => {
           timeout: 4000,
           bearerToken: 'myFakeToken',
           request: async (requestOptions: any) => {
-            return requestOptions;
+            return { data: requestOptions };
           }
         })
       );
 
       const mockResponse = await handler.doRequest({
-        uri: 'https://example.com'
+        url: 'https://example.com'
       });
-      expect(mockResponse.uri).toEqual('https://example.com');
-      expect(mockResponse.auth!.user).toEqual('');
-      expect(mockResponse.auth!.pass).toEqual('');
-      expect(mockResponse.auth!.bearer).toEqual('myFakeToken');
+      expect(mockResponse.url).toEqual('https://example.com');
+      expect(mockResponse.headers).toEqual({
+        Authorization: 'Bearer myFakeToken'
+      });
       expect(mockResponse.timeout).toEqual(4000);
     });
 
@@ -86,7 +78,7 @@ describe('TempoAi', () => {
       );
 
       const mockResponse = await handler.doRequest({
-        uri: 'https://example.com'
+        url: 'https://example.com'
       });
       expect(mockResponse).toEqual(undefined);
     });
@@ -102,7 +94,7 @@ describe('TempoAi', () => {
       );
 
       try {
-        await handler.doRequest({ uri: 'https://example.com' });
+        await handler.doRequest({ url: 'https://example.com' });
       } catch (e) {
         expect(e.message).toMatch('Request error');
       }
@@ -114,14 +106,16 @@ describe('TempoAi', () => {
         getOptions({
           request: async () => {
             return {
-              errors: []
+              data: {
+                errors: []
+              }
             };
           }
         })
       );
 
       try {
-        await handler.doRequest({ uri: 'https://example.com' });
+        await handler.doRequest({ url: 'https://example.com' });
       } catch (e) {
         expect(e.message).toMatch('Unknown error');
       }
@@ -133,14 +127,16 @@ describe('TempoAi', () => {
         getOptions({
           request: async () => {
             return {
-              errors: [{ message: 'Something went wrong!' }]
+              data: {
+                errors: [{ message: 'Something went wrong!' }]
+              }
             };
           }
         })
       );
 
       try {
-        await handler.doRequest({ uri: 'https://example.com' });
+        await handler.doRequest({ url: 'https://example.com' });
       } catch (e) {
         expect(e.message).toMatch('Something went wrong!');
       }
@@ -152,16 +148,8 @@ describe('TempoAi', () => {
       const handler = new requestHandler(getOptions());
 
       const requestHeader = handler.makeRequestHeader('https://example.com');
-      expect(requestHeader.json).toEqual(true);
       expect(requestHeader.method).toEqual('GET');
-      expect(requestHeader.rejectUnauthorized).toEqual(true);
-      expect(requestHeader.uri).toEqual('https://example.com');
-    });
-
-    it('Sets rejectUnauthorized correctly based on constructor options', () => {
-      const handler = new requestHandler(getOptions({ strictSSL: false }));
-      const requestHeader = handler.makeRequestHeader('https://example.com');
-      expect(requestHeader.rejectUnauthorized).toEqual(false);
+      expect(requestHeader.url).toEqual('https://example.com');
     });
 
     it('Sets method based on options', () => {
@@ -175,9 +163,9 @@ describe('TempoAi', () => {
     it('Sets other request options', () => {
       const handler = new requestHandler(getOptions());
       const requestHeader = handler.makeRequestHeader('https://example.com', {
-        encoding: 'customEncodingValue'
+        maxContentLength: 1024
       });
-      expect(requestHeader.encoding).toEqual('customEncodingValue');
+      expect(requestHeader.maxContentLength).toEqual(1024);
     });
   });
 

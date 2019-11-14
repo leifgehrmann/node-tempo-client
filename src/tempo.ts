@@ -1,4 +1,4 @@
-import * as request from 'request-promise';
+import { AxiosInstance } from 'axios';
 import AccountCategories from './collections/accountCategories';
 import AccountCategoryTypes from './collections/accountCategoryTypes';
 import AccountLinks from './collections/accountLinks';
@@ -23,14 +23,13 @@ import * as ResponseTypes from './responseTypes';
 export interface ITempoApiOptions {
   requestHandler?: RequestHandler;
   port?: string;
-  request?: request.RequestPromiseAPI;
+  request?: AxiosInstance;
   timeout?: number;
   protocol: string;
   host: string;
   apiVersion: string;
   intermediatePath?: string;
   bearerToken?: string;
-  strictSSL?: boolean;
 }
 
 export { RequestTypes };

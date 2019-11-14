@@ -8,10 +8,10 @@ describe('AccountCategories', () => {
     it('post hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -21,14 +21,14 @@ describe('AccountCategories', () => {
           id: 123
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories?id=123'
       );
     });
 
     it('getAccountCategory hits proper url', async () => {
       const result = await mockUrlCall.call('getAccountCategory', ['someKey']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
       );
     });
@@ -39,10 +39,10 @@ describe('AccountCategories', () => {
         'someKey',
         body
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 
@@ -50,7 +50,7 @@ describe('AccountCategories', () => {
       const result = await mockUrlCall.call('deleteAccountCategory', [
         'someKey'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
       );
       expect(result.method).toEqual('DELETE');

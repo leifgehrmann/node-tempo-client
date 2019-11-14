@@ -1,3 +1,4 @@
+import { Method } from 'axios';
 import RequestHandler from '../request/handler';
 
 export default abstract class Collection {
@@ -15,7 +16,7 @@ export default abstract class Collection {
       body
     }: {
       query?: Partial<{ [key: string]: string }>;
-      method?: string;
+      method?: Method;
       body?: any;
     } = {}
   ): Promise<any> {
@@ -26,8 +27,8 @@ export default abstract class Collection {
           query
         }),
         {
-          body,
-          method
+          data: body,
+          method: method || 'GET'
         }
       )
     );

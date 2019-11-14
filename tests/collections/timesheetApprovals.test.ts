@@ -7,7 +7,7 @@ describe('TimesheetApprovals', () => {
   describe('Request Functions Tests', () => {
     it('getWaiting hits proper url', async () => {
       const result = await mockUrlCall.call('getWaiting', []);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/waiting'
       );
     });
@@ -20,7 +20,7 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId?from=2019-01-01&to=2019-01-31'
       );
     });
@@ -29,7 +29,7 @@ describe('TimesheetApprovals', () => {
       const result = await mockUrlCall.call('getReviewersForUser', [
         'someAccountId'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reviewers'
       );
     });
@@ -44,10 +44,10 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -61,10 +61,10 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -78,10 +78,10 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -95,10 +95,10 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.body).toEqual(body);
+      expect(result.data).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -110,7 +110,7 @@ describe('TimesheetApprovals', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/team/someTeamId?from=2019-01-01&to=2019-01-31'
       );
     });

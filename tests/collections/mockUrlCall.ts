@@ -12,7 +12,7 @@ export default class MockUrlCall {
     let externalRequestOptions: any = null;
     let dummyRequest = async (requestOptions: any) => {
       externalRequestOptions = requestOptions;
-      return requestOptions;
+      return { data: requestOptions };
     };
     const requestHandler = new RequestHandler(
       getMockRequestHandlerOptions({

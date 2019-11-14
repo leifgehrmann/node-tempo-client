@@ -9,9 +9,6 @@ export function getMockRequestHandlerOptions(options?: any) {
     port: actualOptions.port || '8080',
     protocol: actualOptions.protocol || 'http',
     request: actualOptions.request,
-    strictSSL: actualOptions.hasOwnProperty('strictSSL')
-      ? actualOptions.strictSSL
-      : true,
     timeout: actualOptions.timeout || null
   };
 }

@@ -1,7 +1,5 @@
-import RequestHandler from '../../src/request/handler';
 import Worklogs from '../../src/collections/worklogs';
 import MockUrlCall from './mockUrlCall';
-import { getMockRequestHandlerOptions } from './mockHelpers';
 
 const mockUrlCall = new MockUrlCall(Worklogs);
 
@@ -9,7 +7,7 @@ describe('Worklogs', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs'
       );
     });
@@ -26,7 +24,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB&project=someProjectA&project=someProjectB&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -36,16 +34,16 @@ describe('Worklogs', () => {
         timeSpentSeconds: 1234
       };
       const result = await mockUrlCall.call('post', [worklog]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs'
       );
       expect(result.method).toEqual('POST');
-      expect(result.body).toEqual(worklog);
+      expect(result.data).toEqual(worklog);
     });
 
     it('getWorklog hits proper url', async () => {
       const result = await mockUrlCall.call('getWorklog', ['someWorklogId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
     });
@@ -58,16 +56,16 @@ describe('Worklogs', () => {
         'someWorklogId',
         worklog
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
       expect(result.method).toEqual('PUT');
-      expect(result.body).toEqual(worklog);
+      expect(result.data).toEqual(worklog);
     });
 
     it('deleteWorklog hits proper url and method', async () => {
       const result = await mockUrlCall.call('deleteWorklog', ['someWorklogId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
       expect(result.method).toEqual('DELETE');
@@ -77,7 +75,7 @@ describe('Worklogs', () => {
       const result = await mockUrlCall.call('getWorklogWorkAttributeValues', [
         'someWorklogId'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values'
       );
     });
@@ -87,7 +85,7 @@ describe('Worklogs', () => {
         'getWorklogWorkAttributeValuesByKey',
         ['someWorklogId', 'someKey']
       );
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values/someKey'
       );
     });
@@ -96,7 +94,7 @@ describe('Worklogs', () => {
       const result = await mockUrlCall.call('getForJiraWorklog', [
         'someJiraWorklogId'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/jira/someJiraWorklogId'
       );
     });
@@ -112,7 +110,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -128,7 +126,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -144,7 +142,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -160,7 +158,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -176,7 +174,7 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
@@ -192,34 +190,9 @@ describe('Worklogs', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
-    });
-  });
-
-  describe('Requests Error Tests', () => {
-    it('Mocked error messages throws errors', async () => {
-      expect.assertions(1);
-      const mockRequest = async (requestOptions: any) => {
-        return {
-          errors: [{ message: 'Something is clearly wrong!' }]
-        };
-      };
-
-      const requestHandler = new RequestHandler(
-        getMockRequestHandlerOptions({
-          request: mockRequest
-        })
-      );
-
-      const collection = new Worklogs(requestHandler);
-
-      try {
-        await collection.getForUser('someAccountId');
-      } catch (e) {
-        expect(e.message).toMatch('Something is clearly wrong!');
-      }
     });
   });
 });
