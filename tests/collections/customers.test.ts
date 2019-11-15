@@ -8,7 +8,7 @@ describe('Customers', () => {
     it('post hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers'
       );
       expect(result.body).toEqual(body);
@@ -21,14 +21,14 @@ describe('Customers', () => {
           id: 456
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers?id=456'
       );
     });
 
     it('getCustomer hits proper url', async () => {
       const result = await mockUrlCall.call('getCustomer', ['someKey']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers/someKey'
       );
     });
@@ -36,7 +36,7 @@ describe('Customers', () => {
     it('putCustomer hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('putCustomer', ['someKey', body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers/someKey'
       );
       expect(result.body).toEqual(body);
@@ -45,7 +45,7 @@ describe('Customers', () => {
 
     it('deleteCustomer hits proper url', async () => {
       const result = await mockUrlCall.call('deleteCustomer', ['someKey']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers/someKey'
       );
       expect(result.method).toEqual('DELETE');
@@ -55,7 +55,7 @@ describe('Customers', () => {
       const result = await mockUrlCall.call('getAccountsForCustomer', [
         'someKey'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/customers/someKey/accounts'
       );
     });

@@ -1,9 +1,19 @@
+import RequestBuilder from '../request/builder';
 import RequestHandler from '../request/handler';
+import { Method } from '../request/iRequestConfig';
 
 export default abstract class Collection {
+  protected requestBuilder: RequestBuilder;
   protected requestHandler: RequestHandler;
 
-  constructor(requestHandler: RequestHandler) {
+  constructor({
+    requestBuilder,
+    requestHandler
+  }: {
+    requestBuilder: RequestBuilder;
+    requestHandler: RequestHandler;
+  }) {
+    this.requestBuilder = requestBuilder;
     this.requestHandler = requestHandler;
   }
 
@@ -15,19 +25,19 @@ export default abstract class Collection {
       body
     }: {
       query?: Partial<{ [key: string]: string }>;
-      method?: string;
+      method?: Method;
       body?: any;
     } = {}
   ): Promise<any> {
     return await this.requestHandler.doRequest(
-      this.requestHandler.makeRequestHeader(
-        this.requestHandler.makeUri({
+      this.requestBuilder.buildRequestConfig(
+        this.requestBuilder.buildUrl({
           pathname,
           query
         }),
         {
           body,
-          method
+          method: method || 'GET'
         }
       )
     );

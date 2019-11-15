@@ -1,10 +1,19 @@
+import RequestBuilder from '../../src/request/builder';
 import RequestHandler from '../../src/request/handler';
-import { getMockRequestHandlerOptions } from './mockHelpers';
+import { getMockRequestBuilderOptions } from './mockHelpers';
+
+type CollectionTypeConstructor = new ({
+  requestBuilder,
+  requestHandler
+}: {
+  requestBuilder: RequestBuilder;
+  requestHandler: RequestHandler;
+}) => any;
 
 export default class MockUrlCall {
-  private collectionType: new (requestHandler: RequestHandler) => any;
+  private collectionType: CollectionTypeConstructor;
 
-  constructor(collectionType: new (requestHandler: RequestHandler) => any) {
+  constructor(collectionType: CollectionTypeConstructor) {
     this.collectionType = collectionType;
   }
 
@@ -14,13 +23,13 @@ export default class MockUrlCall {
       externalRequestOptions = requestOptions;
       return requestOptions;
     };
-    const requestHandler = new RequestHandler(
-      getMockRequestHandlerOptions({
-        request: dummyRequest
-      })
-    );
+    const requestBuilder = new RequestBuilder(getMockRequestBuilderOptions());
+    const requestHandler = new RequestHandler({ httpClient: dummyRequest });
 
-    const collection = new this.collectionType(requestHandler);
+    const collection = new this.collectionType({
+      requestBuilder,
+      requestHandler
+    });
 
     // For GET/POST/PUT requests, this will return the "dummyRequest" request
     // options, which is overridden at the top of this file.

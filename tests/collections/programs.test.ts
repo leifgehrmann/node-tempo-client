@@ -7,7 +7,7 @@ describe('Programs', () => {
   describe('Request Functions Tests', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs'
       );
     });
@@ -15,7 +15,7 @@ describe('Programs', () => {
     it('post hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs'
       );
       expect(result.body).toEqual(body);
@@ -24,7 +24,7 @@ describe('Programs', () => {
 
     it('getProgram hits proper url', async () => {
       const result = await mockUrlCall.call('getProgram', ['someId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId'
       );
     });
@@ -32,7 +32,7 @@ describe('Programs', () => {
     it('putProgram hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('putProgram', ['someId', body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId'
       );
       expect(result.body).toEqual(body);
@@ -41,7 +41,7 @@ describe('Programs', () => {
 
     it('deleteProgram hits proper url', async () => {
       const result = await mockUrlCall.call('deleteProgram', ['someId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId'
       );
       expect(result.method).toEqual('DELETE');
@@ -49,7 +49,7 @@ describe('Programs', () => {
 
     it('getTeamsForProgram hits proper url', async () => {
       const result = await mockUrlCall.call('getTeamsForProgram', ['someId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId/teams'
       );
     });

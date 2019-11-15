@@ -5,28 +5,30 @@ function getMockOptions(options?: any) {
   return {
     apiVersion: actualOptions.apiVersion || '3',
     bearerToken: actualOptions.bearer || 'sometoken',
-    ca: actualOptions.ca || null,
     host: actualOptions.host || 'tempo.somehost.com',
     intermediatePath: actualOptions.intermediatePath,
     port: actualOptions.port || '8080',
     protocol: actualOptions.protocol || 'http',
-    request: actualOptions.request,
-    strictSSL: actualOptions.hasOwnProperty('strictSSL')
-      ? actualOptions.strictSSL
-      : true,
+    requestHandler: actualOptions.requestHandler || undefined,
     timeout: actualOptions.timeout || null
   };
 }
 
 describe('TempoApi', () => {
+  describe('Constructor', () => {
+    const tempo = new TempoApi(getMockOptions());
+  });
+
   describe('Collections can be accessed', () => {
     it('Expect mocked data to be returned', async () => {
       const dummyApiResponse = { someSample: '...data to expect!' };
 
-      const dummyRequest = async () => dummyApiResponse;
+      const dummyRequestHandler = {
+        doRequest: async () => dummyApiResponse
+      };
       const tempo = new TempoApi(
         getMockOptions({
-          request: dummyRequest
+          requestHandler: dummyRequestHandler
         })
       );
 

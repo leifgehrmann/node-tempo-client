@@ -8,7 +8,7 @@ describe('Accounts', () => {
     it('post hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts'
       );
       expect(result.body).toEqual(body);
@@ -21,14 +21,14 @@ describe('Accounts', () => {
           status: 'OPEN'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts?status=OPEN'
       );
     });
 
     it('getAccount hits proper url', async () => {
       const result = await mockUrlCall.call('getAccount', ['someKey']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey'
       );
     });
@@ -36,7 +36,7 @@ describe('Accounts', () => {
     it('putAccount hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('putAccount', ['someKey', body]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey'
       );
       expect(result.body).toEqual(body);
@@ -45,7 +45,7 @@ describe('Accounts', () => {
 
     it('deleteAccount hits proper url', async () => {
       const result = await mockUrlCall.call('deleteAccount', ['someKey']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey'
       );
       expect(result.method).toEqual('DELETE');
@@ -55,7 +55,7 @@ describe('Accounts', () => {
       const result = await mockUrlCall.call('getAccountLinksForAccount', [
         'someKey'
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey/links'
       );
     });

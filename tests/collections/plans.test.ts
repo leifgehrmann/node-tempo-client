@@ -17,14 +17,14 @@ describe('Plans', () => {
           limit: 5
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans?assigneeType=abc&planItemType=efg&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
       );
     });
 
     it('post hits proper url', async () => {
       const result = await mockUrlCall.call('post', []);
-      expect(result.uri).toEqual('http://tempo.somehost.com:8080/core/3/plans');
+      expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/plans');
       expect(result.method).toEqual('POST');
     });
 
@@ -36,14 +36,14 @@ describe('Plans', () => {
           to: '2019-01-31'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans/someId?from=2019-01-01&to=2019-01-31'
       );
     });
 
     it('putPlan hits proper url', async () => {
       const result = await mockUrlCall.call('putPlan', ['someId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans/someId'
       );
       expect(result.method).toEqual('PUT');
@@ -51,7 +51,7 @@ describe('Plans', () => {
 
     it('deletePlan hits proper url', async () => {
       const result = await mockUrlCall.call('deletePlan', ['someId']);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans/someId'
       );
       expect(result.method).toEqual('DELETE');
@@ -66,7 +66,7 @@ describe('Plans', () => {
           updatedFrom: '2019-01-01'
         }
       ]);
-      expect(result.uri).toEqual(
+      expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01'
       );
     });
