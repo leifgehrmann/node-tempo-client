@@ -3,14 +3,13 @@ import { IRequestConfig } from '../../src/request/iRequestConfig';
 
 describe('axiosHttpClient', () => {
   it('Maps requestConfig correctly', async () => {
-    // Use axios's method for mocking a network request:
-    // https://github.com/axios/axios/tree/master/lib/adapters
-    const adapter = async (config: any) => {
+    // Thankfully axios has a way to mock the network request
+    const adapter = async (axiosRequestConfig: any) => {
       return {
         data: {
           someOtherResponse: 'lorem ipsum',
           theOriginalRequestConfig: requestConfig,
-          theAxiosRequestConfig: config
+          theAxiosRequestConfig: axiosRequestConfig
         }
       };
     };
