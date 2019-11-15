@@ -11,7 +11,7 @@ describe('TeamMemberships', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/team-memberships'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -31,7 +31,7 @@ describe('TeamMemberships', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/team-memberships/someId'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

@@ -38,7 +38,7 @@ describe('Worklogs', () => {
         'http://tempo.somehost.com:8080/core/3/worklogs'
       );
       expect(result.method).toEqual('POST');
-      expect(result.data).toEqual(worklog);
+      expect(result.body).toEqual(worklog);
     });
 
     it('getWorklog hits proper url', async () => {
@@ -60,7 +60,7 @@ describe('Worklogs', () => {
         'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
       );
       expect(result.method).toEqual('PUT');
-      expect(result.data).toEqual(worklog);
+      expect(result.body).toEqual(worklog);
     });
 
     it('deleteWorklog hits proper url and method', async () => {

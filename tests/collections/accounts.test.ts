@@ -11,7 +11,7 @@ describe('Accounts', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -39,7 +39,7 @@ describe('Accounts', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts/someKey'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

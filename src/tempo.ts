@@ -1,4 +1,3 @@
-import { AxiosInstance } from 'axios';
 import AccountCategories from './collections/accountCategories';
 import AccountCategoryTypes from './collections/accountCategoryTypes';
 import AccountLinks from './collections/accountLinks';
@@ -16,6 +15,7 @@ import UserSchedule from './collections/userSchedule';
 import WorkAttributes from './collections/workAttributes';
 import Worklogs from './collections/worklogs';
 import * as QueryOptionTypes from './queryOptionTypes';
+import RequestBuilder from './request/builder';
 import RequestHandler from './request/handler';
 import * as RequestTypes from './requestTypes';
 import * as ResponseTypes from './responseTypes';
@@ -23,7 +23,6 @@ import * as ResponseTypes from './responseTypes';
 export interface ITempoApiOptions {
   requestHandler?: RequestHandler;
   port?: string;
-  request?: AxiosInstance;
   timeout?: number;
   protocol: string;
   host: string;
@@ -53,25 +52,28 @@ export default class TempoApi {
   public readonly userSchedule: UserSchedule;
   public readonly workAttributes: WorkAttributes;
   public readonly worklogs: Worklogs;
-  private readonly requestHandler: RequestHandler;
 
   constructor(options: ITempoApiOptions) {
-    this.requestHandler = options.requestHandler || new RequestHandler(options);
-    this.accountCategories = new AccountCategories(this.requestHandler);
-    this.accountCategoryTypes = new AccountCategoryTypes(this.requestHandler);
-    this.accountLinks = new AccountLinks(this.requestHandler);
-    this.accounts = new Accounts(this.requestHandler);
-    this.customers = new Customers(this.requestHandler);
-    this.periods = new Periods(this.requestHandler);
-    this.plans = new Plans(this.requestHandler);
-    this.programs = new Programs(this.requestHandler);
-    this.roles = new Roles(this.requestHandler);
-    this.teamMemberships = new TeamMemberships(this.requestHandler);
-    this.teamLinks = new TeamLinks(this.requestHandler);
-    this.teams = new Teams(this.requestHandler);
-    this.timesheetApprovals = new TimesheetApprovals(this.requestHandler);
-    this.userSchedule = new UserSchedule(this.requestHandler);
-    this.workAttributes = new WorkAttributes(this.requestHandler);
-    this.worklogs = new Worklogs(this.requestHandler);
+    const request = {
+      requestBuilder: new RequestBuilder(options),
+      requestHandler: options.requestHandler || new RequestHandler()
+    };
+
+    this.accountCategories = new AccountCategories(request);
+    this.accountCategoryTypes = new AccountCategoryTypes(request);
+    this.accountLinks = new AccountLinks(request);
+    this.accounts = new Accounts(request);
+    this.customers = new Customers(request);
+    this.periods = new Periods(request);
+    this.plans = new Plans(request);
+    this.programs = new Programs(request);
+    this.roles = new Roles(request);
+    this.teamMemberships = new TeamMemberships(request);
+    this.teamLinks = new TeamLinks(request);
+    this.teams = new Teams(request);
+    this.timesheetApprovals = new TimesheetApprovals(request);
+    this.userSchedule = new UserSchedule(request);
+    this.workAttributes = new WorkAttributes(request);
+    this.worklogs = new Worklogs(request);
   }
 }

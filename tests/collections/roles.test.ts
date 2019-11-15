@@ -14,7 +14,7 @@ describe('Roles', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/roles');
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -31,7 +31,7 @@ describe('Roles', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/roles/someId'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

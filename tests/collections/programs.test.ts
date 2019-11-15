@@ -18,7 +18,7 @@ describe('Programs', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -35,7 +35,7 @@ describe('Programs', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/programs/someId'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

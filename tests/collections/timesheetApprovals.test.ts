@@ -47,7 +47,7 @@ describe('TimesheetApprovals', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -64,7 +64,7 @@ describe('TimesheetApprovals', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -81,7 +81,7 @@ describe('TimesheetApprovals', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -98,7 +98,7 @@ describe('TimesheetApprovals', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit?from=2019-01-01&to=2019-01-31'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 

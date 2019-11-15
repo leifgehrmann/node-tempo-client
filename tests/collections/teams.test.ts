@@ -9,7 +9,7 @@ describe('Teams', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/teams');
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -31,7 +31,7 @@ describe('Teams', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/teams/someId'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

@@ -11,7 +11,7 @@ describe('AccountCategories', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
     });
 
@@ -42,7 +42,7 @@ describe('AccountCategories', () => {
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
       );
-      expect(result.data).toEqual(body);
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 

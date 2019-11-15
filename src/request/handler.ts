@@ -1,66 +1,21 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import * as url from 'url';
-
-interface IHandlerOptions {
-  port?: string;
-  request?: AxiosInstance;
-  timeout?: number;
-  protocol: string;
-  host: string;
-  apiVersion: string;
-  intermediatePath?: string;
-  bearerToken?: string;
-}
-
-interface IUriOptions {
-  pathname: string;
-  query?: Partial<{ [key: string]: string }>;
-  intermediatePath?: string;
-}
+import axiosHttpClient from './axiosHttpClient';
+import { IHttpClient } from './iHttpClient';
+import { IRequestConfig } from './iRequestConfig';
 
 export default class Handler {
-  public readonly protocol: string;
-  public readonly port?: string;
-  public readonly host: string;
-  public readonly apiVersion: string;
-  public readonly bearerToken?: string;
-  public readonly intermediatePath?: string;
-  public readonly request: AxiosInstance;
-  public readonly baseOptions: AxiosRequestConfig;
+  public readonly httpClient: IHttpClient;
 
-  public constructor(options: IHandlerOptions) {
-    this.protocol = options.protocol || 'https';
-    this.intermediatePath = options.intermediatePath;
-    this.port = options.port;
-    this.host = options.host;
-    this.apiVersion = options.apiVersion;
-    this.bearerToken = options.bearerToken;
-    this.request = options.request || axios; // To mock requests
-    this.baseOptions = {};
-
-    if (this.bearerToken) {
-      this.baseOptions.headers = {
-        Authorization: `Bearer ${this.bearerToken}`
-      };
-    }
-
-    if (options.timeout) {
-      this.baseOptions.timeout = options.timeout;
-    }
+  public constructor(options: { httpClient?: IHttpClient } = {}) {
+    this.httpClient = options.httpClient || axiosHttpClient; // To mock requests
   }
 
-  public async doRequest(requestOptions: AxiosRequestConfig) {
-    const options = {
-      ...this.baseOptions,
-      ...requestOptions
-    };
+  public async doRequest(requestConfig: IRequestConfig) {
+    const response = await this.httpClient(requestConfig);
 
-    const response = await this.request(options);
-
-    if (response && response.data) {
-      if (Array.isArray(response.data.errors)) {
-        if (response.data.errors.length > 0) {
-          const messages = response.data.errors.map(
+    if (response) {
+      if (Array.isArray(response.errors)) {
+        if (response.errors.length > 0) {
+          const messages = response.errors.map(
             (error: { message: string }) => error.message
           );
           throw new Error(messages.join(', '));
@@ -68,33 +23,7 @@ export default class Handler {
           throw new Error('Unknown error');
         }
       }
-      return response.data;
     }
-    return undefined;
-  }
-
-  public makeRequestHeader(
-    uri: string,
-    options: AxiosRequestConfig = {}
-  ): AxiosRequestConfig {
-    return {
-      method: options.method || 'GET',
-      url: uri,
-      ...options
-    };
-  }
-
-  public makeUri({ pathname, query, intermediatePath }: IUriOptions) {
-    const intermediateToUse = this.intermediatePath || intermediatePath;
-    const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
-    const uri = url.format({
-      hostname: this.host,
-      pathname: `${tempPath}${pathname}`,
-      port: this.port,
-      protocol: this.protocol,
-      query
-    });
-
-    return decodeURIComponent(uri);
+    return response;
   }
 }
