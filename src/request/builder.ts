@@ -22,7 +22,6 @@ export default class Builder {
   public readonly port?: string;
   public readonly host: string;
   public readonly apiVersion: string;
-  public readonly bearerToken?: string;
   public readonly intermediatePath?: string;
   public readonly baseOptions: IRequestBaseConfig;
 
@@ -32,12 +31,11 @@ export default class Builder {
     this.port = options.port;
     this.host = options.host;
     this.apiVersion = options.apiVersion;
-    this.bearerToken = options.bearerToken;
     this.baseOptions = {};
 
-    if (this.bearerToken) {
+    if (options.bearerToken) {
       this.baseOptions.headers = {
-        Authorization: `Bearer ${this.bearerToken}`
+        Authorization: `Bearer ${options.bearerToken}`
       };
     }
 
