@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: 12.x
           registry-url: 'https://registry.npmjs.org'
-      - name: Run npm outdated
+      - name: Run npm install and outdated
         run: |
+          npm install
           npm outdated
