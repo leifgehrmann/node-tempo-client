@@ -7,7 +7,7 @@ on:
     - cron: '0 6 * * 1'
 
 jobs:
-  audit:
+  outdated:
 
     runs-on: ubuntu-latest
 
