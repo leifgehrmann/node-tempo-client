@@ -1,4 +1,4 @@
-import * as urlUtil from 'url';
+import { stringify as queryStringify } from 'querystring';
 import { IRequestBaseConfig, IRequestConfig, Method } from './iRequestConfig';
 
 interface IRequestBuilderConfig {
@@ -13,7 +13,7 @@ interface IRequestBuilderConfig {
 
 interface IUrlOptions {
   pathname: string;
-  query?: Partial<{ [key: string]: string }>;
+  query?: { [key: string]: string };
   intermediatePath?: string;
 }
 
@@ -59,14 +59,15 @@ export default class Builder {
   public buildUrl({ pathname, query, intermediatePath }: IUrlOptions) {
     const intermediateToUse = this.intermediatePath || intermediatePath;
     const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
-    const url = urlUtil.format({
-      hostname: this.host,
-      pathname: `${tempPath}${pathname}`,
-      port: this.port,
-      protocol: this.protocol,
-      query
-    });
+    const url = new URL('https://example.com')
+    url.host = this.host
+    url.pathname = `${tempPath}${pathname}`
+    if (this.port !== undefined) {
+      url.port = this.port
+    }
+    url.protocol = this.protocol
+    url.search = queryStringify(query);
 
-    return decodeURIComponent(url);
+    return decodeURIComponent(url.href);
   }
 }
