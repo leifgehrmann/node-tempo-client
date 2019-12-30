@@ -9,7 +9,7 @@ function getOptions(options?: any) {
       : 'someToken',
     host: actualOptions.host || 'tempo.somehost.com',
     intermediatePath: actualOptions.intermediatePath,
-    port: actualOptions.port || '8080',
+    port: actualOptions.port,
     protocol: actualOptions.protocol,
     request: actualOptions.request,
     timeout: actualOptions.timeout || null
@@ -26,7 +26,6 @@ describe('RequestBuilder', () => {
       );
 
       expect(builder.host).toEqual('tempo.somehost.com');
-      expect(builder.port).toEqual('8080');
       expect(builder.baseOptions.headers).toEqual({
         Authorization: `Bearer someToken`
       });
@@ -36,6 +35,9 @@ describe('RequestBuilder', () => {
       // Defaults are set to expected values
       expect(builder.protocol).toEqual('https');
 
+      // Not having a port means port will be left undefined
+      expect(builder.port).toEqual(undefined);
+
       // Not having a bearerToken means no base auth headers are set
       const handlerWithNoBearerToken = new RequestBuilder(
         getOptions({ bearerToken: undefined, timeout: undefined })
@@ -43,6 +45,28 @@ describe('RequestBuilder', () => {
       expect(handlerWithNoBearerToken.baseOptions).toEqual({});
       expect(handlerWithNoBearerToken.baseOptions.headers).toEqual(undefined);
       expect(handlerWithNoBearerToken.baseOptions.timeout).toEqual(undefined);
+    });
+
+    it('Port and protocol can be modified', () => {
+      const builder = new RequestBuilder(
+        getOptions({
+          protocol: 'http',
+          port: '80'
+        })
+      );
+
+      expect(builder.protocol).toEqual('http');
+      expect(builder.port).toEqual('80');
+    });
+
+    it('Port is nullable', () => {
+      const builder = new RequestBuilder(
+        getOptions({
+          port: null
+        })
+      );
+
+      expect(builder.port).toEqual(null);
     });
   });
 
@@ -72,8 +96,24 @@ describe('RequestBuilder', () => {
         query: { queryKey: 'queryValue' }
       });
       expect(uri).toEqual(
-        'https://tempo.somehost.com:8080/core/3/collection/selector?queryKey=queryValue'
+        'https://tempo.somehost.com/core/3/collection/selector?queryKey=queryValue'
       );
+    });
+
+    it('Sets port correctly', () => {
+      const builder = new RequestBuilder(getOptions({ port: '8080' }));
+      const uri = builder.buildUrl({
+        pathname: '/a/b'
+      });
+      expect(uri).toEqual('https://tempo.somehost.com:8080/core/3/a/b');
+    });
+
+    it('Sets port correctly if null', () => {
+      const builder = new RequestBuilder(getOptions({ port: null }));
+      const uri = builder.buildUrl({
+        pathname: '/a/b'
+      });
+      expect(uri).toEqual('https://tempo.somehost.com/core/3/a/b');
     });
 
     it('Sets intermediate path', () => {
@@ -82,7 +122,7 @@ describe('RequestBuilder', () => {
         pathname: '/a/b',
         intermediatePath: '/myCustomPath'
       });
-      expect(uri).toEqual('https://tempo.somehost.com:8080/myCustomPath/a/b');
+      expect(uri).toEqual('https://tempo.somehost.com/myCustomPath/a/b');
     });
 
     it('URI encodes parameters', () => {
@@ -92,7 +132,7 @@ describe('RequestBuilder', () => {
         query: { x: 'hello world' } // We do not want spaces to be encoded as %20
       });
       expect(uri).toEqual(
-        'https://tempo.somehost.com:8080/core/3/a/b?x=hello world'
+        'https://tempo.somehost.com/core/3/a/b?x=hello world'
       );
     });
   });

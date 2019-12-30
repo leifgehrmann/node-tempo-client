@@ -24,7 +24,7 @@ export default abstract class Collection {
       method,
       body
     }: {
-      query?: Partial<{ [key: string]: string }>;
+      query?: { [key: string]: string };
       method?: Method;
       body?: any;
     } = {}
