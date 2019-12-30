@@ -34,7 +34,7 @@ describe('RequestBuilder', () => {
 
       // Defaults are set to expected values
       expect(builder.protocol).toEqual('https');
-      
+
       // Not having a port means port will be left undefined
       expect(builder.port).toEqual(undefined);
 
@@ -65,14 +65,14 @@ describe('RequestBuilder', () => {
           port: null
         })
       );
-      
+
       expect(builder.port).toEqual(null);
     });
   });
 
   describe('buildRequestConfig', () => {
     it('Sets correct default values', () => {
-      const handler = new RequestBuilder(getOptions({port: '8080'}));
+      const handler = new RequestBuilder(getOptions());
 
       const requestHeader = handler.buildRequestConfig('https://example.com');
       expect(requestHeader.method).toEqual('GET');
@@ -80,7 +80,7 @@ describe('RequestBuilder', () => {
     });
 
     it('Sets method based on options', () => {
-      const builder = new RequestBuilder(getOptions({port: '8080'}));
+      const builder = new RequestBuilder(getOptions());
       const requestHeader = builder.buildRequestConfig('https://example.com', {
         method: 'DELETE'
       });
@@ -101,7 +101,7 @@ describe('RequestBuilder', () => {
     });
 
     it('Sets port correctly', () => {
-      const builder = new RequestBuilder(getOptions({port: '8080'}));
+      const builder = new RequestBuilder(getOptions({ port: '8080' }));
       const uri = builder.buildUrl({
         pathname: '/a/b'
       });
@@ -109,7 +109,7 @@ describe('RequestBuilder', () => {
     });
 
     it('Sets port correctly if null', () => {
-      const builder = new RequestBuilder(getOptions({port: null}));
+      const builder = new RequestBuilder(getOptions({ port: null }));
       const uri = builder.buildUrl({
         pathname: '/a/b'
       });

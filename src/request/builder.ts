@@ -59,13 +59,13 @@ export default class Builder {
   public buildUrl({ pathname, query, intermediatePath }: IUrlOptions) {
     const intermediateToUse = this.intermediatePath || intermediatePath;
     const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
-    const url = new URL('https://example.com')
-    url.host = this.host
-    url.pathname = `${tempPath}${pathname}`
+    const url = new URL('https://example.com');
+    url.host = this.host;
+    url.pathname = `${tempPath}${pathname}`;
     if (this.port !== undefined) {
-      url.port = this.port
+      url.port = this.port;
     }
-    url.protocol = this.protocol
+    url.protocol = this.protocol;
     url.search = queryStringify(query);
 
     return decodeURIComponent(url.href);
