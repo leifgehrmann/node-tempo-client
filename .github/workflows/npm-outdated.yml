@@ -1,8 +1,9 @@
 name: NPM Outdated
 
-on: 
+on:
   push:
-  pull_request:
+    branches:
+    - master
   schedule:
     - cron: '0 6 * * 1'
 
