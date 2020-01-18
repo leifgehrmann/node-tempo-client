@@ -1,6 +1,6 @@
 import RequestBuilder from '../request/builder';
 import RequestHandler from '../request/handler';
-import { Method } from '../request/iRequestConfig';
+import { Method } from '../request/requestConfig';
 
 export default abstract class Collection {
   protected requestBuilder: RequestBuilder;

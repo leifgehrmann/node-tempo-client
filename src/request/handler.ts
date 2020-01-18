@@ -1,15 +1,15 @@
 import axiosHttpClient from './axiosHttpClient';
-import { IHttpClient } from './iHttpClient';
-import { IRequestConfig } from './iRequestConfig';
+import { HttpClient } from './httpClient';
+import { RequestConfig } from './requestConfig';
 
 export default class Handler {
-  public readonly httpClient: IHttpClient;
+  public readonly httpClient: HttpClient;
 
-  public constructor(options: { httpClient?: IHttpClient } = {}) {
+  public constructor(options: { httpClient?: HttpClient } = {}) {
     this.httpClient = options.httpClient || axiosHttpClient; // To mock requests
   }
 
-  public async doRequest(requestConfig: IRequestConfig) {
+  public async doRequest(requestConfig: RequestConfig) {
     const response = await this.httpClient(requestConfig);
 
     if (response) {

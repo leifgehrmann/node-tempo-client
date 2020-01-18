@@ -1,11 +1,11 @@
-import { ITeamMembership, ITeamMembershipNew } from '../requestTypes';
-import { ITeamMemberMembershipFullResponse } from '../responseTypes';
+import { TeamMembership, TeamMembershipNew } from '../requestTypes';
+import { TeamMemberMembershipFullResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TeamMemberships extends Collection {
   public async post(
-    teamMembership: ITeamMembershipNew,
-  ): Promise<ITeamMemberMembershipFullResponse> {
+    teamMembership: TeamMembershipNew,
+  ): Promise<TeamMemberMembershipFullResponse> {
     return this.createAndSendRequest('/team-memberships', {
       body: teamMembership,
       method: 'POST',
@@ -14,14 +14,14 @@ export default class TeamMemberships extends Collection {
 
   public async getTeamMembership(
     id: string,
-  ): Promise<ITeamMemberMembershipFullResponse> {
+  ): Promise<TeamMemberMembershipFullResponse> {
     return this.createAndSendRequest(`/team-memberships/${id}`);
   }
 
   public async putTeamMembership(
     id: string,
-    teamMembership: ITeamMembership,
-  ): Promise<ITeamMemberMembershipFullResponse> {
+    teamMembership: TeamMembership,
+  ): Promise<TeamMemberMembershipFullResponse> {
     return this.createAndSendRequest(`/team-memberships/${id}`, {
       body: teamMembership,
       method: 'PUT',

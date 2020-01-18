@@ -1,31 +1,31 @@
-import { ITeam } from '../requestTypes';
+import { Team } from '../requestTypes';
 import {
-  IResultSetResponse,
-  ITeamLinkRefResponse,
-  ITeamMemberActiveMembershipResponse,
-  ITeamMemberMembershipResponse,
-  ITeamPermissionResponse,
-  ITeamResponse,
+  ResultSetResponse,
+  TeamLinkRefResponse,
+  TeamMemberActiveMembershipResponse,
+  TeamMemberMembershipResponse,
+  TeamPermissionResponse,
+  TeamResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Teams extends Collection {
-  public async post(team: ITeam): Promise<ITeamResponse> {
+  public async post(team: Team): Promise<TeamResponse> {
     return this.createAndSendRequest('/teams', {
       body: team,
       method: 'POST',
     });
   }
 
-  public async get(): Promise<IResultSetResponse<ITeamResponse>> {
+  public async get(): Promise<ResultSetResponse<TeamResponse>> {
     return this.createAndSendRequest('/teams');
   }
 
-  public async getTeam(id: string): Promise<ITeamResponse> {
+  public async getTeam(id: string): Promise<TeamResponse> {
     return this.createAndSendRequest(`/teams/${id}`);
   }
 
-  public async putTeam(id: string, team: ITeam): Promise<ITeamResponse> {
+  public async putTeam(id: string, team: Team): Promise<TeamResponse> {
     return this.createAndSendRequest(`/teams/${id}`, {
       body: team,
       method: 'PUT',
@@ -40,27 +40,27 @@ export default class Teams extends Collection {
 
   public async getTeamLinksForTeam(
     id: string,
-  ): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
+  ): Promise<ResultSetResponse<TeamLinkRefResponse>> {
     return this.createAndSendRequest(`/teams/${id}/links`);
   }
 
   public async getMembersForTeam(
     id: string,
-  ): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
+  ): Promise<ResultSetResponse<TeamMemberActiveMembershipResponse>> {
     return this.createAndSendRequest(`/teams/${id}/members`);
   }
 
   public async getMemberForTeam(
     id: string,
     accountId: string,
-  ): Promise<ITeamMemberActiveMembershipResponse> {
+  ): Promise<TeamMemberActiveMembershipResponse> {
     return this.createAndSendRequest(`/teams/${id}/members/${accountId}`);
   }
 
   public async getMemberMembershipsForTeam(
     id: string,
     accountId: string,
-  ): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
+  ): Promise<ResultSetResponse<TeamMemberMembershipResponse>> {
     return this.createAndSendRequest(
       `/teams/${id}/members/${accountId}/memberships`,
     );
@@ -68,14 +68,14 @@ export default class Teams extends Collection {
 
   public async getPermissionsForTeam(
     id: string,
-  ): Promise<IResultSetResponse<ITeamPermissionResponse>> {
+  ): Promise<ResultSetResponse<TeamPermissionResponse>> {
     return this.createAndSendRequest(`/teams/${id}/permissions`);
   }
 
   public async getPermissionForTeam(
     id: string,
     key: string,
-  ): Promise<ITeamPermissionResponse> {
+  ): Promise<TeamPermissionResponse> {
     return this.createAndSendRequest(`/teams/${id}/permissions/${key}`);
   }
 }

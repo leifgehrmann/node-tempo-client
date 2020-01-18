@@ -1,20 +1,20 @@
-import { ITeamLink } from '../requestTypes';
+import { TeamLink } from '../requestTypes';
 import {
-  IResultSetResponse,
-  ITeamLinkByScopeResponse,
-  ITeamLinkResponse,
+  ResultSetResponse,
+  TeamLinkByScopeResponse,
+  TeamLinkResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TeamLinks extends Collection {
-  public async post(teamLink: ITeamLink): Promise<ITeamLinkResponse> {
+  public async post(teamLink: TeamLink): Promise<TeamLinkResponse> {
     return this.createAndSendRequest('/team-links', {
       body: teamLink,
       method: 'POST',
     });
   }
 
-  public async getTeamLink(id: string): Promise<ITeamLinkResponse> {
+  public async getTeamLink(id: string): Promise<TeamLinkResponse> {
     return this.createAndSendRequest(`/team-links/${id}`);
   }
 
@@ -26,7 +26,7 @@ export default class TeamLinks extends Collection {
 
   public async getForProject(
     projectKey: string,
-  ): Promise<IResultSetResponse<ITeamLinkByScopeResponse>> {
+  ): Promise<ResultSetResponse<TeamLinkByScopeResponse>> {
     return this.createAndSendRequest(`/team-links/project/${projectKey}`);
   }
 }

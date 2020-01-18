@@ -1,9 +1,9 @@
 import axiosHttpClient from '../../src/request/axiosHttpClient';
-import { IRequestConfig } from '../../src/request/iRequestConfig';
+import { RequestConfig } from '../../src/request/requestConfig';
 
 describe('axiosHttpClient', () => {
   it('Maps requestConfig correctly', async () => {
-    const requestConfig: IRequestConfig = {
+    const requestConfig: RequestConfig = {
       url: 'http://www.example.com',
       method: 'GET',
       body: {

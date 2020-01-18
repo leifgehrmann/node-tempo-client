@@ -1,14 +1,14 @@
 import * as queryOptions from '../queryOptionTypes';
-import { ICustomer } from '../requestTypes';
+import { Customer } from '../requestTypes';
 import {
-  IAccountResponse,
-  ICustomerResponse,
-  IResultSetResponse,
+  AccountResponse,
+  CustomerResponse,
+  ResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Customers extends Collection {
-  public async post(customer: ICustomer): Promise<ICustomerResponse> {
+  public async post(customer: Customer): Promise<CustomerResponse> {
     return this.createAndSendRequest('/customers', {
       body: customer,
       method: 'POST',
@@ -16,21 +16,21 @@ export default class Customers extends Collection {
   }
 
   public async get(
-    options?: queryOptions.IId,
-  ): Promise<IResultSetResponse<ICustomerResponse>> {
+    options?: queryOptions.Id,
+  ): Promise<ResultSetResponse<CustomerResponse>> {
     return this.createAndSendRequest('/customers', {
       query: options,
     });
   }
 
-  public async getCustomer(key: string): Promise<ICustomerResponse> {
+  public async getCustomer(key: string): Promise<CustomerResponse> {
     return this.createAndSendRequest(`/customers/${key}`);
   }
 
   public async putCustomer(
     key: string,
-    customer: ICustomer,
-  ): Promise<ICustomerResponse> {
+    customer: Customer,
+  ): Promise<CustomerResponse> {
     return this.createAndSendRequest(`/customers/${key}`, {
       body: customer,
       method: 'PUT',
@@ -45,7 +45,7 @@ export default class Customers extends Collection {
 
   public async getAccountsForCustomer(
     key: string,
-  ): Promise<IResultSetResponse<IAccountResponse>> {
+  ): Promise<ResultSetResponse<AccountResponse>> {
     return this.createAndSendRequest(`/customers/${key}/accounts`);
   }
 }

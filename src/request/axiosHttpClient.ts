@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { IHttpClient } from './iHttpClient';
-import { IRequestConfig } from './iRequestConfig';
+import { HttpClient } from './httpClient';
+import { RequestConfig } from './requestConfig';
 
-const axiosHttpClient: IHttpClient = async (requestConfig: IRequestConfig) => {
+const axiosHttpClient: HttpClient = async (requestConfig: RequestConfig) => {
   const response = await axios({
     adapter: requestConfig.adapter,
     data: requestConfig.body,

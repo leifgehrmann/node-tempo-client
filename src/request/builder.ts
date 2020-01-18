@@ -1,7 +1,7 @@
 import { stringify as queryStringify } from 'querystring';
-import { IRequestBaseConfig, IRequestConfig, Method } from './iRequestConfig';
+import { RequestBaseConfig, RequestConfig, Method } from './requestConfig';
 
-interface IRequestBuilderConfig {
+interface RequestBuilderConfig {
   port?: string;
   timeout?: number;
   protocol: string;
@@ -11,7 +11,7 @@ interface IRequestBuilderConfig {
   bearerToken?: string;
 }
 
-interface IUrlOptions {
+interface UrlOptions {
   pathname: string;
   query?: { [key: string]: string };
   intermediatePath?: string;
@@ -28,9 +28,9 @@ export default class Builder {
 
   public readonly intermediatePath?: string;
 
-  public readonly baseOptions: IRequestBaseConfig;
+  public readonly baseOptions: RequestBaseConfig;
 
-  public constructor(options: IRequestBuilderConfig) {
+  public constructor(options: RequestBuilderConfig) {
     this.protocol = options.protocol || 'https';
     this.intermediatePath = options.intermediatePath;
     this.port = options.port;
@@ -52,7 +52,7 @@ export default class Builder {
   public buildRequestConfig(
     url: string,
     { method, body }: { method?: Method; body?: any } = {},
-  ): IRequestConfig {
+  ): RequestConfig {
     return {
       body,
       method: method || 'GET',
@@ -61,7 +61,7 @@ export default class Builder {
     };
   }
 
-  public buildUrl({ pathname, query, intermediatePath }: IUrlOptions) {
+  public buildUrl({ pathname, query, intermediatePath }: UrlOptions) {
     const intermediateToUse = this.intermediatePath || intermediatePath;
     const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
     const url = new URL('https://example.com');

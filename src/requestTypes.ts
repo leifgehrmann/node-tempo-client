@@ -1,4 +1,4 @@
-export interface IAccount {
+export interface Account {
   key: string;
   name: string;
   status: string;
@@ -11,24 +11,24 @@ export interface IAccount {
   global?: boolean;
 }
 
-export interface IAccountCategory {
+export interface AccountCategory {
   key: string;
   name: string;
   typeName?: string;
 }
 
-export interface IAccountLink {
+export interface AccountLink {
   accountKey: string;
   scopeType: string;
   scopeId: number;
 }
 
-export interface ICustomer {
+export interface Customer {
   key: string;
   name: string;
 }
 
-export interface IPlan {
+export interface Plan {
   startDate: string;
   endDate: string;
   description?: string;
@@ -41,56 +41,56 @@ export interface IPlan {
   projectKey?: string;
 }
 
-export interface IProgram {
+export interface Program {
   name: string;
   managerAccountId?: string;
   teamIds?: number[];
 }
 
-export interface IRole {
+export interface Role {
   name: string;
 }
 
-export interface ITeamLink {
+export interface TeamLink {
   teamId: number;
   scopeType: string;
   scopeId: string;
 }
 
-export interface ITeamMembership {
+export interface TeamMembership {
   roleId?: number;
   commitmentPercent?: number;
   from: string;
   to: string;
 }
 
-export interface ITeamMembershipNew extends ITeamMembership {
+export interface TeamMembershipNew extends TeamMembership {
   teamId: number;
   accountId: string;
 }
 
-export interface ITeam {
+export interface Team {
   name: string;
   summary?: string;
   leadAccountId?: string;
   programId?: number;
 }
 
-export interface ITimesheetApproval {
+export interface TimesheetApproval {
   comment: string;
 }
 
-export interface ITimesheetApprovalRequest {
+export interface TimesheetApprovalRequest {
   comment: string;
   reviewerAccountId: string;
 }
 
-export interface IWorklogAttribute {
+export interface WorklogAttribute {
   key: string;
   value: string;
 }
 
-export interface IWorklog {
+export interface Worklog {
   issueKey: string;
   timeSpentSeconds: number;
   billableSeconds: number;
@@ -99,5 +99,5 @@ export interface IWorklog {
   description?: string;
   authorAccountId: string;
   remainingEstimateSeconds: number;
-  attributes: IWorklogAttribute[];
+  attributes: WorklogAttribute[];
 }

@@ -1,5 +1,5 @@
 import RequestHandler from '../../src/request/handler';
-import { IRequestConfig } from '../../src/request/iRequestConfig';
+import { RequestConfig } from '../../src/request/requestConfig';
 
 describe('requestHandler', () => {
   describe('Constructor Tests', () => {
@@ -25,11 +25,11 @@ describe('requestHandler', () => {
 
   describe('doRequest', () => {
     it('Passes requestConfig into httpClient', async () => {
-      const fakeHttpClient = async (requestConfig: IRequestConfig) => requestConfig;
+      const fakeHttpClient = async (requestConfig: RequestConfig) => requestConfig;
 
       const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
-      const requestConfig: IRequestConfig = {
+      const requestConfig: RequestConfig = {
         url: 'https://example.com',
         method: 'POST',
         body: {

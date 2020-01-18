@@ -1,11 +1,11 @@
 import * as queryOptions from '../queryOptionTypes';
-import { IDayScheduleResponse, IResultSetResponse } from '../responseTypes';
+import { DayScheduleResponse, ResultSetResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class UserSchedule extends Collection {
   public async get(
-    options?: queryOptions.IDateRange,
-  ): Promise<IResultSetResponse<IDayScheduleResponse>> {
+    options?: queryOptions.DateRange,
+  ): Promise<ResultSetResponse<DayScheduleResponse>> {
     return this.createAndSendRequest('/user-schedule', {
       query: options,
     });
@@ -13,8 +13,8 @@ export default class UserSchedule extends Collection {
 
   public async getForUser(
     accountId: string,
-    options?: queryOptions.IDateRange,
-  ): Promise<IResultSetResponse<IDayScheduleResponse>> {
+    options?: queryOptions.DateRange,
+  ): Promise<ResultSetResponse<DayScheduleResponse>> {
     return this.createAndSendRequest(`/user-schedule/${accountId}`, {
       query: options,
     });

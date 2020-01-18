@@ -1,31 +1,31 @@
-import { IProgram } from '../requestTypes';
+import { Program } from '../requestTypes';
 import {
-  IProgramResponse,
-  IResultSetResponse,
-  ITeamRefResponse,
+  ProgramResponse,
+  ResultSetResponse,
+  TeamRefResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Programs extends Collection {
-  public async get(): Promise<IResultSetResponse<IProgramResponse>> {
+  public async get(): Promise<ResultSetResponse<ProgramResponse>> {
     return this.createAndSendRequest('/programs');
   }
 
-  public async post(program: IProgram): Promise<IProgramResponse> {
+  public async post(program: Program): Promise<ProgramResponse> {
     return this.createAndSendRequest('/programs', {
       body: program,
       method: 'POST',
     });
   }
 
-  public async getProgram(id: string): Promise<IProgramResponse> {
+  public async getProgram(id: string): Promise<ProgramResponse> {
     return this.createAndSendRequest(`/programs/${id}`);
   }
 
   public async putProgram(
     id: string,
-    program: IProgram,
-  ): Promise<IProgramResponse> {
+    program: Program,
+  ): Promise<ProgramResponse> {
     return this.createAndSendRequest(`/programs/${id}`, {
       body: program,
       method: 'PUT',
@@ -40,7 +40,7 @@ export default class Programs extends Collection {
 
   public async getTeamsForProgram(
     id: string,
-  ): Promise<IResultSetResponse<ITeamRefResponse>> {
+  ): Promise<ResultSetResponse<TeamRefResponse>> {
     return this.createAndSendRequest(`/programs/${id}/teams`);
   }
 }

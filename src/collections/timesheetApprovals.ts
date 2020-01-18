@@ -1,23 +1,23 @@
 import * as queryOptions from '../queryOptionTypes';
-import { ITimesheetApproval, ITimesheetApprovalRequest } from '../requestTypes';
+import { TimesheetApproval, TimesheetApprovalRequest } from '../requestTypes';
 import {
-  IResultSetResponse,
-  ITimesheetApprovalResponse,
-  IUserResponse,
+  ResultSetResponse,
+  TimesheetApprovalResponse,
+  UserResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TimesheetApprovals extends Collection {
   public async getWaiting(): Promise<
-  IResultSetResponse<ITimesheetApprovalResponse>
+  ResultSetResponse<TimesheetApprovalResponse>
   > {
     return this.createAndSendRequest('/timesheet-approvals/waiting');
   }
 
   public async getForUser(
     accountId: string,
-    options?: queryOptions.IDateRange,
-  ): Promise<ITimesheetApprovalResponse> {
+    options?: queryOptions.DateRange,
+  ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}`,
       {
@@ -28,7 +28,7 @@ export default class TimesheetApprovals extends Collection {
 
   public async getReviewersForUser(
     accountId: string,
-  ): Promise<IResultSetResponse<IUserResponse>> {
+  ): Promise<ResultSetResponse<UserResponse>> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reviewers`,
     );
@@ -36,9 +36,9 @@ export default class TimesheetApprovals extends Collection {
 
   public async postApproveTimesheetForUser(
     accountId: string,
-    timesheetApproval: ITimesheetApproval,
-    options?: queryOptions.IDateRange,
-  ): Promise<ITimesheetApprovalResponse> {
+    timesheetApproval: TimesheetApproval,
+    options?: queryOptions.DateRange,
+  ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/approve`,
       {
@@ -51,9 +51,9 @@ export default class TimesheetApprovals extends Collection {
 
   public async postRejectTimesheetForUser(
     accountId: string,
-    timesheetApproval: ITimesheetApproval,
-    options?: queryOptions.IDateRange,
-  ): Promise<ITimesheetApprovalResponse> {
+    timesheetApproval: TimesheetApproval,
+    options?: queryOptions.DateRange,
+  ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reject`,
       {
@@ -66,9 +66,9 @@ export default class TimesheetApprovals extends Collection {
 
   public async postReopenTimesheetForUser(
     accountId: string,
-    timesheetApproval: ITimesheetApproval,
-    options?: queryOptions.IDateRange,
-  ): Promise<ITimesheetApprovalResponse> {
+    timesheetApproval: TimesheetApproval,
+    options?: queryOptions.DateRange,
+  ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reopen`,
       {
@@ -81,9 +81,9 @@ export default class TimesheetApprovals extends Collection {
 
   public async postSubmitTimesheetForUser(
     accountId: string,
-    timesheedApprovalRequest: ITimesheetApprovalRequest,
-    options?: queryOptions.IDateRange,
-  ): Promise<ITimesheetApprovalResponse> {
+    timesheedApprovalRequest: TimesheetApprovalRequest,
+    options?: queryOptions.DateRange,
+  ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/submit`,
       {
@@ -96,8 +96,8 @@ export default class TimesheetApprovals extends Collection {
 
   public async getForTeam(
     teamId: string,
-    options?: queryOptions.IDateRange,
-  ): Promise<IResultSetResponse<ITimesheetApprovalResponse>> {
+    options?: queryOptions.DateRange,
+  ): Promise<ResultSetResponse<TimesheetApprovalResponse>> {
     return this.createAndSendRequest(
       `/timesheet-approvals/team/${teamId}`,
       {
