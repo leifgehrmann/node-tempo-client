@@ -168,7 +168,7 @@ export interface WorkAttributeResponse {
   name: string;
   type: string;
   required: boolean;
-  values: any;
+  values: string[];
 }
 
 export interface WorklogResponse {
