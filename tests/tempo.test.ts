@@ -10,7 +10,7 @@ function getMockOptions(options?: any) {
     port: actualOptions.port || '8080',
     protocol: actualOptions.protocol || 'http',
     requestHandler: actualOptions.requestHandler || undefined,
-    timeout: actualOptions.timeout || null
+    timeout: actualOptions.timeout || null,
   };
 }
 
@@ -24,12 +24,12 @@ describe('TempoApi', () => {
       const dummyApiResponse = { someSample: '...data to expect!' };
 
       const dummyRequestHandler = {
-        doRequest: async () => dummyApiResponse
+        doRequest: async () => dummyApiResponse,
       };
       const tempo = new TempoApi(
         getMockOptions({
-          requestHandler: dummyRequestHandler
-        })
+          requestHandler: dummyRequestHandler,
+        }),
       );
 
       let result: any;

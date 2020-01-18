@@ -4,11 +4,12 @@ import { Method } from '../request/iRequestConfig';
 
 export default abstract class Collection {
   protected requestBuilder: RequestBuilder;
+
   protected requestHandler: RequestHandler;
 
   constructor({
     requestBuilder,
-    requestHandler
+    requestHandler,
   }: {
     requestBuilder: RequestBuilder;
     requestHandler: RequestHandler;
@@ -22,24 +23,24 @@ export default abstract class Collection {
     {
       query,
       method,
-      body
+      body,
     }: {
       query?: { [key: string]: string };
       method?: Method;
       body?: any;
-    } = {}
+    } = {},
   ): Promise<any> {
     return await this.requestHandler.doRequest(
       this.requestBuilder.buildRequestConfig(
         this.requestBuilder.buildUrl({
           pathname,
-          query
+          query,
         }),
         {
           body,
-          method: method || 'GET'
-        }
-      )
+          method: method || 'GET',
+        },
+      ),
     );
   }
 }

@@ -3,23 +3,23 @@ import { IAccount } from '../requestTypes';
 import {
   IAccountLinkResponse,
   IAccountResponse,
-  IResultSetResponse
+  IResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Accounts extends Collection {
   public async post(account: IAccount): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/accounts`, {
+    return await this.createAndSendRequest('/accounts', {
       body: account,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(
-    options?: queryOptions.IStatus
+    options?: queryOptions.IStatus,
   ): Promise<IResultSetResponse<IAccountResponse>> {
-    return await this.createAndSendRequest(`/accounts`, {
-      query: options
+    return await this.createAndSendRequest('/accounts', {
+      query: options,
     });
   }
 
@@ -29,22 +29,22 @@ export default class Accounts extends Collection {
 
   public async putAccount(
     key: string,
-    account: IAccount
+    account: IAccount,
   ): Promise<IAccountResponse> {
     return await this.createAndSendRequest(`/accounts/${key}`, {
       body: account,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteAccount(key: string): Promise<void> {
     await this.createAndSendRequest(`/accounts/${key}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getAccountLinksForAccount(
-    key: string
+    key: string,
   ): Promise<IResultSetResponse<IAccountLinkResponse>> {
     return await this.createAndSendRequest(`/accounts/${key}/links`);
   }

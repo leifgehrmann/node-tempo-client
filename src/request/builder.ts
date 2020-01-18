@@ -19,10 +19,15 @@ interface IUrlOptions {
 
 export default class Builder {
   public readonly protocol: string;
+
   public readonly port?: string;
+
   public readonly host: string;
+
   public readonly apiVersion: string;
+
   public readonly intermediatePath?: string;
+
   public readonly baseOptions: IRequestBaseConfig;
 
   public constructor(options: IRequestBuilderConfig) {
@@ -35,7 +40,7 @@ export default class Builder {
 
     if (options.bearerToken) {
       this.baseOptions.headers = {
-        Authorization: `Bearer ${options.bearerToken}`
+        Authorization: `Bearer ${options.bearerToken}`,
       };
     }
 
@@ -46,13 +51,13 @@ export default class Builder {
 
   public buildRequestConfig(
     url: string,
-    { method, body }: { method?: Method; body?: any } = {}
+    { method, body }: { method?: Method; body?: any } = {},
   ): IRequestConfig {
     return {
       body,
       method: method || 'GET',
       url,
-      ...this.baseOptions
+      ...this.baseOptions,
     };
   }
 

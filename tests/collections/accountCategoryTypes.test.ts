@@ -8,7 +8,7 @@ describe('AccountCategoryTypes', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-category-types'
+        'http://tempo.somehost.com:8080/core/3/account-category-types',
       );
     });
   });

@@ -6,20 +6,20 @@ import {
   ITeamMemberActiveMembershipResponse,
   ITeamMemberMembershipResponse,
   ITeamPermissionResponse,
-  ITeamResponse
+  ITeamResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Teams extends Collection {
   public async post(team: ITeam): Promise<ITeamResponse> {
-    return await this.createAndSendRequest(`/teams`, {
+    return await this.createAndSendRequest('/teams', {
       body: team,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(): Promise<IResultSetResponse<ITeamResponse>> {
-    return await this.createAndSendRequest(`/teams`);
+    return await this.createAndSendRequest('/teams');
   }
 
   public async getTeam(id: string): Promise<ITeamResponse> {
@@ -29,53 +29,53 @@ export default class Teams extends Collection {
   public async putTeam(id: string, team: ITeam): Promise<ITeamResponse> {
     return await this.createAndSendRequest(`/teams/${id}`, {
       body: team,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteTeam(id: string): Promise<void> {
     await this.createAndSendRequest(`/teams/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getTeamLinksForTeam(
-    id: string
+    id: string,
   ): Promise<IResultSetResponse<ITeamLinkRefResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/links`);
   }
 
   public async getMembersForTeam(
-    id: string
+    id: string,
   ): Promise<IResultSetResponse<ITeamMemberActiveMembershipResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/members`);
   }
 
   public async getMemberForTeam(
     id: string,
-    accountId: string
+    accountId: string,
   ): Promise<ITeamMemberActiveMembershipResponse> {
     return await this.createAndSendRequest(`/teams/${id}/members/${accountId}`);
   }
 
   public async getMemberMembershipsForTeam(
     id: string,
-    accountId: string
+    accountId: string,
   ): Promise<IResultSetResponse<ITeamMemberMembershipResponse>> {
     return await this.createAndSendRequest(
-      `/teams/${id}/members/${accountId}/memberships`
+      `/teams/${id}/members/${accountId}/memberships`,
     );
   }
 
   public async getPermissionsForTeam(
-    id: string
+    id: string,
   ): Promise<IResultSetResponse<ITeamPermissionResponse>> {
     return await this.createAndSendRequest(`/teams/${id}/permissions`);
   }
 
   public async getPermissionForTeam(
     id: string,
-    key: string
+    key: string,
   ): Promise<ITeamPermissionResponse> {
     return await this.createAndSendRequest(`/teams/${id}/permissions/${key}`);
   }

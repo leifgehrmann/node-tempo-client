@@ -9,7 +9,7 @@ describe('Accounts', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts'
+        'http://tempo.somehost.com:8080/core/3/accounts',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -18,18 +18,18 @@ describe('Accounts', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', [
         {
-          status: 'OPEN'
-        }
+          status: 'OPEN',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts?status=OPEN'
+        'http://tempo.somehost.com:8080/core/3/accounts?status=OPEN',
       );
     });
 
     it('getAccount hits proper url', async () => {
       const result = await mockUrlCall.call('getAccount', ['someKey']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts/someKey'
+        'http://tempo.somehost.com:8080/core/3/accounts/someKey',
       );
     });
 
@@ -37,7 +37,7 @@ describe('Accounts', () => {
       const body = {};
       const result = await mockUrlCall.call('putAccount', ['someKey', body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts/someKey'
+        'http://tempo.somehost.com:8080/core/3/accounts/someKey',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
@@ -46,17 +46,17 @@ describe('Accounts', () => {
     it('deleteAccount hits proper url', async () => {
       const result = await mockUrlCall.call('deleteAccount', ['someKey']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts/someKey'
+        'http://tempo.somehost.com:8080/core/3/accounts/someKey',
       );
       expect(result.method).toEqual('DELETE');
     });
 
     it('getAccountLinksForAccount hits proper url', async () => {
       const result = await mockUrlCall.call('getAccountLinksForAccount', [
-        'someKey'
+        'someKey',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/accounts/someKey/links'
+        'http://tempo.somehost.com:8080/core/3/accounts/someKey/links',
       );
     });
   });

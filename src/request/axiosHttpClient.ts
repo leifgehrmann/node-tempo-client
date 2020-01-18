@@ -9,7 +9,7 @@ const axiosHttpClient: IHttpClient = async (requestConfig: IRequestConfig) => {
     headers: requestConfig.headers,
     method: requestConfig.method,
     timeout: requestConfig.timeout,
-    url: requestConfig.url
+    url: requestConfig.url,
   });
   return response.data;
 };

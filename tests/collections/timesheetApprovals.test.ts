@@ -8,7 +8,7 @@ describe('TimesheetApprovals', () => {
     it('getWaiting hits proper url', async () => {
       const result = await mockUrlCall.call('getWaiting', []);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/waiting'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/waiting',
       );
     });
 
@@ -17,20 +17,20 @@ describe('TimesheetApprovals', () => {
         'someAccountId',
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId?from=2019-01-01&to=2019-01-31',
       );
     });
 
     it('getReviewersForUser hits proper url', async () => {
       const result = await mockUrlCall.call('getReviewersForUser', [
-        'someAccountId'
+        'someAccountId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reviewers'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reviewers',
       );
     });
 
@@ -41,11 +41,11 @@ describe('TimesheetApprovals', () => {
         body,
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/approve?from=2019-01-01&to=2019-01-31',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -58,11 +58,11 @@ describe('TimesheetApprovals', () => {
         body,
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reject?from=2019-01-01&to=2019-01-31',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -75,11 +75,11 @@ describe('TimesheetApprovals', () => {
         body,
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/reopen?from=2019-01-01&to=2019-01-31',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -92,11 +92,11 @@ describe('TimesheetApprovals', () => {
         body,
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/user/someAccountId/submit?from=2019-01-01&to=2019-01-31',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -107,11 +107,11 @@ describe('TimesheetApprovals', () => {
         'someTeamId',
         {
           from: '2019-01-01',
-          to: '2019-01-31'
-        }
+          to: '2019-01-31',
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/team/someTeamId?from=2019-01-01&to=2019-01-31'
+        'http://tempo.somehost.com:8080/core/3/timesheet-approvals/team/someTeamId?from=2019-01-01&to=2019-01-31',
       );
     });
   });

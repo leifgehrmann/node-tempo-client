@@ -3,23 +3,23 @@ import { ICustomer } from '../requestTypes';
 import {
   IAccountResponse,
   ICustomerResponse,
-  IResultSetResponse
+  IResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Customers extends Collection {
   public async post(customer: ICustomer): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers`, {
+    return await this.createAndSendRequest('/customers', {
       body: customer,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(
-    options?: queryOptions.IId
+    options?: queryOptions.IId,
   ): Promise<IResultSetResponse<ICustomerResponse>> {
-    return await this.createAndSendRequest(`/customers`, {
-      query: options
+    return await this.createAndSendRequest('/customers', {
+      query: options,
     });
   }
 
@@ -29,22 +29,22 @@ export default class Customers extends Collection {
 
   public async putCustomer(
     key: string,
-    customer: ICustomer
+    customer: ICustomer,
   ): Promise<ICustomerResponse> {
     return await this.createAndSendRequest(`/customers/${key}`, {
       body: customer,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteCustomer(key: string): Promise<void> {
     await this.createAndSendRequest(`/customers/${key}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getAccountsForCustomer(
-    key: string
+    key: string,
   ): Promise<IResultSetResponse<IAccountResponse>> {
     return await this.createAndSendRequest(`/customers/${key}/accounts`);
   }

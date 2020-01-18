@@ -9,7 +9,7 @@ describe('TeamMemberships', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/team-memberships'
+        'http://tempo.somehost.com:8080/core/3/team-memberships',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -18,7 +18,7 @@ describe('TeamMemberships', () => {
     it('getTeamMembership hits proper url', async () => {
       const result = await mockUrlCall.call('getTeamMembership', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/team-memberships/someId'
+        'http://tempo.somehost.com:8080/core/3/team-memberships/someId',
       );
     });
 
@@ -26,10 +26,10 @@ describe('TeamMemberships', () => {
       const body = {};
       const result = await mockUrlCall.call('putTeamMembership', [
         'someId',
-        body
+        body,
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/team-memberships/someId'
+        'http://tempo.somehost.com:8080/core/3/team-memberships/someId',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
@@ -38,7 +38,7 @@ describe('TeamMemberships', () => {
     it('deleteTeamMembership hits proper url', async () => {
       const result = await mockUrlCall.call('deleteTeamMembership', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/team-memberships/someId'
+        'http://tempo.somehost.com:8080/core/3/team-memberships/someId',
       );
       expect(result.method).toEqual('DELETE');
     });

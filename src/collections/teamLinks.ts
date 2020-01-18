@@ -2,15 +2,15 @@ import { ITeamLink } from '../requestTypes';
 import {
   IResultSetResponse,
   ITeamLinkByScopeResponse,
-  ITeamLinkResponse
+  ITeamLinkResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TeamLinks extends Collection {
   public async post(teamLink: ITeamLink): Promise<ITeamLinkResponse> {
-    return await this.createAndSendRequest(`/team-links`, {
+    return await this.createAndSendRequest('/team-links', {
       body: teamLink,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
@@ -20,12 +20,12 @@ export default class TeamLinks extends Collection {
 
   public async deleteTeamLink(id: string): Promise<void> {
     await this.createAndSendRequest(`/team-links/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getForProject(
-    projectKey: string
+    projectKey: string,
   ): Promise<IResultSetResponse<ITeamLinkByScopeResponse>> {
     return await this.createAndSendRequest(`/team-links/project/${projectKey}`);
   }

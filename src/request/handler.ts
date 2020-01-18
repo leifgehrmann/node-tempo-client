@@ -16,7 +16,7 @@ export default class Handler {
       if (Array.isArray(response.errors)) {
         if (response.errors.length > 0) {
           const messages = response.errors.map(
-            (error: { message: string }) => error.message
+            (error: { message: string }) => error.message,
           );
           throw new Error(messages.join(', '));
         } else {

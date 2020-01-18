@@ -2,15 +2,15 @@ import { IAccountLink } from '../requestTypes';
 import {
   IAccountLinkByScopeResponse,
   IAccountLinkResponse,
-  IResultSetResponse
+  IResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class AccountLinks extends Collection {
   public async post(accountLink: IAccountLink): Promise<IAccountLinkResponse> {
-    return await this.createAndSendRequest(`/account-links`, {
+    return await this.createAndSendRequest('/account-links', {
       body: accountLink,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
@@ -20,15 +20,15 @@ export default class AccountLinks extends Collection {
 
   public async deleteAccountLink(id: string): Promise<void> {
     await this.createAndSendRequest(`/account-links/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getForProject(
-    projectKey: string
+    projectKey: string,
   ): Promise<IResultSetResponse<IAccountLinkByScopeResponse>> {
     return await this.createAndSendRequest(
-      `/account-links/project/${projectKey}`
+      `/account-links/project/${projectKey}`,
     );
   }
 }

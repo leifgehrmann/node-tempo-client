@@ -4,33 +4,33 @@ import Collection from './abstractCollection';
 
 export default class TeamMemberships extends Collection {
   public async post(
-    teamMembership: ITeamMembershipNew
+    teamMembership: ITeamMembershipNew,
   ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships`, {
+    return await this.createAndSendRequest('/team-memberships', {
       body: teamMembership,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async getTeamMembership(
-    id: string
+    id: string,
   ): Promise<ITeamMemberMembershipFullResponse> {
     return await this.createAndSendRequest(`/team-memberships/${id}`);
   }
 
   public async putTeamMembership(
     id: string,
-    teamMembership: ITeamMembership
+    teamMembership: ITeamMembership,
   ): Promise<ITeamMemberMembershipFullResponse> {
     return await this.createAndSendRequest(`/team-memberships/${id}`, {
       body: teamMembership,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteTeamMembership(id: string): Promise<void> {
     await this.createAndSendRequest(`/team-memberships/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 }

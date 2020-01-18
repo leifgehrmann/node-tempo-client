@@ -4,10 +4,10 @@ import Collection from './abstractCollection';
 
 export default class Periods extends Collection {
   public async get(
-    options?: queryOptions.IDateRange
+    options?: queryOptions.IDateRange,
   ): Promise<IPeriodsResponse> {
-    return await this.createAndSendRequest(`/periods`, {
-      query: options
+    return await this.createAndSendRequest('/periods', {
+      query: options,
     });
   }
 }

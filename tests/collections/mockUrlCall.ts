@@ -4,7 +4,7 @@ import { getMockRequestBuilderOptions } from './mockHelpers';
 
 type CollectionTypeConstructor = new ({
   requestBuilder,
-  requestHandler
+  requestHandler,
 }: {
   requestBuilder: RequestBuilder;
   requestHandler: RequestHandler;
@@ -19,7 +19,7 @@ export default class MockUrlCall {
 
   async call(tempoApiMethodName: string, functionArguments: any) {
     let externalRequestOptions: any = null;
-    let dummyRequest = async (requestOptions: any) => {
+    const dummyRequest = async (requestOptions: any) => {
       externalRequestOptions = requestOptions;
       return requestOptions;
     };
@@ -28,7 +28,7 @@ export default class MockUrlCall {
 
     const collection = new this.collectionType({
       requestBuilder,
-      requestHandler
+      requestHandler,
     });
 
     // For GET/POST/PUT requests, this will return the "dummyRequest" request
@@ -36,16 +36,16 @@ export default class MockUrlCall {
     // @ts-ignore
     let resultObject = await collection[tempoApiMethodName].apply(
       collection,
-      functionArguments
+      functionArguments,
     );
 
     // For DELETE requests, the Tempo API does not return any response from the
     // server. Therefore, we don't use the return value of the collection
     // method, but instead the "externalRequestOptions" value instead.
     if (
-      resultObject === undefined &&
-      externalRequestOptions !== null &&
-      externalRequestOptions.method === 'DELETE'
+      resultObject === undefined
+      && externalRequestOptions !== null
+      && externalRequestOptions.method === 'DELETE'
     ) {
       resultObject = externalRequestOptions;
     }
@@ -54,7 +54,7 @@ export default class MockUrlCall {
     // uniformly testable
     if (resultObject.qs) {
       const queryString = Object.keys(resultObject.qs)
-        .map(x => `${x}=${resultObject.qs[x]}`)
+        .map((x) => `${x}=${resultObject.qs[x]}`)
         .join('&');
       return `${resultObject.uri}?${queryString}`;
     }

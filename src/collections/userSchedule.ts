@@ -4,19 +4,19 @@ import Collection from './abstractCollection';
 
 export default class UserSchedule extends Collection {
   public async get(
-    options?: queryOptions.IDateRange
+    options?: queryOptions.IDateRange,
   ): Promise<IResultSetResponse<IDayScheduleResponse>> {
-    return await this.createAndSendRequest(`/user-schedule`, {
-      query: options
+    return await this.createAndSendRequest('/user-schedule', {
+      query: options,
     });
   }
 
   public async getForUser(
     accountId: string,
-    options?: queryOptions.IDateRange
+    options?: queryOptions.IDateRange,
   ): Promise<IResultSetResponse<IDayScheduleResponse>> {
     return await this.createAndSendRequest(`/user-schedule/${accountId}`, {
-      query: options
+      query: options,
     });
   }
 }

@@ -5,41 +5,41 @@ import Collection from './abstractCollection';
 
 export default class AccountCategories extends Collection {
   public async post(
-    accountCategory: IAccountCategory
+    accountCategory: IAccountCategory,
   ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories`, {
+    return await this.createAndSendRequest('/account-categories', {
       body: accountCategory,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(
-    options?: queryOptions.IId
+    options?: queryOptions.IId,
   ): Promise<IResultSetResponse<IAccountCategoryResponse>> {
-    return await this.createAndSendRequest(`/account-categories`, {
-      query: options
+    return await this.createAndSendRequest('/account-categories', {
+      query: options,
     });
   }
 
   public async getAccountCategory(
-    key: string
+    key: string,
   ): Promise<IAccountCategoryResponse> {
     return await this.createAndSendRequest(`/account-categories/${key}`);
   }
 
   public async putAccountCategory(
     key: string,
-    accountCategory: IAccountCategory
+    accountCategory: IAccountCategory,
   ): Promise<IAccountCategoryResponse> {
     return await this.createAndSendRequest(`/account-categories/${key}`, {
       body: accountCategory,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteAccountCategory(key: string): Promise<void> {
     await this.createAndSendRequest(`/account-categories/${key}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 }

@@ -7,6 +7,6 @@ export function getMockRequestBuilderOptions(options?: any) {
     intermediatePath: actualOptions.intermediatePath,
     port: actualOptions.port || '8080',
     protocol: actualOptions.protocol || 'http',
-    timeout: actualOptions.timeout || null
+    timeout: actualOptions.timeout || null,
   };
 }

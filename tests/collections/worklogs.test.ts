@@ -8,7 +8,7 @@ describe('Worklogs', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', []);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs'
+        'http://tempo.somehost.com:8080/core/3/worklogs',
       );
     });
 
@@ -21,21 +21,21 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB&project=someProjectA&project=someProjectB&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs?issue=someIssueA&issue=someIssueB&project=someProjectA&project=someProjectB&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
     it('post hits proper url and method', async () => {
       const worklog = {
-        timeSpentSeconds: 1234
+        timeSpentSeconds: 1234,
       };
       const result = await mockUrlCall.call('post', [worklog]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs'
+        'http://tempo.somehost.com:8080/core/3/worklogs',
       );
       expect(result.method).toEqual('POST');
       expect(result.body).toEqual(worklog);
@@ -44,20 +44,20 @@ describe('Worklogs', () => {
     it('getWorklog hits proper url', async () => {
       const result = await mockUrlCall.call('getWorklog', ['someWorklogId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId',
       );
     });
 
     it('putWorklog hits proper url and method', async () => {
       const worklog = {
-        timeSpentSeconds: 5678
+        timeSpentSeconds: 5678,
       };
       const result = await mockUrlCall.call('putWorklog', [
         'someWorklogId',
-        worklog
+        worklog,
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId',
       );
       expect(result.method).toEqual('PUT');
       expect(result.body).toEqual(worklog);
@@ -66,36 +66,36 @@ describe('Worklogs', () => {
     it('deleteWorklog hits proper url and method', async () => {
       const result = await mockUrlCall.call('deleteWorklog', ['someWorklogId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId',
       );
       expect(result.method).toEqual('DELETE');
     });
 
     it('getWorklogWorkAttributeValues hits proper url', async () => {
       const result = await mockUrlCall.call('getWorklogWorkAttributeValues', [
-        'someWorklogId'
+        'someWorklogId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values'
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values',
       );
     });
 
     it('getWorklogWorkAttributeValuesByKey hits proper url', async () => {
       const result = await mockUrlCall.call(
         'getWorklogWorkAttributeValuesByKey',
-        ['someWorklogId', 'someKey']
+        ['someWorklogId', 'someKey'],
       );
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values/someKey'
+        'http://tempo.somehost.com:8080/core/3/worklogs/someWorklogId/work-attribute-values/someKey',
       );
     });
 
     it('getForJiraWorklog hits proper url', async () => {
       const result = await mockUrlCall.call('getForJiraWorklog', [
-        'someJiraWorklogId'
+        'someJiraWorklogId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/jira/someJiraWorklogId'
+        'http://tempo.somehost.com:8080/core/3/worklogs/jira/someJiraWorklogId',
       );
     });
 
@@ -107,11 +107,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
@@ -123,11 +123,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/account/someAccountKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
@@ -139,11 +139,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/project/someProjectKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
@@ -155,11 +155,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/team/someTeamId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
@@ -171,11 +171,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/user/someAccountId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
@@ -187,11 +187,11 @@ describe('Worklogs', () => {
           to: '2019-01-31',
           updatedFrom: '2019-01-01',
           offset: 5,
-          limit: 5
-        }
+          limit: 5,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5'
+        'http://tempo.somehost.com:8080/core/3/worklogs/issue/someKey?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
   });
