@@ -1,4 +1,3 @@
-import * as queryOptions from '../queryOptionTypes';
 import { ITeam } from '../requestTypes';
 import {
   IResultSetResponse,

@@ -17,6 +17,7 @@ function getMockOptions(options?: any) {
 describe('TempoApi', () => {
   describe('Constructor', () => {
     const tempo = new TempoApi(getMockOptions());
+    expect(tempo).toBeTruthy();
   });
 
   describe('Collections can be accessed', () => {

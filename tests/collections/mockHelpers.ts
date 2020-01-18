@@ -1,4 +1,4 @@
-export function getMockRequestBuilderOptions(options?: any) {
+export default function getMockRequestBuilderOptions(options?: any) {
   const actualOptions = options || {};
   return {
     apiVersion: actualOptions.apiVersion || '3',

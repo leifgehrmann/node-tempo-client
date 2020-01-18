@@ -1,6 +1,6 @@
 import RequestBuilder from '../../src/request/builder';
 import RequestHandler from '../../src/request/handler';
-import { getMockRequestBuilderOptions } from './mockHelpers';
+import getMockRequestBuilderOptions from './mockHelpers';
 
 type CollectionTypeConstructor = new ({
   requestBuilder,

@@ -4,7 +4,7 @@ function getOptions(options?: any) {
   const actualOptions = options || {};
   return {
     apiVersion: actualOptions.apiVersion || '3',
-    bearerToken: actualOptions.hasOwnProperty('bearerToken')
+    bearerToken: 'bearerToken' in actualOptions
       ? actualOptions.bearerToken
       : 'someToken',
     host: actualOptions.host || 'tempo.somehost.com',
