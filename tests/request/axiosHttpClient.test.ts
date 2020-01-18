@@ -3,17 +3,7 @@ import { IRequestConfig } from '../../src/request/iRequestConfig';
 
 describe('axiosHttpClient', () => {
   it('Maps requestConfig correctly', async () => {
-    // Thankfully axios has a way to mock the network request
-    const adapter = async (axiosRequestConfig: any) => ({
-      data: {
-        someOtherResponse: 'lorem ipsum',
-        theOriginalRequestConfig: requestConfig,
-        theAxiosRequestConfig: axiosRequestConfig,
-      },
-    });
-
     const requestConfig: IRequestConfig = {
-      adapter,
       url: 'http://www.example.com',
       method: 'GET',
       body: {
@@ -24,6 +14,17 @@ describe('axiosHttpClient', () => {
         Authorization: 'Bearer myToken',
       },
     };
+
+    // Thankfully axios has a way to mock the network request
+    const adapter = async (axiosRequestConfig: any) => ({
+      data: {
+        someOtherResponse: 'lorem ipsum',
+        theOriginalRequestConfig: requestConfig,
+        theAxiosRequestConfig: axiosRequestConfig,
+      },
+    });
+
+    requestConfig.adapter = adapter;
 
     const result = await axiosHttpClient(requestConfig);
 
