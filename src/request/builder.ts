@@ -4,7 +4,7 @@ import { RequestBaseConfig, RequestConfig, Method } from './requestConfig';
 interface RequestBuilderConfig {
   port?: string;
   timeout?: number;
-  protocol: string;
+  protocol?: string;
   host: string;
   apiVersion: string;
   intermediatePath?: string;
@@ -51,7 +51,7 @@ export default class Builder {
 
   public buildRequestConfig(
     url: string,
-    { method, body }: { method?: Method; body?: any } = {},
+    { method, body }: { method?: Method; body?: object } = {},
   ): RequestConfig {
     return {
       body,
@@ -61,7 +61,7 @@ export default class Builder {
     };
   }
 
-  public buildUrl({ pathname, query, intermediatePath }: UrlOptions) {
+  public buildUrl({ pathname, query, intermediatePath }: UrlOptions): string {
     const intermediateToUse = this.intermediatePath || intermediatePath;
     const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
     const url = new URL('https://example.com');

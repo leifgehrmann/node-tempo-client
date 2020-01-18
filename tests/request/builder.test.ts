@@ -1,6 +1,16 @@
 import RequestBuilder from '../../src/request/builder';
 
-function getOptions(options?: any) {
+interface RequestBuilderConfig {
+  port?: string;
+  timeout?: number;
+  protocol?: string;
+  host: string;
+  apiVersion: string;
+  intermediatePath?: string;
+  bearerToken?: string;
+}
+
+function getOptions(options?: Partial<RequestBuilderConfig>): RequestBuilderConfig {
   const actualOptions = options || {};
   return {
     apiVersion: actualOptions.apiVersion || '3',
@@ -11,8 +21,7 @@ function getOptions(options?: any) {
     intermediatePath: actualOptions.intermediatePath,
     port: actualOptions.port,
     protocol: actualOptions.protocol,
-    request: actualOptions.request,
-    timeout: actualOptions.timeout || null,
+    timeout: actualOptions.timeout,
   };
 }
 
@@ -58,16 +67,6 @@ describe('RequestBuilder', () => {
       expect(builder.protocol).toEqual('http');
       expect(builder.port).toEqual('80');
     });
-
-    it('Port is nullable', () => {
-      const builder = new RequestBuilder(
-        getOptions({
-          port: null,
-        }),
-      );
-
-      expect(builder.port).toEqual(null);
-    });
   });
 
   describe('buildRequestConfig', () => {
@@ -108,8 +107,8 @@ describe('RequestBuilder', () => {
       expect(uri).toEqual('https://tempo.somehost.com:8080/core/3/a/b');
     });
 
-    it('Sets port correctly if null', () => {
-      const builder = new RequestBuilder(getOptions({ port: null }));
+    it('Sets port correctly if undefined', () => {
+      const builder = new RequestBuilder(getOptions());
       const uri = builder.buildUrl({
         pathname: '/a/b',
       });
