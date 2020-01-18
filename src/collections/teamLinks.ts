@@ -8,14 +8,14 @@ import Collection from './abstractCollection';
 
 export default class TeamLinks extends Collection {
   public async post(teamLink: ITeamLink): Promise<ITeamLinkResponse> {
-    return await this.createAndSendRequest('/team-links', {
+    return this.createAndSendRequest('/team-links', {
       body: teamLink,
       method: 'POST',
     });
   }
 
   public async getTeamLink(id: string): Promise<ITeamLinkResponse> {
-    return await this.createAndSendRequest(`/team-links/${id}`);
+    return this.createAndSendRequest(`/team-links/${id}`);
   }
 
   public async deleteTeamLink(id: string): Promise<void> {
@@ -27,6 +27,6 @@ export default class TeamLinks extends Collection {
   public async getForProject(
     projectKey: string,
   ): Promise<IResultSetResponse<ITeamLinkByScopeResponse>> {
-    return await this.createAndSendRequest(`/team-links/project/${projectKey}`);
+    return this.createAndSendRequest(`/team-links/project/${projectKey}`);
   }
 }

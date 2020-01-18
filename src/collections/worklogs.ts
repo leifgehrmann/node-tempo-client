@@ -16,27 +16,27 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest('/worklogs', {
+    return this.createAndSendRequest('/worklogs', {
       query: options,
     });
   }
 
   public async post(worklog: IWorklog): Promise<IWorklogResponse> {
-    return await this.createAndSendRequest('/worklogs', {
+    return this.createAndSendRequest('/worklogs', {
       body: worklog,
       method: 'POST',
     });
   }
 
   public async getWorklog(worklogId: string): Promise<IWorklogResponse> {
-    return await this.createAndSendRequest(`/worklogs/${worklogId}`);
+    return this.createAndSendRequest(`/worklogs/${worklogId}`);
   }
 
   public async putWorklog(
     worklogId: string,
     worklog: IWorklog,
   ): Promise<IWorklogResponse> {
-    return await this.createAndSendRequest(`/worklogs/${worklogId}`, {
+    return this.createAndSendRequest(`/worklogs/${worklogId}`, {
       body: worklog,
       method: 'PUT',
     });
@@ -51,7 +51,7 @@ export default class Worklogs extends Collection {
   public async getWorklogWorkAttributeValues(
     worklogId: string,
   ): Promise<IResultSetResponse<IWorklogAttribute>> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values`,
     );
   }
@@ -60,7 +60,7 @@ export default class Worklogs extends Collection {
     worklogId: string,
     key: string,
   ): Promise<IWorklogAttribute> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values/${key}`,
     );
   }
@@ -68,7 +68,7 @@ export default class Worklogs extends Collection {
   public async getForJiraWorklog(
     jiraWorklogId: string,
   ): Promise<IWorklogResponse> {
-    return await this.createAndSendRequest(`/worklogs/jira/${jiraWorklogId}`);
+    return this.createAndSendRequest(`/worklogs/jira/${jiraWorklogId}`);
   }
 
   public async getForJiraFilter(
@@ -79,7 +79,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/worklogs/jira/filter/${jiraFilterId}`,
       {
         query: options,
@@ -95,7 +95,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(`/worklogs/account/${accountKey}`, {
+    return this.createAndSendRequest(`/worklogs/account/${accountKey}`, {
       query: options,
     });
   }
@@ -108,7 +108,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(`/worklogs/project/${projectKey}`, {
+    return this.createAndSendRequest(`/worklogs/project/${projectKey}`, {
       query: options,
     });
   }
@@ -121,7 +121,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(`/worklogs/team/${teamId}`, {
+    return this.createAndSendRequest(`/worklogs/team/${teamId}`, {
       query: options,
     });
   }
@@ -134,7 +134,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(`/worklogs/user/${accountId}`, {
+    return this.createAndSendRequest(`/worklogs/user/${accountId}`, {
       query: options,
     });
   }
@@ -147,7 +147,7 @@ export default class Worklogs extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IWorklogResponse>> {
-    return await this.createAndSendRequest(`/worklogs/issue/${key}`, {
+    return this.createAndSendRequest(`/worklogs/issue/${key}`, {
       query: options,
     });
   }

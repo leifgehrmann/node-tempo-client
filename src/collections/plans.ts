@@ -17,13 +17,13 @@ export default class Plans extends Collection {
     queryOptions.IPagination
     >,
   ): Promise<IPaginatedResultSetResponse<IPlanResponse>> {
-    return await this.createAndSendRequest('/plans', {
+    return this.createAndSendRequest('/plans', {
       query: options,
     });
   }
 
   public async post(plan: IPlan): Promise<IPlanResponse> {
-    return await this.createAndSendRequest('/plans', {
+    return this.createAndSendRequest('/plans', {
       body: plan,
       method: 'POST',
     });
@@ -33,13 +33,13 @@ export default class Plans extends Collection {
     id: string,
     options?: queryOptions.IDateRange,
   ): Promise<IPlanResponse> {
-    return await this.createAndSendRequest(`/plans/${id}`, {
+    return this.createAndSendRequest(`/plans/${id}`, {
       query: options,
     });
   }
 
   public async putPlan(id: string, plan: IPlan): Promise<IPlanResponse> {
-    return await this.createAndSendRequest(`/plans/${id}`, {
+    return this.createAndSendRequest(`/plans/${id}`, {
       body: plan,
       method: 'PUT',
     });
@@ -55,7 +55,7 @@ export default class Plans extends Collection {
     accountId: string,
     options?: Partial<queryOptions.IDateRange & queryOptions.IUpdatedFrom>,
   ): Promise<IResultSetResponse<IPlanResponse>> {
-    return await this.createAndSendRequest(`/plans/user/${accountId}`, {
+    return this.createAndSendRequest(`/plans/user/${accountId}`, {
       query: options,
     });
   }

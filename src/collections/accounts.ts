@@ -9,7 +9,7 @@ import Collection from './abstractCollection';
 
 export default class Accounts extends Collection {
   public async post(account: IAccount): Promise<IAccountResponse> {
-    return await this.createAndSendRequest('/accounts', {
+    return this.createAndSendRequest('/accounts', {
       body: account,
       method: 'POST',
     });
@@ -18,20 +18,20 @@ export default class Accounts extends Collection {
   public async get(
     options?: queryOptions.IStatus,
   ): Promise<IResultSetResponse<IAccountResponse>> {
-    return await this.createAndSendRequest('/accounts', {
+    return this.createAndSendRequest('/accounts', {
       query: options,
     });
   }
 
   public async getAccount(key: string): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/accounts/${key}`);
+    return this.createAndSendRequest(`/accounts/${key}`);
   }
 
   public async putAccount(
     key: string,
     account: IAccount,
   ): Promise<IAccountResponse> {
-    return await this.createAndSendRequest(`/accounts/${key}`, {
+    return this.createAndSendRequest(`/accounts/${key}`, {
       body: account,
       method: 'PUT',
     });
@@ -46,6 +46,6 @@ export default class Accounts extends Collection {
   public async getAccountLinksForAccount(
     key: string,
   ): Promise<IResultSetResponse<IAccountLinkResponse>> {
-    return await this.createAndSendRequest(`/accounts/${key}/links`);
+    return this.createAndSendRequest(`/accounts/${key}/links`);
   }
 }

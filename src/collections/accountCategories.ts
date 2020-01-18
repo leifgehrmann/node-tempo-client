@@ -7,7 +7,7 @@ export default class AccountCategories extends Collection {
   public async post(
     accountCategory: IAccountCategory,
   ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest('/account-categories', {
+    return this.createAndSendRequest('/account-categories', {
       body: accountCategory,
       method: 'POST',
     });
@@ -16,7 +16,7 @@ export default class AccountCategories extends Collection {
   public async get(
     options?: queryOptions.IId,
   ): Promise<IResultSetResponse<IAccountCategoryResponse>> {
-    return await this.createAndSendRequest('/account-categories', {
+    return this.createAndSendRequest('/account-categories', {
       query: options,
     });
   }
@@ -24,14 +24,14 @@ export default class AccountCategories extends Collection {
   public async getAccountCategory(
     key: string,
   ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories/${key}`);
+    return this.createAndSendRequest(`/account-categories/${key}`);
   }
 
   public async putAccountCategory(
     key: string,
     accountCategory: IAccountCategory,
   ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories/${key}`, {
+    return this.createAndSendRequest(`/account-categories/${key}`, {
       body: accountCategory,
       method: 'PUT',
     });

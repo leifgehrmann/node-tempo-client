@@ -11,14 +11,14 @@ export default class TimesheetApprovals extends Collection {
   public async getWaiting(): Promise<
   IResultSetResponse<ITimesheetApprovalResponse>
   > {
-    return await this.createAndSendRequest('/timesheet-approvals/waiting');
+    return this.createAndSendRequest('/timesheet-approvals/waiting');
   }
 
   public async getForUser(
     accountId: string,
     options?: queryOptions.IDateRange,
   ): Promise<ITimesheetApprovalResponse> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}`,
       {
         query: options,
@@ -29,7 +29,7 @@ export default class TimesheetApprovals extends Collection {
   public async getReviewersForUser(
     accountId: string,
   ): Promise<IResultSetResponse<IUserResponse>> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reviewers`,
     );
   }
@@ -39,7 +39,7 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange,
   ): Promise<ITimesheetApprovalResponse> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/approve`,
       {
         body: timesheetApproval,
@@ -54,7 +54,7 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange,
   ): Promise<ITimesheetApprovalResponse> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reject`,
       {
         body: timesheetApproval,
@@ -69,7 +69,7 @@ export default class TimesheetApprovals extends Collection {
     timesheetApproval: ITimesheetApproval,
     options?: queryOptions.IDateRange,
   ): Promise<ITimesheetApprovalResponse> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reopen`,
       {
         body: timesheetApproval,
@@ -84,7 +84,7 @@ export default class TimesheetApprovals extends Collection {
     timesheedApprovalRequest: ITimesheetApprovalRequest,
     options?: queryOptions.IDateRange,
   ): Promise<ITimesheetApprovalResponse> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/submit`,
       {
         body: timesheedApprovalRequest,
@@ -98,7 +98,7 @@ export default class TimesheetApprovals extends Collection {
     teamId: string,
     options?: queryOptions.IDateRange,
   ): Promise<IResultSetResponse<ITimesheetApprovalResponse>> {
-    return await this.createAndSendRequest(
+    return this.createAndSendRequest(
       `/timesheet-approvals/team/${teamId}`,
       {
         query: options,

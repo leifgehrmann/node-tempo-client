@@ -8,6 +8,6 @@ export default class AccountCategoryTypes extends Collection {
   public async get(): Promise<
   IResultSetResponse<IAccountCategoryTypeResponse>
   > {
-    return await this.createAndSendRequest('/account-category-types');
+    return this.createAndSendRequest('/account-category-types');
   }
 }

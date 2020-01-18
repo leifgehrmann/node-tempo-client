@@ -6,7 +6,7 @@ export default class TeamMemberships extends Collection {
   public async post(
     teamMembership: ITeamMembershipNew,
   ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest('/team-memberships', {
+    return this.createAndSendRequest('/team-memberships', {
       body: teamMembership,
       method: 'POST',
     });
@@ -15,14 +15,14 @@ export default class TeamMemberships extends Collection {
   public async getTeamMembership(
     id: string,
   ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships/${id}`);
+    return this.createAndSendRequest(`/team-memberships/${id}`);
   }
 
   public async putTeamMembership(
     id: string,
     teamMembership: ITeamMembership,
   ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships/${id}`, {
+    return this.createAndSendRequest(`/team-memberships/${id}`, {
       body: teamMembership,
       method: 'PUT',
     });

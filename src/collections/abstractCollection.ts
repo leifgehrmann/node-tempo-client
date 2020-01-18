@@ -30,7 +30,7 @@ export default abstract class Collection {
       body?: any;
     } = {},
   ): Promise<any> {
-    return await this.requestHandler.doRequest(
+    return this.requestHandler.doRequest(
       this.requestBuilder.buildRequestConfig(
         this.requestBuilder.buildUrl({
           pathname,

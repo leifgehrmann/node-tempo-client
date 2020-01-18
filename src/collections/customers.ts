@@ -9,7 +9,7 @@ import Collection from './abstractCollection';
 
 export default class Customers extends Collection {
   public async post(customer: ICustomer): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest('/customers', {
+    return this.createAndSendRequest('/customers', {
       body: customer,
       method: 'POST',
     });
@@ -18,20 +18,20 @@ export default class Customers extends Collection {
   public async get(
     options?: queryOptions.IId,
   ): Promise<IResultSetResponse<ICustomerResponse>> {
-    return await this.createAndSendRequest('/customers', {
+    return this.createAndSendRequest('/customers', {
       query: options,
     });
   }
 
   public async getCustomer(key: string): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers/${key}`);
+    return this.createAndSendRequest(`/customers/${key}`);
   }
 
   public async putCustomer(
     key: string,
     customer: ICustomer,
   ): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers/${key}`, {
+    return this.createAndSendRequest(`/customers/${key}`, {
       body: customer,
       method: 'PUT',
     });
@@ -46,6 +46,6 @@ export default class Customers extends Collection {
   public async getAccountsForCustomer(
     key: string,
   ): Promise<IResultSetResponse<IAccountResponse>> {
-    return await this.createAndSendRequest(`/customers/${key}/accounts`);
+    return this.createAndSendRequest(`/customers/${key}/accounts`);
   }
 }

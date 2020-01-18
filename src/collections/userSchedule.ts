@@ -6,7 +6,7 @@ export default class UserSchedule extends Collection {
   public async get(
     options?: queryOptions.IDateRange,
   ): Promise<IResultSetResponse<IDayScheduleResponse>> {
-    return await this.createAndSendRequest('/user-schedule', {
+    return this.createAndSendRequest('/user-schedule', {
       query: options,
     });
   }
@@ -15,7 +15,7 @@ export default class UserSchedule extends Collection {
     accountId: string,
     options?: queryOptions.IDateRange,
   ): Promise<IResultSetResponse<IDayScheduleResponse>> {
-    return await this.createAndSendRequest(`/user-schedule/${accountId}`, {
+    return this.createAndSendRequest(`/user-schedule/${accountId}`, {
       query: options,
     });
   }
