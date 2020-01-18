@@ -2,9 +2,5 @@
   "extends": [
     "airbnb-typescript/base",
     "plugin:@typescript-eslint/recommended"
-  ],
-  "env": {
-    "node": true,
-    "jest": true
-  }
+  ]
 }
