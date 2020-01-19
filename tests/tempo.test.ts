@@ -1,16 +1,15 @@
-import TempoApi from '../src/tempo';
+import Handler from '../src/request/handler';
+import { RequestConfig } from '../src/request/requestConfig';
+import TempoApi, { TempoApiOptions } from '../src/tempo';
 
-function getMockOptions(options?: any) {
-  const actualOptions = options || {};
+function getMockOptions(options?: {requestHandler: Handler}): TempoApiOptions {
   return {
-    apiVersion: actualOptions.apiVersion || '3',
-    bearerToken: actualOptions.bearer || 'sometoken',
-    host: actualOptions.host || 'tempo.somehost.com',
-    intermediatePath: actualOptions.intermediatePath,
-    port: actualOptions.port || '8080',
-    protocol: actualOptions.protocol || 'http',
-    requestHandler: actualOptions.requestHandler || undefined,
-    timeout: actualOptions.timeout || null,
+    apiVersion: '3',
+    bearerToken: 'sometoken',
+    host: 'tempo.somehost.com',
+    port: '8080',
+    protocol: 'http',
+    requestHandler: options?.requestHandler,
   };
 }
 
@@ -24,7 +23,8 @@ describe('TempoApi', () => {
     it('Expect mocked data to be returned', async () => {
       const dummyApiResponse = { someSample: '...data to expect!' };
 
-      const dummyRequestHandler = {
+      const dummyRequestHandler: Handler = {
+        httpClient: async (requestConfig: RequestConfig) => requestConfig,
         doRequest: async () => dummyApiResponse,
       };
       const tempo = new TempoApi(

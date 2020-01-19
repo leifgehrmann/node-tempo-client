@@ -15,13 +15,15 @@ export type Method =
   | 'PATCH';
 
 export interface RequestBaseConfig {
-  adapter?: (config: any) => Promise<any>;
+  adapter?: (config: RequestConfig) => Promise<object>;
   timeout?: number;
-  headers?: any;
+  headers?: {
+    Authorization: string;
+  };
 }
 
 export interface RequestConfig extends RequestBaseConfig {
   url: string;
   method: Method;
-  body?: any;
+  body?: object;
 }

@@ -1,6 +1,14 @@
 import axiosHttpClient from '../../src/request/axiosHttpClient';
 import { RequestConfig } from '../../src/request/requestConfig';
 
+interface MockData {
+  data: {
+    someOtherResponse: string;
+    theOriginalRequestConfig: object;
+    theAxiosRequestConfig: object;
+  };
+}
+
 describe('axiosHttpClient', () => {
   it('Maps requestConfig correctly', async () => {
     const requestConfig: RequestConfig = {
@@ -16,15 +24,13 @@ describe('axiosHttpClient', () => {
     };
 
     // Thankfully axios has a way to mock the network request
-    const adapter = async (axiosRequestConfig: any) => ({
+    requestConfig.adapter = async (axiosRequestConfig: RequestConfig): Promise<MockData> => ({
       data: {
         someOtherResponse: 'lorem ipsum',
         theOriginalRequestConfig: requestConfig,
         theAxiosRequestConfig: axiosRequestConfig,
       },
     });
-
-    requestConfig.adapter = adapter;
 
     const result = await axiosHttpClient(requestConfig);
 

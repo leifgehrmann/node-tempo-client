@@ -2,13 +2,22 @@ import RequestBuilder from '../../src/request/builder';
 import RequestHandler from '../../src/request/handler';
 import getMockRequestBuilderOptions from './mockHelpers';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type FunctionArguments = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type RequestOptions = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type MockResponse = Promise<any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type CollectionType = any;
+
 type CollectionTypeConstructor = new ({
   requestBuilder,
   requestHandler,
 }: {
   requestBuilder: RequestBuilder;
   requestHandler: RequestHandler;
-}) => any;
+}) => CollectionType;
 
 export default class MockUrlCall {
   private readonly CollectionType: CollectionTypeConstructor;
@@ -17,9 +26,9 @@ export default class MockUrlCall {
     this.CollectionType = CollectionType;
   }
 
-  async call(tempoApiMethodName: string, functionArguments: any) {
-    let externalRequestOptions: any = null;
-    const dummyRequest = async (requestOptions: any) => {
+  async call(tempoApiMethodName: string, functionArguments: FunctionArguments): MockResponse {
+    let externalRequestOptions: RequestOptions = null;
+    const dummyRequest = async (requestOptions: RequestOptions): MockResponse => {
       externalRequestOptions = requestOptions;
       return requestOptions;
     };

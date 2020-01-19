@@ -39,7 +39,7 @@ describe('requestHandler', () => {
         },
         timeout: 1234,
         headers: {
-          Authoization: 'Bearer myBearerToken',
+          Authorization: 'Bearer myBearerToken',
         },
       };
       const result = await handler.doRequest(requestConfig);
