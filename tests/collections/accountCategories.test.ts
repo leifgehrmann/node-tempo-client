@@ -9,7 +9,7 @@ describe('AccountCategories', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-categories'
+        'http://tempo.somehost.com:8080/core/3/account-categories',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -18,18 +18,18 @@ describe('AccountCategories', () => {
     it('get hits proper url', async () => {
       const result = await mockUrlCall.call('get', [
         {
-          id: 123
-        }
+          id: 123,
+        },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-categories?id=123'
+        'http://tempo.somehost.com:8080/core/3/account-categories?id=123',
       );
     });
 
     it('getAccountCategory hits proper url', async () => {
       const result = await mockUrlCall.call('getAccountCategory', ['someKey']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
+        'http://tempo.somehost.com:8080/core/3/account-categories/someKey',
       );
     });
 
@@ -37,10 +37,10 @@ describe('AccountCategories', () => {
       const body = {};
       const result = await mockUrlCall.call('putAccountCategory', [
         'someKey',
-        body
+        body,
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
+        'http://tempo.somehost.com:8080/core/3/account-categories/someKey',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
@@ -48,10 +48,10 @@ describe('AccountCategories', () => {
 
     it('deleteAccountCategory hits proper url', async () => {
       const result = await mockUrlCall.call('deleteAccountCategory', [
-        'someKey'
+        'someKey',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-categories/someKey'
+        'http://tempo.somehost.com:8080/core/3/account-categories/someKey',
       );
       expect(result.method).toEqual('DELETE');
     });

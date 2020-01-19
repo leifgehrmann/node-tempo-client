@@ -1,10 +1,10 @@
-import { IWorklogAttribute } from './requestTypes';
+import { WorklogAttribute } from './requestTypes';
 
-export interface ISelfResponse {
+export interface SelfResponse {
   self: string;
 }
 
-export interface IResultSetResponse<T> {
+export interface ResultSetResponse<T> {
   self: string;
   metadata: {
     count: number;
@@ -12,7 +12,7 @@ export interface IResultSetResponse<T> {
   results: T[];
 }
 
-export interface IPaginatedResultSetResponse<T> {
+export interface PaginatedResultSetResponse<T> {
   self: string;
   metadata: {
     count: number;
@@ -24,7 +24,7 @@ export interface IPaginatedResultSetResponse<T> {
   results: T[];
 }
 
-export interface IAccountResponse {
+export interface AccountResponse {
   self: string;
   key: string;
   id: number;
@@ -32,14 +32,14 @@ export interface IAccountResponse {
   status: string;
   global: boolean;
   monthlyBudget: number;
-  lead: IUserResponse;
-  contact: IContactResponse;
-  category: IAccountCategoryResponse;
-  customer: ICustomerResponse;
-  links: ISelfResponse;
+  lead: UserResponse;
+  contact: ContactResponse;
+  category: AccountCategoryResponse;
+  customer: CustomerResponse;
+  links: SelfResponse;
 }
 
-export interface IAccountLinkResponse {
+export interface AccountLinkResponse {
   self: string;
   id: number;
   scope: {
@@ -47,36 +47,36 @@ export interface IAccountLinkResponse {
     id: number;
     type: string;
   };
-  account: ISelfResponse;
+  account: SelfResponse;
 }
 
-export interface IAccountLinkByScopeResponse {
+export interface AccountLinkByScopeResponse {
   self: string;
   id: number;
-  scope: ISelfResponse;
-  account: IAccountResponse;
+  scope: SelfResponse;
+  account: AccountResponse;
 }
 
-export interface IAccountCategoryResponse {
-  self: string;
-  key: string;
-  id: number;
-  name: string;
-  type: IAccountCategoryTypeResponse;
-}
-
-export interface IAccountCategoryTypeResponse {
-  name: string;
-}
-
-export interface ICustomerResponse {
+export interface AccountCategoryResponse {
   self: string;
   key: string;
   id: number;
   name: string;
+  type: AccountCategoryTypeResponse;
 }
 
-export interface IPlanResponse {
+export interface AccountCategoryTypeResponse {
+  name: string;
+}
+
+export interface CustomerResponse {
+  self: string;
+  key: string;
+  id: number;
+  name: string;
+}
+
+export interface PlanResponse {
   self: string;
   id: number;
   startDate: string;
@@ -101,57 +101,57 @@ export interface IPlanResponse {
       count: number;
       all: string;
     };
-    values: IPlanPeriodResponse[];
+    values: PlanPeriodResponse[];
   };
 }
 
-export interface IPeriodResponse {
+export interface PeriodResponse {
   from: string;
   to: string;
 }
 
-export interface IPeriodsResponse {
-  periods: IPeriodResponse[];
+export interface PeriodsResponse {
+  periods: PeriodResponse[];
 }
 
-export interface IPlanPeriodResponse extends IPeriodResponse {
+export interface PlanPeriodResponse extends PeriodResponse {
   timePlannedSeconds: number;
 }
 
-export interface IUserResponse {
+export interface UserResponse {
   self: string;
   accountId: string;
   displayName: string;
 }
 
-export interface IContactResponse extends IUserResponse {
+export interface ContactResponse extends UserResponse {
   type: string;
 }
 
-export interface ITimesheetApprovalResponse {
+export interface TimesheetApprovalResponse {
   self: string;
-  period: IPeriodResponse;
+  period: PeriodResponse;
   requiredSeconds: number;
   timeSpentSeconds: number;
   status: {
     key: string;
     comment: string;
-    actor: IUserResponse;
+    actor: UserResponse;
     requiredSecondsAtSubmit: number;
     timeSpentSecondsAtSubmit: number;
     updatedAt: string;
   };
-  user: IUserResponse;
+  user: UserResponse;
   actions: {
-    submit: ISelfResponse;
-    approve: ISelfResponse;
-    reject: ISelfResponse;
-    reopen: ISelfResponse;
+    submit: SelfResponse;
+    approve: SelfResponse;
+    reject: SelfResponse;
+    reopen: SelfResponse;
   };
-  worklogs: ISelfResponse;
+  worklogs: SelfResponse;
 }
 
-export interface IDayScheduleResponse {
+export interface DayScheduleResponse {
   date: string;
   requiredSeconds: number;
   type: string;
@@ -162,16 +162,16 @@ export interface IDayScheduleResponse {
   };
 }
 
-export interface IWorkAttributeResponse {
+export interface WorkAttributeResponse {
   self: string;
   key: string;
   name: string;
   type: string;
   required: boolean;
-  values: any;
+  values: string[];
 }
 
-export interface IWorklogResponse {
+export interface WorklogResponse {
   self: string;
   tempoWorklogId: number;
   jiraWorklogId?: number;
@@ -186,30 +186,30 @@ export interface IWorklogResponse {
   description: string;
   createdAt: string;
   updatedAt: string;
-  author: IUserResponse;
+  author: UserResponse;
   attributes: {
     self: string;
-    values: IWorklogAttribute[];
+    values: WorklogAttribute[];
   };
 }
 
-export interface ITeamResponse {
+export interface TeamResponse {
   self: string;
   id: number;
   name: string;
   summary?: string;
-  lead?: IUserResponse;
+  lead?: UserResponse;
   program: {
     self: string;
     id: number;
     name: string;
   };
-  links: ISelfResponse;
-  members: ISelfResponse;
-  permissions: ISelfResponse;
+  links: SelfResponse;
+  members: SelfResponse;
+  permissions: SelfResponse;
 }
 
-export interface ITeamLinkResponse {
+export interface TeamLinkResponse {
   self: string;
   id: number;
   scope: {
@@ -224,7 +224,7 @@ export interface ITeamLinkResponse {
   };
 }
 
-export interface ITeamLinkRefResponse {
+export interface TeamLinkRefResponse {
   self: string;
   id: number;
   scope: {
@@ -232,93 +232,93 @@ export interface ITeamLinkRefResponse {
     id: number;
     type: string;
   };
-  team: ISelfResponse;
+  team: SelfResponse;
 }
 
-export interface ITeamLinkByScopeResponse {
+export interface TeamLinkByScopeResponse {
   self: string;
   id: number;
   scope: {
     self: string;
   };
-  team: ITeamResponse;
+  team: TeamResponse;
 }
 
-export interface ITeamMemberActiveMembershipResponse {
+export interface TeamMemberActiveMembershipResponse {
   self: string;
-  team: ISelfResponse;
-  member: IUserResponse;
+  team: SelfResponse;
+  member: UserResponse;
   memberships: {
-    self: ISelfResponse;
+    self: SelfResponse;
     active: {
       self: string;
       id: number;
       commitmentPercent: number;
       from: string;
       to: string;
-      role: IRoleResponse;
+      role: RoleResponse;
     };
   };
 }
 
-export interface ITeamMemberMembershipResponse {
+export interface TeamMemberMembershipResponse {
   self: string;
   id: number;
   commitmentPercent: number;
   from?: string;
   to?: string;
-  role: IRoleResponse;
-  team: ISelfResponse;
-  member: ISelfResponse;
+  role: RoleResponse;
+  team: SelfResponse;
+  member: SelfResponse;
 }
 
-export interface ITeamMemberMembershipFullResponse {
+export interface TeamMemberMembershipFullResponse {
   self: string;
   id: number;
   commitmentPercent: number;
   from?: string;
   to?: string;
-  role: IRoleResponse;
+  role: RoleResponse;
   team: {
     self: string;
     id: number;
     name: string;
   };
-  member: IUserResponse;
+  member: UserResponse;
 }
 
-export interface ITeamPermissionResponse {
+export interface TeamPermissionResponse {
   self: string;
   key: string;
   users: {
     self: string;
-    values: IUserResponse[];
+    values: UserResponse[];
   };
 }
 
-export interface IRoleResponse {
+export interface RoleResponse {
   self: string;
   id: number;
   name: string;
 }
 
-export interface IRoleWithDefaultResponse extends IRoleResponse {
+export interface RoleWithDefaultResponse extends RoleResponse {
   default: boolean;
 }
 
-export interface ITeamRefResponse {
+export interface TeamRefResponse {
   self: string;
   id: number;
   name: string;
 }
 
-export interface IProgramResponse {
+export interface ProgramResponse {
   self: string;
   id: number;
   name: string;
-  manager: IUserResponse;
+  manager: UserResponse;
   teams: {
     self: string;
-    values: ITeamRefResponse[];
+    values: TeamRefResponse[];
   };
 }

@@ -1,46 +1,46 @@
-import { IProgram } from '../requestTypes';
+import { Program } from '../requestTypes';
 import {
-  IProgramResponse,
-  IResultSetResponse,
-  ITeamRefResponse
+  ProgramResponse,
+  ResultSetResponse,
+  TeamRefResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Programs extends Collection {
-  public async get(): Promise<IResultSetResponse<IProgramResponse>> {
-    return await this.createAndSendRequest(`/programs`);
+  public async get(): Promise<ResultSetResponse<ProgramResponse>> {
+    return this.createAndSendRequest('/programs');
   }
 
-  public async post(program: IProgram): Promise<IProgramResponse> {
-    return await this.createAndSendRequest(`/programs`, {
+  public async post(program: Program): Promise<ProgramResponse> {
+    return this.createAndSendRequest('/programs', {
       body: program,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
-  public async getProgram(id: string): Promise<IProgramResponse> {
-    return await this.createAndSendRequest(`/programs/${id}`);
+  public async getProgram(id: string): Promise<ProgramResponse> {
+    return this.createAndSendRequest(`/programs/${id}`);
   }
 
   public async putProgram(
     id: string,
-    program: IProgram
-  ): Promise<IProgramResponse> {
-    return await this.createAndSendRequest(`/programs/${id}`, {
+    program: Program,
+  ): Promise<ProgramResponse> {
+    return this.createAndSendRequest(`/programs/${id}`, {
       body: program,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteProgram(id: string): Promise<void> {
     await this.createAndSendRequest(`/programs/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getTeamsForProgram(
-    id: string
-  ): Promise<IResultSetResponse<ITeamRefResponse>> {
-    return await this.createAndSendRequest(`/programs/${id}/teams`);
+    id: string,
+  ): Promise<ResultSetResponse<TeamRefResponse>> {
+    return this.createAndSendRequest(`/programs/${id}/teams`);
   }
 }

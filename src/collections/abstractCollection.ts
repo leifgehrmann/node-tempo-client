@@ -1,14 +1,18 @@
 import RequestBuilder from '../request/builder';
 import RequestHandler from '../request/handler';
-import { Method } from '../request/iRequestConfig';
+import { Method } from '../request/requestConfig';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Response = any;
 
 export default abstract class Collection {
   protected requestBuilder: RequestBuilder;
+
   protected requestHandler: RequestHandler;
 
   constructor({
     requestBuilder,
-    requestHandler
+    requestHandler,
   }: {
     requestBuilder: RequestBuilder;
     requestHandler: RequestHandler;
@@ -22,24 +26,24 @@ export default abstract class Collection {
     {
       query,
       method,
-      body
+      body,
     }: {
-      query?: { [key: string]: string };
+      query?: { [key: string]: number|string|string[] };
       method?: Method;
-      body?: any;
-    } = {}
-  ): Promise<any> {
-    return await this.requestHandler.doRequest(
+      body?: object;
+    } = {},
+  ): Promise<Response> {
+    return this.requestHandler.doRequest(
       this.requestBuilder.buildRequestConfig(
         this.requestBuilder.buildUrl({
           pathname,
-          query
+          query,
         }),
         {
           body,
-          method: method || 'GET'
-        }
-      )
+          method: method || 'GET',
+        },
+      ),
     );
   }
 }

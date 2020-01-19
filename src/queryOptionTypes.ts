@@ -1,37 +1,39 @@
-export interface IStringMap {
-  [s: string]: any;
+export interface StringMap {
+  // Needs to be 'any' for it to be compatible with UrlOptions in builder.ts
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }
 
-export interface IPagination extends IStringMap {
+export interface Pagination extends StringMap {
   offset: string;
   limit: string;
 }
 
-export interface IUpdatedFrom extends IStringMap {
+export interface UpdatedFrom extends StringMap {
   updatedFrom: string;
 }
 
-export interface IDateRange extends IStringMap {
+export interface DateRange extends StringMap {
   from: string;
   to: string;
 }
 
-export interface IIssues {
+export interface Issues {
   issue: string[];
 }
 
-export interface IStatus extends IStringMap {
+export interface Status extends StringMap {
   status: string;
 }
 
-export interface IId extends IStringMap {
+export interface Id extends StringMap {
   id: number;
 }
 
-export interface IAssigneeType extends IStringMap {
+export interface AssigneeType extends StringMap {
   assigneeType: string;
 }
 
-export interface IPlanItemType extends IStringMap {
+export interface PlanItemType extends StringMap {
   planItemType: string;
 }

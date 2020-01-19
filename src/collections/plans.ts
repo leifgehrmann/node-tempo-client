@@ -1,62 +1,62 @@
 import * as queryOptions from '../queryOptionTypes';
-import { IPlan } from '../requestTypes';
+import { Plan } from '../requestTypes';
 import {
-  IPaginatedResultSetResponse,
-  IPlanResponse,
-  IResultSetResponse
+  PaginatedResultSetResponse,
+  PlanResponse,
+  ResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Plans extends Collection {
   public async get(
     options?: Partial<
-      queryOptions.IAssigneeType &
-        queryOptions.IPlanItemType &
-        queryOptions.IDateRange &
-        queryOptions.IUpdatedFrom &
-        queryOptions.IPagination
-    >
-  ): Promise<IPaginatedResultSetResponse<IPlanResponse>> {
-    return await this.createAndSendRequest(`/plans`, {
-      query: options
+    queryOptions.AssigneeType &
+    queryOptions.PlanItemType &
+    queryOptions.DateRange &
+    queryOptions.UpdatedFrom &
+    queryOptions.Pagination
+    >,
+  ): Promise<PaginatedResultSetResponse<PlanResponse>> {
+    return this.createAndSendRequest('/plans', {
+      query: options,
     });
   }
 
-  public async post(plan: IPlan): Promise<IPlanResponse> {
-    return await this.createAndSendRequest(`/plans`, {
+  public async post(plan: Plan): Promise<PlanResponse> {
+    return this.createAndSendRequest('/plans', {
       body: plan,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async getPlan(
     id: string,
-    options?: queryOptions.IDateRange
-  ): Promise<IPlanResponse> {
-    return await this.createAndSendRequest(`/plans/${id}`, {
-      query: options
+    options?: queryOptions.DateRange,
+  ): Promise<PlanResponse> {
+    return this.createAndSendRequest(`/plans/${id}`, {
+      query: options,
     });
   }
 
-  public async putPlan(id: string, plan: IPlan): Promise<IPlanResponse> {
-    return await this.createAndSendRequest(`/plans/${id}`, {
+  public async putPlan(id: string, plan: Plan): Promise<PlanResponse> {
+    return this.createAndSendRequest(`/plans/${id}`, {
       body: plan,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deletePlan(id: string): Promise<void> {
     await this.createAndSendRequest(`/plans/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getForUser(
     accountId: string,
-    options?: Partial<queryOptions.IDateRange & queryOptions.IUpdatedFrom>
-  ): Promise<IResultSetResponse<IPlanResponse>> {
-    return await this.createAndSendRequest(`/plans/user/${accountId}`, {
-      query: options
+    options?: Partial<queryOptions.DateRange & queryOptions.UpdatedFrom>,
+  ): Promise<ResultSetResponse<PlanResponse>> {
+    return this.createAndSendRequest(`/plans/user/${accountId}`, {
+      query: options,
     });
   }
 }

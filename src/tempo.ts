@@ -20,7 +20,7 @@ import RequestHandler from './request/handler';
 import * as RequestTypes from './requestTypes';
 import * as ResponseTypes from './responseTypes';
 
-export interface ITempoApiOptions {
+export interface TempoApiOptions {
   requestHandler?: RequestHandler;
   port?: string;
   timeout?: number;
@@ -37,26 +37,41 @@ export { QueryOptionTypes };
 
 export default class TempoApi {
   public readonly accountCategories: AccountCategories;
+
   public readonly accountCategoryTypes: AccountCategoryTypes;
+
   public readonly accountLinks: AccountLinks;
+
   public readonly accounts: Accounts;
+
   public readonly customers: Customers;
+
   public readonly periods: Periods;
+
   public readonly plans: Plans;
+
   public readonly programs: Programs;
+
   public readonly roles: Roles;
+
   public readonly teamMemberships: TeamMemberships;
+
   public readonly teamLinks: TeamLinks;
+
   public readonly teams: Teams;
+
   public readonly timesheetApprovals: TimesheetApprovals;
+
   public readonly userSchedule: UserSchedule;
+
   public readonly workAttributes: WorkAttributes;
+
   public readonly worklogs: Worklogs;
 
-  constructor(options: ITempoApiOptions) {
+  constructor(options: TempoApiOptions) {
     const request = {
       requestBuilder: new RequestBuilder(options),
-      requestHandler: options.requestHandler || new RequestHandler()
+      requestHandler: options.requestHandler || new RequestHandler(),
     };
 
     this.accountCategories = new AccountCategories(request);

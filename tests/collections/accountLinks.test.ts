@@ -9,7 +9,7 @@ describe('AccountLinks', () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-links'
+        'http://tempo.somehost.com:8080/core/3/account-links',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('POST');
@@ -18,24 +18,24 @@ describe('AccountLinks', () => {
     it('getAccountLink hits proper url', async () => {
       const result = await mockUrlCall.call('getAccountLink', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-links/someId'
+        'http://tempo.somehost.com:8080/core/3/account-links/someId',
       );
     });
 
     it('deleteAccountLink hits proper url', async () => {
       const result = await mockUrlCall.call('deleteAccountLink', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-links/someId'
+        'http://tempo.somehost.com:8080/core/3/account-links/someId',
       );
       expect(result.method).toEqual('DELETE');
     });
 
     it('getForProject hits proper url', async () => {
       const result = await mockUrlCall.call('getForProject', [
-        'someProjectKey'
+        'someProjectKey',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/account-links/project/someProjectKey'
+        'http://tempo.somehost.com:8080/core/3/account-links/project/someProjectKey',
       );
     });
   });

@@ -1,45 +1,45 @@
 import * as queryOptions from '../queryOptionTypes';
-import { IAccountCategory } from '../requestTypes';
-import { IAccountCategoryResponse, IResultSetResponse } from '../responseTypes';
+import { AccountCategory } from '../requestTypes';
+import { AccountCategoryResponse, ResultSetResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class AccountCategories extends Collection {
   public async post(
-    accountCategory: IAccountCategory
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories`, {
+    accountCategory: AccountCategory,
+  ): Promise<AccountCategoryResponse> {
+    return this.createAndSendRequest('/account-categories', {
       body: accountCategory,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(
-    options?: queryOptions.IId
-  ): Promise<IResultSetResponse<IAccountCategoryResponse>> {
-    return await this.createAndSendRequest(`/account-categories`, {
-      query: options
+    options?: queryOptions.Id,
+  ): Promise<ResultSetResponse<AccountCategoryResponse>> {
+    return this.createAndSendRequest('/account-categories', {
+      query: options,
     });
   }
 
   public async getAccountCategory(
-    key: string
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories/${key}`);
+    key: string,
+  ): Promise<AccountCategoryResponse> {
+    return this.createAndSendRequest(`/account-categories/${key}`);
   }
 
   public async putAccountCategory(
     key: string,
-    accountCategory: IAccountCategory
-  ): Promise<IAccountCategoryResponse> {
-    return await this.createAndSendRequest(`/account-categories/${key}`, {
+    accountCategory: AccountCategory,
+  ): Promise<AccountCategoryResponse> {
+    return this.createAndSendRequest(`/account-categories/${key}`, {
       body: accountCategory,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteAccountCategory(key: string): Promise<void> {
     await this.createAndSendRequest(`/account-categories/${key}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 }

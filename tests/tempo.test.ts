@@ -1,71 +1,54 @@
-import TempoApi from '../src/tempo';
+import Handler from '../src/request/handler';
+import { RequestConfig } from '../src/request/requestConfig';
+import TempoApi, { TempoApiOptions } from '../src/tempo';
 
-function getMockOptions(options?: any) {
-  const actualOptions = options || {};
+function getMockOptions(options?: {requestHandler: Handler}): TempoApiOptions {
   return {
-    apiVersion: actualOptions.apiVersion || '3',
-    bearerToken: actualOptions.bearer || 'sometoken',
-    host: actualOptions.host || 'tempo.somehost.com',
-    intermediatePath: actualOptions.intermediatePath,
-    port: actualOptions.port || '8080',
-    protocol: actualOptions.protocol || 'http',
-    requestHandler: actualOptions.requestHandler || undefined,
-    timeout: actualOptions.timeout || null
+    apiVersion: '3',
+    bearerToken: 'sometoken',
+    host: 'tempo.somehost.com',
+    port: '8080',
+    protocol: 'http',
+    requestHandler: options?.requestHandler,
   };
 }
 
 describe('TempoApi', () => {
   describe('Constructor', () => {
     const tempo = new TempoApi(getMockOptions());
+    expect(tempo).toBeTruthy();
   });
 
   describe('Collections can be accessed', () => {
     it('Expect mocked data to be returned', async () => {
       const dummyApiResponse = { someSample: '...data to expect!' };
 
-      const dummyRequestHandler = {
-        doRequest: async () => dummyApiResponse
+      const dummyRequestHandler: Handler = {
+        httpClient: async (requestConfig: RequestConfig) => requestConfig,
+        doRequest: async () => dummyApiResponse,
       };
       const tempo = new TempoApi(
         getMockOptions({
-          requestHandler: dummyRequestHandler
-        })
+          requestHandler: dummyRequestHandler,
+        }),
       );
 
-      let result: any;
-
-      result = await tempo.accountCategories.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.accountCategoryTypes.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.accountLinks.getAccountLink('123');
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.accounts.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.customers.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.periods.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.plans.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.programs.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.roles.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.teamLinks.getForProject('ABC');
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.teamMemberships.getTeamMembership('123');
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.teams.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.timesheetApprovals.getWaiting();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.userSchedule.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.workAttributes.get();
-      expect(result).toBe(dummyApiResponse);
-      result = await tempo.worklogs.get();
-      expect(result).toBe(dummyApiResponse);
+      expect(await tempo.accountCategories.get()).toBe(dummyApiResponse);
+      expect(await tempo.accountCategoryTypes.get()).toBe(dummyApiResponse);
+      expect(await tempo.accountLinks.getAccountLink('123')).toBe(dummyApiResponse);
+      expect(await tempo.accounts.get()).toBe(dummyApiResponse);
+      expect(await tempo.customers.get()).toBe(dummyApiResponse);
+      expect(await tempo.periods.get()).toBe(dummyApiResponse);
+      expect(await tempo.plans.get()).toBe(dummyApiResponse);
+      expect(await tempo.programs.get()).toBe(dummyApiResponse);
+      expect(await tempo.roles.get()).toBe(dummyApiResponse);
+      expect(await tempo.teamLinks.getForProject('ABC')).toBe(dummyApiResponse);
+      expect(await tempo.teamMemberships.getTeamMembership('123')).toBe(dummyApiResponse);
+      expect(await tempo.teams.get()).toBe(dummyApiResponse);
+      expect(await tempo.timesheetApprovals.getWaiting()).toBe(dummyApiResponse);
+      expect(await tempo.userSchedule.get()).toBe(dummyApiResponse);
+      expect(await tempo.workAttributes.get()).toBe(dummyApiResponse);
+      expect(await tempo.worklogs.get()).toBe(dummyApiResponse);
     });
   });
 });

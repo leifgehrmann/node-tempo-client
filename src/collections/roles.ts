@@ -1,36 +1,36 @@
-import { IRole } from '../requestTypes';
-import { IResultSetResponse, IRoleWithDefaultResponse } from '../responseTypes';
+import { Role } from '../requestTypes';
+import { ResultSetResponse, RoleWithDefaultResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Roles extends Collection {
-  public async get(): Promise<IResultSetResponse<IRoleWithDefaultResponse>> {
-    return await this.createAndSendRequest(`/roles`);
+  public async get(): Promise<ResultSetResponse<RoleWithDefaultResponse>> {
+    return this.createAndSendRequest('/roles');
   }
 
-  public async post(role: IRole): Promise<IRoleWithDefaultResponse> {
-    return await this.createAndSendRequest(`/roles`, {
+  public async post(role: Role): Promise<RoleWithDefaultResponse> {
+    return this.createAndSendRequest('/roles', {
       body: role,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
-  public async getRole(id: string): Promise<IRoleWithDefaultResponse> {
-    return await this.createAndSendRequest(`/roles/${id}`);
+  public async getRole(id: string): Promise<RoleWithDefaultResponse> {
+    return this.createAndSendRequest(`/roles/${id}`);
   }
 
   public async putRole(
     id: string,
-    role: IRole
-  ): Promise<IRoleWithDefaultResponse> {
-    return await this.createAndSendRequest(`/roles/${id}`, {
+    role: Role,
+  ): Promise<RoleWithDefaultResponse> {
+    return this.createAndSendRequest(`/roles/${id}`, {
       body: role,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteRole(id: string): Promise<void> {
     await this.createAndSendRequest(`/roles/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 }

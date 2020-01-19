@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { IHttpClient } from './iHttpClient';
-import { IRequestConfig } from './iRequestConfig';
+import axios, { AxiosAdapter } from 'axios';
+import { HttpClient } from './httpClient';
+import { RequestConfig } from './requestConfig';
 
-const axiosHttpClient: IHttpClient = async (requestConfig: IRequestConfig) => {
+const axiosHttpClient: HttpClient = async (requestConfig: RequestConfig) => {
   const response = await axios({
-    adapter: requestConfig.adapter,
+    adapter: requestConfig.adapter as AxiosAdapter,
     data: requestConfig.body,
     headers: requestConfig.headers,
     method: requestConfig.method,
     timeout: requestConfig.timeout,
-    url: requestConfig.url
+    url: requestConfig.url,
   });
   return response.data;
 };

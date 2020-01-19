@@ -21,7 +21,7 @@ describe('Roles', () => {
     it('getRole hits proper url', async () => {
       const result = await mockUrlCall.call('getRole', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/roles/someId'
+        'http://tempo.somehost.com:8080/core/3/roles/someId',
       );
     });
 
@@ -29,7 +29,7 @@ describe('Roles', () => {
       const body = {};
       const result = await mockUrlCall.call('putRole', ['someId', body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/roles/someId'
+        'http://tempo.somehost.com:8080/core/3/roles/someId',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
@@ -38,7 +38,7 @@ describe('Roles', () => {
     it('deleteRole hits proper url', async () => {
       const result = await mockUrlCall.call('deleteRole', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/roles/someId'
+        'http://tempo.somehost.com:8080/core/3/roles/someId',
       );
       expect(result.method).toEqual('DELETE');
     });

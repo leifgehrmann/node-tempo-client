@@ -21,7 +21,7 @@ describe('Teams', () => {
     it('getTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getTeam', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId'
+        'http://tempo.somehost.com:8080/core/3/teams/someId',
       );
     });
 
@@ -29,7 +29,7 @@ describe('Teams', () => {
       const body = {};
       const result = await mockUrlCall.call('putTeam', ['someId', body]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId'
+        'http://tempo.somehost.com:8080/core/3/teams/someId',
       );
       expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
@@ -38,7 +38,7 @@ describe('Teams', () => {
     it('deleteTeam hits proper url', async () => {
       const result = await mockUrlCall.call('deleteTeam', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId'
+        'http://tempo.somehost.com:8080/core/3/teams/someId',
       );
       expect(result.method).toEqual('DELETE');
     });
@@ -46,53 +46,53 @@ describe('Teams', () => {
     it('getTeamLinksForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getTeamLinksForTeam', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/links'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/links',
       );
     });
 
     it('getMembersForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getMembersForTeam', ['someId']);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/members'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/members',
       );
     });
 
     it('getMemberForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getMemberForTeam', [
         'someId',
-        'someAccountId'
+        'someAccountId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId',
       );
     });
 
     it('getMemberMembershipsForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getMemberMembershipsForTeam', [
         'someId',
-        'someAccountId'
+        'someAccountId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId/memberships'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/members/someAccountId/memberships',
       );
     });
 
     it('getPermissionsForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getPermissionsForTeam', [
-        'someId'
+        'someId',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/permissions'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/permissions',
       );
     });
 
     it('getPermissionForTeam hits proper url', async () => {
       const result = await mockUrlCall.call('getPermissionForTeam', [
         'someId',
-        'someKey'
+        'someKey',
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/teams/someId/permissions/someKey'
+        'http://tempo.somehost.com:8080/core/3/teams/someId/permissions/someKey',
       );
     });
   });

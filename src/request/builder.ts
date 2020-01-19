@@ -1,31 +1,36 @@
 import { stringify as queryStringify } from 'querystring';
-import { IRequestBaseConfig, IRequestConfig, Method } from './iRequestConfig';
+import { RequestBaseConfig, RequestConfig, Method } from './requestConfig';
 
-interface IRequestBuilderConfig {
+interface RequestBuilderConfig {
   port?: string;
   timeout?: number;
-  protocol: string;
+  protocol?: string;
   host: string;
   apiVersion: string;
   intermediatePath?: string;
   bearerToken?: string;
 }
 
-interface IUrlOptions {
+interface UrlOptions {
   pathname: string;
-  query?: { [key: string]: string };
+  query?: { [key: string]: (number|string|string[]) };
   intermediatePath?: string;
 }
 
 export default class Builder {
   public readonly protocol: string;
-  public readonly port?: string;
-  public readonly host: string;
-  public readonly apiVersion: string;
-  public readonly intermediatePath?: string;
-  public readonly baseOptions: IRequestBaseConfig;
 
-  public constructor(options: IRequestBuilderConfig) {
+  public readonly port?: string;
+
+  public readonly host: string;
+
+  public readonly apiVersion: string;
+
+  public readonly intermediatePath?: string;
+
+  public readonly baseOptions: RequestBaseConfig;
+
+  public constructor(options: RequestBuilderConfig) {
     this.protocol = options.protocol || 'https';
     this.intermediatePath = options.intermediatePath;
     this.port = options.port;
@@ -35,7 +40,7 @@ export default class Builder {
 
     if (options.bearerToken) {
       this.baseOptions.headers = {
-        Authorization: `Bearer ${options.bearerToken}`
+        Authorization: `Bearer ${options.bearerToken}`,
       };
     }
 
@@ -46,17 +51,17 @@ export default class Builder {
 
   public buildRequestConfig(
     url: string,
-    { method, body }: { method?: Method; body?: any } = {}
-  ): IRequestConfig {
+    { method, body }: { method?: Method; body?: object } = {},
+  ): RequestConfig {
     return {
       body,
       method: method || 'GET',
       url,
-      ...this.baseOptions
+      ...this.baseOptions,
     };
   }
 
-  public buildUrl({ pathname, query, intermediatePath }: IUrlOptions) {
+  public buildUrl({ pathname, query, intermediatePath }: UrlOptions): string {
     const intermediateToUse = this.intermediatePath || intermediatePath;
     const tempPath = intermediateToUse || `/core/${this.apiVersion}`;
     const url = new URL('https://example.com');

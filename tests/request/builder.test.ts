@@ -1,18 +1,27 @@
 import RequestBuilder from '../../src/request/builder';
 
-function getOptions(options?: any) {
+interface RequestBuilderConfig {
+  port?: string;
+  timeout?: number;
+  protocol?: string;
+  host: string;
+  apiVersion: string;
+  intermediatePath?: string;
+  bearerToken?: string;
+}
+
+function getOptions(options?: Partial<RequestBuilderConfig>): RequestBuilderConfig {
   const actualOptions = options || {};
   return {
     apiVersion: actualOptions.apiVersion || '3',
-    bearerToken: actualOptions.hasOwnProperty('bearerToken')
+    bearerToken: 'bearerToken' in actualOptions
       ? actualOptions.bearerToken
       : 'someToken',
     host: actualOptions.host || 'tempo.somehost.com',
     intermediatePath: actualOptions.intermediatePath,
     port: actualOptions.port,
     protocol: actualOptions.protocol,
-    request: actualOptions.request,
-    timeout: actualOptions.timeout || null
+    timeout: actualOptions.timeout,
   };
 }
 
@@ -21,13 +30,13 @@ describe('RequestBuilder', () => {
     it('Constructor functions properly', () => {
       const builder = new RequestBuilder(
         getOptions({
-          timeout: 3000
-        })
+          timeout: 3000,
+        }),
       );
 
       expect(builder.host).toEqual('tempo.somehost.com');
       expect(builder.baseOptions.headers).toEqual({
-        Authorization: `Bearer someToken`
+        Authorization: 'Bearer someToken',
       });
       expect(builder.baseOptions.timeout).toEqual(3000);
       expect(builder.apiVersion).toEqual('3');
@@ -40,7 +49,7 @@ describe('RequestBuilder', () => {
 
       // Not having a bearerToken means no base auth headers are set
       const handlerWithNoBearerToken = new RequestBuilder(
-        getOptions({ bearerToken: undefined, timeout: undefined })
+        getOptions({ bearerToken: undefined, timeout: undefined }),
       );
       expect(handlerWithNoBearerToken.baseOptions).toEqual({});
       expect(handlerWithNoBearerToken.baseOptions.headers).toEqual(undefined);
@@ -51,22 +60,12 @@ describe('RequestBuilder', () => {
       const builder = new RequestBuilder(
         getOptions({
           protocol: 'http',
-          port: '80'
-        })
+          port: '80',
+        }),
       );
 
       expect(builder.protocol).toEqual('http');
       expect(builder.port).toEqual('80');
-    });
-
-    it('Port is nullable', () => {
-      const builder = new RequestBuilder(
-        getOptions({
-          port: null
-        })
-      );
-
-      expect(builder.port).toEqual(null);
     });
   });
 
@@ -82,7 +81,7 @@ describe('RequestBuilder', () => {
     it('Sets method based on options', () => {
       const builder = new RequestBuilder(getOptions());
       const requestHeader = builder.buildRequestConfig('https://example.com', {
-        method: 'DELETE'
+        method: 'DELETE',
       });
       expect(requestHeader.method).toEqual('DELETE');
     });
@@ -93,25 +92,25 @@ describe('RequestBuilder', () => {
       const builder = new RequestBuilder(getOptions());
       const uri = builder.buildUrl({
         pathname: '/collection/selector',
-        query: { queryKey: 'queryValue' }
+        query: { queryKey: 'queryValue' },
       });
       expect(uri).toEqual(
-        'https://tempo.somehost.com/core/3/collection/selector?queryKey=queryValue'
+        'https://tempo.somehost.com/core/3/collection/selector?queryKey=queryValue',
       );
     });
 
     it('Sets port correctly', () => {
       const builder = new RequestBuilder(getOptions({ port: '8080' }));
       const uri = builder.buildUrl({
-        pathname: '/a/b'
+        pathname: '/a/b',
       });
       expect(uri).toEqual('https://tempo.somehost.com:8080/core/3/a/b');
     });
 
-    it('Sets port correctly if null', () => {
-      const builder = new RequestBuilder(getOptions({ port: null }));
+    it('Sets port correctly if undefined', () => {
+      const builder = new RequestBuilder(getOptions());
       const uri = builder.buildUrl({
-        pathname: '/a/b'
+        pathname: '/a/b',
       });
       expect(uri).toEqual('https://tempo.somehost.com/core/3/a/b');
     });
@@ -120,7 +119,7 @@ describe('RequestBuilder', () => {
       const builder = new RequestBuilder(getOptions());
       const uri = builder.buildUrl({
         pathname: '/a/b',
-        intermediatePath: '/myCustomPath'
+        intermediatePath: '/myCustomPath',
       });
       expect(uri).toEqual('https://tempo.somehost.com/myCustomPath/a/b');
     });
@@ -129,10 +128,10 @@ describe('RequestBuilder', () => {
       const builder = new RequestBuilder(getOptions());
       const uri = builder.buildUrl({
         pathname: '/a/b',
-        query: { x: 'hello world' } // We do not want spaces to be encoded as %20
+        query: { x: 'hello world' }, // We do not want spaces to be encoded as %20
       });
       expect(uri).toEqual(
-        'https://tempo.somehost.com/core/3/a/b?x=hello world'
+        'https://tempo.somehost.com/core/3/a/b?x=hello world',
       );
     });
   });

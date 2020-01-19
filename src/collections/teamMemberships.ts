@@ -1,36 +1,36 @@
-import { ITeamMembership, ITeamMembershipNew } from '../requestTypes';
-import { ITeamMemberMembershipFullResponse } from '../responseTypes';
+import { TeamMembership, TeamMembershipNew } from '../requestTypes';
+import { TeamMemberMembershipFullResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TeamMemberships extends Collection {
   public async post(
-    teamMembership: ITeamMembershipNew
-  ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships`, {
+    teamMembership: TeamMembershipNew,
+  ): Promise<TeamMemberMembershipFullResponse> {
+    return this.createAndSendRequest('/team-memberships', {
       body: teamMembership,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async getTeamMembership(
-    id: string
-  ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships/${id}`);
+    id: string,
+  ): Promise<TeamMemberMembershipFullResponse> {
+    return this.createAndSendRequest(`/team-memberships/${id}`);
   }
 
   public async putTeamMembership(
     id: string,
-    teamMembership: ITeamMembership
-  ): Promise<ITeamMemberMembershipFullResponse> {
-    return await this.createAndSendRequest(`/team-memberships/${id}`, {
+    teamMembership: TeamMembership,
+  ): Promise<TeamMemberMembershipFullResponse> {
+    return this.createAndSendRequest(`/team-memberships/${id}`, {
       body: teamMembership,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteTeamMembership(id: string): Promise<void> {
     await this.createAndSendRequest(`/team-memberships/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 }

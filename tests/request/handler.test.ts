@@ -1,25 +1,23 @@
-import requestHandler from '../../src/request/handler';
-import { IRequestConfig } from '../../src/request/iRequestConfig';
+import RequestHandler from '../../src/request/handler';
+import { RequestConfig } from '../../src/request/requestConfig';
 
 describe('requestHandler', () => {
   describe('Constructor Tests', () => {
     it('Constructor sets default httpClient', () => {
-      const handler = new requestHandler();
+      const handler = new RequestHandler();
       expect(handler.httpClient).toBeTruthy();
     });
 
     it('Constructor sets httpClient from parameters', async () => {
       const fakeHttpResponse = 'my fake HTTP Response';
-      const fakeHttpClient = async () => {
-        return fakeHttpResponse;
-      };
+      const fakeHttpClient = async (): Promise<string> => fakeHttpResponse;
 
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
+      const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
       expect(handler.httpClient).toBeTruthy();
       const result = await handler.httpClient({
         url: 'https://example.com',
-        method: 'GET'
+        method: 'GET',
       });
       expect(result).toEqual(fakeHttpResponse);
     });
@@ -27,22 +25,22 @@ describe('requestHandler', () => {
 
   describe('doRequest', () => {
     it('Passes requestConfig into httpClient', async () => {
-      const fakeHttpClient = async (requestConfig: IRequestConfig) => {
-        return requestConfig;
-      };
+      const fakeHttpClient = async (
+        requestConfig: RequestConfig,
+      ): Promise<RequestConfig> => requestConfig;
 
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
+      const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
-      const requestConfig: IRequestConfig = {
+      const requestConfig: RequestConfig = {
         url: 'https://example.com',
         method: 'POST',
         body: {
-          hello: 'world'
+          hello: 'world',
         },
         timeout: 1234,
         headers: {
-          Authoization: 'Bearer myBearerToken'
-        }
+          Authorization: 'Bearer myBearerToken',
+        },
       };
       const result = await handler.doRequest(requestConfig);
 
@@ -50,59 +48,27 @@ describe('requestHandler', () => {
     });
 
     it('Returns falsey response if falsey', async () => {
-      const fakeHttpClient = async () => {
-        return undefined;
-      };
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
+      const fakeHttpClient = async (): Promise<undefined> => undefined;
+      const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
       const mockResponse = await handler.doRequest({
         url: 'https://example.com',
-        method: 'GET'
+        method: 'GET',
       });
       expect(mockResponse).toEqual(undefined);
     });
 
     it('Throws error if response throws error', async () => {
       expect.assertions(1);
-      const fakeHttpClient = async () => {
-        throw new Error('Request error');
+      const fakeHttpClient = async (): Promise<never> => {
+        throw new Error('Request failed with status code 404');
       };
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
+      const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
       try {
         await handler.doRequest({ url: 'https://example.com', method: 'GET' });
       } catch (e) {
-        expect(e.message).toMatch('Request error');
-      }
-    });
-
-    it('Throws unknown error if error messages length is 0', async () => {
-      expect.assertions(1);
-      const fakeHttpClient = async () => {
-        return { errors: [] };
-      };
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
-
-      try {
-        await handler.doRequest({ url: 'https://example.com', method: 'GET' });
-      } catch (e) {
-        expect(e.message).toMatch('Unknown error');
-      }
-    });
-
-    it('Throws error if error messages length is at least 1', async () => {
-      expect.assertions(1);
-      const fakeHttpClient = async () => {
-        return {
-          errors: [{ message: 'Something went wrong!' }]
-        };
-      };
-      const handler = new requestHandler({ httpClient: fakeHttpClient });
-
-      try {
-        await handler.doRequest({ url: 'https://example.com', method: 'GET' });
-      } catch (e) {
-        expect(e.message).toMatch('Something went wrong!');
+        expect(e.message).toMatch('Request failed with status code 404');
       }
     });
   });

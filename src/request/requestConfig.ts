@@ -14,14 +14,16 @@ export type Method =
   | 'patch'
   | 'PATCH';
 
-export interface IRequestBaseConfig {
-  adapter?: (config: any) => Promise<any>;
+export interface RequestBaseConfig {
+  adapter?: (config: RequestConfig) => Promise<object>;
   timeout?: number;
-  headers?: any;
+  headers?: {
+    Authorization: string;
+  };
 }
 
-export interface IRequestConfig extends IRequestBaseConfig {
+export interface RequestConfig extends RequestBaseConfig {
   url: string;
   method: Method;
-  body?: any;
+  body?: object;
 }

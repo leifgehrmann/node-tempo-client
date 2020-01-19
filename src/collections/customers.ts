@@ -1,51 +1,51 @@
 import * as queryOptions from '../queryOptionTypes';
-import { ICustomer } from '../requestTypes';
+import { Customer } from '../requestTypes';
 import {
-  IAccountResponse,
-  ICustomerResponse,
-  IResultSetResponse
+  AccountResponse,
+  CustomerResponse,
+  ResultSetResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class Customers extends Collection {
-  public async post(customer: ICustomer): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers`, {
+  public async post(customer: Customer): Promise<CustomerResponse> {
+    return this.createAndSendRequest('/customers', {
       body: customer,
-      method: 'POST'
+      method: 'POST',
     });
   }
 
   public async get(
-    options?: queryOptions.IId
-  ): Promise<IResultSetResponse<ICustomerResponse>> {
-    return await this.createAndSendRequest(`/customers`, {
-      query: options
+    options?: queryOptions.Id,
+  ): Promise<ResultSetResponse<CustomerResponse>> {
+    return this.createAndSendRequest('/customers', {
+      query: options,
     });
   }
 
-  public async getCustomer(key: string): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers/${key}`);
+  public async getCustomer(key: string): Promise<CustomerResponse> {
+    return this.createAndSendRequest(`/customers/${key}`);
   }
 
   public async putCustomer(
     key: string,
-    customer: ICustomer
-  ): Promise<ICustomerResponse> {
-    return await this.createAndSendRequest(`/customers/${key}`, {
+    customer: Customer,
+  ): Promise<CustomerResponse> {
+    return this.createAndSendRequest(`/customers/${key}`, {
       body: customer,
-      method: 'PUT'
+      method: 'PUT',
     });
   }
 
   public async deleteCustomer(key: string): Promise<void> {
     await this.createAndSendRequest(`/customers/${key}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
   }
 
   public async getAccountsForCustomer(
-    key: string
-  ): Promise<IResultSetResponse<IAccountResponse>> {
-    return await this.createAndSendRequest(`/customers/${key}/accounts`);
+    key: string,
+  ): Promise<ResultSetResponse<AccountResponse>> {
+    return this.createAndSendRequest(`/customers/${key}/accounts`);
   }
 }

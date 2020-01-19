@@ -8,8 +8,8 @@ describe('Tempo REST API Documentation', () => {
     const response = await axios.get(
       'https://tempo-io.github.io/tempo-api-docs/',
       {
-        responseType: 'text'
-      }
+        responseType: 'text',
+      },
     );
     expect(response.data).toMatchSnapshot();
   });

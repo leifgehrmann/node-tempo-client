@@ -1,29 +1,18 @@
 import axiosHttpClient from './axiosHttpClient';
-import { IHttpClient } from './iHttpClient';
-import { IRequestConfig } from './iRequestConfig';
+import { HttpClient } from './httpClient';
+import { RequestConfig } from './requestConfig';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Response = any;
 
 export default class Handler {
-  public readonly httpClient: IHttpClient;
+  public readonly httpClient: HttpClient;
 
-  public constructor(options: { httpClient?: IHttpClient } = {}) {
+  public constructor(options: { httpClient?: HttpClient } = {}) {
     this.httpClient = options.httpClient || axiosHttpClient; // To mock requests
   }
 
-  public async doRequest(requestConfig: IRequestConfig) {
-    const response = await this.httpClient(requestConfig);
-
-    if (response) {
-      if (Array.isArray(response.errors)) {
-        if (response.errors.length > 0) {
-          const messages = response.errors.map(
-            (error: { message: string }) => error.message
-          );
-          throw new Error(messages.join(', '));
-        } else {
-          throw new Error('Unknown error');
-        }
-      }
-    }
-    return response;
+  public async doRequest(requestConfig: RequestConfig): Promise<Response> {
+    return this.httpClient(requestConfig);
   }
 }
