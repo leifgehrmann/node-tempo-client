@@ -11,5 +11,6 @@ node_js:
   - "node"
 scripts:
   - npm install codecov -g
+  - npm test
 after_success:
   - codecov
