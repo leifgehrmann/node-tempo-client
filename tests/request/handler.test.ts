@@ -61,40 +61,14 @@ describe('requestHandler', () => {
     it('Throws error if response throws error', async () => {
       expect.assertions(1);
       const fakeHttpClient = async (): Promise<never> => {
-        throw new Error('Request error');
+        throw new Error('Request failed with status code 404');
       };
       const handler = new RequestHandler({ httpClient: fakeHttpClient });
 
       try {
         await handler.doRequest({ url: 'https://example.com', method: 'GET' });
       } catch (e) {
-        expect(e.message).toMatch('Request error');
-      }
-    });
-
-    it('Throws unknown error if error messages length is 0', async () => {
-      expect.assertions(1);
-      const fakeHttpClient = async (): Promise<object> => ({ errors: [] });
-      const handler = new RequestHandler({ httpClient: fakeHttpClient });
-
-      try {
-        await handler.doRequest({ url: 'https://example.com', method: 'GET' });
-      } catch (e) {
-        expect(e.message).toMatch('Unknown error');
-      }
-    });
-
-    it('Throws error if error messages length is at least 1', async () => {
-      expect.assertions(1);
-      const fakeHttpClient = async (): Promise<object> => ({
-        errors: [{ message: 'Something went wrong!' }],
-      });
-      const handler = new RequestHandler({ httpClient: fakeHttpClient });
-
-      try {
-        await handler.doRequest({ url: 'https://example.com', method: 'GET' });
-      } catch (e) {
-        expect(e.message).toMatch('Something went wrong!');
+        expect(e.message).toMatch('Request failed with status code 404');
       }
     });
   });
