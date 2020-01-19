@@ -1,13 +1,17 @@
-export interface Pagination {
+export interface StringMap {
+  [s: string]: any;
+}
+
+export interface Pagination extends StringMap {
   offset: string;
   limit: string;
 }
 
-export interface UpdatedFrom {
+export interface UpdatedFrom extends StringMap {
   updatedFrom: string;
 }
 
-export interface DateRange {
+export interface DateRange extends StringMap {
   from: string;
   to: string;
 }
@@ -16,18 +20,18 @@ export interface Issues {
   issue: string[];
 }
 
-export interface Status {
+export interface Status extends StringMap {
   status: string;
 }
 
-export interface Id {
+export interface Id extends StringMap {
   id: number;
 }
 
-export interface AssigneeType {
+export interface AssigneeType extends StringMap {
   assigneeType: string;
 }
 
-export interface PlanItemType {
+export interface PlanItemType extends StringMap {
   planItemType: string;
 }
