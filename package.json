@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/leifgehrmann/node-tempo-client#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.25",
-    "@types/node": "^13.1.6",
+    "@types/jest": "^24.9.0",
+    "@types/node": "^13.1.8",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "codecov": "^3.6.1",
     "eslint": "^6.8.0",
@@ -43,8 +43,8 @@
     "eslint-plugin-import": "^2.20.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.3.0",
-    "typedoc": "^0.16.2",
-    "typescript": "^3.7.4"
+    "typedoc": "^0.16.7",
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "axios": "^0.19.1"
