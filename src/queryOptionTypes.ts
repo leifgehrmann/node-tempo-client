@@ -1,5 +1,7 @@
 export interface StringMap {
-  [s: string]: any;
+  // Needs to be 'any' for it to be compatible with UrlOptions in builder.ts
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }
 
 export interface Pagination extends StringMap {

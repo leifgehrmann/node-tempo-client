@@ -28,7 +28,7 @@ export default abstract class Collection {
       method,
       body,
     }: {
-      query?: { [key: string]: string };
+      query?: { [key: string]: number|string|string[] };
       method?: Method;
       body?: object;
     } = {},
