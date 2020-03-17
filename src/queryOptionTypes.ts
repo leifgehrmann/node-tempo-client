@@ -37,3 +37,7 @@ export interface AssigneeType extends StringMap {
 export interface PlanItemType extends StringMap {
   planItemType: string;
 }
+
+export interface Year extends StringMap {
+  year: number;
+}

@@ -3,6 +3,7 @@ import AccountCategoryTypes from './collections/accountCategoryTypes';
 import AccountLinks from './collections/accountLinks';
 import Accounts from './collections/accounts';
 import Customers from './collections/customers';
+import HolidaySchemes from './collections/holidaySchemes';
 import Periods from './collections/periods';
 import Plans from './collections/plans';
 import Programs from './collections/programs';
@@ -13,6 +14,7 @@ import Teams from './collections/teams';
 import TimesheetApprovals from './collections/timesheetApprovals';
 import UserSchedule from './collections/userSchedule';
 import WorkAttributes from './collections/workAttributes';
+import WorkloadSchemes from './collections/workloadSchemes';
 import Worklogs from './collections/worklogs';
 import * as QueryOptionTypes from './queryOptionTypes';
 import RequestBuilder from './request/builder';
@@ -46,6 +48,8 @@ export default class TempoApi {
 
   public readonly customers: Customers;
 
+  public readonly holidaySchemes: HolidaySchemes;
+
   public readonly periods: Periods;
 
   public readonly plans: Plans;
@@ -66,6 +70,8 @@ export default class TempoApi {
 
   public readonly workAttributes: WorkAttributes;
 
+  public readonly workloadSchemes: WorkloadSchemes;
+
   public readonly worklogs: Worklogs;
 
   constructor(options: TempoApiOptions) {
@@ -79,6 +85,7 @@ export default class TempoApi {
     this.accountLinks = new AccountLinks(request);
     this.accounts = new Accounts(request);
     this.customers = new Customers(request);
+    this.holidaySchemes = new HolidaySchemes(request);
     this.periods = new Periods(request);
     this.plans = new Plans(request);
     this.programs = new Programs(request);
@@ -89,6 +96,7 @@ export default class TempoApi {
     this.timesheetApprovals = new TimesheetApprovals(request);
     this.userSchedule = new UserSchedule(request);
     this.workAttributes = new WorkAttributes(request);
+    this.workloadSchemes = new WorkloadSchemes(request);
     this.worklogs = new Worklogs(request);
   }
 }

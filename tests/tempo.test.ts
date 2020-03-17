@@ -38,6 +38,7 @@ describe('TempoApi', () => {
       expect(await tempo.accountLinks.getAccountLink('123')).toBe(dummyApiResponse);
       expect(await tempo.accounts.get()).toBe(dummyApiResponse);
       expect(await tempo.customers.get()).toBe(dummyApiResponse);
+      expect(await tempo.holidaySchemes.get()).toBe(dummyApiResponse);
       expect(await tempo.periods.get()).toBe(dummyApiResponse);
       expect(await tempo.plans.get()).toBe(dummyApiResponse);
       expect(await tempo.programs.get()).toBe(dummyApiResponse);
@@ -48,6 +49,7 @@ describe('TempoApi', () => {
       expect(await tempo.timesheetApprovals.getWaiting()).toBe(dummyApiResponse);
       expect(await tempo.userSchedule.get()).toBe(dummyApiResponse);
       expect(await tempo.workAttributes.get()).toBe(dummyApiResponse);
+      expect(await tempo.workloadSchemes.get()).toBe(dummyApiResponse);
       expect(await tempo.worklogs.get()).toBe(dummyApiResponse);
     });
   });

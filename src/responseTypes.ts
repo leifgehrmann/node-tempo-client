@@ -322,3 +322,34 @@ export interface ProgramResponse {
     values: TeamRefResponse[];
   };
 }
+
+export interface HolidaySchemeResponse {
+  self: string;
+  id: number;
+  name: string;
+  description?: string;
+  defaultScheme: boolean;
+  memberCount: number;
+}
+
+export interface HolidayResponse {
+  name: string;
+  description?: string;
+  durationSeconds: number;
+  date: string;
+}
+
+export interface WorkloadSchemeResponse {
+  self: string;
+  id: number;
+  name: string;
+  description?: string;
+  defaultScheme: boolean;
+  memberCount: number;
+  days: WorkloadSchemeDayResponse[];
+}
+
+export interface WorkloadSchemeDayResponse {
+  day: string;
+  requiredSeconds: number;
+}
