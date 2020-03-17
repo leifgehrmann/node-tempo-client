@@ -81,6 +81,8 @@ export interface PlanResponse {
   id: number;
   startDate: string;
   endDate: string;
+  secondsPerDay: number;
+  includeNonWorkingDays: boolean;
   description?: string;
   createdAt: string;
   updatedAt: string;
