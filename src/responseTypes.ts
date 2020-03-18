@@ -81,6 +81,8 @@ export interface PlanResponse {
   id: number;
   startDate: string;
   endDate: string;
+  secondsPerDay: number;
+  includeNonWorkingDays: boolean;
   description?: string;
   createdAt: string;
   updatedAt: string;
@@ -321,4 +323,35 @@ export interface ProgramResponse {
     self: string;
     values: TeamRefResponse[];
   };
+}
+
+export interface HolidaySchemeResponse {
+  self: string;
+  id: number;
+  name: string;
+  description?: string;
+  defaultScheme: boolean;
+  memberCount: number;
+}
+
+export interface HolidayResponse {
+  name: string;
+  description?: string;
+  durationSeconds: number;
+  date: string;
+}
+
+export interface WorkloadSchemeResponse {
+  self: string;
+  id: number;
+  name: string;
+  description?: string;
+  defaultScheme: boolean;
+  memberCount: number;
+  days: WorkloadSchemeDayResponse[];
+}
+
+export interface WorkloadSchemeDayResponse {
+  day: string;
+  requiredSeconds: number;
 }
