@@ -35,14 +35,14 @@
   "homepage": "https://github.com/leifgehrmann/node-tempo-client#readme",
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.11.1",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@types/node": "^13.13.0",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
     "codecov": "^3.6.5",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-plugin-import": "^2.20.2",
-    "jest": "^25.3.0",
-    "ts-jest": "^25.3.1",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
     "typedoc": "^0.17.4",
     "typescript": "^3.8.3"
   },
