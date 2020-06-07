@@ -4,8 +4,8 @@ import { RequestConfig } from '../../src/request/requestConfig';
 interface MockData {
   data: {
     someOtherResponse: string;
-    theOriginalRequestConfig: object;
-    theAxiosRequestConfig: object;
+    theOriginalRequestConfig: RequestConfig;
+    theAxiosRequestConfig: RequestConfig;
   };
 }
 

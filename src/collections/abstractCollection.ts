@@ -1,6 +1,6 @@
 import RequestBuilder from '../request/builder';
 import RequestHandler from '../request/handler';
-import { Method } from '../request/requestConfig';
+import { Body, Method } from '../request/requestConfig';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Response = any;
@@ -30,7 +30,7 @@ export default abstract class Collection {
     }: {
       query?: { [key: string]: number|string|string[] };
       method?: Method;
-      body?: object;
+      body?: Body;
     } = {},
   ): Promise<Response> {
     return this.requestHandler.doRequest(

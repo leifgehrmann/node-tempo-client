@@ -14,8 +14,14 @@ export type Method =
   | 'patch'
   | 'PATCH';
 
+// Generally expected to be an object, see requestTypes.ts
+export type Body = unknown;
+
+// Generally expected to be an object, see responseTypes.ts
+type Response = unknown;
+
 export interface RequestBaseConfig {
-  adapter?: (config: RequestConfig) => Promise<object>;
+  adapter?: (config: RequestConfig) => Promise<Response>;
   timeout?: number;
   headers?: {
     Authorization: string;
@@ -25,5 +31,5 @@ export interface RequestBaseConfig {
 export interface RequestConfig extends RequestBaseConfig {
   url: string;
   method: Method;
-  body?: object;
+  body?: Body;
 }
