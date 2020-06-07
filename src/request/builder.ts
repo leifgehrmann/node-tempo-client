@@ -1,5 +1,7 @@
 import { stringify as queryStringify } from 'querystring';
-import { RequestBaseConfig, RequestConfig, Method } from './requestConfig';
+import {
+  RequestBaseConfig, RequestConfig, Method, Body,
+} from './requestConfig';
 
 interface RequestBuilderConfig {
   port?: string;
@@ -51,7 +53,7 @@ export default class Builder {
 
   public buildRequestConfig(
     url: string,
-    { method, body }: { method?: Method; body?: object } = {},
+    { method, body }: { method?: Method; body?: Body } = {},
   ): RequestConfig {
     return {
       body,

@@ -14,8 +14,12 @@ export type Method =
   | 'patch'
   | 'PATCH';
 
+export type Body = {[key: string]: unknown};
+
+type Response = {[key: string]: unknown};
+
 export interface RequestBaseConfig {
-  adapter?: (config: RequestConfig) => Promise<object>;
+  adapter?: (config: RequestConfig) => Promise<Response>;
   timeout?: number;
   headers?: {
     Authorization: string;
@@ -25,5 +29,5 @@ export interface RequestBaseConfig {
 export interface RequestConfig extends RequestBaseConfig {
   url: string;
   method: Method;
-  body?: object;
+  body?: Body;
 }
