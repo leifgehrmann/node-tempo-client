@@ -14,9 +14,11 @@ export type Method =
   | 'patch'
   | 'PATCH';
 
-export type Body = {[key: string]: unknown};
+// Generally expected to be an object, see requestTypes.ts
+export type Body = unknown;
 
-type Response = {[key: string]: unknown};
+// Generally expected to be an object, see responseTypes.ts
+type Response = unknown;
 
 export interface RequestBaseConfig {
   adapter?: (config: RequestConfig) => Promise<Response>;
