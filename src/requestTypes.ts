@@ -93,11 +93,11 @@ export interface WorklogAttribute {
 export interface Worklog {
   issueKey: string;
   timeSpentSeconds: number;
-  billableSeconds: number;
+  billableSeconds?: number; // Tempo.io documentation is unclear whether this field is required
   startDate: string;
   startTime: string;
   description?: string;
   authorAccountId: string;
-  remainingEstimateSeconds: number;
-  attributes: WorklogAttribute[];
+  remainingEstimateSeconds?: number;
+  attributes?: WorklogAttribute[];
 }
