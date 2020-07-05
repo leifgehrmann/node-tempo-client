@@ -170,7 +170,7 @@ export interface WorkAttributeResponse {
   name: string;
   type: string;
   required: boolean;
-  values: string[];
+  values?: string[];
 }
 
 export interface WorklogResponse {
