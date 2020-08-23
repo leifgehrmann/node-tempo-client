@@ -1,6 +1,6 @@
 {
   "name": "tempo-client",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Wrapper for the Tempo REST API",
   "main": "lib/tempo.js",
   "types": "lib/tempo.d.ts",
