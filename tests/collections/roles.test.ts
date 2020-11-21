@@ -10,6 +10,11 @@ describe('Roles', () => {
       expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/roles');
     });
 
+    it('getDefault hits proper url', async () => {
+      const result = await mockUrlCall.call('getDefault', []);
+      expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/roles/default');
+    });
+
     it('post hits proper url', async () => {
       const body = {};
       const result = await mockUrlCall.call('post', [body]);
