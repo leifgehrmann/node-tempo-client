@@ -42,10 +42,12 @@ describe('Plans', () => {
     });
 
     it('putPlan hits proper url', async () => {
-      const result = await mockUrlCall.call('putPlan', ['someId']);
+      const body = {};
+      const result = await mockUrlCall.call('putPlan', ['someId', body]);
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/plans/someId',
       );
+      expect(result.body).toEqual(body);
       expect(result.method).toEqual('PUT');
     });
 
