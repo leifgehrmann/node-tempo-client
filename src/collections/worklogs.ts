@@ -1,5 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
-import { Worklog, WorklogAttribute, WorklogAttributeValues } from '../requestTypes';
+import { Worklog, WorklogAttributeValue, WorklogAttributeValues } from '../requestTypes';
 import {
   PaginatedResultSetResponse,
   ResultSetResponse,
@@ -50,7 +50,7 @@ export default class Worklogs extends Collection {
 
   public async getWorklogWorkAttributeValues(
     worklogId: string,
-  ): Promise<ResultSetResponse<WorklogAttribute>> {
+  ): Promise<ResultSetResponse<WorklogAttributeValue>> {
     return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values`,
     );
@@ -59,7 +59,7 @@ export default class Worklogs extends Collection {
   public async getWorklogWorkAttributeValuesByKey(
     worklogId: string,
     key: string,
-  ): Promise<WorklogAttribute> {
+  ): Promise<WorklogAttributeValue> {
     return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values/${key}`,
     );

@@ -85,7 +85,7 @@ export interface TimesheetApprovalRequest {
   reviewerAccountId: string;
 }
 
-export interface WorklogAttribute {
+export interface WorklogAttributeValue {
   key: string;
   value: unknown; // Tempo.io documentation defines this as 'any', but not clearly defined
 }
@@ -99,10 +99,10 @@ export interface Worklog {
   description?: string;
   authorAccountId: string;
   remainingEstimateSeconds?: number;
-  attributes?: WorklogAttribute[];
+  attributes?: WorklogAttributeValue[];
 }
 
 export interface WorklogAttributeValues {
   tempoWorklogId: number;
-  attributeValues: WorklogAttribute[];
+  attributeValues: WorklogAttributeValue[];
 }

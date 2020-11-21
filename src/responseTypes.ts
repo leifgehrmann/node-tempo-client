@@ -1,4 +1,4 @@
-import { WorklogAttribute } from './requestTypes';
+import { WorklogAttributeValue } from './requestTypes';
 
 export interface SelfResponse {
   self: string;
@@ -191,7 +191,7 @@ export interface WorklogResponse {
   author: UserResponse;
   attributes: {
     self: string;
-    values: WorklogAttribute[];
+    values: WorklogAttributeValue[];
   };
 }
 
