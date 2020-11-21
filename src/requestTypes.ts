@@ -1,5 +1,3 @@
-import WorkAttributes from './collections/workAttributes';
-
 export interface Account {
   key: string;
   name: string;
