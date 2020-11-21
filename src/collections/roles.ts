@@ -11,13 +11,6 @@ export default class Roles extends Collection {
   }
 
   /**
-   * Retrieve the default role
-   */
-  public async getDefault(): Promise<RoleWithDefaultResponse> {
-    return this.createAndSendRequest('/roles/default');
-  }
-
-  /**
    * Creates a new role
    */
   public async post(role: Role): Promise<RoleWithDefaultResponse> {
@@ -25,6 +18,13 @@ export default class Roles extends Collection {
       body: role,
       method: 'POST',
     });
+  }
+
+  /**
+   * Retrieve the default role
+   */
+  public async getDefault(): Promise<RoleWithDefaultResponse> {
+    return this.createAndSendRequest('/roles/default');
   }
 
   /**
