@@ -1,4 +1,9 @@
-import { WorklogAttribute } from './requestTypes';
+import {
+  Holiday,
+  HolidayScheme,
+  WorkAttribute,
+  WorklogAttributeValue,
+} from './requestTypes';
 
 export interface SelfResponse {
   self: string;
@@ -164,13 +169,8 @@ export interface DayScheduleResponse {
   };
 }
 
-export interface WorkAttributeResponse {
+export interface WorkAttributeResponse extends WorkAttribute {
   self: string;
-  key: string;
-  name: string;
-  type: string;
-  required: boolean;
-  values?: string[];
 }
 
 export interface WorklogResponse {
@@ -191,7 +191,7 @@ export interface WorklogResponse {
   author: UserResponse;
   attributes: {
     self: string;
-    values: WorklogAttribute[];
+    values: WorklogAttributeValue[];
   };
 }
 
@@ -325,20 +325,17 @@ export interface ProgramResponse {
   };
 }
 
-export interface HolidaySchemeResponse {
+export interface HolidayResponse extends Holiday {
   self: string;
   id: number;
-  name: string;
-  description?: string;
-  defaultScheme: boolean;
-  memberCount: number;
+  schemaId: number;
 }
 
-export interface HolidayResponse {
-  name: string;
-  description?: string;
-  durationSeconds: number;
-  date: string;
+export interface HolidaySchemeResponse extends HolidayScheme {
+  self: string;
+  id: number;
+  defaultScheme: boolean;
+  memberCount: number;
 }
 
 export interface WorkloadSchemeResponse {

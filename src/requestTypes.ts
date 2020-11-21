@@ -28,6 +28,19 @@ export interface Customer {
   name: string;
 }
 
+export interface Holiday {
+  type: 'FIXED' | 'FLOATING';
+  name: string;
+  description?: string;
+  durationSeconds: number;
+  date: string;
+}
+
+export interface HolidayScheme {
+  name: string;
+  description?: string;
+}
+
 export interface Plan {
   startDate: string;
   endDate: string;
@@ -85,9 +98,28 @@ export interface TimesheetApprovalRequest {
   reviewerAccountId: string;
 }
 
-export interface WorklogAttribute {
+export interface WorkloadSchemeDay {
+  day: string;
+  requiredSeconds: number;
+}
+
+export interface WorkloadScheme {
+  name: string;
+  description?: string;
+  days: WorkloadSchemeDay[]
+}
+
+export interface WorkAttribute {
   key: string;
-  value: string;
+  name: string;
+  type: 'ACCOUNT' | 'CHECKBOX' | 'INPUT_FIELD' | 'INPUT_NUMERIC' | 'STATIC_LIST';
+  required: boolean; // Tempo.io documentation claims this defaults to false, but is still required
+  values?: string[]; // Only required for 'STATIC_LIST' attribute types
+}
+
+export interface WorklogAttributeValue {
+  key: string;
+  value: unknown; // Tempo.io documentation defines this as 'any', but not clearly defined
 }
 
 export interface Worklog {
@@ -99,5 +131,10 @@ export interface Worklog {
   description?: string;
   authorAccountId: string;
   remainingEstimateSeconds?: number;
-  attributes?: WorklogAttribute[];
+  attributes?: WorklogAttributeValue[];
+}
+
+export interface WorklogAttributeValues {
+  tempoWorklogId: number;
+  attributeValues: WorklogAttributeValue[];
 }

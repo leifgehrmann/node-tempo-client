@@ -18,6 +18,11 @@ describe('Roles', () => {
       expect(result.method).toEqual('POST');
     });
 
+    it('getDefault hits proper url', async () => {
+      const result = await mockUrlCall.call('getDefault', []);
+      expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/roles/default');
+    });
+
     it('getRole hits proper url', async () => {
       const result = await mockUrlCall.call('getRole', ['someId']);
       expect(result.url).toEqual(

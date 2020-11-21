@@ -1,5 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
-import { Worklog, WorklogAttribute } from '../requestTypes';
+import { Worklog, WorklogAttributeValue, WorklogAttributeValues } from '../requestTypes';
 import {
   PaginatedResultSetResponse,
   ResultSetResponse,
@@ -50,7 +50,7 @@ export default class Worklogs extends Collection {
 
   public async getWorklogWorkAttributeValues(
     worklogId: string,
-  ): Promise<ResultSetResponse<WorklogAttribute>> {
+  ): Promise<ResultSetResponse<WorklogAttributeValue>> {
     return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values`,
     );
@@ -59,7 +59,7 @@ export default class Worklogs extends Collection {
   public async getWorklogWorkAttributeValuesByKey(
     worklogId: string,
     key: string,
-  ): Promise<WorklogAttribute> {
+  ): Promise<WorklogAttributeValue> {
     return this.createAndSendRequest(
       `/worklogs/${worklogId}/work-attribute-values/${key}`,
     );
@@ -149,6 +149,18 @@ export default class Worklogs extends Collection {
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
     return this.createAndSendRequest(`/worklogs/issue/${key}`, {
       query: options,
+    });
+  }
+
+  /**
+   * Bulk create work attribute values for worklogs
+   */
+  public async postWorkAttributeValues(
+    worklogAttributeValuesList: WorklogAttributeValues[],
+  ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
+    return this.createAndSendRequest('/worklogs/work-attribute-values', {
+      body: worklogAttributeValuesList,
+      method: 'POST',
     });
   }
 }
