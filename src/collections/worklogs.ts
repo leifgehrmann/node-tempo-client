@@ -1,5 +1,5 @@
 import * as queryOptions from '../queryOptionTypes';
-import { Worklog, WorklogAttribute } from '../requestTypes';
+import { Worklog, WorklogAttribute, WorklogAttributeValues } from '../requestTypes';
 import {
   PaginatedResultSetResponse,
   ResultSetResponse,
@@ -149,6 +149,18 @@ export default class Worklogs extends Collection {
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
     return this.createAndSendRequest(`/worklogs/issue/${key}`, {
       query: options,
+    });
+  }
+
+  /**
+   * Bulk create work attribute values for worklogs
+   */
+  public async postWorkAttributeValues(
+    worklogAttributeValuesList: WorklogAttributeValues[],
+  ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
+    return this.createAndSendRequest('/worklogs/work-attribute-values', {
+      body: worklogAttributeValuesList,
+      method: 'POST',
     });
   }
 }

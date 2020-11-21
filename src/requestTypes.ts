@@ -1,3 +1,5 @@
+import WorkAttributes from './collections/workAttributes';
+
 export interface Account {
   key: string;
   name: string;
@@ -87,7 +89,7 @@ export interface TimesheetApprovalRequest {
 
 export interface WorklogAttribute {
   key: string;
-  value: string;
+  value: unknown; // Tempo.io documentation defines this as 'any', but not clearly defined
 }
 
 export interface Worklog {
@@ -100,4 +102,9 @@ export interface Worklog {
   authorAccountId: string;
   remainingEstimateSeconds?: number;
   attributes?: WorklogAttribute[];
+}
+
+export interface WorklogAttributeValues {
+  tempoWorklogId: number;
+  attributeValues: WorklogAttribute[];
 }
