@@ -85,6 +85,17 @@ export interface TimesheetApprovalRequest {
   reviewerAccountId: string;
 }
 
+export interface WorkloadSchemeDay {
+  day: string;
+  requiredSeconds: number;
+}
+
+export interface WorkloadScheme {
+  name: string;
+  description: string;
+  days: WorkloadSchemeDay[]
+}
+
 export interface WorkAttribute {
   key: string;
   name: string;
