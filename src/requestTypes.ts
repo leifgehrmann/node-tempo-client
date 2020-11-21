@@ -92,7 +92,7 @@ export interface WorkloadSchemeDay {
 
 export interface WorkloadScheme {
   name: string;
-  description: string;
+  description?: string;
   days: WorkloadSchemeDay[]
 }
 
