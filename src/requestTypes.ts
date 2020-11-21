@@ -28,6 +28,19 @@ export interface Customer {
   name: string;
 }
 
+export interface Holiday {
+  type: 'FIXED' | 'FLOATING';
+  name: string;
+  description?: string;
+  durationSeconds: number;
+  date: string;
+}
+
+export interface HolidayScheme {
+  name: string;
+  description?: string;
+}
+
 export interface Plan {
   startDate: string;
   endDate: string;
