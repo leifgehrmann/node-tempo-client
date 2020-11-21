@@ -85,6 +85,14 @@ export interface TimesheetApprovalRequest {
   reviewerAccountId: string;
 }
 
+export interface WorkAttribute {
+  key: string;
+  name: string;
+  type: 'ACCOUNT' | 'CHECKBOX' | 'INPUT_FIELD' | 'INPUT_NUMERIC' | 'STATIC_LIST';
+  required: boolean; // Tempo.io documentation claims this defaults to false, but is still required
+  values?: string[]; // Only required for 'STATIC_LIST' attribute types
+}
+
 export interface WorklogAttributeValue {
   key: string;
   value: unknown; // Tempo.io documentation defines this as 'any', but not clearly defined

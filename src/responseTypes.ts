@@ -1,4 +1,4 @@
-import { WorklogAttributeValue } from './requestTypes';
+import { WorkAttribute, WorklogAttributeValue } from './requestTypes';
 
 export interface SelfResponse {
   self: string;
@@ -164,13 +164,8 @@ export interface DayScheduleResponse {
   };
 }
 
-export interface WorkAttributeResponse {
+export interface WorkAttributeResponse extends WorkAttribute {
   self: string;
-  key: string;
-  name: string;
-  type: string;
-  required: boolean;
-  values?: string[];
 }
 
 export interface WorklogResponse {
