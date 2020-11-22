@@ -34,7 +34,7 @@ export interface AccountResponse {
   key: string;
   id: number;
   name: string;
-  status: string;
+  status: 'OPEN' | 'CLOSED' | 'ARCHIVED';
   global: boolean;
   monthlyBudget: number;
   lead: UserResponse;
@@ -50,7 +50,7 @@ export interface AccountLinkResponse {
   scope: {
     self: string;
     id: number;
-    type: string;
+    type: 'PROJECT';
   };
   account: SelfResponse;
 }
@@ -93,14 +93,16 @@ export interface PlanResponse {
   updatedAt: string;
   assignee: {
     self: string;
-    type: string;
+    type: 'USER' | 'TEAM';
   };
   planItem: {
     self: string;
-    type: string;
+    type: 'ISSUE' | 'PROJECT';
   };
   recurrence: {
-    rule: string;
+    // Tempo.io Documentation claims 'BIWEEKLY' does not have an underscore, unlike the request
+    // type for Plan in requestTypes.ts. If this is incorrect, report a bug.
+    rule: 'NEVER' | 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY';
     recurrenceEndDate: string;
   };
   dates: {
@@ -141,7 +143,7 @@ export interface TimesheetApprovalResponse {
   requiredSeconds: number;
   timeSpentSeconds: number;
   status: {
-    key: string;
+    key: 'OPEN' | 'IN_REVIEW' | 'APPROVED';
     comment: string;
     actor: UserResponse;
     requiredSecondsAtSubmit: number;
@@ -161,7 +163,7 @@ export interface TimesheetApprovalResponse {
 export interface DayScheduleResponse {
   date: string;
   requiredSeconds: number;
-  type: string;
+  type: 'WORKING_DAY' | 'NON_WORKING_DAY' | 'HOLIDAY' | 'HOLIDAY_AND_NON_WORKING_DAY';
   holiday?: {
     name: string;
     description?: string;
@@ -170,6 +172,8 @@ export interface DayScheduleResponse {
 }
 
 export interface WorkAttributeResponse extends WorkAttribute {
+  // Tempo.io Documentation claims the `type` property will not be 'ACCOUNT'. This is probably a
+  // mistake on their part, but if it is not, please report a bug.
   self: string;
 }
 
@@ -217,7 +221,7 @@ export interface TeamLinkResponse {
   scope: {
     self: string;
     id: number;
-    type: string;
+    type: 'BOARD' | 'PROJECT';
   };
   team: {
     self: string;
@@ -232,7 +236,7 @@ export interface TeamLinkRefResponse {
   scope: {
     self: string;
     id: number;
-    type: string;
+    type: 'BOARD' | 'PROJECT';
   };
   team: SelfResponse;
 }

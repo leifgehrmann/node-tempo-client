@@ -1,7 +1,7 @@
 export interface Account {
   key: string;
   name: string;
-  status: string;
+  status: 'OPEN' | 'CLOSED' | 'ARCHIVED';
   leadAccountId: string;
   contactAccountId?: string;
   externalContactName?: string;
@@ -14,12 +14,12 @@ export interface Account {
 export interface AccountCategory {
   key: string;
   name: string;
-  typeName?: string;
+  typeName?: 'BILLABLE' | 'CAPITALIZED' | 'INTERNAL' | 'OPERATIONAL';
 }
 
 export interface AccountLink {
   accountKey: string;
-  scopeType: string;
+  scopeType: 'PROJECT';
   scopeId: number;
 }
 
@@ -47,7 +47,7 @@ export interface Plan {
   description?: string;
   plannedPerDaySeconds: number;
   includeNonWorkingDays?: boolean;
-  rule?: string;
+  rule?: 'NEVER' | 'WEEKLY' | 'BI_WEEKLY' | 'MONTHLY';
   recurrenceEndDate?: string;
   accountId: string;
   issueKey?: string;
@@ -66,7 +66,7 @@ export interface Role {
 
 export interface TeamLink {
   teamId: number;
-  scopeType: string;
+  scopeType: 'BOARD' | 'PROJECT';
   scopeId: string;
 }
 

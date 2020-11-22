@@ -23,7 +23,7 @@ export interface Issues {
 }
 
 export interface Status extends StringMap {
-  status: string;
+  status: 'OPEN' | 'CLOSED' | 'ARCHIVED';
 }
 
 export interface Id extends StringMap {
