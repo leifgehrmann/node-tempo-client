@@ -5,6 +5,7 @@ import Accounts from './collections/accounts';
 import Customers from './collections/customers';
 import HolidaySchemes from './collections/holidaySchemes';
 import Periods from './collections/periods';
+import PermissionRoles from './collections/permissionRoles';
 import Plans from './collections/plans';
 import Programs from './collections/programs';
 import Roles from './collections/roles';
@@ -52,6 +53,8 @@ export default class TempoApi {
 
   public readonly periods: Periods;
 
+  public readonly permissionRoles: PermissionRoles;
+
   public readonly plans: Plans;
 
   public readonly programs: Programs;
@@ -87,6 +90,7 @@ export default class TempoApi {
     this.customers = new Customers(request);
     this.holidaySchemes = new HolidaySchemes(request);
     this.periods = new Periods(request);
+    this.permissionRoles = new PermissionRoles(request);
     this.plans = new Plans(request);
     this.programs = new Programs(request);
     this.roles = new Roles(request);

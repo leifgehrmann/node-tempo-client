@@ -41,6 +41,17 @@ export interface HolidayScheme {
   description?: string;
 }
 
+export interface PermissionRole {
+  name: string;
+  // Todo: Tempo.io documentation claims this is either `permissionsKeys` or `permissionKey`. When
+  // the documentation is fixed, this will be corrected. For now, we assume it's `permissionKeys`,
+  // since it is the more grammatically correct of the two.
+  permissionKeys: string[];
+  permittedAccountIds: string[];
+  accessType: 'TEAM' | 'GLOBAL'; /* Note: GLOBAL permission roles don't have entities. */
+  accessEntityIds: number[];
+}
+
 export interface Plan {
   startDate: string;
   endDate: string;

@@ -81,6 +81,22 @@ export interface CustomerResponse {
   name: string;
 }
 
+export interface PermissionRoleResponse {
+  self: string;
+  id: number;
+  name: string;
+  permissions: {
+    key: string;
+  }[];
+  permittedUsers: UserResponse[];
+  accessType: 'TEAM' | 'GLOBAL'; /* Note: GLOBAL permission roles don't have entities. */
+  accessEntities: {
+    self: string;
+    id: number;
+  }[];
+  editable: boolean;
+}
+
 export interface PlanResponse {
   self: string;
   id: number;
