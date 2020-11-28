@@ -41,3 +41,7 @@ export interface PlanItemType extends StringMap {
 export interface Year extends StringMap {
   year: number;
 }
+
+export interface TeamId extends StringMap {
+  teamId: number;
+}
