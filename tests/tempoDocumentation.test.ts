@@ -1,4 +1,5 @@
 import axios from 'axios';
+import format = require('xml-formatter');
 
 let responseData = '<html lang="en-us"></html>';
 let htmlDoc: Document = new Document();
@@ -21,6 +22,14 @@ describe('Tempo REST API Documentation', () => {
 
   it('has not changed', () => {
     expect(responseData).toMatchSnapshot();
+  });
+
+  it('formatted XML has not changed', () => {
+    expect(format(responseData, {
+      collapseContent: true,
+      indentation: '',
+      lineSeparator: '\n',
+    })).toMatchSnapshot();
   });
 
   it('has the same panel-heading', () => {
