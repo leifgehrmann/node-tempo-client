@@ -87,3 +87,65 @@ Please send a GitHub [Pull Request to node-tempo-client](https://github.com/leif
 Ideally each commit should atomic (one feature per commit).
 
 Once the pull request has been reviewed, commits will be squashed and merged into master.
+
+## Creating a new release
+
+The following section describes how to release a new version to npmjs.com.
+
+**Note: Only project owners and collaborators are able to publish a new release.**
+
+### Run NPM's version command
+
+Once changes have been merged into master, we need to update `package.json` and `package-lock.json` with a new version
+number. node-tempo-client uses [semver](https://semver.org) to determine the next version number.
+
+NPM has a command line interface tool to upgrade the version easily depending on whether the changes since the last
+release are a `major`, `minor`, or `patch` change. Below is an example of performing a `patch`
+update:
+
+```
+$ npm version patch
+```
+
+This command will commit and push the version change. You may be prompted to enter git credentials to perform the push.
+
+### Verify GitHub.com workflows are successful 
+
+After successfully pushing the commit, make sure commit passes all GitHub Workflows:
+https://github.com/leifgehrmann/node-tempo-client/actions?query=branch%3Amaster.
+
+### Draft and publish a new release on GitHub.com
+
+Go to: https://github.com/leifgehrmann/node-tempo-client/releases
+
+Press "Draft a new release".
+
+In "Tag version", enter the version number for this release, prefixed with `v`. For example, `v1.2.3`.
+
+In "Describe this release", list all changes/pull requests since the last release. The changes should be grouped into
+different sections depending on the change. A pull request could be composed of changes relevant to different sections,
+so do not hesitate to mention a pull request more than once.
+
+The following sections can be used:
+
+* Breaking Changes
+* Additions
+* Bug Fixes
+* Improvements
+* Internal Improvements
+
+Below is an example of release notes:
+
+```markdown
+### Additions
+
+* My pull request: #123
+  * A nested bullet point with more detail to explain the change.
+
+### Improvements
+
+* My other pull request: #111
+```
+
+Once finished, press "Publish release". Pressing this will trigger a GitHub Workflow to submit the release to
+npmjs.com. This can be verified by checking: https://www.npmjs.com/package/tempo-client
