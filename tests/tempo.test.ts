@@ -2,7 +2,7 @@ import Handler from '../src/request/handler';
 import { RequestConfig } from '../src/request/requestConfig';
 import TempoApi, { TempoApiOptions } from '../src/tempo';
 
-function getMockOptions(options?: {requestHandler: Handler}): TempoApiOptions {
+function getMockOptions(options?: { requestHandler: Handler }): TempoApiOptions {
   return {
     apiVersion: '3',
     bearerToken: 'sometoken',
