@@ -11,6 +11,7 @@ export default class Worklogs extends Collection {
   public async get(
     options?: Partial<
     queryOptions.Issues &
+    queryOptions.Projects &
     queryOptions.DateRange &
     queryOptions.UpdatedFrom &
     queryOptions.Pagination

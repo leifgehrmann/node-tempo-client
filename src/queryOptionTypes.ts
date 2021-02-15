@@ -22,6 +22,10 @@ export interface Issues {
   issue: string[];
 }
 
+export interface Projects {
+  project: string[];
+}
+
 export interface Status extends StringMap {
   status: 'OPEN' | 'CLOSED' | 'ARCHIVED';
 }

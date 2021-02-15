@@ -7,7 +7,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <title>REST API documentation</title>
 <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\">
 <meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
-<meta name=\\"generator\\" content=\\"https://github.com/raml2html/raml2html 7.5.0\\">
+<meta name=\\"generator\\" content=\\"https://github.com/raml2html/raml2html 7.7.0\\">
 <link rel=\\"stylesheet\\" href=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css\\">
 <link rel=\\"stylesheet\\" href=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css\\">
 <script type=\\"text/javascript\\" src=\\"https://code.jquery.com/jquery-1.11.0.min.js\\"></script>
@@ -240,6 +240,18 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <a href=\\"https://tempo-io.github.io/tempo-audit-docs/\\">Endpoints</a>
 </li>
 </ul>
+<div class=\\"sg-nav__spacer\\">Cost-Tracker API (Beta)</div>
+<ul class=\\"sg-nav__links\\">
+<li class=\\"sg-nav__links__element\\">
+<a href=\\"https://apidocs.tempo.io/cost-tracker\\">Endpoints</a>
+</li>
+</ul>
+<div class=\\"sg-nav__spacer\\">Jira Links API (Beta)</div>
+<ul class=\\"sg-nav__links\\">
+<li class=\\"sg-nav__links__element\\">
+<a href=\\"https://apidocs.tempo.io/jira\\">Endpoints</a>
+</li>
+</ul>
 </img>
 </div>
 <section class=\\"sg-section sg-section--main\\">
@@ -247,28 +259,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <h1 class=\\"sg-h1\\">REST API documentation <small>version 3</small></h1>
 <p class=\\"sg-p\\">https://api.tempo.io/core/{version}</p>
 <p class=\\"sg-p\\"></p>
-<h3>About the Tempo REST API</h3>
-<p class=\\"sg-p\\">
-<strong>Version 3 of the Tempo REST API is available as of February 1st, 2019.</strong>
-</p>
-<p class=\\"sg-p\\">
-<strong>As of March 29th, 2019, version 2 has been decomissioned. Everyone using the API is encouraged to switch to version 3.</strong>
-</p>
-<p class=\\"sg-p\\">
-<strong>For more information, see <a href=\\"https://tempo-io.atlassian.net/wiki/spaces/CLOUDNEWS/pages/358810021/2018-12-07+Action+Required+for+API+Users+Jira+Cloud+Privacy+Updates\\">this announcement</a>.</strong>
-</p>
-<p class=\\"sg-p\\">The REST API is designed around a flexible and scalable architecture that will extend in lockstep with Tempo’s development.</p>
 <p class=\\"sg-p\\">We encourage you to join our developer community on Slack at <a href=\\"https://www.tempo.io/developers\\">www.tempo.io/developers</a>, where you can get support from our internal experts and share best practices with other developers building with Tempo.</p>
 <p class=\\"sg-p\\">If you have feedback or requests, you can also reach us through our <a href=\\"https://tempo-io.atlassian.net/servicedesk/customer/portal/6\\">Customer Support Portal</a>. You can find general product information in the <a href=\\"https://www.tempo.io/documentation\\">Tempo Help Center</a>.</p>
-<h3>Changes from version 2</h3>
-<h4>Privacy improvements</h4>
-<p class=\\"sg-p\\">All APIs that previously used a username to identify users now use accountId instead. Field names in JSON documents have changed accordingly, for example <code>leadUsername</code> has been replaced with <code>leadAccountId</code>.</p>
-<h4>Account contact</h4>
-<p class=\\"sg-p\\">When creating an account, separate fields are used to identify the contact depending on whether the contact is a registered Jira user.</p>
-<p class=\\"sg-p\\">The <code>contactAccountId</code> field is used to identify the contact if the contact is a registered Jira user. The <code>externalContactName</code> field is used if the contact is not a registered Jira user.</p>
-<p class=\\"sg-p\\">In account responses, a new <code>type</code> field marks the contact as a Jira user (USER) or not (EXTERNAL).</p>
-<h4>Team permission update</h4>
-<p class=\\"sg-p\\">The API for updating team permissions has been removed.</p>
 <h3>Using the REST API as an individual user</h3>
 <p class=\\"sg-p\\">You can use the REST API to interact with the data your permissions give you access to. To do so, you will need to generate a Tempo OAuth 2.0 token.</p>
 <p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>API integration</b>.</p>
@@ -339,6 +331,10 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <p class=\\"sg-p\\">The API uses strings to represent dates. Dates are formatted as <a href=\\"https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates\\">ISO 8601 calendar dates</a> (YYYY-MM-DD). For example, March 29th, 2019 is formatted as 2019-03-29.</p>
 <h4>Delete requests</h4>
 <p class=\\"sg-p\\">On success, delete requests return a response with status code <a href=\\"https://httpstatuses.com/204\\">204 (No content)</a>. No payload body is included in the response.</p>
+<h4>Arrays</h4>
+<p class=\\"sg-p\\">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>
+.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300
+</pre></p>
 <p></p>
 <ul>
 <li><strong>version</strong>: <em>required (3)</em></li>
@@ -12271,7 +12267,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <ul>
 <li><strong>self</strong>: <em>required (string)</em></li>
 <li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li>
-<li><strong>results</strong>: <em>required (array of Work Attribute)</em><p><strong>Items</strong>: Work Attribute</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul></div></li>
+<li><strong>results</strong>: <em>required (array of Work Attribute)</em><p><strong>Items</strong>: Work Attribute</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul></div></li>
 </ul>
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
@@ -12289,12 +12285,19 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"type\\": \\"STATIC_LIST\\",
       \\"required\\": false,
       \\"values\\": [
-        \\"red\\",
-        \\"green\\",
-        \\"blue\\",
-        \\"yellow\\",
-        \\"pink\\"
-      ]
+        \\"Red\\",
+        \\"Green\\",
+        \\"LightBlue\\",
+        \\"Yellow\\",
+        \\"Pink\\"
+      ],
+      \\"names\\": {
+        \\"Red\\": \\"Red\\",
+        \\"Green\\": \\"Green\\",
+        \\"LightBlue\\": \\"Light Blue\\",
+        \\"Yellow\\": \\"Yellow\\",
+        \\"Pink\\": \\"Rosé\\"
+      }
     },
     {
       \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_EXTERNALREF_\\",
@@ -12384,11 +12387,11 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
 </code>
@@ -12408,7 +12411,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li><strong>name</strong>: <em>required (string)</em></li>
 <li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li>
 <li><strong>required</strong>: <em>required (boolean - default: false)</em></li>
-<li><strong>values</strong>: <em>(array of )</em></li>
+<li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li>
+<li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li>
 </ul>
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
@@ -12420,12 +12424,19 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code>
 </pre>
@@ -12546,7 +12557,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li><strong>name</strong>: <em>required (string)</em></li>
 <li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li>
 <li><strong>required</strong>: <em>required (boolean - default: false)</em></li>
-<li><strong>values</strong>: <em>(array of )</em></li>
+<li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li>
+<li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li>
 </ul>
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
@@ -12558,12 +12570,19 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code>
 </pre>
@@ -12670,11 +12689,11 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
 </code>
@@ -12694,7 +12713,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li><strong>name</strong>: <em>required (string)</em></li>
 <li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li>
 <li><strong>required</strong>: <em>required (boolean - default: false)</em></li>
-<li><strong>values</strong>: <em>(array of )</em></li>
+<li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li>
+<li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li>
 </ul>
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
@@ -12706,12 +12726,19 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code>
 </pre>
@@ -12840,11 +12867,11 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
 </code>
@@ -12864,7 +12891,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li><strong>name</strong>: <em>required (string)</em></li>
 <li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li>
 <li><strong>required</strong>: <em>required (boolean - default: false)</em></li>
-<li><strong>values</strong>: <em>(array of )</em></li>
+<li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li>
+<li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li>
 </ul>
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
@@ -12876,12 +12904,19 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code>
 </pre>
@@ -16178,7 +16213,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"resource_method_title\\">
 <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
 <div class=\\"method_description\\">
-<p>Bulk create work attribute values for worklogs</p>
+<p>Bulk create work attribute values for worklogs.</p>
+<p>Note: This API only supports creating new work attribute values. Work attribute values can only be updated as part of the worklog.</p>
 <div class=\\"clearfix\\"></div>
 </div>
 </div>
@@ -16239,7 +16275,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2>
 <p>Work attribute values have been created</p>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
-<p>Work attribute values cannot be created for some reasons</p>
+<p>Work attribute values cannot be created for some reasons, for example if the value is not valid for the type of the work attribute, or if the worklog already has a value for the specified attribute.</p>
 <h3>Body</h3>
 <p><strong>Media type</strong>: application/json</p>
 <p><strong>Type</strong>: object</p>
@@ -16344,7 +16380,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 `;
 
 exports[`Tempo REST API Documentation has not changed 1`] = `
-"<!DOCTYPE HTML><html><head><title>REST API documentation</title><meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\"><meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\"><meta name=\\"generator\\" content=\\"https://github.com/raml2html/raml2html 7.5.0\\"><link rel=\\"stylesheet\\" href=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css\\"><link rel=\\"stylesheet\\" href=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css\\"><script type=\\"text/javascript\\" src=\\"https://code.jquery.com/jquery-1.11.0.min.js\\"></script><script type=\\"text/javascript\\" src=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js\\"></script><script type=\\"text/javascript\\" src=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js\\"></script><script type=\\"text/javascript\\">
+"<!DOCTYPE HTML><html><head><title>REST API documentation</title><meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\"><meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\"><meta name=\\"generator\\" content=\\"https://github.com/raml2html/raml2html 7.7.0\\"><link rel=\\"stylesheet\\" href=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css\\"><link rel=\\"stylesheet\\" href=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css\\"><script type=\\"text/javascript\\" src=\\"https://code.jquery.com/jquery-1.11.0.min.js\\"></script><script type=\\"text/javascript\\" src=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js\\"></script><script type=\\"text/javascript\\" src=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js\\"></script><script type=\\"text/javascript\\">
       $(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
           hljs.highlightBlock(block);
@@ -16496,7 +16532,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       .sg-nav__spacer {
         padding-top: 30px;
       }
-    </style><link href=\\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,700\\" rel=\\"stylesheet\\"><link rel=\\"stylesheet\\" href=\\"main.css\\"></head><body data-spy=\\"scroll\\" data-target=\\"#sidebar\\"><article class=\\"sg\\"><nav class=\\"sg-section sg-section--nav\\" style=\\"overflow-y: auto;\\"><div class=\\"sg-nav\\"><img class=\\"sg-nav__logo\\" src=\\"logo.png\\" alt=\\"TEMPO REST API\\" height=\\"48\\"><div>REST API version 3</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"#accounts\\">Accounts</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_categories\\">Account - Categories</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_category_types\\">Account - Category - Types</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_links\\">Account - Links</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#customers\\">Customers</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#holiday_schemes\\">Holiday Schemes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#periods\\">Periods</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#permission_roles\\">Permission Roles</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#plans\\">Plans</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#programs\\">Programs</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#roles\\">Roles</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#teams\\">Teams</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#team_links\\">Team - Links</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#team_memberships\\">Team - Memberships</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#timesheet_approvals\\">Timesheet Approvals</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#user_schedule\\">User Schedule</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#work_attributes\\">Work Attributes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#workload_schemes\\">Workload Schemes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#worklogs\\">Worklogs</a></li></ul><div class=\\"sg-nav__spacer\\">Audit API</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"https://tempo-io.github.io/tempo-audit-docs/\\">Endpoints</a></li></ul></div></nav><section class=\\"sg-section sg-section--main\\"><div class=\\"sg-content\\"><h1 class=\\"sg-h1\\">REST API documentation <small>version 3</small></h1><p class=\\"sg-p\\">https://api.tempo.io/core/{version}</p><p class=\\"sg-p\\"></p><h3>About the Tempo REST API</h3><p class=\\"sg-p\\"><strong>Version 3 of the Tempo REST API is available as of February 1st, 2019.</strong></p><p class=\\"sg-p\\"><strong>As of March 29th, 2019, version 2 has been decomissioned. Everyone using the API is encouraged to switch to version 3.</strong></p><p class=\\"sg-p\\"><strong>For more information, see <a href=\\"https://tempo-io.atlassian.net/wiki/spaces/CLOUDNEWS/pages/358810021/2018-12-07+Action+Required+for+API+Users+Jira+Cloud+Privacy+Updates\\">this announcement</a>.</strong></p><p class=\\"sg-p\\">The REST API is designed around a flexible and scalable architecture that will extend in lockstep with Tempo’s development.</p><p class=\\"sg-p\\">We encourage you to join our developer community on Slack at <a href=\\"https://www.tempo.io/developers\\">www.tempo.io/developers</a>, where you can get support from our internal experts and share best practices with other developers building with Tempo.</p><p class=\\"sg-p\\">If you have feedback or requests, you can also reach us through our <a href=\\"https://tempo-io.atlassian.net/servicedesk/customer/portal/6\\">Customer Support Portal</a>. You can find general product information in the <a href=\\"https://www.tempo.io/documentation\\">Tempo Help Center</a>.</p><h3>Changes from version 2</h3><h4>Privacy improvements</h4><p class=\\"sg-p\\">All APIs that previously used a username to identify users now use accountId instead. Field names in JSON documents have changed accordingly, for example <code>leadUsername</code> has been replaced with <code>leadAccountId</code>.</p><h4>Account contact</h4><p class=\\"sg-p\\">When creating an account, separate fields are used to identify the contact depending on whether the contact is a registered Jira user.</p><p class=\\"sg-p\\">The <code>contactAccountId</code> field is used to identify the contact if the contact is a registered Jira user. The <code>externalContactName</code> field is used if the contact is not a registered Jira user.</p><p class=\\"sg-p\\">In account responses, a new <code>type</code> field marks the contact as a Jira user (USER) or not (EXTERNAL).</p><h4>Team permission update</h4><p class=\\"sg-p\\">The API for updating team permissions has been removed.</p><h3>Using the REST API as an individual user</h3><p class=\\"sg-p\\">You can use the REST API to interact with the data your permissions give you access to. To do so, you will need to generate a Tempo OAuth 2.0 token.</p><p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>API integration</b>.</p><p class=\\"sg-p\\">Once you have a token, you need to use it inside the Authorization HTTP header. Ex:<pre>curl -v -H \\"Authorization: Bearer $token\\" \\"https://api.tempo.io/core/3/worklogs?...\\"</pre></p><h3>Using the REST API as an application developer</h3><p class=\\"sg-p\\">If you are building apps with Tempo, and have the required Tempo administrator permissions, you can quickly obtain the OAuth 2.0 credentials you need to retrieve an access token.</p><h4>Obtain your credentials</h4><p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>OAuth 2.0 authentication</b>.</p><p class=\\"sg-p\\">Enter a <i>Redirect URI</i> and specify the <i>Client type</i> and <i>Authorization grant type</i>. In most cases you will choose <i>Authorization code</i> as the Authorization grant type.</p><p class=\\"sg-p\\">Once you click <b>Add</b>, your Client ID and Client secret are generated and you can retrieve your access token.</p><h3>How to retrieve an access token for a user</h3><h4>Authorization grant type used is <i>authorization_code</i></h4><h5>Step 1</h5><p class=\\"sg-p\\">Obtain an authorization code against your JIRA Cloud instance :<pre>GET: https://{jira-cloud-instance-name}.atlassian.net/plugins/servlet/ac/io.tempo.jira/oauth-authorize/?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI&access_type=tenant_user</pre></p><p class=\\"sg-p\\">Where <i>$CLIENT_ID</i> and <i>$REDIRECT_URI</i> match the one you generated in <b>Tempo > Settings > OAuth 2.0 Applications</b></p><p class=\\"sg-p\\">You will be asked to <b>authorize</b> or <b>deny</b> access to your Tempo data. Granting access redirects you to the configured <i>redirect URI</i> with a new query string parameter named <i>code</i> (this is the authorization code). Note that this authorization code expires quickly.</p><p class=\\"sg-p\\"><img src=\\"myapp-request-access.png\\" title=\\"MyApp Request Access\\"></p><h5>Step 2</h5><p class=\\"sg-p\\">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
+    </style><link href=\\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,700\\" rel=\\"stylesheet\\"><link rel=\\"stylesheet\\" href=\\"main.css\\"></head><body data-spy=\\"scroll\\" data-target=\\"#sidebar\\"><article class=\\"sg\\"><nav class=\\"sg-section sg-section--nav\\" style=\\"overflow-y: auto;\\"><div class=\\"sg-nav\\"><img class=\\"sg-nav__logo\\" src=\\"logo.png\\" alt=\\"TEMPO REST API\\" height=\\"48\\"><div>REST API version 3</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"#accounts\\">Accounts</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_categories\\">Account - Categories</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_category_types\\">Account - Category - Types</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#account_links\\">Account - Links</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#customers\\">Customers</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#holiday_schemes\\">Holiday Schemes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#periods\\">Periods</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#permission_roles\\">Permission Roles</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#plans\\">Plans</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#programs\\">Programs</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#roles\\">Roles</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#teams\\">Teams</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#team_links\\">Team - Links</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#team_memberships\\">Team - Memberships</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#timesheet_approvals\\">Timesheet Approvals</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#user_schedule\\">User Schedule</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#work_attributes\\">Work Attributes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#workload_schemes\\">Workload Schemes</a></li><li class=\\"sg-nav__links__element\\"><a href=\\"#worklogs\\">Worklogs</a></li></ul><div class=\\"sg-nav__spacer\\">Audit API</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"https://tempo-io.github.io/tempo-audit-docs/\\">Endpoints</a></li></ul><div class=\\"sg-nav__spacer\\">Cost-Tracker API (Beta)</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"https://apidocs.tempo.io/cost-tracker\\">Endpoints</a></li></ul><div class=\\"sg-nav__spacer\\">Jira Links API (Beta)</div><ul class=\\"sg-nav__links\\"><li class=\\"sg-nav__links__element\\"><a href=\\"https://apidocs.tempo.io/jira\\">Endpoints</a></li></ul></div></nav><section class=\\"sg-section sg-section--main\\"><div class=\\"sg-content\\"><h1 class=\\"sg-h1\\">REST API documentation <small>version 3</small></h1><p class=\\"sg-p\\">https://api.tempo.io/core/{version}</p><p class=\\"sg-p\\"></p><p class=\\"sg-p\\">We encourage you to join our developer community on Slack at <a href=\\"https://www.tempo.io/developers\\">www.tempo.io/developers</a>, where you can get support from our internal experts and share best practices with other developers building with Tempo.</p><p class=\\"sg-p\\">If you have feedback or requests, you can also reach us through our <a href=\\"https://tempo-io.atlassian.net/servicedesk/customer/portal/6\\">Customer Support Portal</a>. You can find general product information in the <a href=\\"https://www.tempo.io/documentation\\">Tempo Help Center</a>.</p><h3>Using the REST API as an individual user</h3><p class=\\"sg-p\\">You can use the REST API to interact with the data your permissions give you access to. To do so, you will need to generate a Tempo OAuth 2.0 token.</p><p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>API integration</b>.</p><p class=\\"sg-p\\">Once you have a token, you need to use it inside the Authorization HTTP header. Ex:<pre>curl -v -H \\"Authorization: Bearer $token\\" \\"https://api.tempo.io/core/3/worklogs?...\\"</pre></p><h3>Using the REST API as an application developer</h3><p class=\\"sg-p\\">If you are building apps with Tempo, and have the required Tempo administrator permissions, you can quickly obtain the OAuth 2.0 credentials you need to retrieve an access token.</p><h4>Obtain your credentials</h4><p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>OAuth 2.0 authentication</b>.</p><p class=\\"sg-p\\">Enter a <i>Redirect URI</i> and specify the <i>Client type</i> and <i>Authorization grant type</i>. In most cases you will choose <i>Authorization code</i> as the Authorization grant type.</p><p class=\\"sg-p\\">Once you click <b>Add</b>, your Client ID and Client secret are generated and you can retrieve your access token.</p><h3>How to retrieve an access token for a user</h3><h4>Authorization grant type used is <i>authorization_code</i></h4><h5>Step 1</h5><p class=\\"sg-p\\">Obtain an authorization code against your JIRA Cloud instance :<pre>GET: https://{jira-cloud-instance-name}.atlassian.net/plugins/servlet/ac/io.tempo.jira/oauth-authorize/?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI&access_type=tenant_user</pre></p><p class=\\"sg-p\\">Where <i>$CLIENT_ID</i> and <i>$REDIRECT_URI</i> match the one you generated in <b>Tempo > Settings > OAuth 2.0 Applications</b></p><p class=\\"sg-p\\">You will be asked to <b>authorize</b> or <b>deny</b> access to your Tempo data. Granting access redirects you to the configured <i>redirect URI</i> with a new query string parameter named <i>code</i> (this is the authorization code). Note that this authorization code expires quickly.</p><p class=\\"sg-p\\"><img src=\\"myapp-request-access.png\\" title=\\"MyApp Request Access\\"></p><h5>Step 2</h5><p class=\\"sg-p\\">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
    grant_type = \\"authorization_code\\"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
@@ -16528,7 +16564,9 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
    client_secret = $CLIENT_SECRET
    token = $REFRESH_TOKEN
 }
-</pre></p><h3>API conventions</h3><h4>Identifying users</h4><p class=\\"sg-p\\">The Tempo REST API uses the Atlassian accountId to identify users. The accountId is an opaque identifier that uniquely identifies the user.</p><p class=\\"sg-p\\">The accountId of the current user can found using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-Myself\\">Jira Myself API</a>.</p><p class=\\"sg-p\\">Information about a user, given the accountId, can be retrieved using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-User\\">Jira User API</a>.</p><h4>Dates</h4><p class=\\"sg-p\\">The API uses strings to represent dates. Dates are formatted as <a href=\\"https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates\\">ISO 8601 calendar dates</a> (YYYY-MM-DD). For example, March 29th, 2019 is formatted as 2019-03-29.</p><h4>Delete requests</h4><p class=\\"sg-p\\">On success, delete requests return a response with status code <a href=\\"https://httpstatuses.com/204\\">204 (No content)</a>. No payload body is included in the response.</p><p></p><ul><li><strong>version</strong>: <em>required (3)</em></li></ul><h2 class=\\"sg-h2\\" id=\\"accounts\\">Accounts</h2><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts\\" href=\\"#panel_accounts\\"><span class=\\"parent\\"></span>/accounts</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_accounts\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Creates a new account.</p><p>Separate fields are used to identify the contact depending on whether the contact is a registered Jira user or not. The <code>contactAccountId</code> field is used to identify the contact if the contact is a registered Jira user. The <code>externalContactName</code> field is used if the contact is not a registered Jira user.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#accounts_post_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#accounts_post_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#accounts_post_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"accounts_post_request\\"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>status</strong>: <em>required (one of OPEN, CLOSED, ARCHIVED)</em></li><li><strong>leadAccountId</strong>: <em>required (string)</em></li><li><strong>contactAccountId</strong>: <em>(string)</em><p>accountId of the contact, if the contact is a registered Jira user</p></li><li><strong>externalContactName</strong>: <em>(string)</em><p>Name of the contact, if the contact is not a registered Jira user</p></li><li><strong>categoryKey</strong>: <em>(string)</em></li><li><strong>customerKey</strong>: <em>(string)</em></li><li><strong>monthlyBudget</strong>: <em>(number)</em></li><li><strong>global</strong>: <em>(boolean - default: false)</em></li></ul><p><strong>Examples</strong>:</p><div class=\\"examples\\"><p><strong>Jira user as contact</strong>:<br></p><pre><code>{
+</pre></p><h3>API conventions</h3><h4>Identifying users</h4><p class=\\"sg-p\\">The Tempo REST API uses the Atlassian accountId to identify users. The accountId is an opaque identifier that uniquely identifies the user.</p><p class=\\"sg-p\\">The accountId of the current user can found using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-Myself\\">Jira Myself API</a>.</p><p class=\\"sg-p\\">Information about a user, given the accountId, can be retrieved using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-User\\">Jira User API</a>.</p><h4>Dates</h4><p class=\\"sg-p\\">The API uses strings to represent dates. Dates are formatted as <a href=\\"https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates\\">ISO 8601 calendar dates</a> (YYYY-MM-DD). For example, March 29th, 2019 is formatted as 2019-03-29.</p><h4>Delete requests</h4><p class=\\"sg-p\\">On success, delete requests return a response with status code <a href=\\"https://httpstatuses.com/204\\">204 (No content)</a>. No payload body is included in the response.</p><h4>Arrays</h4><p class=\\"sg-p\\">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>
+.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300
+</pre></p><p></p><ul><li><strong>version</strong>: <em>required (3)</em></li></ul><h2 class=\\"sg-h2\\" id=\\"accounts\\">Accounts</h2><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts\\" href=\\"#panel_accounts\\"><span class=\\"parent\\"></span>/accounts</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_accounts\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Creates a new account.</p><p>Separate fields are used to identify the contact depending on whether the contact is a registered Jira user or not. The <code>contactAccountId</code> field is used to identify the contact if the contact is a registered Jira user. The <code>externalContactName</code> field is used if the contact is not a registered Jira user.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#accounts_post_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#accounts_post_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#accounts_post_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"accounts_post_request\\"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>status</strong>: <em>required (one of OPEN, CLOSED, ARCHIVED)</em></li><li><strong>leadAccountId</strong>: <em>required (string)</em></li><li><strong>contactAccountId</strong>: <em>(string)</em><p>accountId of the contact, if the contact is a registered Jira user</p></li><li><strong>externalContactName</strong>: <em>(string)</em><p>Name of the contact, if the contact is not a registered Jira user</p></li><li><strong>categoryKey</strong>: <em>(string)</em></li><li><strong>customerKey</strong>: <em>(string)</em></li><li><strong>monthlyBudget</strong>: <em>(number)</em></li><li><strong>global</strong>: <em>(boolean - default: false)</em></li></ul><p><strong>Examples</strong>:</p><div class=\\"examples\\"><p><strong>Jira user as contact</strong>:<br></p><pre><code>{
   \\"key\\": \\"CLOUDBAY_DEVELOPMENT\\",
   \\"name\\": \\"Cloudbay: Development\\",
   \\"status\\": \\"OPEN\\",
@@ -19824,7 +19862,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"type\\": \\"WORKING_DAY\\"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p></div><div class=\\"tab-pane\\" id=\\"user_schedule__accountid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><h2 class=\\"sg-h2\\" id=\\"work_attributes\\">Work Attributes</h2><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes\\" href=\\"#panel_work_attributes\\"><span class=\\"parent\\"></span>/work-attributes</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_work_attributes\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all work attributes</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#work_attributes_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#work_attributes_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"work_attributes_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List of all work attributes</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Work Attribute)</em><p><strong>Items</strong>: Work Attribute</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p></div><div class=\\"tab-pane\\" id=\\"user_schedule__accountid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><h2 class=\\"sg-h2\\" id=\\"work_attributes\\">Work Attributes</h2><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes\\" href=\\"#panel_work_attributes\\"><span class=\\"parent\\"></span>/work-attributes</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_work_attributes\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all work attributes</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#work_attributes_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#work_attributes_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"work_attributes_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List of all work attributes</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Work Attribute)</em><p><strong>Items</strong>: Work Attribute</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/work-attributes\\",
   \\"metadata\\": {
     \\"count\\": 2
@@ -19837,12 +19875,19 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"type\\": \\"STATIC_LIST\\",
       \\"required\\": false,
       \\"values\\": [
-        \\"red\\",
-        \\"green\\",
-        \\"blue\\",
-        \\"yellow\\",
-        \\"pink\\"
-      ]
+        \\"Red\\",
+        \\"Green\\",
+        \\"LightBlue\\",
+        \\"Yellow\\",
+        \\"Pink\\"
+      ],
+      \\"names\\": {
+        \\"Red\\": \\"Red\\",
+        \\"Green\\": \\"Green\\",
+        \\"LightBlue\\": \\"Light Blue\\",
+        \\"Yellow\\": \\"Yellow\\",
+        \\"Pink\\": \\"Rosé\\"
+      }
     },
     {
       \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_EXTERNALREF_\\",
@@ -19865,26 +19910,33 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute has been successfully created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute has been successfully created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_COLOR_\\",
   \\"key\\": \\"_COLOR_\\",
   \\"name\\": \\"Color\\",
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute cannot be created for some reasons</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
@@ -19899,19 +19951,26 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes__key_\\" href=\\"#panel_work_attributes__key_\\"><span class=\\"parent\\">/work-attributes</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_work_attributes__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing work attribute for the given key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#work_attributes__key__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#work_attributes__key__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#work_attributes__key__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"work_attributes__key__get_request\\"><h3>URI Parameters</h3><ul><li><strong>key</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes__key_\\" href=\\"#panel_work_attributes__key_\\"><span class=\\"parent\\">/work-attributes</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_work_attributes__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing work attribute for the given key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#work_attributes__key__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#work_attributes__key__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#work_attributes__key__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"work_attributes__key__get_request\\"><h3>URI Parameters</h3><ul><li><strong>key</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_COLOR_\\",
   \\"key\\": \\"_COLOR_\\",
   \\"name\\": \\"Color\\",
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
@@ -19932,26 +19991,33 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__put_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__put_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_COLOR_\\",
   \\"key\\": \\"_COLOR_\\",
   \\"name\\": \\"Color\\",
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute cannot be updated for some reasons</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
@@ -19979,26 +20045,33 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
+    \\"Red\\",
+    \\"Green\\",
+    \\"Light Blue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__put_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"work_attributes__key__put_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Work attribute data of the given key</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of CHECKBOX, INPUT_FIELD, INPUT_NUMERIC, STATIC_LIST)</em></li><li><strong>required</strong>: <em>required (boolean - default: false)</em></li><li><strong>values</strong>: <em>(array of )</em><p>Only relevant when type is STATIC_LIST. These values are immutable. Their UI representation can be looked up in the <code>names</code> object below.</p></li><li><strong>names</strong>: <em>(names)</em><p>Only relevant when type is STATIC_LIST. Each STATIC_LIST entry has an immutable <code>value</code> which is stored with the worklog, and a <code>name</code> that is shown in the UI. The <code>name</code> can be changed.</p><ul></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/work-attributes/_COLOR_\\",
   \\"key\\": \\"_COLOR_\\",
   \\"name\\": \\"Color\\",
   \\"type\\": \\"STATIC_LIST\\",
   \\"required\\": false,
   \\"values\\": [
-    \\"red\\",
-    \\"green\\",
-    \\"blue\\",
-    \\"yellow\\",
-    \\"pink\\"
-  ]
+    \\"Red\\",
+    \\"Green\\",
+    \\"LightBlue\\",
+    \\"Yellow\\",
+    \\"Pink\\"
+  ],
+  \\"names\\": {
+    \\"red\\": \\"Red\\",
+    \\"green\\": \\"Green\\",
+    \\"lightblue\\": \\"Light Blue\\",
+    \\"yellow\\": \\"Yellow\\",
+    \\"pink\\": \\"Rosé\\"
+  }
 }
 </code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute cannot be updated for some reasons</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
@@ -20823,7 +20896,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_user__accountid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_work_attribute_values\\" href=\\"#panel_worklogs_work_attribute_values\\"><span class=\\"parent\\">/worklogs</span>/work-attribute-values</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_work_attribute_values\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Bulk create work attribute values for worklogs</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_work_attribute_values_post_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_work_attribute_values_post_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_work_attribute_values_post_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_work_attribute_values_post_request\\"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>attributeValues</strong>: <em>required (string)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>[
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_user__accountid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_work_attribute_values\\" href=\\"#panel_worklogs_work_attribute_values\\"><span class=\\"parent\\">/worklogs</span>/work-attribute-values</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_work_attribute_values\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Bulk create work attribute values for worklogs.</p><p>Note: This API only supports creating new work attribute values. Work attribute values can only be updated as part of the worklog.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_work_attribute_values_post_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_work_attribute_values_post_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_work_attribute_values_post_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_work_attribute_values_post_request\\"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>attributeValues</strong>: <em>required (string)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>[
   {
     \\"tempoWorklogId\\": 10100,
     \\"attributeValues\\": [
@@ -20847,7 +20920,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     ]
   }
 ]
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_work_attribute_values_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2><p>Work attribute values have been created</p><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute values cannot be created for some reasons</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_work_attribute_values_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2><p>Work attribute values have been created</p><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute values cannot be created for some reasons, for example if the value is not valid for the type of the work attribute, or if the worklog already has a value for the specified attribute.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
     {
       \\"message\\": \\"Invalid work attribute value\\"
@@ -20992,7 +21065,7 @@ Array [
   "Retrieve all worklogs associated to the given project key",
   "",
   "Retrieve all worklogs associated to the given user",
-  "Bulk create work attribute values for worklogs",
+  "Bulk create work attribute values for worklogs.Note: This API only supports creating new work attribute values. Work attribute values can only be updated as part of the worklog.",
 ]
 `;
 
