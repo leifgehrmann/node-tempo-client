@@ -126,6 +126,7 @@ export interface WorkAttribute {
   type: 'ACCOUNT' | 'CHECKBOX' | 'INPUT_FIELD' | 'INPUT_NUMERIC' | 'STATIC_LIST';
   required: boolean; // Tempo.io documentation claims this defaults to false, but is still required
   values?: string[]; // Only required for 'STATIC_LIST' attribute types
+  names?: { [key: string]: string }; // Only relevant for 'STATIC_LIST' attribute types
 }
 
 export interface WorklogAttributeValue {

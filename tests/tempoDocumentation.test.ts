@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { JSDOM } from 'jsdom';
 import format = require('xml-formatter');
 
 let responseData = '<html lang="en-us"></html>';
-let htmlDoc: Document = new Document();
+let htmlDoc: Document = new JSDOM(responseData).window.document;
 
 // This test is used to identify whether the documentation on Tempo's
 // website has updated. If the test fails, that means there must have been
@@ -10,14 +11,13 @@ let htmlDoc: Document = new Document();
 describe('Tempo REST API Documentation', () => {
   beforeAll(async () => {
     const response = await axios.get(
-      'https://tempo-io.github.io/tempo-api-docs/',
+      'https://apidocs.tempo.io/',
       {
         responseType: 'text',
       },
     );
     responseData = response.data;
-    const parser = new DOMParser();
-    htmlDoc = parser.parseFromString(responseData, 'text/html');
+    htmlDoc = new JSDOM(responseData).window.document;
   });
 
   it('has not changed', () => {
