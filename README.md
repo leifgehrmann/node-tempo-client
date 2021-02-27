@@ -1,13 +1,13 @@
 # JavaScript Tempo API Client for node.js
 
 [![Documentation](https://img.shields.io/badge/Documentation--green.svg)](https://tempo-client.leifgehrmann.com/)
-[![Tempo Rest API](https://img.shields.io/badge/Tempo%20Rest%20API--green.svg)](https://tempo-io.github.io/tempo-api-docs/)
+[![Tempo Rest API](https://img.shields.io/badge/Tempo%20Rest%20API--green.svg)](https://apidocs.tempo.io/)
 [![Build Status](https://github.com/leifgehrmann/node-tempo-client/workflows/Tests/badge.svg?branch=master)](https://github.com/leifgehrmann/node-tempo-client/actions)
 [![npm](https://img.shields.io/npm/v/tempo-client.svg)](https://www.npmjs.com/tempo-client)
 [![Install Size](https://packagephobia.now.sh/badge?p=tempo-client)](https://packagephobia.now.sh/result?p=tempo-client)
 [![Code Coverage](https://codecov.io/gh/leifgehrmann/node-tempo-client/branch/master/graph/badge.svg)](https://codecov.io/gh/leifgehrmann/node-tempo-client)
 
-An unofficial node.js wrapper for the [Tempo REST API](https://tempo-io.github.io/tempo-api-docs/)
+An unofficial node.js wrapper for the [Tempo REST API](https://apidocs.tempo.io/)
 
 The repo aims to be similar in usage to the [node-jira-client](https://github.com/jira-node/node-jira-client).
 
@@ -103,7 +103,7 @@ try {
 
 ### REST API
 
-All endpoints listed in the Tempo REST API (https://tempo-io.github.io/tempo-api-docs/)
+All endpoints listed in the Tempo REST API (https://apidocs.tempo.io/)
 for the Version 3 REST API are implemented as of November 2019. The REST API documentation will answer most questions about the expected structure of data.
 
 ### The Tempo Client itself

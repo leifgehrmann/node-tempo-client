@@ -112,7 +112,7 @@ describe('Worklogs', () => {
         },
       ]);
       expect(result.url).toEqual(
-        'http://tempo.somehost.com:8080/core/3/worklogs/jira/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
+        'http://tempo.somehost.com:8080/core/3/worklogs/filter/someJiraFilterId?from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01&offset=5&limit=5',
       );
     });
 
