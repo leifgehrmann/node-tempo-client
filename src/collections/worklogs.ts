@@ -81,7 +81,7 @@ export default class Worklogs extends Collection {
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
     return this.createAndSendRequest(
-      `/worklogs/jira/filter/${jiraFilterId}`,
+      `/worklogs/filter/${jiraFilterId}`,
       {
         query: options,
       },
