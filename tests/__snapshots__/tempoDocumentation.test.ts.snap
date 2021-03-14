@@ -15325,121 +15325,6 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <div class=\\"panel panel-default\\">
 <div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_filter__jirafilterid_\\" href=\\"#panel_worklogs_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs</span>/filter/{jirafilterId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
-<div class=\\"panel-group\\">
-<div id=\\"panel_worklogs_filter__jirafilterid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
-<div class=\\"panel-body\\">
-<div class=\\"list-group\\">
-<div class=\\"list-group-item\\">
-<div class=\\"resource_method_title\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<div class=\\"method_description\\">
-<p>Retrieve worklogs associated to the given JIRA filter id</p>
-<div class=\\"clearfix\\"></div>
-</div>
-</div>
-<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
-<ul class=\\"nav nav-tabs\\">
-<li class=\\"active\\">
-<a href=\\"#worklogs_filter__jirafilterid__get_request\\" data-toggle=\\"tab\\">Request</a>
-</li>
-<li>
-<a href=\\"#worklogs_filter__jirafilterid__get_response\\" data-toggle=\\"tab\\">Response</a>
-</li>
-<li>
-<a href=\\"#worklogs_filter__jirafilterid__get_securedby\\" data-toggle=\\"tab\\">Security</a>
-</li>
-</ul>
-<div class=\\"tab-content\\">
-<div class=\\"tab-pane active\\" id=\\"worklogs_filter__jirafilterid__get_request\\">
-<h3>URI Parameters</h3>
-<ul>
-<li><strong>jirafilterId</strong>: <em>required (string)</em></li>
-</ul>
-<h3>Query Parameters</h3>
-<ul>
-<li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li>
-<li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li>
-<li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li>
-<li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li>
-<li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li>
-</ul>
-</div>
-<div class=\\"tab-pane\\" id=\\"worklogs_filter__jirafilterid__get_response\\">
-<h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2>
-<p>Worklogs of the given JIRA filter id</p>
-<h3>Body</h3>
-<p><strong>Media type</strong>: application/json</p>
-<p><strong>Type</strong>: object</p>
-<strong>Properties</strong>
-<ul>
-<li><strong>self</strong>: <em>required (string)</em></li>
-<li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li>
-<li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li>
-</ul>
-<p><strong>Example</strong>:</p>
-<div class=\\"examples\\">
-<pre>
-<code>{
-  \\"self\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=0&amp;limit=50\\",
-  \\"metadata\\": {
-    \\"count\\": 64,
-    \\"offset\\": 0,
-    \\"limit\\": 50,
-    \\"next\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=50&amp;limit=50\\"
-  },
-  \\"results\\": [
-    // skipped
-  ]
-}
-</code>
-</pre>
-</div>
-<h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
-<p>Client must be authenticated to access this resource.</p>
-<h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
-<p>Authenticated user is missing permission to fulfill the request</p>
-<h3>Body</h3>
-<p><strong>Media type</strong>: application/json</p>
-<p><strong>Type</strong>: object</p>
-<strong>Properties</strong>
-<ul>
-<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
-</ul>
-<p><strong>Example</strong>:</p>
-<div class=\\"examples\\">
-<pre>
-<code>{
-  \\"errors\\": [
-    {
-      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
-    }
-  ]
-}</code>
-</pre>
-</div>
-</div>
-<div class=\\"tab-pane\\" id=\\"worklogs_filter__jirafilterid__get_securedby\\">
-<h1>Secured by OAuth 2.0</h1>
-<h3>Headers</h3>
-<ul>
-<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
-</ul>
-</div>
-</div>
-<div class=\\"clearfix\\"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
 <a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_account__accountkey_\\" href=\\"#panel_worklogs_account__accountkey_\\"><span class=\\"parent\\">/worklogs</span>/account/{accountKey}</a>
 <span class=\\"methods\\">
 <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
@@ -15840,6 +15725,121 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"tab-pane\\" id=\\"worklogs_jira__jiraworklogid__get_securedby\\">
+<h1>Secured by OAuth 2.0</h1>
+<h3>Headers</h3>
+<ul>
+<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
+</ul>
+</div>
+</div>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=\\"panel panel-default\\">
+<div class=\\"panel-heading\\">
+<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira_filter__jirafilterid_\\" href=\\"#panel_worklogs_jira_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs/jira</span>/filter/{jirafilterId}</a>
+<span class=\\"methods\\">
+<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+</span>
+</div>
+<div class=\\"panel-group\\">
+<div id=\\"panel_worklogs_jira_filter__jirafilterid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
+<div class=\\"panel-body\\">
+<div class=\\"list-group\\">
+<div class=\\"list-group-item\\">
+<div class=\\"resource_method_title\\">
+<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<div class=\\"method_description\\">
+<p>Retrieve worklogs associated to the given JIRA filter id</p>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
+<ul class=\\"nav nav-tabs\\">
+<li class=\\"active\\">
+<a href=\\"#worklogs_jira_filter__jirafilterid__get_request\\" data-toggle=\\"tab\\">Request</a>
+</li>
+<li>
+<a href=\\"#worklogs_jira_filter__jirafilterid__get_response\\" data-toggle=\\"tab\\">Response</a>
+</li>
+<li>
+<a href=\\"#worklogs_jira_filter__jirafilterid__get_securedby\\" data-toggle=\\"tab\\">Security</a>
+</li>
+</ul>
+<div class=\\"tab-content\\">
+<div class=\\"tab-pane active\\" id=\\"worklogs_jira_filter__jirafilterid__get_request\\">
+<h3>URI Parameters</h3>
+<ul>
+<li><strong>jirafilterId</strong>: <em>required (string)</em></li>
+</ul>
+<h3>Query Parameters</h3>
+<ul>
+<li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li>
+<li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li>
+<li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li>
+<li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li>
+<li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li>
+</ul>
+</div>
+<div class=\\"tab-pane\\" id=\\"worklogs_jira_filter__jirafilterid__get_response\\">
+<h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2>
+<p>Worklogs of the given JIRA filter id</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>self</strong>: <em>required (string)</em></li>
+<li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li>
+<li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=0&amp;limit=50\\",
+  \\"metadata\\": {
+    \\"count\\": 64,
+    \\"offset\\": 0,
+    \\"limit\\": 50,
+    \\"next\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=50&amp;limit=50\\"
+  },
+  \\"results\\": [
+    // skipped
+  ]
+}
+</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
+<p>Client must be authenticated to access this resource.</p>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
+<p>Authenticated user is missing permission to fulfill the request</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+</div>
+<div class=\\"tab-pane\\" id=\\"worklogs_jira_filter__jirafilterid__get_securedby\\">
 <h1>Secured by OAuth 2.0</h1>
 <h3>Headers</h3>
 <ul>
@@ -20730,25 +20730,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs__worklogid__work_attribute_values__key__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_filter__jirafilterid_\\" href=\\"#panel_worklogs_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs</span>/filter/{jirafilterId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_filter__jirafilterid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve worklogs associated to the given JIRA filter id</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_filter__jirafilterid__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_filter__jirafilterid__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_filter__jirafilterid__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_filter__jirafilterid__get_request\\"><h3>URI Parameters</h3><ul><li><strong>jirafilterId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_filter__jirafilterid__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs of the given JIRA filter id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=0&amp;limit=50\\",
-  \\"metadata\\": {
-    \\"count\\": 64,
-    \\"offset\\": 0,
-    \\"limit\\": 50,
-    \\"next\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=50&amp;limit=50\\"
-  },
-  \\"results\\": [
-    // skipped
-  ]
-}
-</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"errors\\": [
-    {
-      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
-    }
-  ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_filter__jirafilterid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_account__accountkey_\\" href=\\"#panel_worklogs_account__accountkey_\\"><span class=\\"parent\\">/worklogs</span>/account/{accountKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_account__accountkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all worklogs associated to the given account key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_account__accountkey__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_account__accountkey__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_account__accountkey__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_account__accountkey__get_request\\"><h3>URI Parameters</h3><ul><li><strong>accountKey</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_account__accountkey__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs associated to the account</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs__worklogid__work_attribute_values__key__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_account__accountkey_\\" href=\\"#panel_worklogs_account__accountkey_\\"><span class=\\"parent\\">/worklogs</span>/account/{accountKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_account__accountkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all worklogs associated to the given account key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_account__accountkey__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_account__accountkey__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_account__accountkey__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_account__accountkey__get_request\\"><h3>URI Parameters</h3><ul><li><strong>accountKey</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_account__accountkey__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs associated to the account</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/worklogs/account/ACC-1?offset=0&amp;limit=50\\",
   \\"metadata\\": {
     \\"count\\": 51,
@@ -20842,7 +20824,25 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_jira__jiraworklogid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_project__projectkey_\\" href=\\"#panel_worklogs_project__projectkey_\\"><span class=\\"parent\\">/worklogs</span>/project/{projectKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_project__projectkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all worklogs associated to the given project key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_project__projectkey__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_project__projectkey__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_project__projectkey__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_project__projectkey__get_request\\"><h3>URI Parameters</h3><ul><li><strong>projectKey</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_project__projectkey__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs associated to the project</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_jira__jiraworklogid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira_filter__jirafilterid_\\" href=\\"#panel_worklogs_jira_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs/jira</span>/filter/{jirafilterId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_jira_filter__jirafilterid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve worklogs associated to the given JIRA filter id</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_jira_filter__jirafilterid__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_jira_filter__jirafilterid__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_jira_filter__jirafilterid__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_jira_filter__jirafilterid__get_request\\"><h3>URI Parameters</h3><ul><li><strong>jirafilterId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_jira_filter__jirafilterid__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs of the given JIRA filter id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=0&amp;limit=50\\",
+  \\"metadata\\": {
+    \\"count\\": 64,
+    \\"offset\\": 0,
+    \\"limit\\": 50,
+    \\"next\\": \\"https://api.tempo.io/core/3/worklogs/jira/filter/10020?offset=50&amp;limit=50\\"
+  },
+  \\"results\\": [
+    // skipped
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_jira_filter__jirafilterid__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_project__projectkey_\\" href=\\"#panel_worklogs_project__projectkey_\\"><span class=\\"parent\\">/worklogs</span>/project/{projectKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_worklogs_project__projectkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all worklogs associated to the given project key</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#worklogs_project__projectkey__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#worklogs_project__projectkey__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#worklogs_project__projectkey__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"worklogs_project__projectkey__get_request\\"><h3>URI Parameters</h3><ul><li><strong>projectKey</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>from</strong>: <em>(date-only)</em><p>Retrieve results starting with this date</p></li><li><strong>to</strong>: <em>(date-only)</em><p>Retrieve results up to and including this date</p></li><li><strong>updatedFrom</strong>: <em>(date-only)</em><p>Retrieve results that have been updated from this date</p></li><li><strong>offset?</strong>: <em>(integer - default: 0)</em><p>Skip over a number of elements by specifying an offset value for the query</p></li><li><strong>limit?</strong>: <em>(integer - default: 50 - maximum: 1000)</em><p>Limit the number of elements on the response</p></li></ul></div><div class=\\"tab-pane\\" id=\\"worklogs_project__projectkey__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Worklogs associated to the project</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li><li><strong>offset</strong>: <em>required (integer - default: 0)</em></li><li><strong>limit</strong>: <em>required (integer - default: 50 - maximum: 1000)</em></li><li><strong>next</strong>: <em>(string)</em></li><li><strong>previous</strong>: <em>(string)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Worklog)</em><p><strong>Items</strong>: Worklog</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>tempoWorklogId</strong>: <em>required (integer)</em></li><li><strong>jiraWorklogId</strong>: <em>(integer)</em></li><li><strong>issue</strong>: <em>required (issue)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li></ul></li><li><strong>timeSpentSeconds</strong>: <em>required (number)</em></li><li><strong>startDate</strong>: <em>required (date-only)</em></li><li><strong>startTime</strong>: <em>required (time-only)</em></li><li><strong>description</strong>: <em>required (string)</em></li><li><strong>createdAt</strong>: <em>required (datetime)</em></li><li><strong>updatedAt</strong>: <em>required (datetime)</em></li><li><strong>author</strong>: <em>required (author)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></li><li><strong>attributes</strong>: <em>(attributes)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>values</strong>: <em>required (array of Work Attribute Value)</em><p><strong>Items</strong>: Work Attribute Value</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em></li><li><strong>value</strong>: <em>required (any)</em></li></ul></div></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/worklogs/project/PRJ-1\\",
   \\"metadata\\": {
     \\"count\\": 51,
@@ -21057,10 +21057,10 @@ Array [
   "Delete an existing worklog",
   "Retrieve all work attribute values for the worklog",
   "Retrieve a specific work attribute value for the worklog",
-  "Retrieve worklogs associated to the given JIRA filter id",
   "Retrieve all worklogs associated to the given account key",
   "Retrieve all worklogs associated to the given issue key",
   "Retrieve an existing worklog for the given JIRA worklog id",
+  "Retrieve worklogs associated to the given JIRA filter id",
   "Retrieve all worklogs associated to the given project key",
   "",
   "Retrieve all worklogs associated to the given user",
@@ -21136,10 +21136,10 @@ Array [
   "/worklogs/{worklogId} get  put  delete ",
   "/worklogs/{worklogId}/work-attribute-values get ",
   "/worklogs/{worklogId}/work-attribute-values/{key} get ",
-  "/worklogs/filter/{jirafilterId} get ",
   "/worklogs/account/{accountKey} get ",
   "/worklogs/issue/{key} get ",
   "/worklogs/jira/{jiraWorklogId} get ",
+  "/worklogs/jira/filter/{jirafilterId} get ",
   "/worklogs/project/{projectKey} get ",
   "/worklogs/team/{teamId} get ",
   "/worklogs/user/{accountId} get ",
