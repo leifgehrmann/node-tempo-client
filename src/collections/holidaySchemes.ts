@@ -70,7 +70,7 @@ export default class HolidaySchemes extends Collection {
   public async getHolidaySchemeHolidays(
     id: string,
     options: queryOptions.Year,
-  ): Promise<HolidayResponse> {
+  ): Promise<ResultSetResponse<HolidayResponse>> {
     return this.createAndSendRequest(`/holiday-schemes/${id}/holidays`, {
       query: options,
     });
@@ -117,6 +117,15 @@ export default class HolidaySchemes extends Collection {
     return this.createAndSendRequest(`/holiday-schemes/${id}/holidays/${holidayId}`, {
       method: 'DELETE',
     });
+  }
+
+  /**
+   * Retrieve all floating holidays for an existing holiday scheme.
+   */
+  public async getHolidaySchemeFloatingHolidays(
+    id: string,
+  ): Promise<ResultSetResponse<HolidayResponse>> {
+    return this.createAndSendRequest(`/holiday-schemes/${id}/holidays/floating`);
   }
 
   /**

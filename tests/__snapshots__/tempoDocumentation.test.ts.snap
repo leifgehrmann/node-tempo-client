@@ -4029,13 +4029,13 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/holiday-schemes/123/holidays?year=2021\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/123/holidays?year=2021\\",
   \\"metadata\\": {
     \\"count\\": 2
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/1\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
       \\"id\\": 1,
       \\"schemeId\\": 1,
       \\"type\\": \\"FIXED\\",
@@ -4045,7 +4045,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"date\\": \\"2021-02-24\\"
     },
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/2\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/holidays/2\\",
       \\"id\\": 2,
       \\"schemeId\\": 1,
       \\"type\\": \\"FLOATING\\",
@@ -4186,7 +4186,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/1\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
   \\"id\\": 1,
   \\"schemeId\\": 1,
   \\"type\\": \\"FIXED\\",
@@ -4320,7 +4320,17 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <p><strong>Example</strong>:</p>
 <div class=\\"examples\\">
 <pre>
-<code>Can not resolve examples/holiday  -scheme-holiday.json</code>
+<code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
+  \\"id\\": 1,
+  \\"schemeId\\": 1,
+  \\"type\\": \\"FIXED\\",
+  \\"name\\": \\"Christmas Eve\\",
+  \\"description\\": \\"The day before Christmas\\",
+  \\"durationSeconds\\": 14400,
+  \\"date\\": \\"2021-12-24\\"
+}
+</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4551,6 +4561,149 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <p>Holiday cannot be found in the system</p>
 </div>
 <div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays__id__delete_securedby\\">
+<h1>Secured by OAuth 2.0</h1>
+<h3>Headers</h3>
+<ul>
+<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
+</ul>
+</div>
+</div>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=\\"panel panel-default\\">
+<div class=\\"panel-heading\\">
+<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays_floating\\" href=\\"#panel_holiday_schemes__id__holidays_floating\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/floating</a>
+<span class=\\"methods\\">
+<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+</span>
+</div>
+<div class=\\"panel-group\\">
+<div id=\\"panel_holiday_schemes__id__holidays_floating\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
+<div class=\\"panel-body\\">
+<div class=\\"list-group\\">
+<div class=\\"list-group-item\\">
+<div class=\\"resource_method_title\\">
+<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<div class=\\"method_description\\">
+<p>Retrieve all floating holidays for an existing holiday scheme.</p>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
+<ul class=\\"nav nav-tabs\\">
+<li class=\\"active\\">
+<a href=\\"#holiday_schemes__id__holidays_floating_get_request\\" data-toggle=\\"tab\\">Request</a>
+</li>
+<li>
+<a href=\\"#holiday_schemes__id__holidays_floating_get_response\\" data-toggle=\\"tab\\">Response</a>
+</li>
+<li>
+<a href=\\"#holiday_schemes__id__holidays_floating_get_securedby\\" data-toggle=\\"tab\\">Security</a>
+</li>
+</ul>
+<div class=\\"tab-content\\">
+<div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__holidays_floating_get_request\\">
+<h3>URI Parameters</h3>
+<ul>
+<li><strong>id</strong>: <em>required (string)</em></li>
+</ul>
+</div>
+<div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_floating_get_response\\">
+<h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2>
+<p>Floating Holiday data of the scheme</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>self</strong>: <em>required (string)</em></li>
+<li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li>
+<li><strong>results</strong>: <em>required (array of Holiday)</em><p><strong>Items</strong>: Holiday</p><div class=\\"items\\"><ul><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/floating\\",
+  \\"metadata\\": {
+    \\"count\\": 2
+  },
+  \\"results\\": [
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/9\\",
+      \\"id\\": 9,
+      \\"schemeId\\": 4,
+      \\"type\\": \\"FLOATING\\",
+      \\"name\\": \\"Awesome day\\",
+      \\"description\\": \\"what an awesome day\\",
+      \\"durationSeconds\\": 86400,
+      \\"date\\": \\"2015-09-01\\"
+    },
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/3\\",
+      \\"id\\": 3,
+      \\"schemeId\\": 4,
+      \\"type\\": \\"FLOATING\\",
+      \\"name\\": \\"Labour Day\\",
+      \\"description\\": \\"Labour day\\",
+      \\"durationSeconds\\": 86400,
+      \\"date\\": \\"2021-04-30\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
+<p>Client must be authenticated to access this resource.</p>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
+<p>Authenticated user is missing permission to fulfill the request</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2>
+<p>Holiday scheme cannot be found in the system</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Holiday scheme not found\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+</div>
+<div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_floating_get_securedby\\">
 <h1>Secured by OAuth 2.0</h1>
 <h3>Headers</h3>
 <ul>
@@ -5052,13 +5205,13 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles\\",
   \\"metadata\\": {
     \\"count\\": 2
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
       \\"id\\": 6,
       \\"name\\": \\"Team Role\\",
       \\"permissions\\": [
@@ -5077,13 +5230,13 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"accessEntities\\": [
         {
           \\"id\\": 1,
-          \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+          \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
         }
       ],
       \\"editable\\": true
     },
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/7\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/7\\",
       \\"id\\": 7,
       \\"name\\": \\"Global Role\\",
       \\"permissions\\": [
@@ -5214,7 +5367,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
   \\"id\\": 6,
   \\"name\\": \\"The Role\\",
   \\"permissions\\": [
@@ -5233,7 +5386,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"accessEntities\\": [
     {
       \\"id\\": 1,
-      \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+      \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
     }
   ],
   \\"editable\\": true
@@ -5324,13 +5477,13 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles\\",
   \\"metadata\\": {
     \\"count\\": 1
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/7\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/7\\",
       \\"id\\": 7,
       \\"name\\": \\"Global Role\\",
       \\"permissions\\": [
@@ -5454,7 +5607,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <div class=\\"examples\\">
 <pre>
 <code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
   \\"id\\": 6,
   \\"name\\": \\"The Role\\",
   \\"permissions\\": [
@@ -5473,7 +5626,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"accessEntities\\": [
     {
       \\"id\\": 1,
-      \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+      \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
     }
   ],
   \\"editable\\": true
@@ -17507,13 +17660,13 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Holiday scheme cannot be found in the system</p></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__default_put_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays\\" href=\\"#panel_holiday_schemes__id__holidays\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/holidays</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__holidays\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve holidays for an existing holiday scheme</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__holidays_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__holidays_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__holidays_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__holidays_get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>year</strong>: <em>(integer)</em><p>Year for holidays to be retrieved for. Returns holidays for current year if omitted.</p></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Holiday data of the scheme that matches the provided id and year</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Holiday)</em><p><strong>Items</strong>: Holiday</p><div class=\\"items\\"><ul><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/holiday-schemes/123/holidays?year=2021\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/123/holidays?year=2021\\",
   \\"metadata\\": {
     \\"count\\": 2
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/1\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
       \\"id\\": 1,
       \\"schemeId\\": 1,
       \\"type\\": \\"FIXED\\",
@@ -17523,7 +17676,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"date\\": \\"2021-02-24\\"
     },
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/2\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/holidays/2\\",
       \\"id\\": 2,
       \\"schemeId\\": 1,
       \\"type\\": \\"FLOATING\\",
@@ -17554,7 +17707,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"date\\": \\"2021-12-24\\"
 }
 </code></pre></div></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Holiday data that was created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em></li><li><strong>schemeId</strong>: <em>required (number)</em></li><li><strong>type</strong>: <em>required (one of FIXED, FLOATING)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li><li><strong>date</strong>: <em>required (date-only)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/holidays/1\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
   \\"id\\": 1,
   \\"schemeId\\": 1,
   \\"type\\": \\"FIXED\\",
@@ -17576,7 +17729,17 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays__id_\\" href=\\"#panel_holiday_schemes__id__holidays__id_\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__holidays__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing holiday</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__holidays__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__holidays__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__holidays__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__holidays__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Holiday data that matches the provided id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em></li><li><strong>schemeId</strong>: <em>required (number)</em></li><li><strong>type</strong>: <em>required (one of FIXED, FLOATING)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li><li><strong>date</strong>: <em>required (date-only)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>Can not resolve examples/holiday  -scheme-holiday.json</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays__id_\\" href=\\"#panel_holiday_schemes__id__holidays__id_\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__holidays__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing holiday</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__holidays__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__holidays__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__holidays__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__holidays__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Holiday data that matches the provided id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em></li><li><strong>schemeId</strong>: <em>required (number)</em></li><li><strong>type</strong>: <em>required (one of FIXED, FLOATING)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li><li><strong>date</strong>: <em>required (date-only)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/holidays/1\\",
+  \\"id\\": 1,
+  \\"schemeId\\": 1,
+  \\"type\\": \\"FIXED\\",
+  \\"name\\": \\"Christmas Eve\\",
+  \\"description\\": \\"The day before Christmas\\",
+  \\"durationSeconds\\": 14400,
+  \\"date\\": \\"2021-12-24\\"
+}
+</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
     {
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
@@ -17608,7 +17771,46 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Holiday cannot be found in the system</p></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays__id__delete_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__members\\" href=\\"#panel_holiday_schemes__id__members\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/members</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__members\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Get members in a holiday scheme</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__members_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__members_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__members_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__members_get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__members_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Members in the holiday scheme</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Holiday scheme)</em><p><strong>Items</strong>: Holiday scheme</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>defaultScheme</strong>: <em>required (boolean)</em></li><li><strong>memberCount</strong>: <em>required (number)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Holiday cannot be found in the system</p></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays__id__delete_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays_floating\\" href=\\"#panel_holiday_schemes__id__holidays_floating\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/floating</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__holidays_floating\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve all floating holidays for an existing holiday scheme.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__holidays_floating_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__holidays_floating_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__holidays_floating_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__holidays_floating_get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_floating_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Floating Holiday data of the scheme</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Holiday)</em><p><strong>Items</strong>: Holiday</p><div class=\\"items\\"><ul><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>durationSeconds</strong>: <em>required (number)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/floating\\",
+  \\"metadata\\": {
+    \\"count\\": 2
+  },
+  \\"results\\": [
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/9\\",
+      \\"id\\": 9,
+      \\"schemeId\\": 4,
+      \\"type\\": \\"FLOATING\\",
+      \\"name\\": \\"Awesome day\\",
+      \\"description\\": \\"what an awesome day\\",
+      \\"durationSeconds\\": 86400,
+      \\"date\\": \\"2015-09-01\\"
+    },
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/4/holidays/3\\",
+      \\"id\\": 3,
+      \\"schemeId\\": 4,
+      \\"type\\": \\"FLOATING\\",
+      \\"name\\": \\"Labour Day\\",
+      \\"description\\": \\"Labour day\\",
+      \\"durationSeconds\\": 86400,
+      \\"date\\": \\"2021-04-30\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Holiday scheme cannot be found in the system</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Holiday scheme not found\\"
+    }
+  ]
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__holidays_floating_get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__members\\" href=\\"#panel_holiday_schemes__id__members\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/members</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_holiday_schemes__id__members\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Get members in a holiday scheme</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#holiday_schemes__id__members_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#holiday_schemes__id__members_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#holiday_schemes__id__members_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"holiday_schemes__id__members_get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"holiday_schemes__id__members_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Members in the holiday scheme</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Holiday scheme)</em><p><strong>Items</strong>: Holiday scheme</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>description</strong>: <em>(string)</em></li><li><strong>defaultScheme</strong>: <em>required (boolean)</em></li><li><strong>memberCount</strong>: <em>required (number)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/holiday-schemes/1/members&amp;offset=0&amp;limit=50\\",
   \\"metadata\\": {
     \\"count\\": 18,
@@ -17675,13 +17877,13 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p></div><div class=\\"tab-pane\\" id=\\"periods_get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><h2 class=\\"sg-h2\\" id=\\"permission_roles\\">Permission Roles</h2><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles\\" href=\\"#panel_permission_roles\\"><span class=\\"parent\\"></span>/permission-roles</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_permission_roles\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve permission roles</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#permission_roles_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#permission_roles_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#permission_roles_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"permission_roles_get_request\\"><h3>Query Parameters</h3><ul><li><strong>teamId</strong>: <em>(integer)</em><p>Retrieve permission roles for a single team</p></li></ul></div><div class=\\"tab-pane\\" id=\\"permission_roles_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List of permission roles</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Permission role)</em><p><strong>Items</strong>: Permission role</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>permissions</strong>: <em>required (array of Permission role permission)</em><p><strong>Items</strong>: Permission role permission</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em><p>Permission key.</p></li></ul></div></li><li><strong>permittedUsers</strong>: <em>required (array of User)</em><p><strong>Items</strong>: User</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></div></li><li><strong>accessType</strong>: <em>required (one of TEAM, GLOBAL)</em><p>GLOBAL permission roles don&#39;t have entities.</p></li><li><strong>accessEntities</strong>: <em>required (array of Permission role entity)</em><p><strong>Items</strong>: Permission role entity</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em><p>Id of the linked entity, for example teamId for access type TEAM.</p></li></ul></div></li><li><strong>editable</strong>: <em>required (boolean)</em><p>Editable roles are manually created with updatable members.</p></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles\\",
   \\"metadata\\": {
     \\"count\\": 2
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
       \\"id\\": 6,
       \\"name\\": \\"Team Role\\",
       \\"permissions\\": [
@@ -17700,13 +17902,13 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"accessEntities\\": [
         {
           \\"id\\": 1,
-          \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+          \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
         }
       ],
       \\"editable\\": true
     },
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/7\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/7\\",
       \\"id\\": 7,
       \\"name\\": \\"Global Role\\",
       \\"permissions\\": [
@@ -17746,7 +17948,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     1
   ]
 }</code></pre></div></div><div class=\\"tab-pane\\" id=\\"permission_roles_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Permission role has been successfully created</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>permissions</strong>: <em>required (array of Permission role permission)</em><p><strong>Items</strong>: Permission role permission</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em><p>Permission key.</p></li></ul></div></li><li><strong>permittedUsers</strong>: <em>required (array of User)</em><p><strong>Items</strong>: User</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></div></li><li><strong>accessType</strong>: <em>required (one of TEAM, GLOBAL)</em><p>GLOBAL permission roles don&#39;t have entities.</p></li><li><strong>accessEntities</strong>: <em>required (array of Permission role entity)</em><p><strong>Items</strong>: Permission role entity</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em><p>Id of the linked entity, for example teamId for access type TEAM.</p></li></ul></div></li><li><strong>editable</strong>: <em>required (boolean)</em><p>Editable roles are manually created with updatable members.</p></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
   \\"id\\": 6,
   \\"name\\": \\"The Role\\",
   \\"permissions\\": [
@@ -17765,7 +17967,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"accessEntities\\": [
     {
       \\"id\\": 1,
-      \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+      \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
     }
   ],
   \\"editable\\": true
@@ -17776,13 +17978,13 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }</code></pre></div></div><div class=\\"tab-pane\\" id=\\"permission_roles_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles_global\\" href=\\"#panel_permission_roles_global\\"><span class=\\"parent\\">/permission-roles</span>/global</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_permission_roles_global\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve global permission roles</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#permission_roles_global_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#permission_roles_global_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"permission_roles_global_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List of global permission roles</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Permission role)</em><p><strong>Items</strong>: Permission role</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>permissions</strong>: <em>required (array of Permission role permission)</em><p><strong>Items</strong>: Permission role permission</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em><p>Permission key.</p></li></ul></div></li><li><strong>permittedUsers</strong>: <em>required (array of User)</em><p><strong>Items</strong>: User</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></div></li><li><strong>accessType</strong>: <em>required (one of TEAM, GLOBAL)</em><p>GLOBAL permission roles don&#39;t have entities.</p></li><li><strong>accessEntities</strong>: <em>required (array of Permission role entity)</em><p><strong>Items</strong>: Permission role entity</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em><p>Id of the linked entity, for example teamId for access type TEAM.</p></li></ul></div></li><li><strong>editable</strong>: <em>required (boolean)</em><p>Editable roles are manually created with updatable members.</p></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles\\",
   \\"metadata\\": {
     \\"count\\": 1
   },
   \\"results\\": [
     {
-      \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/7\\",
+      \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/7\\",
       \\"id\\": 7,
       \\"name\\": \\"Global Role\\",
       \\"permissions\\": [
@@ -17810,7 +18012,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }</code></pre></div></div><div class=\\"tab-pane\\" id=\\"permission_roles_global_get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles__id_\\" href=\\"#panel_permission_roles__id_\\"><span class=\\"parent\\">/permission-roles</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_permission_roles__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve a permission role</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#permission_roles__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#permission_roles__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#permission_roles__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"permission_roles__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"permission_roles__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>A permission role</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>permissions</strong>: <em>required (array of Permission role permission)</em><p><strong>Items</strong>: Permission role permission</p><div class=\\"items\\"><ul><li><strong>key</strong>: <em>required (string)</em><p>Permission key.</p></li></ul></div></li><li><strong>permittedUsers</strong>: <em>required (array of User)</em><p><strong>Items</strong>: User</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li></ul></div></li><li><strong>accessType</strong>: <em>required (one of TEAM, GLOBAL)</em><p>GLOBAL permission roles don&#39;t have entities.</p></li><li><strong>accessEntities</strong>: <em>required (array of Permission role entity)</em><p><strong>Items</strong>: Permission role entity</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (number)</em><p>Id of the linked entity, for example teamId for access type TEAM.</p></li></ul></div></li><li><strong>editable</strong>: <em>required (boolean)</em><p>Editable roles are manually created with updatable members.</p></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"self\\": \\"https://test.api.tempo.io/core/3/permission-roles/6\\",
+  \\"self\\": \\"https://api.tempo.io/core/3/permission-roles/6\\",
   \\"id\\": 6,
   \\"name\\": \\"The Role\\",
   \\"permissions\\": [
@@ -17829,7 +18031,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
   \\"accessEntities\\": [
     {
       \\"id\\": 1,
-      \\"self\\": \\"https://test.api.tempo.io/core/3/teams/1\\"
+      \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\"
     }
   ],
   \\"editable\\": true
@@ -20977,6 +21179,7 @@ Array [
   "Retrieve an existing holiday",
   "Update a holiday",
   "Delete a holiday",
+  "Retrieve all floating holidays for an existing holiday scheme.",
   "Get members in a holiday scheme",
   "Assign a holiday scheme to members",
   "Get user scheme",
@@ -21087,6 +21290,7 @@ Array [
   "/holiday-schemes/{id}/default put ",
   "/holiday-schemes/{id}/holidays get  post ",
   "/holiday-schemes/{id}/holidays/{id} get  put  delete ",
+  "/holiday-schemes/{id}/holidays/floating get ",
   "/holiday-schemes/{id}/members get  post ",
   "/holiday-schemes/users/{accountId} get ",
   "/periods get ",
