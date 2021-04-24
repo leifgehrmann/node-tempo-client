@@ -134,6 +134,15 @@ describe('HolidaySchemes', () => {
       expect(result.method).toEqual('DELETE');
     });
 
+    it('getHolidaySchemeFloatingHolidays hits proper url', async () => {
+      const result = await mockUrlCall.call('getHolidaySchemeFloatingHolidays', [
+        456,
+      ]);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/holiday-schemes/456/holidays/floating',
+      );
+    });
+
     it('getHolidaySchemeMembers hits proper url', async () => {
       const result = await mockUrlCall.call('getHolidaySchemeMembers', [
         456,
