@@ -23,8 +23,8 @@ $ npm install tempo-client
 
 ### Instantiating the client
 
-The `bearerToken` can be retrieved in two ways; Either as a individual user (useful for running personal reports and
-basic tests), or as an application developer (Useful for building more complex apps).
+The `bearerToken` can be retrieved in two ways; Either as an individual user (useful for running personal reports and
+basic tests), or as an application developer (Useful for developing apps that seamlessly integrate with Tempo).
 Please see the sections _"Using the REST API as an individual user"_ or 
 _"Using the REST API as an application developer"_ in [Tempo's documentation](https://apidocs.tempo.io).
 
