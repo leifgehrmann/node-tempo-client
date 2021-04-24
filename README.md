@@ -7,7 +7,7 @@
 [![Install Size](https://packagephobia.now.sh/badge?p=tempo-client)](https://packagephobia.now.sh/result?p=tempo-client)
 [![Code Coverage](https://codecov.io/gh/leifgehrmann/node-tempo-client/branch/master/graph/badge.svg)](https://codecov.io/gh/leifgehrmann/node-tempo-client)
 
-An unofficial node.js wrapper for the [Tempo REST API](https://apidocs.tempo.io/)
+An unofficial node.js wrapper for the [Tempo REST API](https://apidocs.tempo.io/).
 
 The repo aims to be similar in usage to the [node-jira-client](https://github.com/jira-node/node-jira-client).
 
@@ -22,6 +22,13 @@ $ npm install tempo-client
 ## Examples
 
 ### Instantiating the client
+
+The `bearerToken` can be retrieved in two ways; Either as an individual user (useful for running personal reports and
+basic tests), or as an application developer (Useful for developing apps that seamlessly integrate with Tempo).
+Please see the sections _"Using the REST API as an individual user"_ or 
+_"Using the REST API as an application developer"_ in [Tempo's documentation](https://apidocs.tempo.io).
+
+**Note that the bearer token for Tempo IS NOT the same as the token generated in Jira.**
 
 ```javascript
 // ES5
