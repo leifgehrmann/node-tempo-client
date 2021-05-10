@@ -1,8 +1,11 @@
 import { TeamMembership, TeamMembershipNew } from '../requestTypes';
-import { TeamMemberMembershipFullResponse } from '../responseTypes';
+import { ResultSetResponse, TeamMemberMembershipFullResponse } from '../responseTypes';
 import Collection from './abstractCollection';
 
 export default class TeamMemberships extends Collection {
+  /**
+   * Creates a new membership.
+   */
   public async post(
     teamMembership: TeamMembershipNew,
   ): Promise<TeamMemberMembershipFullResponse> {
@@ -12,12 +15,21 @@ export default class TeamMemberships extends Collection {
     });
   }
 
+  /**
+   * Retrieve an existing membership for the given id.
+   */
   public async getTeamMembership(
     id: string,
   ): Promise<TeamMemberMembershipFullResponse> {
     return this.createAndSendRequest(`/team-memberships/${id}`);
   }
 
+  /**
+   * Update an existing membership for the given id.
+   *
+   * @deprecated Removed from Tempo.io documentation since April 2021.
+   * @see team.putTeam()
+   */
   public async putTeamMembership(
     id: string,
     teamMembership: TeamMembership,
@@ -28,9 +40,24 @@ export default class TeamMemberships extends Collection {
     });
   }
 
+  /**
+   * Delete an existing membership.
+   *
+   * @deprecated Removed from Tempo.io documentation since April 2021.
+   * @see team.putTeam()
+   */
   public async deleteTeamMembership(id: string): Promise<void> {
     await this.createAndSendRequest(`/team-memberships/${id}`, {
       method: 'DELETE',
     });
+  }
+
+  /**
+   * Retrieves all the memberships of the team.
+   */
+  public async getTeamMembershipsForTeam(
+    id: string,
+  ): Promise<ResultSetResponse<TeamMemberMembershipFullResponse>> {
+    return this.createAndSendRequest(`/team-memberships/team/${id}`);
   }
 }

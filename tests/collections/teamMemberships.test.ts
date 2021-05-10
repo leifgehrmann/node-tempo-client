@@ -42,5 +42,12 @@ describe('TeamMemberships', () => {
       );
       expect(result.method).toEqual('DELETE');
     });
+
+    it('getTeamMembershipsForTeam hits proper url', async () => {
+      const result = await mockUrlCall.call('getTeamMembershipsForTeam', ['someId']);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/team-memberships/team/someId',
+      );
+    });
   });
 });
