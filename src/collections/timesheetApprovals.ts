@@ -16,7 +16,7 @@ export default class TimesheetApprovals extends Collection {
 
   public async getForUser(
     accountId: string,
-    options?: queryOptions.DateRange,
+    options: queryOptions.DateRange,
   ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}`,
@@ -37,7 +37,7 @@ export default class TimesheetApprovals extends Collection {
   public async postApproveTimesheetForUser(
     accountId: string,
     timesheetApproval: TimesheetApproval,
-    options?: queryOptions.DateRange,
+    options: queryOptions.DateRange,
   ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/approve`,
@@ -52,7 +52,7 @@ export default class TimesheetApprovals extends Collection {
   public async postRejectTimesheetForUser(
     accountId: string,
     timesheetApproval: TimesheetApproval,
-    options?: queryOptions.DateRange,
+    options: queryOptions.DateRange,
   ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reject`,
@@ -67,7 +67,7 @@ export default class TimesheetApprovals extends Collection {
   public async postReopenTimesheetForUser(
     accountId: string,
     timesheetApproval: TimesheetApproval,
-    options?: queryOptions.DateRange,
+    options: queryOptions.DateRange,
   ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/reopen`,
@@ -81,13 +81,13 @@ export default class TimesheetApprovals extends Collection {
 
   public async postSubmitTimesheetForUser(
     accountId: string,
-    timesheedApprovalRequest: TimesheetApprovalRequest,
-    options?: queryOptions.DateRange,
+    timesheetApprovalRequest: TimesheetApprovalRequest,
+    options: queryOptions.DateRange,
   ): Promise<TimesheetApprovalResponse> {
     return this.createAndSendRequest(
       `/timesheet-approvals/user/${accountId}/submit`,
       {
-        body: timesheedApprovalRequest,
+        body: timesheetApprovalRequest,
         method: 'POST',
         query: options,
       },
@@ -96,7 +96,7 @@ export default class TimesheetApprovals extends Collection {
 
   public async getForTeam(
     teamId: string,
-    options?: queryOptions.DateRange,
+    options: queryOptions.DateRange,
   ): Promise<ResultSetResponse<TimesheetApprovalResponse>> {
     return this.createAndSendRequest(
       `/timesheet-approvals/team/${teamId}`,
