@@ -15,7 +15,7 @@ interface RequestBuilderConfig {
 
 interface UrlOptions {
   pathname: string;
-  query?: { [key: string]: (number|string|string[]) };
+  query?: { [key: string]: (number | string | string[]) };
   intermediatePath?: string;
 }
 
