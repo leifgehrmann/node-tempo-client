@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
+
     - name: npm install, build, and generate documentation
       run: |
         npm ci
@@ -24,11 +25,11 @@ jobs:
         touch ./doc/.nojekyll
         sed -i '/doc/d' .gitignore
         echo "tempo-client.leifgehrmann.com" >> ./doc/CNAME
+
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.6.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./doc
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        forceOrphan: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./doc
+        force_orphan: true
