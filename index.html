@@ -1,0 +1,311 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>tempo-client</title>
+	<meta name="description" content="Documentation for tempo-client">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">tempo-client</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>tempo-client</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#javascript-tempo-api-client-for-nodejs" id="javascript-tempo-api-client-for-nodejs" style="color: inherit; text-decoration: none;">
+					<h1>JavaScript Tempo API Client for node.js</h1>
+				</a>
+				<p><a href="https://tempo-client.leifgehrmann.com/"><img src="https://img.shields.io/badge/Documentation--green.svg" alt="Documentation"></a>
+					<a href="https://apidocs.tempo.io/"><img src="https://img.shields.io/badge/Tempo%20Rest%20API--green.svg" alt="Tempo Rest API"></a>
+					<a href="https://github.com/leifgehrmann/node-tempo-client/actions"><img src="https://github.com/leifgehrmann/node-tempo-client/workflows/Tests/badge.svg?branch=master" alt="Build Status"></a>
+					<a href="https://www.npmjs.com/tempo-client"><img src="https://img.shields.io/npm/v/tempo-client.svg" alt="npm"></a>
+					<a href="https://packagephobia.now.sh/result?p=tempo-client"><img src="https://packagephobia.now.sh/badge?p=tempo-client" alt="Install Size"></a>
+				<a href="https://codecov.io/gh/leifgehrmann/node-tempo-client"><img src="https://codecov.io/gh/leifgehrmann/node-tempo-client/branch/master/graph/badge.svg" alt="Code Coverage"></a></p>
+				<p>An unofficial node.js wrapper for the <a href="https://apidocs.tempo.io/">Tempo REST API</a>.</p>
+				<p>The repo aims to be similar in usage to the <a href="https://github.com/jira-node/node-jira-client">node-jira-client</a>.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Install using <a href="https://npmjs.org">NPM</a>:</p>
+				<pre><code class="language-shell"><span style="color: #000000">$ npm install tempo-client</span>
+</code></pre>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<a href="#instantiating-the-client" id="instantiating-the-client" style="color: inherit; text-decoration: none;">
+					<h3>Instantiating the client</h3>
+				</a>
+				<p>The <code>bearerToken</code> can be retrieved in two ways; Either as an individual user (useful for running personal reports and
+					basic tests), or as an application developer (Useful for developing apps that seamlessly integrate with Tempo).
+					Please see the sections <em>&quot;Using the REST API as an individual user&quot;</em> or
+				<em>&quot;Using the REST API as an application developer&quot;</em> in <a href="https://apidocs.tempo.io">Tempo&#39;s documentation</a>.</p>
+				<p><strong>Note that the bearer token for Tempo IS NOT the same as the token generated in Jira.</strong></p>
+				<pre><code class="language-javascript"><span style="color: #008000">// ES5</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">TempoApi</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;tempo-client&#039;</span><span style="color: #000000">).</span><span style="color: #001080">default</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// ES6</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">TempoApi</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;tempo-client&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">tempo</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">TempoApi</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">protocol:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">host:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;api.tempo.io&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">bearerToken:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;token&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">apiVersion:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;3&#039;</span>
+<span style="color: #000000">})</span>
+</code></pre>
+				<a href="#getting-worklogs-for-a-jira-user" id="getting-worklogs-for-a-jira-user" style="color: inherit; text-decoration: none;">
+					<h3>Getting worklogs for a JIRA user</h3>
+				</a>
+				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">user</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">accountId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1111aaaa2222bbbb3333cccc&#039;</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dateRange</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">from:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;2019-10-07&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;2019-10-11&#039;</span>
+<span style="color: #000000">};</span>
+
+<span style="color: #008000">// ES6</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">worklogs</span><span style="color: #000000"> = </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">worklogs</span><span style="color: #000000">.</span><span style="color: #795E26">getForUser</span><span style="color: #000000">(</span><span style="color: #001080">user</span><span style="color: #000000">.</span><span style="color: #001080">accountId</span><span style="color: #000000">, </span><span style="color: #001080">dateRange</span><span style="color: #000000">)</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">worklogs</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">worklogs</span><span style="color: #000000">.</span><span style="color: #001080">results</span><span style="color: #000000">);</span>
+<span style="color: #000000">  })</span>
+<span style="color: #000000">  .</span><span style="color: #795E26">catch</span><span style="color: #000000">(</span><span style="color: #001080">err</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">err</span><span style="color: #000000">);</span>
+<span style="color: #000000">  });</span>
+
+<span style="color: #008000">// ES7</span>
+<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">getWorklogsForUser</span><span style="color: #000000">(</span><span style="color: #001080">user</span><span style="color: #000000">, </span><span style="color: #001080">from</span><span style="color: #000000">, </span><span style="color: #001080">to</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">worklogs</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">worklogs</span><span style="color: #000000">.</span><span style="color: #795E26">getForUser</span><span style="color: #000000">(</span><span style="color: #001080">user</span><span style="color: #000000">.</span><span style="color: #001080">accountId</span><span style="color: #000000">, { </span><span style="color: #001080">from</span><span style="color: #000000">, </span><span style="color: #001080">to</span><span style="color: #000000"> });</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">worklogs</span><span style="color: #000000">.</span><span style="color: #001080">results</span><span style="color: #000000">);</span>
+<span style="color: #000000">  } </span><span style="color: #AF00DB">catch</span><span style="color: #000000"> (</span><span style="color: #001080">err</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">err</span><span style="color: #000000">);</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
+</code></pre>
+				<a href="#create-modify-delete-an-quotaccountquot" id="create-modify-delete-an-quotaccountquot" style="color: inherit; text-decoration: none;">
+					<h3>Create, modify, delete an &quot;Account&quot;</h3>
+				</a>
+				<pre><code class="language-js"><span style="color: #008000">// Create a new account using `.post(...)`</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">account</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">key:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;CLOUDBAY_DEVELOPMENT&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Cloudbay: Development&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">status:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;OPEN&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">leadAccountId:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;123456:01234567-89ab-cdef-0123-456789abcdef&quot;</span>
+<span style="color: #000000">};</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">accountId</span><span style="color: #000000"> = (</span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">accounts</span><span style="color: #000000">.</span><span style="color: #795E26">post</span><span style="color: #000000">(</span><span style="color: #001080">account</span><span style="color: #000000">)).</span><span style="color: #001080">id</span><span style="color: #000000">;</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Account &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">account</span><span style="color: #000000FF">.</span><span style="color: #001080">key</span><span style="color: #0000FF">}</span><span style="color: #A31515">&quot; has an id of: </span><span style="color: #0000FF">${</span><span style="color: #001080">accountId</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// Modify the account using `.putAccount(...)`</span>
+<span style="color: #001080">account</span><span style="color: #000000">.</span><span style="color: #001080">status</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;CLOSED&#039;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">accountOnTempo</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">accounts</span><span style="color: #000000">.</span><span style="color: #795E26">putAccount</span><span style="color: #000000">(</span><span style="color: #001080">account</span><span style="color: #000000">.</span><span style="color: #001080">key</span><span style="color: #000000">, </span><span style="color: #001080">account</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Account &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">account</span><span style="color: #000000FF">.</span><span style="color: #001080">key</span><span style="color: #0000FF">}</span><span style="color: #A31515">&quot; is now: </span><span style="color: #0000FF">${</span><span style="color: #001080">accountOnTempo</span><span style="color: #000000FF">.</span><span style="color: #001080">status</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// Delete the account using `.deleteAccount(...)`</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">accounts</span><span style="color: #000000">.</span><span style="color: #795E26">deleteAccount</span><span style="color: #000000">(</span><span style="color: #001080">account</span><span style="color: #000000">.</span><span style="color: #001080">key</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// `.getAccount(...)` will throw an error now that the account is deleted</span>
+<span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">tempo</span><span style="color: #000000">.</span><span style="color: #001080">accounts</span><span style="color: #000000">.</span><span style="color: #795E26">getAccount</span><span style="color: #000000">(</span><span style="color: #001080">account</span><span style="color: #000000">.</span><span style="color: #001080">key</span><span style="color: #000000">);</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">catch</span><span style="color: #000000"> (</span><span style="color: #001080">err</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Account &quot;</span><span style="color: #0000FF">${</span><span style="color: #001080">account</span><span style="color: #000000FF">.</span><span style="color: #001080">key</span><span style="color: #0000FF">}</span><span style="color: #A31515">&quot; no longer exists!`</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
+</code></pre>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<a href="#rest-api" id="rest-api" style="color: inherit; text-decoration: none;">
+					<h3>REST API</h3>
+				</a>
+				<p>All endpoints listed in the Tempo REST API (<a href="https://apidocs.tempo.io/">https://apidocs.tempo.io/</a>)
+				for the Version 3 REST API are implemented as of November 2019. The REST API documentation will answer most questions about the expected structure of data.</p>
+				<a href="#the-tempo-client-itself" id="the-tempo-client-itself" style="color: inherit; text-decoration: none;">
+					<h3>The Tempo Client itself</h3>
+				</a>
+				<p>Auto-generated documentation for the Tempo Client can be found at:
+				<a href="https://tempo-client.leifgehrmann.com/">https://tempo-client.leifgehrmann.com/</a></p>
+				<p>For example, if one wants to modify the <code>accounts</code> collection, one can find the
+					API methods at
+				<a href="https://tempo-client.leifgehrmann.com/classes/_collections_accounts_.accounts.html">Globals/ &quot;collections/accounts&quot; / Accounts</a>.</p>
+				<p>It&#39;s strongly recommended to use TypeScript as code completion will help quite
+				a bit with navigating the client.</p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for more information.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Modules</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_abstractcollection.html">collections/abstract<wbr>Collection</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_accountcategories.html">collections/account<wbr>Categories</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_accountcategorytypes.html">collections/account<wbr>Category<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_accountlinks.html">collections/account<wbr>Links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_accounts.html">collections/accounts</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_customers.html">collections/customers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_holidayschemes.html">collections/holiday<wbr>Schemes</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_periods.html">collections/periods</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_permissionroles.html">collections/permission<wbr>Roles</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_plans.html">collections/plans</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_programs.html">collections/programs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_roles.html">collections/roles</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_teamlinks.html">collections/team<wbr>Links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_teammemberships.html">collections/team<wbr>Memberships</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_teams.html">collections/teams</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_timesheetapprovals.html">collections/timesheet<wbr>Approvals</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_userschedule.html">collections/user<wbr>Schedule</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_workattributes.html">collections/work<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_workloadschemes.html">collections/workload<wbr>Schemes</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/collections_worklogs.html">collections/worklogs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/queryoptiontypes.html">query<wbr>Option<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/request_axioshttpclient.html">request/axios<wbr>Http<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/request_builder.html">request/builder</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/request_handler.html">request/handler</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/request_httpclient.html">request/http<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/request_requestconfig.html">request/request<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requesttypes.html">request<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responsetypes.html">response<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/tempo.html">tempo</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
