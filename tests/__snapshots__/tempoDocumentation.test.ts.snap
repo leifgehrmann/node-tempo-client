@@ -10657,6 +10657,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships__id_\\" href=\\"#panel_team_memberships__id_\\"><span class=\\"parent\\">/team-memberships</span>/{id}</a>
 <span class=\\"methods\\">
 <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
 </span>
 </div>
 <div class=\\"panel-group\\">
@@ -10781,6 +10783,262 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"tab-pane\\" id=\\"team_memberships__id__get_securedby\\">
+<h1>Secured by OAuth 2.0</h1>
+<h3>Headers</h3>
+<ul>
+<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
+</ul>
+</div>
+</div>
+<div class=\\"clearfix\\"></div>
+</div>
+<div class=\\"list-group-item\\">
+<div class=\\"resource_method_title\\">
+<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<div class=\\"method_description\\">
+<p>Update an existing membership for the given id</p>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
+<ul class=\\"nav nav-tabs\\">
+<li class=\\"active\\">
+<a href=\\"#team_memberships__id__put_request\\" data-toggle=\\"tab\\">Request</a>
+</li>
+<li>
+<a href=\\"#team_memberships__id__put_response\\" data-toggle=\\"tab\\">Response</a>
+</li>
+<li>
+<a href=\\"#team_memberships__id__put_securedby\\" data-toggle=\\"tab\\">Security</a>
+</li>
+</ul>
+<div class=\\"tab-content\\">
+<div class=\\"tab-pane active\\" id=\\"team_memberships__id__put_request\\">
+<h3>URI Parameters</h3>
+<ul>
+<li><strong>id</strong>: <em>required (string)</em></li>
+</ul>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>roleId</strong>: <em>(integer - default: Default team role)</em></li>
+<li><strong>commitmentPercent</strong>: <em>(integer - default: 100)</em></li>
+<li><strong>from</strong>: <em>(date-only)</em></li>
+<li><strong>to</strong>: <em>(date-only)</em></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"roleId\\": 2,
+  \\"commitmentPercent\\": 50,
+  \\"from\\": \\"2017-06-01\\",
+  \\"to\\": \\"2017-12-31\\"
+}</code>
+</pre>
+</div>
+</div>
+<div class=\\"tab-pane\\" id=\\"team_memberships__id__put_response\\">
+<h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2>
+<p>Membership has been successfully updated</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>self</strong>: <em>required (string)</em></li>
+<li><strong>id</strong>: <em>required (integer)</em></li>
+<li><strong>commitmentPercent</strong>: <em>required (integer)</em></li>
+<li><strong>from</strong>: <em>(date-only)</em></li>
+<li><strong>to</strong>: <em>(date-only)</em></li>
+<li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li>
+<li><strong>team</strong>: <em>(team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li>
+<li><strong>member</strong>: <em>(member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/team-memberships/2\\",
+  \\"id\\": 2,
+  \\"commitmentPercent\\": 50,
+  \\"from\\": \\"2017-06-01\\",
+  \\"to\\": \\"2017-12-31\\",
+  \\"role\\": {
+    \\"self\\": \\"https://api.tempo.io/core/3/roles/2\\",
+    \\"id\\": 2,
+    \\"name\\": \\"Developer\\"
+  },
+  \\"team\\": {
+    \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\",
+    \\"id\\": 1,
+    \\"name\\": \\"Team-A\\"
+  },
+  \\"member\\": {
+    \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=1111aaaa2222bbbb3333cccc\\",
+    \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
+    \\"displayName\\": \\"John Brown\\"
+  }
+}</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
+<p>Membership cannot be updated for some reasons</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"User is already a member of this team on this date.\\"
+    }
+  ]
+}
+</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
+<p>Client must be authenticated to access this resource.</p>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
+<p>Authenticated user is missing permission to fulfill the request</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2>
+<p>Membership cannot be found in the system</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
+    }
+  ]
+}
+</code>
+</pre>
+</div>
+</div>
+<div class=\\"tab-pane\\" id=\\"team_memberships__id__put_securedby\\">
+<h1>Secured by OAuth 2.0</h1>
+<h3>Headers</h3>
+<ul>
+<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
+</ul>
+</div>
+</div>
+<div class=\\"clearfix\\"></div>
+</div>
+<div class=\\"list-group-item\\">
+<div class=\\"resource_method_title\\">
+<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
+<div class=\\"method_description\\">
+<p>Delete an existing membership</p>
+<div class=\\"clearfix\\"></div>
+</div>
+</div>
+<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
+<ul class=\\"nav nav-tabs\\">
+<li class=\\"active\\">
+<a href=\\"#team_memberships__id__delete_request\\" data-toggle=\\"tab\\">Request</a>
+</li>
+<li>
+<a href=\\"#team_memberships__id__delete_response\\" data-toggle=\\"tab\\">Response</a>
+</li>
+<li>
+<a href=\\"#team_memberships__id__delete_securedby\\" data-toggle=\\"tab\\">Security</a>
+</li>
+</ul>
+<div class=\\"tab-content\\">
+<div class=\\"tab-pane active\\" id=\\"team_memberships__id__delete_request\\">
+<h3>URI Parameters</h3>
+<ul>
+<li><strong>id</strong>: <em>required (string)</em></li>
+</ul>
+</div>
+<div class=\\"tab-pane\\" id=\\"team_memberships__id__delete_response\\">
+<h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2>
+<p>Membership has been successfully deleted</p>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
+<p>Client must be authenticated to access this resource.</p>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
+<p>Authenticated user is missing permission to fulfill the request</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code>
+</pre>
+</div>
+<h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2>
+<p>Membership cannot be found in the system</p>
+<h3>Body</h3>
+<p><strong>Media type</strong>: application/json</p>
+<p><strong>Type</strong>: object</p>
+<strong>Properties</strong>
+<ul>
+<li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class=\\"examples\\">
+<pre>
+<code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
+    }
+  ]
+}
+</code>
+</pre>
+</div>
+</div>
+<div class=\\"tab-pane\\" id=\\"team_memberships__id__delete_securedby\\">
 <h1>Secured by OAuth 2.0</h1>
 <h3>Headers</h3>
 <ul>
@@ -19398,7 +19656,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships__id_\\" href=\\"#panel_team_memberships__id_\\"><span class=\\"parent\\">/team-memberships</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_team_memberships__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing membership for the given id</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Membership data of the given id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>commitmentPercent</strong>: <em>required (integer)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li><li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>team</strong>: <em>(team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>member</strong>: <em>(member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships__id_\\" href=\\"#panel_team_memberships__id_\\"><span class=\\"parent\\">/team-memberships</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_team_memberships__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve an existing membership for the given id</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Membership data of the given id</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>commitmentPercent</strong>: <em>required (integer)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li><li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>team</strong>: <em>(team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>member</strong>: <em>(member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/team-memberships/2\\",
   \\"id\\": 2,
   \\"commitmentPercent\\": 50,
@@ -19432,7 +19690,66 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships_team__id_\\" href=\\"#panel_team_memberships_team__id_\\"><span class=\\"parent\\">/team-memberships</span>/team/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_team_memberships_team__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieves all the memberships of the team.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships_team__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships_team__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships_team__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships_team__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"team_memberships_team__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Memberships of a given teamId</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Team Membership)</em><p><strong>Items</strong>: Team Membership</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>commitmentPercent</strong>: <em>required (integer)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li><li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>team</strong>: <em>required (team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>member</strong>: <em>required (member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Update an existing membership for the given id</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships__id__put_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships__id__put_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships__id__put_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships__id__put_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>roleId</strong>: <em>(integer - default: Default team role)</em></li><li><strong>commitmentPercent</strong>: <em>(integer - default: 100)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"roleId\\": 2,
+  \\"commitmentPercent\\": 50,
+  \\"from\\": \\"2017-06-01\\",
+  \\"to\\": \\"2017-12-31\\"
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__put_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Membership has been successfully updated</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>commitmentPercent</strong>: <em>required (integer)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li><li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>team</strong>: <em>(team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>member</strong>: <em>(member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/team-memberships/2\\",
+  \\"id\\": 2,
+  \\"commitmentPercent\\": 50,
+  \\"from\\": \\"2017-06-01\\",
+  \\"to\\": \\"2017-12-31\\",
+  \\"role\\": {
+    \\"self\\": \\"https://api.tempo.io/core/3/roles/2\\",
+    \\"id\\": 2,
+    \\"name\\": \\"Developer\\"
+  },
+  \\"team\\": {
+    \\"self\\": \\"https://api.tempo.io/core/3/teams/1\\",
+    \\"id\\": 1,
+    \\"name\\": \\"Team-A\\"
+  },
+  \\"member\\": {
+    \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=1111aaaa2222bbbb3333cccc\\",
+    \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
+    \\"displayName\\": \\"John Brown\\"
+  }
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Membership cannot be updated for some reasons</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"User is already a member of this team on this date.\\"
+    }
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Membership cannot be found in the system</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
+    }
+  ]
+}
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__put_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Delete an existing membership</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships__id__delete_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships__id__delete_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships__id__delete_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships__id__delete_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__delete_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2><p>Membership has been successfully deleted</p><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Membership cannot be found in the system</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
+    }
+  ]
+}
+</code></pre></div></div><div class=\\"tab-pane\\" id=\\"team_memberships__id__delete_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div><div class=\\"panel panel-default\\"><div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships_team__id_\\" href=\\"#panel_team_memberships_team__id_\\"><span class=\\"parent\\">/team-memberships</span>/team/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div><div class=\\"panel-group\\"><div id=\\"panel_team_memberships_team__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\"><div class=\\"panel-body\\"><div class=\\"list-group\\"><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieves all the memberships of the team.</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#team_memberships_team__id__get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#team_memberships_team__id__get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#team_memberships_team__id__get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"team_memberships_team__id__get_request\\"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class=\\"tab-pane\\" id=\\"team_memberships_team__id__get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>Memberships of a given teamId</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Team Membership)</em><p><strong>Items</strong>: Team Membership</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>commitmentPercent</strong>: <em>required (integer)</em></li><li><strong>from</strong>: <em>(date-only)</em></li><li><strong>to</strong>: <em>(date-only)</em></li><li><strong>role</strong>: <em>required (role)</em><ul><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>self</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>team</strong>: <em>required (team)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>member</strong>: <em>required (member)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/team-memberships/team/1\\",
   \\"metadata\\": {
     \\"count\\": 2
@@ -21130,6 +21447,8 @@ Array [
   "Retrieve team-link by project",
   "Creates a new membership",
   "Retrieve an existing membership for the given id",
+  "Update an existing membership for the given id",
+  "Delete an existing membership",
   "Retrieves all the memberships of the team.",
   "Retrieve all timesheets that are awaiting my approval",
   "Retrieve the current approval for a given period",
@@ -21222,7 +21541,7 @@ Array [
   "/team-links/{id} get  delete ",
   "/team-links/project/{projectKey} get ",
   "/team-memberships post ",
-  "/team-memberships/{id} get ",
+  "/team-memberships/{id} get  put  delete ",
   "/team-memberships/team/{id} get ",
   "/timesheet-approvals/waiting get ",
   "/timesheet-approvals/user/{accountId} get ",
