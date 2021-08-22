@@ -26,9 +26,6 @@ export default class TeamMemberships extends Collection {
 
   /**
    * Update an existing membership for the given id.
-   *
-   * @deprecated Removed from Tempo.io documentation since April 2021.
-   * @see team.putTeam()
    */
   public async putTeamMembership(
     id: string,
@@ -42,9 +39,6 @@ export default class TeamMemberships extends Collection {
 
   /**
    * Delete an existing membership.
-   *
-   * @deprecated Removed from Tempo.io documentation since April 2021.
-   * @see team.putTeam()
    */
   public async deleteTeamMembership(id: string): Promise<void> {
     await this.createAndSendRequest(`/team-memberships/${id}`, {
