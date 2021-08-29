@@ -68,7 +68,7 @@ describe('requestHandler', () => {
       try {
         await handler.doRequest({ url: 'https://example.com', method: 'GET' });
       } catch (e) {
-        expect(e.message).toMatch('Request failed with status code 404');
+        expect((e as Error).message).toMatch('Request failed with status code 404');
       }
     });
   });
