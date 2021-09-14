@@ -11,7 +11,7 @@
     "lint": "eslint --ext .ts 'src/**/*.ts' 'tests/**/*.ts'",
     "format": "eslint --ext .ts --fix 'src/**/*.ts' 'tests/**/*.ts'",
     "test": "jest --config jestconfig.json",
-    "doc": "typedoc --out doc ./src/",
+    "doc": "typedoc --out doc ./src/tempo.ts ./src/collections/* ./src/request/*",
     "build": "tsc",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
