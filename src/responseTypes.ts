@@ -128,6 +128,10 @@ export interface PlanResponse {
     };
     values: PlanPeriodResponse[];
   };
+  // Is included only if there is an approval linked to the plan.
+  planApproval?: {
+    status: 'REQUESTED' | 'REJECTED' | 'APPROVED';
+  };
 }
 
 export interface PeriodResponse {
