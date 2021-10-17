@@ -16,6 +16,9 @@ describe('Tempo REST API Documentation', () => {
         responseType: 'text',
       },
     );
+    if (typeof response.data !== 'string') {
+      throw new Error('Response data was not a string. Might it be a network error?');
+    }
     responseData = response.data;
     htmlDoc = new JSDOM(responseData).window.document;
   });
