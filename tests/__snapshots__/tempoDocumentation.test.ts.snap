@@ -13,8 +13,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <script type=\\"text/javascript\\" src=\\"https://code.jquery.com/jquery-1.11.0.min.js\\"></script>
 <script type=\\"text/javascript\\" src=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js\\"></script>
 <script type=\\"text/javascript\\" src=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js\\"></script>
-<script type=\\"text/javascript\\">
-      $(document).ready(function() {
+<script type=\\"text/javascript\\">$(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
@@ -26,10 +25,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
             hljs.highlightBlock(block);
           });
         });
-      });
-    </script>
-<style>
-      .hljs {
+      });</script>
+<style>.hljs {
         background: transparent;
       }
       .parent {
@@ -165,8 +162,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
       .sg-nav__spacer {
         padding-top: 30px;
-      }
-    </style>
+      }</style>
 <link href=\\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,700\\" rel=\\"stylesheet\\">
 <link rel=\\"stylesheet\\" href=\\"main.css\\"></link>
 <body data-spy=\\"scroll\\" data-target=\\"#sidebar\\">
@@ -280,48 +276,38 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <p class=\\"sg-p\\">
 <img src=\\"myapp-request-access.png\\" title=\\"MyApp Request Access\\"></img>
 <h5>Step 2</h5>
-<p class=\\"sg-p\\">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
-   grant_type = \\"authorization_code\\"
+<p class=\\"sg-p\\">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>grant_type = \\"authorization_code\\"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    redirect_uri = $REDIRECT_URI
-   code = $CODE
-</pre></p>
-<p class=\\"sg-p\\">The response includes the access token itself, related information, and a refresh token.<pre>
-{
+   code = $CODE</pre></p>
+<p class=\\"sg-p\\">The response includes the access token itself, related information, and a refresh token.<pre>{
    \\"access_token\\":\\"$ACCESS_TOKEN\\",
    \\"expires_in\\":5184000,
    \\"token_type\\":\\"Bearer\\",
    \\"scope\\":\\"read write\\",
    \\"refresh_token\\":\\"$REFRESH_TOKEN\\"
-}
-</pre></p>
+}</pre></p>
 <h5>Step 3</h5>
 <p class=\\"sg-p\\">Provide this <i>access token</i> to any API requests using the <i>Authorization header</i> :<pre>curl -H \\"Authorization: Bearer $ACCESS_TOKEN\\" \\"https://api.tempo.io/core/3/worklogs?from=2018-01-28&to=2018-02-03\\"</pre></p>
 <h3>How to retrieve a new access token from the refresh token</h3>
-<p class=\\"sg-p\\">The <i>access token</i> will eventually expire. You need to renew it using the previously received <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
-   grant_type = \\"refresh_token\\"
+<p class=\\"sg-p\\">The <i>access token</i> will eventually expire. You need to renew it using the previously received <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>grant_type = \\"refresh_token\\"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    redirect_uri = $REDIRECT_URI
-   refresh_token = $REFRESH_TOKEN
-</pre></p>
+   refresh_token = $REFRESH_TOKEN</pre></p>
 <p class=\\"sg-p\\">The response will contain a new <i>access token</i> and a new <i>refresh token</i>.</p>
 <h3>How to revoke a token</h3>
-<p class=\\"sg-p\\">You can revoke an existing <i>access token</i> at any time:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
-   token_type_hint = \\"access_token\\"
+<p class=\\"sg-p\\">You can revoke an existing <i>access token</i> at any time:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>token_type_hint = \\"access_token\\"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
-   token = $ACCESS_TOKEN
-</pre></p>
-<p class=\\"sg-p\\">You can also revoke an existing <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>
-{
+   token = $ACCESS_TOKEN</pre></p>
+<p class=\\"sg-p\\">You can also revoke an existing <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>{
    token_type_hint = \\"refresh_token\\"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    token = $REFRESH_TOKEN
-}
-</pre></p>
+}</pre></p>
 <h3>API conventions</h3>
 <h4>Identifying users</h4>
 <p class=\\"sg-p\\">The Tempo REST API uses the Atlassian accountId to identify users. The accountId is an opaque identifier that uniquely identifies the user.</p>
@@ -332,22 +318,14 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <h4>Delete requests</h4>
 <p class=\\"sg-p\\">On success, delete requests return a response with status code <a href=\\"https://httpstatuses.com/204\\">204 (No content)</a>. No payload body is included in the response.</p>
 <h4>Arrays</h4>
-<p class=\\"sg-p\\">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>
-.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300
-</pre></p>
+<p class=\\"sg-p\\">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300</pre></p>
 <p></p>
 <ul>
 <li><strong>version</strong>: <em>required (3)</em></li>
 </ul>
 <h2 class=\\"sg-h2\\" id=\\"accounts\\">Accounts</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts\\" href=\\"#panel_accounts\\"><span class=\\"parent\\"></span>/accounts</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts\\" href=\\"#panel_accounts\\"><span class=\\"parent\\"></span>/accounts</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_accounts\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -492,8 +470,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -632,8 +609,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code></pre><p><strong>Retrieve accounts for \\"OPEN\\" status</strong>:<br></br><pre><code>{
+}</code></pre><p><strong>Retrieve accounts for \\"OPEN\\" status</strong>:<br></br><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/accounts?status=OPEN\\",
   \\"metadata\\": {
     \\"count\\": 2
@@ -715,8 +691,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code></pre></p><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre></p><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
     {
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
@@ -739,14 +714,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts__key_\\" href=\\"#panel_accounts__key_\\"><span class=\\"parent\\">/accounts</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts__key_\\" href=\\"#panel_accounts__key_\\"><span class=\\"parent\\">/accounts</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_accounts__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -883,8 +851,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1039,8 +1006,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -1084,8 +1050,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1170,8 +1135,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1191,12 +1155,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts__key__links\\" href=\\"#panel_accounts__key__links\\"><span class=\\"parent\\">/accounts/{key}</span>/links</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts__key__links\\" href=\\"#panel_accounts__key__links\\"><span class=\\"parent\\">/accounts/{key}</span>/links</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_accounts__key__links\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -1264,8 +1223,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -1309,8 +1267,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Account not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1331,13 +1288,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"account_categories\\">Account - Categories</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_categories\\" href=\\"#panel_account_categories\\"><span class=\\"parent\\"></span>/account-categories</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_categories\\" href=\\"#panel_account_categories\\"><span class=\\"parent\\"></span>/account-categories</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_categories\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -1430,8 +1381,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Category with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -1526,8 +1476,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -1570,14 +1519,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_categories__key_\\" href=\\"#panel_account_categories__key_\\"><span class=\\"parent\\">/account-categories</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_categories__key_\\" href=\\"#panel_account_categories__key_\\"><span class=\\"parent\\">/account-categories</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_categories__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -1678,8 +1620,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid category key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1785,8 +1726,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Category with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -1830,8 +1770,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid category key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1916,8 +1855,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid category key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -1938,12 +1876,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"account_category_types\\">Account - Category - Types</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_category_types\\" href=\\"#panel_account_category_types\\"><span class=\\"parent\\"></span>/account-category-types</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_category_types\\" href=\\"#panel_account_category_types\\"><span class=\\"parent\\"></span>/account-category-types</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_category_types\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2000,8 +1933,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"name\\": \\"OPERATIONAL\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -2045,12 +1977,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"account_links\\">Account - Links</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links\\" href=\\"#panel_account_links\\"><span class=\\"parent\\"></span>/account-links</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links\\" href=\\"#panel_account_links\\"><span class=\\"parent\\"></span>/account-links</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_links\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2145,8 +2072,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid account key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -2189,13 +2115,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links__id_\\" href=\\"#panel_account_links__id_\\"><span class=\\"parent\\">/account-links</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links__id_\\" href=\\"#panel_account_links__id_\\"><span class=\\"parent\\">/account-links</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_links__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2298,8 +2218,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Link not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -2384,8 +2303,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Link not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -2405,12 +2323,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links_project__projectkey_\\" href=\\"#panel_account_links_project__projectkey_\\"><span class=\\"parent\\">/account-links</span>/project/{projectKey}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_account_links_project__projectkey_\\" href=\\"#panel_account_links_project__projectkey_\\"><span class=\\"parent\\">/account-links</span>/project/{projectKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_account_links_project__projectkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2532,8 +2445,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -2577,13 +2489,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"customers\\">Customers</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_customers\\" href=\\"#panel_customers\\"><span class=\\"parent\\"></span>/customers</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_customers\\" href=\\"#panel_customers\\"><span class=\\"parent\\"></span>/customers</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_customers\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2670,8 +2576,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Customer with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -2763,8 +2668,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"name\\": \\"GreenCloud\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -2807,14 +2711,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_customers__key_\\" href=\\"#panel_customers__key_\\"><span class=\\"parent\\">/customers</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_customers__key_\\" href=\\"#panel_customers__key_\\"><span class=\\"parent\\">/customers</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_customers__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -2911,8 +2808,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid customer key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -3012,8 +2908,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Customer with this key already exists\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -3057,8 +2952,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid customer key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -3143,8 +3037,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid customer key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -3164,12 +3057,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_customers__key__accounts\\" href=\\"#panel_customers__key__accounts\\"><span class=\\"parent\\">/customers</span>/{key}/accounts</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_customers__key__accounts\\" href=\\"#panel_customers__key__accounts\\"><span class=\\"parent\\">/customers</span>/{key}/accounts</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_customers__key__accounts\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -3283,8 +3171,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -3328,8 +3215,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid customer key\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -3350,13 +3236,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"holiday_schemes\\">Holiday Schemes</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes\\" href=\\"#panel_holiday_schemes\\"><span class=\\"parent\\"></span>/holiday-schemes</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes\\" href=\\"#panel_holiday_schemes\\"><span class=\\"parent\\"></span>/holiday-schemes</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -3518,8 +3398,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a scheme name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -3562,14 +3441,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id_\\" href=\\"#panel_holiday_schemes__id_\\"><span class=\\"parent\\">/holiday-schemes</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id_\\" href=\\"#panel_holiday_schemes__id_\\"><span class=\\"parent\\">/holiday-schemes</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -3752,8 +3624,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a scheme name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -3864,12 +3735,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__default\\" href=\\"#panel_holiday_schemes__id__default\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/default</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__default\\" href=\\"#panel_holiday_schemes__id__default\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/default</a> <span class=\\"methods\\"><span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id__default\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -3971,13 +3837,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays\\" href=\\"#panel_holiday_schemes__id__holidays\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/holidays</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays\\" href=\\"#panel_holiday_schemes__id__holidays\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/holidays</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id__holidays\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -4055,8 +3915,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"date\\": \\"2021-12-24\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4160,8 +4019,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"description\\": \\"The day before Christmas\\",
   \\"durationSeconds\\": 14400,
   \\"date\\": \\"2021-12-24\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -4194,8 +4052,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"description\\": \\"The day before Christmas\\",
   \\"durationSeconds\\": 14400,
   \\"date\\": \\"2021-12-24\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -4216,8 +4073,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a holiday name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4260,14 +4116,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays__id_\\" href=\\"#panel_holiday_schemes__id__holidays__id_\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays__id_\\" href=\\"#panel_holiday_schemes__id__holidays__id_\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id__holidays__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -4329,8 +4178,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"description\\": \\"The day before Christmas\\",
   \\"durationSeconds\\": 14400,
   \\"date\\": \\"2021-12-24\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4374,8 +4222,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Holiday not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -4463,8 +4310,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a holiday name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4576,12 +4422,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays_floating\\" href=\\"#panel_holiday_schemes__id__holidays_floating\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/floating</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__holidays_floating\\" href=\\"#panel_holiday_schemes__id__holidays_floating\\"><span class=\\"parent\\">/holiday-schemes/{id}/holidays</span>/floating</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id__holidays_floating\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -4719,13 +4560,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__members\\" href=\\"#panel_holiday_schemes__id__members\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/members</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes__id__members\\" href=\\"#panel_holiday_schemes__id__members\\"><span class=\\"parent\\">/holiday-schemes/{id}</span>/members</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes__id__members\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -4782,8 +4617,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4896,8 +4730,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"User is invalid\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -4961,12 +4794,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes_users__accountid_\\" href=\\"#panel_holiday_schemes_users__accountid_\\"><span class=\\"parent\\">/holiday-schemes</span>/users/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_holiday_schemes_users__accountid_\\" href=\\"#panel_holiday_schemes_users__accountid_\\"><span class=\\"parent\\">/holiday-schemes</span>/users/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_holiday_schemes_users__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -5067,12 +4895,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"periods\\">Periods</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_periods\\" href=\\"#panel_periods\\"><span class=\\"parent\\"></span>/periods</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_periods\\" href=\\"#panel_periods\\"><span class=\\"parent\\"></span>/periods</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_periods\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -5151,13 +4974,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"permission_roles\\">Permission Roles</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles\\" href=\\"#panel_permission_roles\\"><span class=\\"parent\\"></span>/permission-roles</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles\\" href=\\"#panel_permission_roles\\"><span class=\\"parent\\"></span>/permission-roles</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_permission_roles\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -5433,12 +5250,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles_global\\" href=\\"#panel_permission_roles_global\\"><span class=\\"parent\\">/permission-roles</span>/global</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles_global\\" href=\\"#panel_permission_roles_global\\"><span class=\\"parent\\">/permission-roles</span>/global</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_permission_roles_global\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -5547,14 +5359,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles__id_\\" href=\\"#panel_permission_roles__id_\\"><span class=\\"parent\\">/permission-roles</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_permission_roles__id_\\" href=\\"#panel_permission_roles__id_\\"><span class=\\"parent\\">/permission-roles</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_permission_roles__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -5926,13 +5731,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"plans\\">Plans</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_plans\\" href=\\"#panel_plans\\"><span class=\\"parent\\"></span>/plans</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_plans\\" href=\\"#panel_plans\\"><span class=\\"parent\\"></span>/plans</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_plans\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -6103,8 +5902,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -6169,8 +5967,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"recurrenceEndDate\\": \\"2019-12-31\\",
   \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
   \\"issueKey\\": \\"ISS-15\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -6235,8 +6032,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -6257,8 +6053,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Issue not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -6278,14 +6073,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_plans__id_\\" href=\\"#panel_plans__id_\\"><span class=\\"parent\\">/plans</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_plans__id_\\" href=\\"#panel_plans__id_\\"><span class=\\"parent\\">/plans</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_plans__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -6386,8 +6174,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"planApproval\\": {
     \\"status\\": \\"REQUESTED\\"
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -6500,8 +6287,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"recurrenceEndDate\\": \\"2019-12-31\\",
   \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
   \\"issueKey\\": \\"ISS-15\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -6566,8 +6352,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -6716,12 +6501,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_plans_user__accountid_\\" href=\\"#panel_plans_user__accountid_\\"><span class=\\"parent\\">/plans</span>/user/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_plans_user__accountid_\\" href=\\"#panel_plans_user__accountid_\\"><span class=\\"parent\\">/plans</span>/user/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_plans_user__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -6932,13 +6712,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"programs\\">Programs</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_programs\\" href=\\"#panel_programs\\"><span class=\\"parent\\"></span>/programs</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_programs\\" href=\\"#panel_programs\\"><span class=\\"parent\\"></span>/programs</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_programs\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -7023,8 +6797,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -7101,8 +6874,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"teamIds\\": [
     101
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7142,8 +6914,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -7164,8 +6935,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Program name is required\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -7208,14 +6978,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_programs__id_\\" href=\\"#panel_programs__id_\\"><span class=\\"parent\\">/programs</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_programs__id_\\" href=\\"#panel_programs__id_\\"><span class=\\"parent\\">/programs</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_programs__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -7283,8 +7046,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -7328,8 +7090,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Program not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7387,8 +7148,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"teamIds\\": [
     101
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7428,8 +7188,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -7450,8 +7209,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Program name is required\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -7495,8 +7253,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Program not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7581,8 +7338,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Program not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7602,12 +7358,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_programs__id__teams\\" href=\\"#panel_programs__id__teams\\"><span class=\\"parent\\">/programs/{id}</span>/teams</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_programs__id__teams\\" href=\\"#panel_programs__id__teams\\"><span class=\\"parent\\">/programs/{id}</span>/teams</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_programs__id__teams\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -7671,8 +7422,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"name\\": \\"Analyst\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -7693,13 +7443,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"roles\\">Roles</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_roles\\" href=\\"#panel_roles\\"><span class=\\"parent\\"></span>/roles</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_roles\\" href=\\"#panel_roles\\"><span class=\\"parent\\"></span>/roles</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_roles\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -7756,8 +7500,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"default\\": false
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -7853,8 +7596,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"id\\": 2,
   \\"name\\": \\"Manager\\",
   \\"default\\": false
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -7918,12 +7660,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_roles_default\\" href=\\"#panel_roles_default\\"><span class=\\"parent\\">/roles</span>/default</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_roles_default\\" href=\\"#panel_roles_default\\"><span class=\\"parent\\">/roles</span>/default</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_roles_default\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -7967,8 +7704,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"id\\": 1,
   \\"name\\": \\"Member\\",
   \\"default\\": true
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -8011,14 +7747,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_roles__id_\\" href=\\"#panel_roles__id_\\"><span class=\\"parent\\">/roles</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_roles__id_\\" href=\\"#panel_roles__id_\\"><span class=\\"parent\\">/roles</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_roles__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -8071,8 +7800,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"id\\": 2,
   \\"name\\": \\"Manager\\",
   \\"default\\": false
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -8193,8 +7921,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"id\\": 2,
   \\"name\\": \\"Manager\\",
   \\"default\\": false
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -8365,13 +8092,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"teams\\">Teams</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams\\" href=\\"#panel_teams\\"><span class=\\"parent\\"></span>/teams</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams\\" href=\\"#panel_teams\\"><span class=\\"parent\\"></span>/teams</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -8645,14 +8366,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id_\\" href=\\"#panel_teams__id_\\"><span class=\\"parent\\">/teams</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id_\\" href=\\"#panel_teams__id_\\"><span class=\\"parent\\">/teams</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9050,12 +8764,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__links\\" href=\\"#panel_teams__id__links\\"><span class=\\"parent\\">/teams/{id}</span>/links</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__links\\" href=\\"#panel_teams__id__links\\"><span class=\\"parent\\">/teams/{id}</span>/links</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__links\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9197,12 +8906,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members\\" href=\\"#panel_teams__id__members\\"><span class=\\"parent\\">/teams/{id}</span>/members</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members\\" href=\\"#panel_teams__id__members\\"><span class=\\"parent\\">/teams/{id}</span>/members</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__members\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9296,8 +9000,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -9361,12 +9064,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members__accountid_\\" href=\\"#panel_teams__id__members__accountid_\\"><span class=\\"parent\\">/teams/{id}/members</span>/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members__accountid_\\" href=\\"#panel_teams__id__members__accountid_\\"><span class=\\"parent\\">/teams/{id}/members</span>/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__members__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9440,8 +9138,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -9505,12 +9202,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members__accountid__memberships\\" href=\\"#panel_teams__id__members__accountid__memberships\\"><span class=\\"parent\\">/teams/{id}/members/{accountId}</span>/memberships</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__members__accountid__memberships\\" href=\\"#panel_teams__id__members__accountid__memberships\\"><span class=\\"parent\\">/teams/{id}/members/{accountId}</span>/memberships</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__members__accountid__memberships\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9683,12 +9375,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__permissions\\" href=\\"#panel_teams__id__permissions\\"><span class=\\"parent\\">/teams/{id}</span>/permissions</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__permissions\\" href=\\"#panel_teams__id__permissions\\"><span class=\\"parent\\">/teams/{id}</span>/permissions</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__permissions\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9788,8 +9475,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code></pre></p>
+}</code></pre></p>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
 <p>Client must be authenticated to access this resource.</p>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
@@ -9851,12 +9537,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__permissions__key_\\" href=\\"#panel_teams__id__permissions__key_\\"><span class=\\"parent\\">/teams/{id}/permissions</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_teams__id__permissions__key_\\" href=\\"#panel_teams__id__permissions__key_\\"><span class=\\"parent\\">/teams/{id}/permissions</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_teams__id__permissions__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -9921,8 +9602,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code></pre></p>
+}</code></pre></p>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
 <p>Client must be authenticated to access this resource.</p>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2>
@@ -9985,12 +9665,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"team_links\\">Team - Links</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links\\" href=\\"#panel_team_links\\"><span class=\\"parent\\"></span>/team-links</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links\\" href=\\"#panel_team_links\\"><span class=\\"parent\\"></span>/team-links</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_links\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -10130,13 +9805,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links__id_\\" href=\\"#panel_team_links__id_\\"><span class=\\"parent\\">/team-links</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links__id_\\" href=\\"#panel_team_links__id_\\"><span class=\\"parent\\">/team-links</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_links__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -10346,12 +10015,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links_project__projectkey_\\" href=\\"#panel_team_links_project__projectkey_\\"><span class=\\"parent\\">/team-links</span>/project/{projectKey}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_links_project__projectkey_\\" href=\\"#panel_team_links_project__projectkey_\\"><span class=\\"parent\\">/team-links</span>/project/{projectKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_links_project__projectkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -10502,12 +10166,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"team_memberships\\">Team - Memberships</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships\\" href=\\"#panel_team_memberships\\"><span class=\\"parent\\"></span>/team-memberships</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships\\" href=\\"#panel_team_memberships\\"><span class=\\"parent\\"></span>/team-memberships</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_memberships\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -10622,8 +10281,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"User is already a member of this team on this date.\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -10666,14 +10324,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships__id_\\" href=\\"#panel_team_memberships__id_\\"><span class=\\"parent\\">/team-memberships</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships__id_\\" href=\\"#panel_team_memberships__id_\\"><span class=\\"parent\\">/team-memberships</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_memberships__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -10790,8 +10441,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -10915,8 +10565,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"User is already a member of this team on this date.\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -10960,8 +10609,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -11046,8 +10694,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Membership with id &#39;42&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -11067,12 +10714,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships_team__id_\\" href=\\"#panel_team_memberships_team__id_\\"><span class=\\"parent\\">/team-memberships</span>/team/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_team_memberships_team__id_\\" href=\\"#panel_team_memberships_team__id_\\"><span class=\\"parent\\">/team-memberships</span>/team/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_team_memberships_team__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11231,12 +10873,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"timesheet_approvals\\">Timesheet Approvals</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_waiting\\" href=\\"#panel_timesheet_approvals_waiting\\"><span class=\\"parent\\">/timesheet-approvals</span>/waiting</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_waiting\\" href=\\"#panel_timesheet_approvals_waiting\\"><span class=\\"parent\\">/timesheet-approvals</span>/waiting</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_waiting\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11363,8 +11000,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -11384,12 +11020,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid_\\" href=\\"#panel_timesheet_approvals_user__accountid_\\"><span class=\\"parent\\">/timesheet-approvals</span>/user/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid_\\" href=\\"#panel_timesheet_approvals_user__accountid_\\"><span class=\\"parent\\">/timesheet-approvals</span>/user/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11499,12 +11130,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reviewers\\" href=\\"#panel_timesheet_approvals_user__accountid__reviewers\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reviewers</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reviewers\\" href=\\"#panel_timesheet_approvals_user__accountid__reviewers\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reviewers</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid__reviewers\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11588,12 +11214,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__approve\\" href=\\"#panel_timesheet_approvals_user__accountid__approve\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/approve</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__approve\\" href=\\"#panel_timesheet_approvals_user__accountid__approve\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/approve</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid__approve\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11718,12 +11339,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reject\\" href=\\"#panel_timesheet_approvals_user__accountid__reject\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reject</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reject\\" href=\\"#panel_timesheet_approvals_user__accountid__reject\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reject</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid__reject\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11856,12 +11472,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reopen\\" href=\\"#panel_timesheet_approvals_user__accountid__reopen\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reopen</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__reopen\\" href=\\"#panel_timesheet_approvals_user__accountid__reopen\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/reopen</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid__reopen\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -11994,12 +11605,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__submit\\" href=\\"#panel_timesheet_approvals_user__accountid__submit\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/submit</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_user__accountid__submit\\" href=\\"#panel_timesheet_approvals_user__accountid__submit\\"><span class=\\"parent\\">/timesheet-approvals/user/{accountId}</span>/submit</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_user__accountid__submit\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12134,12 +11740,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_team__teamid_\\" href=\\"#panel_timesheet_approvals_team__teamid_\\"><span class=\\"parent\\">/timesheet-approvals</span>/team/{teamId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_timesheet_approvals_team__teamid_\\" href=\\"#panel_timesheet_approvals_team__teamid_\\"><span class=\\"parent\\">/timesheet-approvals</span>/team/{teamId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_timesheet_approvals_team__teamid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12309,12 +11910,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"user_schedule\\">User Schedule</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_user_schedule\\" href=\\"#panel_user_schedule\\"><span class=\\"parent\\"></span>/user-schedule</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_user_schedule\\" href=\\"#panel_user_schedule\\"><span class=\\"parent\\"></span>/user-schedule</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_user_schedule\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12429,12 +12025,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_user_schedule__accountid_\\" href=\\"#panel_user_schedule__accountid_\\"><span class=\\"parent\\">/user-schedule</span>/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_user_schedule__accountid_\\" href=\\"#panel_user_schedule__accountid_\\"><span class=\\"parent\\">/user-schedule</span>/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_user_schedule__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12557,13 +12148,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"work_attributes\\">Work Attributes</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes\\" href=\\"#panel_work_attributes\\"><span class=\\"parent\\"></span>/work-attributes</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes\\" href=\\"#panel_work_attributes\\"><span class=\\"parent\\"></span>/work-attributes</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_work_attributes\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12636,8 +12221,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"required\\": true
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -12722,8 +12306,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"Yellow\\",
     \\"Pink\\"
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -12766,8 +12349,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"yellow\\": \\"Yellow\\",
     \\"pink\\": \\"Rosé\\"
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -12788,8 +12370,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Missing work attribute name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -12832,16 +12413,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes__key_\\" href=\\"#panel_work_attributes__key_\\"><span class=\\"parent\\">/work-attributes</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_work_attributes__key_\\" href=\\"#panel_work_attributes__key_\\"><span class=\\"parent\\">/work-attributes</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_work_attributes__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -12912,8 +12484,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"yellow\\": \\"Yellow\\",
     \\"pink\\": \\"Rosé\\"
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -12957,8 +12528,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13024,8 +12594,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"Yellow\\",
     \\"Pink\\"
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13068,8 +12637,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"yellow\\": \\"Yellow\\",
     \\"pink\\": \\"Rosé\\"
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -13090,8 +12658,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Missing work attribute name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -13135,8 +12702,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13202,8 +12768,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"Yellow\\",
     \\"Pink\\"
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13246,8 +12811,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
     \\"yellow\\": \\"Yellow\\",
     \\"pink\\": \\"Rosé\\"
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -13268,8 +12832,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Missing work attribute name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -13313,8 +12876,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13399,8 +12961,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13485,8 +13046,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -13507,13 +13067,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"workload_schemes\\">Workload Schemes</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes\\" href=\\"#panel_workload_schemes\\"><span class=\\"parent\\"></span>/workload-schemes</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes\\" href=\\"#panel_workload_schemes\\"><span class=\\"parent\\"></span>/workload-schemes</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_workload_schemes\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -13737,8 +13291,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a scheme name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -13781,14 +13334,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id_\\" href=\\"#panel_workload_schemes__id_\\"><span class=\\"parent\\">/workload-schemes</span>/{id}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id_\\" href=\\"#panel_workload_schemes__id_\\"><span class=\\"parent\\">/workload-schemes</span>/{id}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_workload_schemes__id_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -14026,8 +13572,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"You must specify a scheme name\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -14134,12 +13679,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id__default\\" href=\\"#panel_workload_schemes__id__default\\"><span class=\\"parent\\">/workload-schemes/{id}</span>/default</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id__default\\" href=\\"#panel_workload_schemes__id__default\\"><span class=\\"parent\\">/workload-schemes/{id}</span>/default</a> <span class=\\"methods\\"><span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_workload_schemes__id__default\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -14272,13 +13812,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id__members\\" href=\\"#panel_workload_schemes__id__members\\"><span class=\\"parent\\">/workload-schemes/{id}</span>/members</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes__id__members\\" href=\\"#panel_workload_schemes__id__members\\"><span class=\\"parent\\">/workload-schemes/{id}</span>/members</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_workload_schemes__id__members\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -14335,8 +13869,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -14449,8 +13982,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"User is invalid\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -14514,12 +14046,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes_users__accountid_\\" href=\\"#panel_workload_schemes_users__accountid_\\"><span class=\\"parent\\">/workload-schemes</span>/users/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_workload_schemes_users__accountid_\\" href=\\"#panel_workload_schemes_users__accountid_\\"><span class=\\"parent\\">/workload-schemes</span>/users/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_workload_schemes_users__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -14651,13 +14178,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 <h2 class=\\"sg-h2\\" id=\\"worklogs\\">Worklogs</h2>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs\\" href=\\"#panel_worklogs\\"><span class=\\"parent\\"></span>/worklogs</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs\\" href=\\"#panel_worklogs\\"><span class=\\"parent\\"></span>/worklogs</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -14719,8 +14240,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -14879,8 +14399,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -14907,8 +14426,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid time duration entered\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -14951,14 +14469,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid_\\" href=\\"#panel_worklogs__worklogid_\\"><span class=\\"parent\\">/worklogs</span>/{worklogId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid_\\" href=\\"#panel_worklogs__worklogid_\\"><span class=\\"parent\\">/worklogs</span>/{worklogId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_put\\">put <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_delete\\">delete <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs__worklogid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -15051,8 +14562,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15096,8 +14606,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Worklog cannot be found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -15237,8 +14746,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2>
@@ -15265,8 +14773,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid time duration entered\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15310,8 +14817,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Worklog cannot be found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -15396,8 +14902,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Worklog cannot be found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -15417,12 +14922,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid__work_attribute_values\\" href=\\"#panel_worklogs__worklogid__work_attribute_values\\"><span class=\\"parent\\">/worklogs/{worklogId}</span>/work-attribute-values</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid__work_attribute_values\\" href=\\"#panel_worklogs__worklogid__work_attribute_values\\"><span class=\\"parent\\">/worklogs/{worklogId}</span>/work-attribute-values</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs__worklogid__work_attribute_values\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -15488,8 +14988,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"value\\": \\"red\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15532,12 +15031,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid__work_attribute_values__key_\\" href=\\"#panel_worklogs__worklogid__work_attribute_values__key_\\"><span class=\\"parent\\">/worklogs/{worklogId}/work-attribute-values</span>/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs__worklogid__work_attribute_values__key_\\" href=\\"#panel_worklogs__worklogid__work_attribute_values__key_\\"><span class=\\"parent\\">/worklogs/{worklogId}/work-attribute-values</span>/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs__worklogid__work_attribute_values__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -15587,8 +15081,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <code>{
   \\"key\\": \\"_COLOR_\\",
   \\"value\\": \\"red\\"
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15632,8 +15125,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Work attribute value cannot be found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -15653,12 +15145,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_account__accountkey_\\" href=\\"#panel_worklogs_account__accountkey_\\"><span class=\\"parent\\">/worklogs</span>/account/{accountKey}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_account__accountkey_\\" href=\\"#panel_worklogs_account__accountkey_\\"><span class=\\"parent\\">/worklogs</span>/account/{accountKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_account__accountkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -15724,8 +15211,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15768,12 +15254,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_issue__key_\\" href=\\"#panel_worklogs_issue__key_\\"><span class=\\"parent\\">/worklogs</span>/issue/{key}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_issue__key_\\" href=\\"#panel_worklogs_issue__key_\\"><span class=\\"parent\\">/worklogs</span>/issue/{key}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_issue__key_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -15839,8 +15320,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -15884,8 +15364,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Issue not found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -15905,12 +15384,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira__jiraworklogid_\\" href=\\"#panel_worklogs_jira__jiraworklogid_\\"><span class=\\"parent\\">/worklogs/jira</span>/{jiraWorklogId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira__jiraworklogid_\\" href=\\"#panel_worklogs_jira__jiraworklogid_\\"><span class=\\"parent\\">/worklogs/jira</span>/{jiraWorklogId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_jira__jiraworklogid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16003,8 +15477,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16048,8 +15521,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Worklog cannot be found\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
@@ -16069,12 +15541,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira_filter__jirafilterid_\\" href=\\"#panel_worklogs_jira_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs/jira</span>/filter/{jirafilterId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_jira_filter__jirafilterid_\\" href=\\"#panel_worklogs_jira_filter__jirafilterid_\\"><span class=\\"parent\\">/worklogs/jira</span>/filter/{jirafilterId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_jira_filter__jirafilterid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16140,8 +15607,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16184,12 +15650,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_project__projectkey_\\" href=\\"#panel_worklogs_project__projectkey_\\"><span class=\\"parent\\">/worklogs</span>/project/{projectKey}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_project__projectkey_\\" href=\\"#panel_worklogs_project__projectkey_\\"><span class=\\"parent\\">/worklogs</span>/project/{projectKey}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_project__projectkey_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16255,8 +15716,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16299,12 +15759,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_team__teamid_\\" href=\\"#panel_worklogs_team__teamid_\\"><span class=\\"parent\\">/worklogs</span>/team/{teamId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_team__teamid_\\" href=\\"#panel_worklogs_team__teamid_\\"><span class=\\"parent\\">/worklogs</span>/team/{teamId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_team__teamid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16367,8 +15822,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   },
   \\"results\\": [
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16411,12 +15865,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_user__accountid_\\" href=\\"#panel_worklogs_user__accountid_\\"><span class=\\"parent\\">/worklogs</span>/user/{accountId}</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_user__accountid_\\" href=\\"#panel_worklogs_user__accountid_\\"><span class=\\"parent\\">/worklogs</span>/user/{accountId}</a> <span class=\\"methods\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_user__accountid_\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16483,8 +15932,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
   \\"results\\": [
     // skipped
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16527,12 +15975,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 <div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\">
-<a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_work_attribute_values\\" href=\\"#panel_worklogs_work_attribute_values\\"><span class=\\"parent\\">/worklogs</span>/work-attribute-values</a>
-<span class=\\"methods\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-</span>
-</div>
+<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_worklogs_work_attribute_values\\" href=\\"#panel_worklogs_work_attribute_values\\"><span class=\\"parent\\">/worklogs</span>/work-attribute-values</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
 <div class=\\"panel-group\\">
 <div id=\\"panel_worklogs_work_attribute_values\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
 <div class=\\"panel-body\\">
@@ -16594,8 +16037,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     ]
   }
-]
-</code>
+]</code>
 </pre>
 </div>
 </div>
@@ -16620,8 +16062,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"Invalid work attribute value\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 <h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2>
@@ -16665,8 +16106,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
     }
   ]
-}
-</code>
+}</code>
 </pre>
 </div>
 </div>
