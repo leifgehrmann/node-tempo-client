@@ -30,7 +30,7 @@ jobs:
     - name: Run documentation generator to test it works
       run: npm run doc
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         env_vars: NODE
         fail_ci_if_error: true
