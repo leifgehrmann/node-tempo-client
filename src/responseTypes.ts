@@ -349,6 +349,17 @@ export interface ProgramResponse {
   };
 }
 
+export interface GlobalConfigurationResponse {
+  allowLoggingOnClosedAccount: boolean;
+  approvalPeriod: 'WEEK' | 'MONTH';
+  approvalWeekStart: number; // 1 is monday, 7 is sunday.
+  maxHoursPerDayPerUser: null | number;
+  numberOfDaysAllowedIntoFuture: number;
+  remainingEstimateOptional: boolean;
+  weekStart: number; // 1 is monday, 7 is sunday.
+  worklogDescriptionOptional: boolean;
+}
+
 export interface HolidayResponse extends Holiday {
   self: string;
   id: number;

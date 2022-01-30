@@ -3,6 +3,7 @@ import AccountCategoryTypes from './collections/accountCategoryTypes';
 import AccountLinks from './collections/accountLinks';
 import Accounts from './collections/accounts';
 import Customers from './collections/customers';
+import GlobalConfiguration from './collections/globalConfiguration';
 import HolidaySchemes from './collections/holidaySchemes';
 import Periods from './collections/periods';
 import PermissionRoles from './collections/permissionRoles';
@@ -49,6 +50,8 @@ export default class TempoApi {
 
   public readonly customers: Customers;
 
+  public readonly globalConfiguration: GlobalConfiguration;
+
   public readonly holidaySchemes: HolidaySchemes;
 
   public readonly periods: Periods;
@@ -88,6 +91,7 @@ export default class TempoApi {
     this.accountLinks = new AccountLinks(request);
     this.accounts = new Accounts(request);
     this.customers = new Customers(request);
+    this.globalConfiguration = new GlobalConfiguration(request);
     this.holidaySchemes = new HolidaySchemes(request);
     this.periods = new Periods(request);
     this.permissionRoles = new PermissionRoles(request);
