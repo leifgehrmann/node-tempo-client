@@ -39,6 +39,7 @@ describe('TempoApi', () => {
       expect(await tempo.accounts.get()).toBe(dummyApiResponse);
       expect(await tempo.customers.get()).toBe(dummyApiResponse);
       expect(await tempo.holidaySchemes.get()).toBe(dummyApiResponse);
+      expect(await tempo.globalConfiguration.get()).toBe(dummyApiResponse);
       expect(await tempo.periods.get()).toBe(dummyApiResponse);
       expect(await tempo.permissionRoles.get()).toBe(dummyApiResponse);
       expect(await tempo.plans.get()).toBe(dummyApiResponse);
