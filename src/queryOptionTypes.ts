@@ -34,6 +34,10 @@ export interface Id extends StringMap {
   id: number;
 }
 
+export interface Ids extends StringMap {
+  ids: number[];
+}
+
 export interface AssigneeType extends StringMap {
   assigneeType: string;
 }
@@ -49,3 +53,14 @@ export interface Year extends StringMap {
 export interface TeamId extends StringMap {
   teamId: number;
 }
+
+// `Only` and `Either` allow us to create parameters that require
+// one or the other type, but not both at the same time.
+// Borrowed from https://stackoverflow.com/a/66605669
+export type Only<T, U> = {
+  [P in keyof T]: T[P];
+} & {
+  [P in keyof U]?: never;
+};
+
+export type Either<T, U> = Only<T, U> | Only<U, T>;
