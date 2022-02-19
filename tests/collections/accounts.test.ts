@@ -15,7 +15,7 @@ describe('Accounts', () => {
       expect(result.method).toEqual('POST');
     });
 
-    it('get hits proper url', async () => {
+    it('get with a status hits proper url', async () => {
       const result = await mockUrlCall.call('get', [
         {
           status: 'OPEN',
@@ -23,6 +23,17 @@ describe('Accounts', () => {
       ]);
       expect(result.url).toEqual(
         'http://tempo.somehost.com:8080/core/3/accounts?status=OPEN',
+      );
+    });
+
+    it('get with a list of ids hits proper url', async () => {
+      const result = await mockUrlCall.call('get', [
+        {
+          id: [1, 2, 3],
+        },
+      ]);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/accounts?id=1&id=2&id=3',
       );
     });
 

@@ -15,8 +15,19 @@ export default class Accounts extends Collection {
     });
   }
 
+  /**
+   * Retrieve existing accounts
+   *
+   * An account can be retrieved by either specifying a status,
+   * or by specifying a list of account ids. The options cannot
+   * cannot be combined.
+   *
+   * A maximum of 50 ids is allowed.
+   *
+   * @param options
+   */
   public async get(
-    options?: queryOptions.Status,
+    options?: queryOptions.Either<queryOptions.Status, queryOptions.Ids>,
   ): Promise<ResultSetResponse<AccountResponse>> {
     return this.createAndSendRequest('/accounts', {
       query: options,

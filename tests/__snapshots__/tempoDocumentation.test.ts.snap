@@ -535,6 +535,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <h3>Query Parameters</h3>
 <ul>
 <li><strong>status</strong>: <em>(string)</em><p>Retrieve accounts for the given status [OPEN, CLOSED, ARCHIVED]</p></li>
+<li><strong>id</strong>: <em>(integer)</em><p>Retrieve accounts for the given ids (50 ids at maximum). Note, this cannot be used with other parameters.</p><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>accounts?id=1&amp;id=2</code></pre></div></li>
 </ul>
 </div>
 <div class=\\"tab-pane\\" id=\\"accounts_get_response\\">
@@ -694,21 +695,64 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
     }
   ]
-}</code></pre></p><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+}</code></pre><p><strong>Retrieve account by ids</strong>:<br></br><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/accounts?id=123\\",
+  \\"metadata\\": {
+    \\"count\\": 1
+  },
+  \\"results\\": [
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/accounts/CLOUDBAY_DEVELOPMENT\\",
+      \\"key\\": \\"CLOUDBAY_DEVELOPMENT\\",
+      \\"id\\": 7,
+      \\"name\\": \\"Cloudbay: Development\\",
+      \\"status\\": \\"OPEN\\",
+      \\"global\\": false,
+      \\"monthlyBudget\\": 600,
+      \\"lead\\": {
+        \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=123456:01234567-89ab-cdef-0123-456789abcdef\\",
+        \\"accountId\\": \\"123456:01234567-89ab-cdef-0123-456789abcdef\\",
+        \\"displayName\\": \\"Erica Jefferson\\"
+      },
+      \\"contact\\": {
+        \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=1111aaaa2222bbbb3333cccc\\",
+        \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
+        \\"displayName\\": \\"John Brown\\",
+        \\"type\\": \\"USER\\"
+      },
+      \\"category\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/account-categories/300\\",
+        \\"key\\": \\"300\\",
+        \\"id\\": 14,
+        \\"name\\": \\"Development\\",
+        \\"type\\": {
+          \\"name\\": \\"BILLABLE\\"
+        }
+      },
+      \\"customer\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/customers/100201\\",
+        \\"key\\": \\"100201\\",
+        \\"id\\": 234,
+        \\"name\\": \\"CloudBay\\"
+      },
+      \\"links\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/accounts/CLOUDBAY_DEVELOPMENT/links\\"
+      }
+    }
+  ]
+}</code></pre></p><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>The query is not valid for some reason</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Id cannot be combined with other parameters\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
     {
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></p>
-<div class=\\"tab-pane\\" id=\\"accounts_get_securedby\\">
-<h1>Secured by OAuth 2.0</h1>
-<h3>Headers</h3>
-<ul>
-<li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li>
-</ul>
-</div>
-</div>
+}</code></pre></div></p><div class=\\"tab-pane\\" id=\\"accounts_get_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></p>
 <div class=\\"clearfix\\"></div>
 </div>
 </div>
@@ -16209,6 +16253,7 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 </div>
 </div>
 </div>
+</div>
 </p>
 </div>
 </section>
@@ -16478,7 +16523,7 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
     }
   ]
-}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"accounts_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve existing accounts</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#accounts_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#accounts_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#accounts_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"accounts_get_request\\"><h3>Query Parameters</h3><ul><li><strong>status</strong>: <em>(string)</em><p>Retrieve accounts for the given status [OPEN, CLOSED, ARCHIVED]</p></li></ul></div><div class=\\"tab-pane\\" id=\\"accounts_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List accounts</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Account)</em><p><strong>Items</strong>: Account</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>status</strong>: <em>required (one of OPEN, CLOSED, ARCHIVED)</em></li><li><strong>global</strong>: <em>required (boolean - default: false)</em></li><li><strong>monthlyBudget</strong>: <em>(integer)</em></li><li><strong>lead</strong>: <em>required (lead)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li><li><strong>contact</strong>: <em>(contact)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>(string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of USER, EXTERNAL)</em><p>Indicates if the user is a registered Jira user (USER) or not (EXTERNAL)</p></li></ul></li><li><strong>category</strong>: <em>(category)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (type)</em><ul><li><strong>name</strong>: <em>required (string)</em></li></ul></li></ul></li><li><strong>customer</strong>: <em>(customer)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>links</strong>: <em>required (links)</em><ul><li><strong>self</strong>: <em>required (string)</em></li></ul></li></ul></div></li></ul><p><strong>Examples</strong>:</p><div class=\\"examples\\"><p><strong>Retrieve all existing accounts</strong>:<br></p><pre><code>{
+}</code></pre></div></div><div class=\\"tab-pane\\" id=\\"accounts_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div><div class=\\"list-group-item\\"><div class=\\"resource_method_title\\"><span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span><div class=\\"method_description\\"><p>Retrieve existing accounts</p><div class=\\"clearfix\\"></div></div></div><div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div><ul class=\\"nav nav-tabs\\"><li class=\\"active\\"><a href=\\"#accounts_get_request\\" data-toggle=\\"tab\\">Request</a></li><li><a href=\\"#accounts_get_response\\" data-toggle=\\"tab\\">Response</a></li><li><a href=\\"#accounts_get_securedby\\" data-toggle=\\"tab\\">Security</a></li></ul><div class=\\"tab-content\\"><div class=\\"tab-pane active\\" id=\\"accounts_get_request\\"><h3>Query Parameters</h3><ul><li><strong>status</strong>: <em>(string)</em><p>Retrieve accounts for the given status [OPEN, CLOSED, ARCHIVED]</p></li><li><strong>id</strong>: <em>(integer)</em><p>Retrieve accounts for the given ids (50 ids at maximum). Note, this cannot be used with other parameters.</p><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>accounts?id=1&amp;id=2</code></pre></div></li></ul></div><div class=\\"tab-pane\\" id=\\"accounts_get_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2><p>List accounts</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>metadata</strong>: <em>required (metadata)</em><ul><li><strong>count</strong>: <em>required (integer)</em></li></ul></li><li><strong>results</strong>: <em>required (array of Account)</em><p><strong>Items</strong>: Account</p><div class=\\"items\\"><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>status</strong>: <em>required (one of OPEN, CLOSED, ARCHIVED)</em></li><li><strong>global</strong>: <em>required (boolean - default: false)</em></li><li><strong>monthlyBudget</strong>: <em>(integer)</em></li><li><strong>lead</strong>: <em>required (lead)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>required (string)</em></li><li><strong>displayName</strong>: <em>(string)</em></li></ul></li><li><strong>contact</strong>: <em>(contact)</em><ul><li><strong>self</strong>: <em>(string)</em></li><li><strong>accountId</strong>: <em>(string)</em></li><li><strong>displayName</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (one of USER, EXTERNAL)</em><p>Indicates if the user is a registered Jira user (USER) or not (EXTERNAL)</p></li></ul></li><li><strong>category</strong>: <em>(category)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (type)</em><ul><li><strong>name</strong>: <em>required (string)</em></li></ul></li></ul></li><li><strong>customer</strong>: <em>(customer)</em><ul><li><strong>self</strong>: <em>required (string)</em></li><li><strong>key</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (integer)</em></li><li><strong>name</strong>: <em>required (string)</em></li></ul></li><li><strong>links</strong>: <em>required (links)</em><ul><li><strong>self</strong>: <em>required (string)</em></li></ul></li></ul></div></li></ul><p><strong>Examples</strong>:</p><div class=\\"examples\\"><p><strong>Retrieve all existing accounts</strong>:<br></p><pre><code>{
   \\"self\\": \\"https://api.tempo.io/core/3/accounts\\",
   \\"metadata\\": {
     \\"count\\": 2
@@ -16623,7 +16668,59 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     }
   ]
 }
-</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+</code></pre><p><strong>Retrieve account by ids</strong>:<br></p><pre><code>{
+  \\"self\\": \\"https://api.tempo.io/core/3/accounts?id=123\\",
+  \\"metadata\\": {
+    \\"count\\": 1
+  },
+  \\"results\\": [
+    {
+      \\"self\\": \\"https://api.tempo.io/core/3/accounts/CLOUDBAY_DEVELOPMENT\\",
+      \\"key\\": \\"CLOUDBAY_DEVELOPMENT\\",
+      \\"id\\": 7,
+      \\"name\\": \\"Cloudbay: Development\\",
+      \\"status\\": \\"OPEN\\",
+      \\"global\\": false,
+      \\"monthlyBudget\\": 600,
+      \\"lead\\": {
+        \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=123456:01234567-89ab-cdef-0123-456789abcdef\\",
+        \\"accountId\\": \\"123456:01234567-89ab-cdef-0123-456789abcdef\\",
+        \\"displayName\\": \\"Erica Jefferson\\"
+      },
+      \\"contact\\": {
+        \\"self\\": \\"https://my-cloud-instance.atlassian.net/rest/api/2/user?accountId=1111aaaa2222bbbb3333cccc\\",
+        \\"accountId\\": \\"1111aaaa2222bbbb3333cccc\\",
+        \\"displayName\\": \\"John Brown\\",
+        \\"type\\": \\"USER\\"
+      },
+      \\"category\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/account-categories/300\\",
+        \\"key\\": \\"300\\",
+        \\"id\\": 14,
+        \\"name\\": \\"Development\\",
+        \\"type\\": {
+          \\"name\\": \\"BILLABLE\\"
+        }
+      },
+      \\"customer\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/customers/100201\\",
+        \\"key\\": \\"100201\\",
+        \\"id\\": 234,
+        \\"name\\": \\"CloudBay\\"
+      },
+      \\"links\\": {
+        \\"self\\": \\"https://api.tempo.io/core/3/accounts/CLOUDBAY_DEVELOPMENT/links\\"
+      }
+    }
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>The query is not valid for some reason</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
+  \\"errors\\": [
+    {
+      \\"message\\": \\"Id cannot be combined with other parameters\\"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
   \\"errors\\": [
     {
       \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
