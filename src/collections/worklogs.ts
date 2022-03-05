@@ -13,7 +13,7 @@ export default class Worklogs extends Collection {
     queryOptions.Issues &
     queryOptions.Projects &
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -76,7 +76,7 @@ export default class Worklogs extends Collection {
     jiraFilterId: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -92,7 +92,7 @@ export default class Worklogs extends Collection {
     accountKey: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -105,7 +105,7 @@ export default class Worklogs extends Collection {
     projectKey: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -118,7 +118,7 @@ export default class Worklogs extends Collection {
     teamId: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -131,7 +131,7 @@ export default class Worklogs extends Collection {
     accountId: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {
@@ -144,7 +144,7 @@ export default class Worklogs extends Collection {
     key: string,
     options?: Partial<
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDate &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<WorklogResponse>> {

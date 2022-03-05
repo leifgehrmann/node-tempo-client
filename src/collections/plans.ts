@@ -1,3 +1,4 @@
+import { UpdatedFromDateOrDateTime } from '../queryOptionTypes';
 import * as queryOptions from '../queryOptionTypes';
 import { Plan } from '../requestTypes';
 import {
@@ -13,7 +14,7 @@ export default class Plans extends Collection {
     queryOptions.AssigneeType &
     queryOptions.PlanItemType &
     queryOptions.DateRange &
-    queryOptions.UpdatedFrom &
+    queryOptions.UpdatedFromDateOrDateTime &
     queryOptions.Pagination
     >,
   ): Promise<PaginatedResultSetResponse<PlanResponse>> {
@@ -53,7 +54,7 @@ export default class Plans extends Collection {
 
   public async getForUser(
     accountId: string,
-    options?: Partial<queryOptions.DateRange & queryOptions.UpdatedFrom>,
+    options?: Partial<queryOptions.DateRange & queryOptions.UpdatedFromDateOrDateTime>,
   ): Promise<ResultSetResponse<PlanResponse>> {
     return this.createAndSendRequest(`/plans/user/${accountId}`, {
       query: options,
