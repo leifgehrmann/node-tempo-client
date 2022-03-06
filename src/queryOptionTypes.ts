@@ -9,7 +9,15 @@ export interface Pagination extends StringMap {
   limit: string;
 }
 
-export interface UpdatedFrom extends StringMap {
+export interface UpdatedFromDate extends StringMap {
+  // A date in the format "yyyy-MM-dd".
+  updatedFrom: string;
+}
+
+export interface UpdatedFromDateOrDateTime extends StringMap {
+  // Can either be a date in the format "yyyy-MM-dd" or datetime in the
+  // format "yyyy-MM-ddTHH:mm:ssZ" in UTC.
+  // Using date-only applies timestamp at start of day for that date.
   updatedFrom: string;
 }
 
