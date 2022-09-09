@@ -5,15 +5,15 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <html>
 <head>
 <title>REST API documentation</title>
-<meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\">
-<meta http-equiv=\\"Content-Type\\" content=\\"text/html; charset=utf-8\\">
-<meta name=\\"generator\\" content=\\"https://github.com/raml2html/raml2html 7.8.0\\">
-<link rel=\\"stylesheet\\" href=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css\\">
-<link rel=\\"stylesheet\\" href=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css\\">
-<script type=\\"text/javascript\\" src=\\"https://code.jquery.com/jquery-1.11.0.min.js\\"></script>
-<script type=\\"text/javascript\\" src=\\"https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js\\"></script>
-<script type=\\"text/javascript\\" src=\\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js\\"></script>
-<script type=\\"text/javascript\\">$(document).ready(function() {
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="https://github.com/raml2html/raml2html 7.8.0">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<script type="text/javascript">$(document).ready(function() {
         $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
@@ -162,200 +162,209 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
       }
       .sg-nav__spacer {
         padding-top: 30px;
+      }
+      .sg-info {
+        background-color: #E5F9FD;
+        padding: 15px;
+        margin: 20px 0;
       }</style>
-<link href=\\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,700\\" rel=\\"stylesheet\\">
-<link rel=\\"stylesheet\\" href=\\"main.css\\"></link>
-<body data-spy=\\"scroll\\" data-target=\\"#sidebar\\">
-<article class=\\"sg\\">
-<nav class=\\"sg-section sg-section--nav\\" style=\\"overflow-y: auto;\\">
-<div class=\\"sg-nav\\">
-<img class=\\"sg-nav__logo\\" src=\\"logo.png\\" alt=\\"TEMPO REST API\\" height=\\"48\\">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link rel="stylesheet" href="main.css"></link>
+<body data-spy="scroll" data-target="#sidebar">
+<article class="sg">
+<nav class="sg-section sg-section--nav" style="overflow-y: auto;">
+<div class="sg-nav">
+<img class="sg-nav__logo" src="logo.png" alt="TEMPO REST API" height="48">
 <div>REST API version 3</div>
-<ul class=\\"sg-nav__links\\">
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#accounts\\">Accounts</a>
+<ul class="sg-nav__links">
+<li class="sg-nav__links__element">
+<a href="#accounts">Accounts</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#account_categories\\">Account - Categories</a>
+<li class="sg-nav__links__element">
+<a href="#account_categories">Account - Categories</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#account_category_types\\">Account - Category - Types</a>
+<li class="sg-nav__links__element">
+<a href="#account_category_types">Account - Category - Types</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#account_links\\">Account - Links</a>
+<li class="sg-nav__links__element">
+<a href="#account_links">Account - Links</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#customers\\">Customers</a>
+<li class="sg-nav__links__element">
+<a href="#customers">Customers</a>
 </li>
 <li class=\\"sg-nav__links__element\\">
 <a href=\\"#globalconfiguration\\">Global Configuration</a>
+<li class="sg-nav__links__element">
+<a href="#holiday_schemes">Holiday Schemes</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#holiday_schemes\\">Holiday Schemes</a>
+<li class="sg-nav__links__element">
+<a href="#periods">Periods</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#periods\\">Periods</a>
+<li class="sg-nav__links__element">
+<a href="#permission_roles">Permission Roles</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#permission_roles\\">Permission Roles</a>
+<li class="sg-nav__links__element">
+<a href="#plans">Plans</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#plans\\">Plans</a>
+<li class="sg-nav__links__element">
+<a href="#programs">Programs</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#programs\\">Programs</a>
+<li class="sg-nav__links__element">
+<a href="#roles">Roles</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#roles\\">Roles</a>
+<li class="sg-nav__links__element">
+<a href="#teams">Teams</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#teams\\">Teams</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#team_links\\">Team - Links</a>
+<li class="sg-nav__links__element">
+<a href="#team_links">Team - Links</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#team_memberships\\">Team - Memberships</a>
+<li class="sg-nav__links__element">
+<a href="#team_memberships">Team - Memberships</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#timesheet_approvals\\">Timesheet Approvals</a>
+<li class="sg-nav__links__element">
+<a href="#timesheet_approvals">Timesheet Approvals</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#user_schedule\\">User Schedule</a>
+<li class="sg-nav__links__element">
+<a href="#user_schedule">User Schedule</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#work_attributes\\">Work Attributes</a>
+<li class="sg-nav__links__element">
+<a href="#work_attributes">Work Attributes</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#workload_schemes\\">Workload Schemes</a>
+<li class="sg-nav__links__element">
+<a href="#workload_schemes">Workload Schemes</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#worklogs\\">Worklogs</a>
-</li>
-</ul>
-<div class=\\"sg-nav__spacer\\">Audit API</div>
-<ul class=\\"sg-nav__links\\">
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"https://tempo-io.github.io/tempo-audit-docs/\\">Endpoints</a>
+<li class="sg-nav__links__element">
+<a href="#worklogs">Worklogs</a>
 </li>
 </ul>
-<div class=\\"sg-nav__spacer\\">Cost-Tracker API</div>
-<ul class=\\"sg-nav__links\\">
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"https://apidocs.tempo.io/cost-tracker\\">Endpoints</a>
+<div class="sg-nav__spacer">Audit API</div>
+<ul class="sg-nav__links">
+<li class="sg-nav__links__element">
+<a href="https://tempo-io.github.io/tempo-audit-docs/">Endpoints</a>
 </li>
 </ul>
-<div class=\\"sg-nav__spacer\\">Jira Links API</div>
-<ul class=\\"sg-nav__links\\">
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"https://apidocs.tempo.io/jira\\">Endpoints</a>
+<div class="sg-nav__spacer">Cost-Tracker API</div>
+<ul class="sg-nav__links">
+<li class="sg-nav__links__element">
+<a href="https://apidocs.tempo.io/cost-tracker">Endpoints</a>
+</li>
+</ul>
+<div class="sg-nav__spacer">Jira Links API</div>
+<ul class="sg-nav__links">
+<li class="sg-nav__links__element">
+<a href="https://apidocs.tempo.io/jira">Endpoints</a>
+</li>
+</ul>
+<div class="sg-nav__spacer">REST API version 4</div>
+<ul class="sg-nav__links">
+<li class="sg-nav__links__element">
+<a href="https://apidocs.tempo.io/v4">Endpoints</a>
 </li>
 </ul>
 </img>
 </div>
-<section class=\\"sg-section sg-section--main\\">
-<div class=\\"sg-content\\">
-<h1 class=\\"sg-h1\\">REST API documentation <small>version 3</small></h1>
-<p class=\\"sg-p\\">https://api.tempo.io/core/{version}</p>
-<p class=\\"sg-p\\"></p>
-<p class=\\"sg-p\\">We encourage you to join our developer community on Slack at <a href=\\"https://www.tempo.io/developers\\">www.tempo.io/developers</a>, where you can get support from our internal experts and share best practices with other developers building with Tempo.</p>
-<p class=\\"sg-p\\">If you have feedback or requests, you can also reach us through our <a href=\\"https://tempo-io.atlassian.net/servicedesk/customer/portal/6\\">Customer Support Portal</a>. You can find general product information in the <a href=\\"https://www.tempo.io/documentation\\">Tempo Help Center</a>.</p>
+<section class="sg-section sg-section--main">
+<div class="sg-content">
+<h1 class="sg-h1">REST API documentation <small>version 3</small></h1>
+<p class="sg-p">https://api.tempo.io/core/3</p>
+<div class="sg-info">This documentation is for <strong>version 3</strong> of the Tempo REST API. The latest version of the Tempo REST API is <a href="https://apidocs.tempo.io/v4"><strong>version 4</strong></a>.</div>
+<p class="sg-p"></p>
+<p class="sg-p">We encourage you to join our developer community on Slack at <a href="https://www.tempo.io/developers">www.tempo.io/developers</a>, where you can get support from our internal experts and share best practices with other developers building with Tempo.</p>
+<p class="sg-p">If you have feedback or requests, you can also reach us through our <a href="https://tempo-io.atlassian.net/servicedesk/customer/portal/6">Customer Support Portal</a>. You can find general product information in the <a href="https://www.tempo.io/documentation">Tempo Help Center</a>.</p>
 <h3>Using the REST API as an individual user</h3>
-<p class=\\"sg-p\\">You can use the REST API to interact with the data your permissions give you access to. To do so, you will need to generate a Tempo OAuth 2.0 token.</p>
-<p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>API integration</b>.</p>
-<p class=\\"sg-p\\">Once you have a token, you need to use it inside the Authorization HTTP header. Ex:<pre>curl -v -H \\"Authorization: Bearer $token\\" \\"https://api.tempo.io/core/3/worklogs?...\\"</pre></p>
+<p class="sg-p">You can use the REST API to interact with the data your permissions give you access to. To do so, you will need to generate a Tempo OAuth 2.0 token.</p>
+<p class="sg-p">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>API integration</b>.</p>
+<p class="sg-p">Once you have a token, you need to use it inside the Authorization HTTP header. Ex:<pre>curl -v -H "Authorization: Bearer $token" "https://api.tempo.io/core/3/worklogs?..."</pre></p>
 <h3>Using the REST API as an application developer</h3>
-<p class=\\"sg-p\\">If you are building apps with Tempo, and have the required Tempo administrator permissions, you can quickly obtain the OAuth 2.0 credentials you need to retrieve an access token.</p>
+<p class="sg-p">If you are building apps with Tempo, and have the required Tempo administrator permissions, you can quickly obtain the OAuth 2.0 credentials you need to retrieve an access token. Access tokens grant temporary, secure access to Tempo, based on your current permissions.</p>
 <h4>Obtain your credentials</h4>
-<p class=\\"sg-p\\">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>OAuth 2.0 authentication</b>.</p>
-<p class=\\"sg-p\\">Enter a <i>Redirect URI</i> and specify the <i>Client type</i> and <i>Authorization grant type</i>. In most cases you will choose <i>Authorization code</i> as the Authorization grant type.</p>
-<p class=\\"sg-p\\">Once you click <b>Add</b>, your Client ID and Client secret are generated and you can retrieve your access token.</p>
+<p class="sg-p">Go to <b>Tempo>Settings</b>, scroll down to <b>Data Access</b> and select <b>OAuth 2.0 authentication</b>.</p>
+<p class="sg-p">Enter a <i>Redirect URI</i> and specify the <i>Client type</i> and <i>Authorization grant type</i>. In most cases you will choose <i>Authorization code</i> as the Authorization grant type.</p>
+<p class="sg-p">Once you click <b>Add</b>, your Client ID and Client secret are generated and you can retrieve your access token.</p>
 <h3>How to retrieve an access token for a user</h3>
 <h4>Authorization grant type used is <i>authorization_code</i></h4>
 <h5>Step 1</h5>
-<p class=\\"sg-p\\">Obtain an authorization code against your Jira Cloud instance :<pre>GET: https://{jira-cloud-instance-name}.atlassian.net/plugins/servlet/ac/io.tempo.jira/oauth-authorize/?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI</pre></p>
-<p class=\\"sg-p\\">Where <i>$CLIENT_ID</i> and <i>$REDIRECT_URI</i> match the one you generated in <b>Tempo > Settings > OAuth 2.0 Applications</b></p>
-<p class=\\"sg-p\\">You will be asked to <b>authorize</b> or <b>deny</b> access to your Tempo data. Granting access redirects you to the configured <i>redirect URI</i> with a new query string parameter named <i>code</i> (this is the authorization code). Note that this authorization code expires quickly.</p>
-<p class=\\"sg-p\\">
-<img src=\\"myapp-request-access.png\\" title=\\"MyApp Request Access\\"></img>
+<p class="sg-p">Obtain an authorization code against your Jira Cloud instance :<pre>GET: https://{jira-cloud-instance-name}.atlassian.net/plugins/servlet/ac/io.tempo.jira/oauth-authorize/?client_id=$CLIENT_ID&redirect_uri=$REDIRECT_URI</pre></p>
+<p class="sg-p">Where <i>$CLIENT_ID</i> and <i>$REDIRECT_URI</i> match the one you generated in <b>Tempo > Settings > OAuth 2.0 Applications</b></p>
+<p class="sg-p">You will be asked to <b>authorize</b> or <b>deny</b> access to your Tempo data. Granting access redirects you to the configured <i>redirect URI</i> with a new query string parameter named <i>code</i> (this is the authorization code). Note that this authorization code expires quickly.</p>
+<p class="sg-p">
+<img src="myapp-request-access.png" title="MyApp Request Access"></img>
 <h5>Step 2</h5>
-<p class=\\"sg-p\\">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>grant_type = \\"authorization_code\\"
+<p class="sg-p">Obtain an access token from Tempo by providing the <i>authorization code</i> to:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the "application/x-www-form-urlencoded" format:<pre>grant_type = "authorization_code"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    redirect_uri = $REDIRECT_URI
    code = $CODE</pre></p>
-<p class=\\"sg-p\\">The response includes the access token itself, related information, and a refresh token.<pre>{
-   \\"access_token\\":\\"$ACCESS_TOKEN\\",
-   \\"expires_in\\":5184000,
-   \\"token_type\\":\\"Bearer\\",
-   \\"scope\\":\\"read write\\",
-   \\"refresh_token\\":\\"$REFRESH_TOKEN\\"
+<p class="sg-p">The response includes the access token itself, related information, and a refresh token.<pre>{
+   "access_token":"$ACCESS_TOKEN",
+   "expires_in":5184000,
+   "token_type":"Bearer",
+   "scope":"read write",
+   "refresh_token":"$REFRESH_TOKEN"
 }</pre></p>
 <h5>Step 3</h5>
-<p class=\\"sg-p\\">Provide this <i>access token</i> to any API requests using the <i>Authorization header</i> :<pre>curl -H \\"Authorization: Bearer $ACCESS_TOKEN\\" \\"https://api.tempo.io/core/3/worklogs?from=2018-01-28&to=2018-02-03\\"</pre></p>
+<p class="sg-p">Provide this <i>access token</i> to any API requests using the <i>Authorization header</i> :<pre>curl -H "Authorization: Bearer $ACCESS_TOKEN" "https://api.tempo.io/core/3/worklogs?from=2018-01-28&to=2018-02-03"</pre></p>
 <h3>How to retrieve a new access token from the refresh token</h3>
-<p class=\\"sg-p\\">The <i>access token</i> will eventually expire. You need to renew it using the previously received <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>grant_type = \\"refresh_token\\"
+<p class="sg-p">The <i>access token</i> will eventually expire. You need to renew it using the previously received <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/token/</pre>sending the following parameters using the "application/x-www-form-urlencoded" format:<pre>grant_type = "refresh_token"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    redirect_uri = $REDIRECT_URI
    refresh_token = $REFRESH_TOKEN</pre></p>
-<p class=\\"sg-p\\">The response will contain a new <i>access token</i> and a new <i>refresh token</i>.</p>
+<p class="sg-p">The response will contain a new <i>access token</i> and a new <i>refresh token</i>.</p>
 <h3>How to revoke a token</h3>
-<p class=\\"sg-p\\">You can revoke an existing <i>access token</i> at any time:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>token_type_hint = \\"access_token\\"
+<p class="sg-p">You can revoke an existing <i>access token</i> at any time:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the "application/x-www-form-urlencoded" format:<pre>token_type_hint = "access_token"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    token = $ACCESS_TOKEN</pre></p>
-<p class=\\"sg-p\\">You can also revoke an existing <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the \\"application/x-www-form-urlencoded\\" format:<pre>{
-   token_type_hint = \\"refresh_token\\"
+<p class="sg-p">You can also revoke an existing <i>refresh token</i>:<pre>POST: https://api.tempo.io/oauth/revoke_token/</pre>sending the following parameters using the "application/x-www-form-urlencoded" format:<pre>{
+   token_type_hint = "refresh_token"
    client_id = $CLIENT_ID
    client_secret = $CLIENT_SECRET
    token = $REFRESH_TOKEN
 }</pre></p>
 <h3>API conventions</h3>
 <h4>Identifying users</h4>
-<p class=\\"sg-p\\">The Tempo REST API uses the Atlassian accountId to identify users. The accountId is an opaque identifier that uniquely identifies the user.</p>
-<p class=\\"sg-p\\">The accountId of the current user can found using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-Myself\\">Jira Myself API</a>.</p>
-<p class=\\"sg-p\\">Information about a user, given the accountId, can be retrieved using the <a href=\\"https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-User\\">Jira User API</a>.</p>
+<p class="sg-p">The Tempo REST API uses the Atlassian accountId to identify users. The accountId is an opaque identifier that uniquely identifies the user.</p>
+<p class="sg-p">The accountId of the current user can found using the <a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-Myself">Jira Myself API</a>.</p>
+<p class="sg-p">Information about a user, given the accountId, can be retrieved using the <a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-group-User">Jira User API</a>.</p>
 <h4>Dates</h4>
-<p class=\\"sg-p\\">The API uses strings to represent dates. Dates are formatted as <a href=\\"https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates\\">ISO 8601 calendar dates</a> (YYYY-MM-DD). For example, March 29th, 2019 is formatted as 2019-03-29.</p>
+<p class="sg-p">The API uses strings to represent dates. Dates are formatted as <a href="https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates">ISO 8601 calendar dates</a> (YYYY-MM-DD). For example, March 29th, 2019 is formatted as 2019-03-29.</p>
 <h4>Delete requests</h4>
-<p class=\\"sg-p\\">On success, delete requests return a response with status code <a href=\\"https://httpstatuses.com/204\\">204 (No content)</a>. No payload body is included in the response.</p>
+<p class="sg-p">On success, delete requests return a response with status code <a href="https://httpstatuses.com/204">204 (No content)</a>. No payload body is included in the response.</p>
 <h4>Arrays</h4>
-<p class=\\"sg-p\\">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300</pre></p>
+<p class="sg-p">A few endpoints accept query parameters of type array. That is achieved by repeating the parameter multiple times, e.g. to get worklogs from three projects:<pre>.../worklogs?from=2020-01-01&to=2020-12-31&project=10100&project=10200&project=10300</pre></p>
 <p></p>
-<ul>
-<li><strong>version</strong>: <em>required (3)</em></li>
-</ul>
-<h2 class=\\"sg-h2\\" id=\\"accounts\\">Accounts</h2>
-<div class=\\"panel panel-default\\">
-<div class=\\"panel-heading\\"><a data-toggle=\\"collapse\\" data-target=\\"#panel_accounts\\" href=\\"#panel_accounts\\"><span class=\\"parent\\"></span>/accounts</a> <span class=\\"methods\\"><span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span> <span class=\\"badge badge_get\\">get <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span></span></div>
-<div class=\\"panel-group\\">
-<div id=\\"panel_accounts\\" class=\\"panel-collapse collapse\\" style=\\"height:auto\\">
-<div class=\\"panel-body\\">
-<div class=\\"list-group\\">
-<div class=\\"list-group-item\\">
-<div class=\\"resource_method_title\\">
-<span class=\\"badge badge_post\\">post <span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span></span>
-<div class=\\"method_description\\">
+<h2 class="sg-h2" id="accounts">Accounts</h2>
+<div class="panel panel-default">
+<div class="panel-heading"><a data-toggle="collapse" data-target="#panel_accounts" href="#panel_accounts"><span class="parent"></span>/accounts</a> <span class="methods"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></span></div>
+<div class="panel-group">
+<div id="panel_accounts" class="panel-collapse collapse" style="height:auto">
+<div class="panel-body">
+<div class="list-group">
+<div class="list-group-item">
+<div class="resource_method_title">
+<span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span>
+<div class="method_description">
 <p>Creates a new account.</p>
 <p>Separate fields are used to identify the contact depending on whether the contact is a registered Jira user or not. The <code>contactAccountId</code> field is used to identify the contact if the contact is a registered Jira user. The <code>externalContactName</code> field is used if the contact is not a registered Jira user.</p>
-<div class=\\"clearfix\\"></div>
+<div class="clearfix"></div>
 </div>
 </div>
-<div class=\\"alert alert-warning\\"><span class=\\"glyphicon glyphicon-lock\\" title=\\"Authentication required\\"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
-<ul class=\\"nav nav-tabs\\">
-<li class=\\"active\\">
-<a href=\\"#accounts_post_request\\" data-toggle=\\"tab\\">Request</a>
+<div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>OAuth 2.0</b><p>Tempo supports OAuth 2.0 for authenticating all API requests.</p></div>
+<ul class="nav nav-tabs">
+<li class="active">
+<a href="#accounts_post_request" data-toggle="tab">Request</a>
 </li>
 <li>
-<a href=\\"#accounts_post_response\\" data-toggle=\\"tab\\">Response</a>
+<a href="#accounts_post_response" data-toggle="tab">Response</a>
 </li>
 <li>
-<a href=\\"#accounts_post_securedby\\" data-toggle=\\"tab\\">Security</a>
+<a href="#accounts_post_securedby" data-toggle="tab">Security</a>
 </li>
 </ul>
-<div class=\\"tab-content\\">
-<div class=\\"tab-pane active\\" id=\\"accounts_post_request\\">
+<div class="tab-content">
+<div class="tab-pane active" id="accounts_post_request">
 <h3>Body</h3>
 <p><strong>Media type</strong>: application/json</p>
 <p><strong>Type</strong>: object</p>
@@ -373,26 +382,26 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li><strong>global</strong>: <em>(boolean - default: false)</em></li>
 </ul>
 <p><strong>Examples</strong>:</p>
-<div class=\\"examples\\">
+<div class="examples">
 <p><strong>Jira user as contact</strong>:<br></br><pre><code>{
-  \\"key\\": \\"CLOUDBAY_DEVELOPMENT\\",
-  \\"name\\": \\"Cloudbay: Development\\",
-  \\"status\\": \\"OPEN\\",
-  \\"leadAccountId\\": \\"123456:01234567-89ab-cdef-0123-456789abcdef\\",
-  \\"contactAccountId\\": \\"1111aaaa2222bbbb3333cccc\\",
-  \\"categoryKey\\": \\"dev1\\",
-  \\"customerKey\\": \\"cloudbay1\\",
-  \\"monthlyBudget\\": 600,
-  \\"global\\": false
+  "key": "CLOUDBAY_DEVELOPMENT",
+  "name": "Cloudbay: Development",
+  "status": "OPEN",
+  "leadAccountId": "123456:01234567-89ab-cdef-0123-456789abcdef",
+  "contactAccountId": "1111aaaa2222bbbb3333cccc",
+  "categoryKey": "dev1",
+  "customerKey": "cloudbay1",
+  "monthlyBudget": 600,
+  "global": false
 }</code></pre><p><strong>External contact</strong>:<br></br><pre><code>{
-  \\"key\\": \\"CLOUDBAY_DEVELOPMENT\\",
-  \\"name\\": \\"Cloudbay: Development\\",
-  \\"status\\": \\"OPEN\\",
-  \\"leadAccountId\\": \\"123456:01234567-89ab-cdef-0123-456789abcdef\\",
-  \\"externalContactName\\": \\"John Brown\\"
+  "key": "CLOUDBAY_DEVELOPMENT",
+  "name": "Cloudbay: Development",
+  "status": "OPEN",
+  "leadAccountId": "123456:01234567-89ab-cdef-0123-456789abcdef",
+  "externalContactName": "John Brown"
 }</code></pre></p></p>
-<div class=\\"tab-pane\\" id=\\"accounts_post_response\\">
-<h2>HTTP status code <a href=\\"http://httpstatus.es/200\\" target=\\"_blank\\">200</a></h2>
+<div class="tab-pane" id="accounts_post_response">
+<h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
 <p>Account has been successfully created</p>
 <h3>Body</h3>
 <p><strong>Media type</strong>: application/json</p>
@@ -20990,31 +20999,31 @@ exports[`Tempo REST API Documentation has not changed 1`] = `
     ]
   }
 ]
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_work_attribute_values_post_response\\"><h2>HTTP status code <a href=\\"http://httpstatus.es/204\\" target=\\"_blank\\">204</a></h2><p>Work attribute values have been created</p><h2>HTTP status code <a href=\\"http://httpstatus.es/400\\" target=\\"_blank\\">400</a></h2><p>Work attribute values cannot be created for some reasons, for example if the value is not valid for the type of the work attribute, or if the worklog already has a value for the specified attribute.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"errors\\": [
+</code></pre></div></div><div class="tab-pane" id="worklogs_work_attribute_values_post_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Work attribute values have been created</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Work attribute values cannot be created for some reasons, for example if the value is not valid for the type of the work attribute, or if the worklog already has a value for the specified attribute.</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class="items"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "errors": [
     {
-      \\"message\\": \\"Invalid work attribute value\\"
+      "message": "Invalid work attribute value"
     }
   ]
 }
-</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/401\\" target=\\"_blank\\">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href=\\"http://httpstatus.es/403\\" target=\\"_blank\\">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"errors\\": [
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Client must be authenticated to access this resource.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Authenticated user is missing permission to fulfill the request</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class="items"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "errors": [
     {
-      \\"message\\": \\"The logged-in-user does not have required permission to view this data\\"
+      "message": "The logged-in-user does not have required permission to view this data"
     }
   ]
-}</code></pre></div><h2>HTTP status code <a href=\\"http://httpstatus.es/404\\" target=\\"_blank\\">404</a></h2><p>Worklog or Work attribute key not found</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class=\\"items\\"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class=\\"examples\\"><pre><code>{
-  \\"errors\\": [
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Worklog or Work attribute key not found</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>errors</strong>: <em>required (array of items)</em><p><strong>Items</strong>: items</p><div class="items"><ul><li><strong>message</strong>: <em>required (string)</em></li></ul></div></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "errors": [
     {
-      \\"message\\": \\"A work attribute with key &#39;_COLOR_&#39; does not exist\\"
+      "message": "A work attribute with key &#39;_COLOR_&#39; does not exist"
     }
   ]
 }
-</code></pre></div></div><div class=\\"tab-pane\\" id=\\"worklogs_work_attribute_values_post_securedby\\"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : \\"Authorization: Bearer \${token}\\"</p></li></ul></div></div><div class=\\"clearfix\\"></div></div></div></div></div></div></div></div></section></article></body></html>"
+</code></pre></div></div><div class="tab-pane" id="worklogs_work_attribute_values_post_securedby"><h1>Secured by OAuth 2.0</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a valid OAuth 2 token : "Authorization: Bearer \${token}"</p></li></ul></div></div><div class="clearfix"></div></div></div></div></div></div></div></div></section></article></body></html>"
 `;
 
 exports[`Tempo REST API Documentation has the same method_descriptions 1`] = `
-Array [
+[
   "Creates a new account.Separate fields are used to identify the contact depending on whether the contact is a registered Jira user or not. The contactAccountId field is used to identify the contact if the contact is a registered Jira user. The externalContactName field is used if the contact is not a registered Jira user.",
   "Retrieve existing accounts",
   "Retrieve an existing account for the given key",
@@ -21112,8 +21121,6 @@ Array [
   "Create a work attribute",
   "Retrieve an existing work attribute for the given key",
   "Update an existing work attribute for the given key",
-  "Update an existing work attribute for the given key",
-  "Delete an existing work attribute for the given key",
   "Delete an existing work attribute for the given key",
   "Retrieve all workload schemes",
   "Create a workload scheme",
@@ -21143,7 +21150,7 @@ Array [
 `;
 
 exports[`Tempo REST API Documentation has the same panel-heading 1`] = `
-Array [
+[
   "/accounts post  get ",
   "/accounts/{key} get  put  delete ",
   "/accounts/{key}/links get ",
@@ -21203,7 +21210,7 @@ Array [
   "/user-schedule get ",
   "/user-schedule/{accountId} get ",
   "/work-attributes get  post ",
-  "/work-attributes/{key} get  put  put  delete  delete ",
+  "/work-attributes/{key} get  put  delete ",
   "/workload-schemes get  post ",
   "/workload-schemes/{id} get  put  delete ",
   "/workload-schemes/{id}/default put ",
@@ -21225,7 +21232,7 @@ Array [
 `;
 
 exports[`Tempo REST API Documentation has the same resource-description 1`] = `
-Array [
+[
   "Retrieve all existing links associated to this account",
   "Retrieve user-schedule of the given user",
 ]
