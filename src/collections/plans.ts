@@ -38,6 +38,24 @@ export default class Plans extends Collection {
     });
   }
 
+  /**
+   * Retrieve plans with time broken down by days
+   */
+  public async getPlanForDaily(
+    daily: string,
+    options?: Partial<
+    { assigneeType: string; } &
+    { planItemType: string; } &
+    queryOptions.DateRange &
+    queryOptions.UpdatedFromDateOrDateTime &
+    queryOptions.Pagination
+    >,
+  ): Promise<ResultSetResponse<PlanResponse>> {
+    return this.createAndSendRequest(`/plans/${daily}`, {
+      query: options,
+    });
+  }
+
   public async putPlan(id: string, plan: Plan): Promise<PlanResponse> {
     return this.createAndSendRequest(`/plans/${id}`, {
       body: plan,

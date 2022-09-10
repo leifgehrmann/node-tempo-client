@@ -28,6 +28,10 @@ export interface Customer {
   name: string;
 }
 
+export interface GenericResource {
+  name: string;
+}
+
 export interface Holiday {
   type: 'FIXED' | 'FLOATING';
   name: string;
