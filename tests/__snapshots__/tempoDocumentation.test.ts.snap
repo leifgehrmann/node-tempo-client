@@ -192,8 +192,12 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li class="sg-nav__links__element">
 <a href="#customers">Customers</a>
 </li>
-<li class=\\"sg-nav__links__element\\">
-<a href=\\"#globalconfiguration\\">Global Configuration</a>
+<li class="sg-nav__links__element">
+<a href="#generic_resources">Generic Resources</a>
+</li>
+<li class="sg-nav__links__element">
+<a href="#globalconfiguration">Global Configuration</a>
+</li>
 <li class="sg-nav__links__element">
 <a href="#holiday_schemes">Holiday Schemes</a>
 </li>
@@ -215,6 +219,8 @@ exports[`Tempo REST API Documentation formatted XML has not changed 1`] = `
 <li class="sg-nav__links__element">
 <a href="#teams">Teams</a>
 </li>
+<li class="sg-nav__links__element">
+<a href="#teams__teamid__generic_resources">Team - Generic Resources</a>
 </li>
 <li class="sg-nav__links__element">
 <a href="#team_links">Team - Links</a>
@@ -22248,6 +22254,11 @@ exports[`Tempo REST API Documentation has the same method_descriptions 1`] = `
   "Update an existing Customer",
   "Delete an existing customer",
   "Retrieve all accounts for a given customer",
+  "Creates a generic resource",
+  "Retrieve an existing generic resource for the given id",
+  "Update an existing generic resource for the given id",
+  "Deletes an existing generic resource for the given id",
+  "Search generic resources",
   "Retrieve Global configurations",
   "Retrieve all holiday schemes",
   "Create a Holiday scheme",
@@ -22273,6 +22284,7 @@ exports[`Tempo REST API Documentation has the same method_descriptions 1`] = `
   "Delete an editable permission role",
   "Retrieve plans",
   "Creates a new plan",
+  "Retrieve plans with time broken down by days",
   "Retrieve an existing plan for the given id. Add from and to query params to expand recurrences.",
   "Update an existing plan for the given id",
   "Delete an existing plan",
@@ -22300,6 +22312,10 @@ exports[`Tempo REST API Documentation has the same method_descriptions 1`] = `
   "Retrieve member's memberships for this team",
   "Retrieve all the permissions for this team",
   "Retrieve a specific permission belonging to the team",
+  "Retrieve all the generic resource members for this team",
+  "Add a generic resource to the given team",
+  "Retrieve an existing generic resource team member for the given teamId and resourceId",
+  "Remove an existing generic resource team member with given resourceId from team with the given teamId",
   "Creates a new team-link",
   "Retrieve an existing team-link for the given id",
   "Delete an existing team-link",
@@ -22365,6 +22381,9 @@ exports[`Tempo REST API Documentation has the same panel-heading 1`] = `
   "/customers post  get ",
   "/customers/{key} get  put  delete ",
   "/customers/{key}/accounts get ",
+  "/generic-resources post ",
+  "/generic-resources/{id} get  put  delete ",
+  "/generic-resources/search post ",
   "/globalconfiguration get ",
   "/holiday-schemes get  post ",
   "/holiday-schemes/{id} get  put  delete ",
@@ -22379,6 +22398,7 @@ exports[`Tempo REST API Documentation has the same panel-heading 1`] = `
   "/permission-roles/global get ",
   "/permission-roles/{id} get  put  delete ",
   "/plans get  post ",
+  "/plans/{daily} get ",
   "/plans/{id} get  put  delete ",
   "/plans/user/{accountId} get ",
   "/programs get  post ",
@@ -22395,6 +22415,8 @@ exports[`Tempo REST API Documentation has the same panel-heading 1`] = `
   "/teams/{id}/members/{accountId}/memberships get ",
   "/teams/{id}/permissions get ",
   "/teams/{id}/permissions/{key} get ",
+  "/teams/{teamId}/generic-resources get  post ",
+  "/teams/{teamId}/generic-resources/{resourceId} get  delete ",
   "/team-links post ",
   "/team-links/{id} get  delete ",
   "/team-links/project/{projectKey} get ",

@@ -26,6 +26,10 @@ export interface DateRange extends StringMap {
   to: string;
 }
 
+export interface QueryString {
+  query: string;
+}
+
 export interface Issues {
   issue: string[];
 }

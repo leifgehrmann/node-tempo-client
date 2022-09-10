@@ -1,11 +1,13 @@
 import { Team } from '../requestTypes';
 import {
   ResultSetResponse,
+  TeamGenericResourceMembersResponse,
+  TeamGenericResourceMemberResponse,
   TeamLinkRefResponse,
   TeamMemberActiveMembershipResponse,
   TeamMemberMembershipResponse,
   TeamPermissionResponse,
-  TeamResponse,
+  TeamResponse
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
@@ -77,5 +79,48 @@ export default class Teams extends Collection {
     key: string,
   ): Promise<TeamPermissionResponse> {
     return this.createAndSendRequest(`/teams/${id}/permissions/${key}`);
+  }
+
+  /**
+   * Retrieve all the generic resource members for this team
+   */
+  public async getGenericResources(id: string): Promise<TeamGenericResourceMembersResponse> {
+    return this.createAndSendRequest(`/teams/${id}/generic-resources`);
+  }
+
+  /**
+   * Add a generic resource to the given team
+   */
+  public async postGenericResources(
+    id: string,
+    genericResource: { genericResourceId: number },
+  ): Promise<TeamGenericResourceMemberResponse> {
+    return this.createAndSendRequest(`/teams/${id}/generic-resources`, {
+      body: genericResource,
+      method: 'POST',
+    });
+  }
+
+  /**
+   * Retrieve an existing generic resource team member for the given teamId and resourceId
+   */
+  public async getGenericResource(
+    id: string,
+    resourceId: string,
+  ): Promise<TeamGenericResourceMemberResponse> {
+    return this.createAndSendRequest(`/teams/${id}/generic-resources/${resourceId}`);
+  }
+
+  /**
+   * Remove an existing generic resource team member with given resourceId from team with the
+   * given teamId
+   */
+  public async deleteGenericResource(
+    id: string,
+    resourceId: string,
+  ): Promise<TeamGenericResourceMemberResponse> {
+    return this.createAndSendRequest(`/teams/${id}/generic-resources/${resourceId}`, {
+      method: 'DELETE',
+    });
   }
 }

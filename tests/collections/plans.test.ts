@@ -28,6 +28,22 @@ describe('Plans', () => {
       expect(result.method).toEqual('POST');
     });
 
+    it('getPlanForDaily hits proper url', async () => {
+      const result = await mockUrlCall.call('getPlanForDaily', [
+        'someDailyString',
+        {
+          assigneeType: 'USER',
+          planItemType: 'someString',
+          from: '2019-01-01',
+          to: '2019-01-31',
+          updatedFrom: '2019-01-01',
+        },
+      ]);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/plans/someDailyString?assigneeType=USER&planItemType=someString&from=2019-01-01&to=2019-01-31&updatedFrom=2019-01-01',
+      );
+    });
+
     it('getPlan hits proper url', async () => {
       const result = await mockUrlCall.call('getPlan', [
         'someId',

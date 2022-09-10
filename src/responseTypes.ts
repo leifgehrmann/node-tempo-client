@@ -81,6 +81,22 @@ export interface CustomerResponse {
   name: string;
 }
 
+export interface GenericResourceResponse {
+  self: string;
+  id: number;
+  name: string;
+  createdAt: string;
+  createdBy: {
+    self: string;
+    accountId: string;
+  };
+  updatedAt: string;
+  updatedBy: {
+    self: string;
+    accountId: string;
+  };
+}
+
 export interface PermissionRoleResponse {
   self: string;
   id: number;
@@ -320,6 +336,38 @@ export interface TeamPermissionResponse {
     self: string;
     values: UserResponse[];
   };
+}
+
+export interface TeamGenericResourceMembersResponse {
+  self: string;
+  team: {
+    self: string;
+    id: number;
+  };
+  count: number;
+  members: {
+    self: string;
+    id: number;
+    name: string;
+  }[];
+}
+
+export interface TeamGenericResourceMemberResponse {
+  self: string;
+  team: {
+    self: string;
+    id: number;
+  };
+  member: {
+    self: string;
+    id: number;
+    name: string;
+  };
+  assignedToTeamAt: string;
+  assignedToTeamBy: {
+    self: string;
+    accountId: string;
+  }[];
 }
 
 export interface RoleResponse {

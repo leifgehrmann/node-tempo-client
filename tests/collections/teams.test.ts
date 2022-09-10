@@ -95,5 +95,40 @@ describe('Teams', () => {
         'http://tempo.somehost.com:8080/core/3/teams/someId/permissions/someKey',
       );
     });
+
+    it('getGenericResources hits proper url', async () => {
+      const result = await mockUrlCall.call('getGenericResources', [
+        'someId',
+      ]);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/teams/someId/generic-resources',
+      );
+    });
+
+    it('postGenericResources hits proper url', async () => {
+      const body = {};
+      const result = await mockUrlCall.call('postGenericResources', ['someId', body]);
+      expect(result.url).toEqual('http://tempo.somehost.com:8080/core/3/teams/someId/generic-resources');
+      expect(result.body).toEqual(body);
+      expect(result.method).toEqual('POST');
+    });
+
+    it('getGenericResource hits proper url', async () => {
+      const result = await mockUrlCall.call('getGenericResource', [
+        'someId',
+        'resourceId',
+      ]);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/teams/someId/generic-resources/resourceId',
+      );
+    });
+
+    it('deleteGenericResource hits proper url', async () => {
+      const result = await mockUrlCall.call('deleteGenericResource', ['someId', 'resourceId']);
+      expect(result.url).toEqual(
+        'http://tempo.somehost.com:8080/core/3/teams/someId/generic-resources/resourceId',
+      );
+      expect(result.method).toEqual('DELETE');
+    });
   });
 });
