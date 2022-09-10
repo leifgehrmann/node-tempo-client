@@ -7,7 +7,7 @@ import {
   TeamMemberActiveMembershipResponse,
   TeamMemberMembershipResponse,
   TeamPermissionResponse,
-  TeamResponse
+  TeamResponse,
 } from '../responseTypes';
 import Collection from './abstractCollection';
 
