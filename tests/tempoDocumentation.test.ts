@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { JSDOM } from 'jsdom';
-import format = require('xml-formatter');
+import format from 'xml-formatter';
 
 let responseData = '<html lang="en-us"></html>';
 let htmlDoc: Document = new JSDOM(responseData).window.document;
