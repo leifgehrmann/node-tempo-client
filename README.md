@@ -1,3 +1,16 @@
+**🛑 node-tempo-client is deprecated 🛑**
+
+`node-tempo-client` was built to work for version 3 of Tempo's REST API, which is no longer their latest version.  
+
+Since version 4, [Tempo's REST API](https://apidocs.tempo.io) implements the [OpenAPI specification](https://www.openapis.org).
+This means tools like [Swagger Codegen](https://swagger.io/tools/swagger-codegen/) or [OpenAPI Generator](https://openapi-generator.tech) can be used to generate the code for a client, including Typescript definitions.
+
+It is highly recommended switching over to generated code as you will have greater control over how quickly you can use the new features Tempo adds to their API and you will be less dependent on a 3rd-party package.  
+
+For this reason, `node-tempo-client` has been deprecated on NPM and you will be warned the next time you install this package.
+
+-----
+
 # JavaScript Tempo API Client for node.js
 
 [![Documentation](https://img.shields.io/badge/Documentation--green.svg)](https://tempo-client.leifgehrmann.com/)
